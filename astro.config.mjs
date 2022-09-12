@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import netlify from "@astrojs/netlify/edge-functions"; // TODO: does edge work well?
+import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
