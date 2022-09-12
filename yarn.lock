@@ -80,6 +80,14 @@
     uvu "^0.5.0"
     vfile-message "^3.0.0"
 
+"@astrojs/netlify@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/netlify/-/netlify-1.0.2.tgz#67fca74da3fab776457d26dfd78ad925a8667b0f"
+  integrity sha512-YkZlieQ75Qv9qkodPJGK1Ieq8Z4rBxcxTSz0nZi4I8WIs3weLaI6aLB7M8Kwn7XLycMDmgqBxUi0KeRWbA4HzQ==
+  dependencies:
+    "@astrojs/webapi" "^1.0.0"
+    esbuild "^0.14.43"
+
 "@astrojs/prism@^1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@astrojs/prism/-/prism-1.0.1.tgz#a7a778f9e3814885f587d8074a15452947ab4252"
