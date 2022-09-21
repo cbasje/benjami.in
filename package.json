@@ -13,6 +13,7 @@
         "@astrojs/netlify": "^1.0.2",
         "@sanity/document-internationalization": "^1.0.0-v3-studio.7",
         "astro": "^1.2.1",
+        "astro-sanity": "^1.0.0",
         "groq": "^2.29.3",
         "react": "^17.0.0",
         "react-dom": "^17.0.0",

@@ -1,11 +1,18 @@
 ---
+import { useSanityClient, createImageBuilder } from "astro-sanity";
+
 const project = Astro.props.project;
+
+export const imageBuilder = createImageBuilder(useSanityClient());
+export function urlForImage(source: any) {
+    return source && imageBuilder.image(source);
+}
 ---
 
 <div class="card">
     <div
         class="titleCard"
-        style={`background-image:url(${project.mainImageUrl})`}
+        style={`background-image:url(${urlForImage(project.mainImage)})`}
     >
         <h1 class="title">{project.title}</h1>
     </div>
@@ -19,7 +26,7 @@ const project = Astro.props.project;
 				</div>
 			))}
 		</div> -->
-        <a class="link" href={`/project/${project.slug}`}>
+        <a class="link" href={`/project/${project.locale}/${project.slug}`}>
             <span class="linkInner">View</span>
         </a>
     </div>

@@ -6,6 +6,8 @@ import PortfolioPreview from "../components/PortfolioPreview.astro";
 import { projectsQuery } from "../../lib/queries";
 import type { Project } from "../../lib/types";
 
+import { useSanityClient } from "astro-sanity";
+
 // const projects = (await Astro.glob("./project/**/*.md"))
 //     .filter(({ frontmatter }) => !!frontmatter.publishDate)
 //     .sort(
@@ -14,17 +16,9 @@ import type { Project } from "../../lib/types";
 //             new Date(a.frontmatter.publishDate).valueOf()
 //     );
 
-const params = new URLSearchParams({
-    query: projectsQuery,
-    $locale: '"en"',
+const projects = await useSanityClient().fetch(projectsQuery, {
+    locale: "en",
 });
-const url =
-    `https://${
-        import.meta.env.SANITY_PROJECT_ID
-    }.api.sanity.io/v2021-10-21/data/query/${import.meta.env.SANITY_DATASET}?` +
-    params;
-const response = await fetch(url);
-const { result: projects } = await response.json();
 ---
 
 <html lang="en">

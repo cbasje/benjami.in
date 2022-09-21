@@ -3,7 +3,7 @@ import groq from "groq";
 const projectFields = groq`
   title,
   description,
-  "mainImageUrl": mainImage.asset->url,
+  mainImage,
   publishedAt,
   "slug": slug.current,
   "locale": __i18n_lang
