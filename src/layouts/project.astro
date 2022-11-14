@@ -1,4 +1,6 @@
 ---
+import { localizePath } from "astro-i18next";
+
 import { urlForImage } from "../../lib/sanity";
 import type { Project } from "../../lib/types";
 import Footer from "../components/Footer.astro";
@@ -102,7 +104,7 @@ const project: Project = Astro.props.project;
             </div>
         </div>
         <footer>
-            <a href="/projects" class="button">View More</a>
+            <a href={localizePath("/projects")} class="button">View More</a>
         </footer>
         <Footer />
     </body>

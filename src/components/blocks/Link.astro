@@ -1,4 +1,6 @@
 ---
+import { localizePath } from "astro-i18next";
+
 const { node } = Astro.props;
 
 const linkRegex =
@@ -9,7 +11,7 @@ const isInternalLink = href && linkRegex.test(href);
 ---
 
 <a
-    href={isInternalLink ? href.replace(linkRegex, "$1") : href}
+    href={isInternalLink ? localizePath(href.replace(linkRegex, "$1")) : href}
     target={!isInternalLink ? "_blank" : ""}
     rel={!isInternalLink ? "rel='noopener noreferrer noindex nofollow'" : ""}
 >
