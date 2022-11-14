@@ -1,5 +1,17 @@
 ---
 const { node } = Astro.props;
+
+const linkRegex =
+    /^(?:https?:\/\/)?(?:localhost:\d{4}|(?:next\.)?benjami\.in)(\/?[\w\/]*$)/g;
+
+const href = node.href || "";
+const isInternalLink = href && linkRegex.test(href);
 ---
 
-<a href={node.href}><slot /></a>
+<a
+    href={isInternalLink ? href.replace(linkRegex, "$1") : href}
+    target={!isInternalLink ? "_blank" : ""}
+    rel={!isInternalLink ? "rel='noopener noreferrer noindex nofollow'" : ""}
+>
+    <slot />
+</a>
