@@ -18,15 +18,13 @@ const categoryFields = groq`
   "locale": __i18n_lang
 `;
 
-export const projectQuery = groq`
-{
-  "project": *[_type == "project" && slug.current == $slug && __i18n_lang == $locale] | order(_updatedAt desc) [0] {
+export const projectsQuery = groq`
+*[_type == "project" && defined(slug.current) && __i18n_lang == $locale] {
     excerpt,
     content,
     seo,
     categories[] -> { _id, title },
     ${projectFields}
-  }
 }`;
 
 export const projectListQuery = groq`

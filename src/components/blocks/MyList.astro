@@ -1,0 +1,13 @@
+---
+import type { ListProps } from "astro-portabletext/components";
+import { List } from "astro-portabletext/components";
+
+export type { ListProps as Props };
+
+const props = Astro.props;
+const listItemIs = (listItem: string) => listItem === props.node.listItem;
+
+const Cmp = List; // Fallback to `astro-portabletext`
+---
+
+<Cmp {...props}><slot /></Cmp>

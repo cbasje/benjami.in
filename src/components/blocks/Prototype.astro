@@ -1,0 +1,11 @@
+---
+type PrototypeProvider = "figma" | "framer" | "website";
+const { node } = Astro.props;
+---
+
+<iframe
+    width="640"
+    height="480"
+    src={node.src}
+    title={`A ${node.provider} prototype`}
+    allowfullscreen></iframe>

@@ -1,0 +1,7 @@
+---
+import { urlForImage } from "../../../lib/sanity";
+
+const { node } = Astro.props;
+---
+
+<img src={urlForImage(node)} width={500} height={375} />

@@ -1,0 +1,9 @@
+---
+const { node } = Astro.props;
+---
+
+<pre
+    tabindex={0}
+    class={`language-${node.lang}`}>
+    <code class={`language-${node.lang}`}>{node.content}</code>
+</pre>
