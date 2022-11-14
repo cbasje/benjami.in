@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon";
+import type { Home } from "../../lib/types";
 
 const homepage: Home = Astro.props.homepage;
 ---
@@ -114,7 +115,10 @@ const homepage: Home = Astro.props.homepage;
             <span>{homepage.callToAction ?? "Let's talk"}</span>
             <Icon
                 name="ph:envelope-simple-bold"
-                style="font-size: 32px"
+                style={{
+                    width: "32px",
+                    height: "32px",
+                }}
                 aria-hidden
             />
         </div>
