@@ -1,7 +1,8 @@
 ---
-import { useSanityClient, createImageBuilder } from "astro-sanity";
+import { createImageBuilder, useSanityClient } from "astro-sanity";
+import type { Project } from "../../lib/types";
 
-const project = Astro.props.project;
+const project: Project = Astro.props.project;
 
 export const imageBuilder = createImageBuilder(useSanityClient());
 export function urlForImage(source: any) {
@@ -26,7 +27,7 @@ export function urlForImage(source: any) {
 				</div>
 			))}
 		</div> -->
-        <a class="link" href={`/project/${project.locale}/${project.slug}`}>
+        <a class="link" href={`/project/${project.slug}`}>
             <span class="linkInner">View</span>
         </a>
     </div>

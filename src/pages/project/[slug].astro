@@ -1,0 +1,20 @@
+---
+import { useSanityClient } from "astro-sanity";
+import { projectSlugsQuery } from "../../../lib/queries";
+import ProjectLayout from "../../layouts/project.astro";
+
+const projectSlugs: { slug: string; locale: string }[] =
+    await useSanityClient().fetch(projectSlugsQuery);
+
+export function getStaticPaths() {
+    return projectSlugs.map((slug) => ({
+        params: slug,
+    }));
+}
+
+const { slug } = Astro.params;
+---
+
+<ProjectLayout content={Astro.params}>
+    Post: {slug}
+</ProjectLayout>
