@@ -10,7 +10,6 @@
         "astro": "astro"
     },
     "dependencies": {
-        "@astrojs/netlify": "^1.2.1",
         "@sanity/document-internationalization": "^1.0.0-v3-studio.7",
         "astro": "^1.6.7",
         "astro-sanity": "^1.0.0",

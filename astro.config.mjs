@@ -1,11 +1,9 @@
 import { defineConfig } from "astro/config";
-import netlify from "@astrojs/netlify/functions";
 import sanity from "astro-sanity";
 
 // https://astro.build/config
 export default defineConfig({
-    output: "server",
-    adapter: netlify(),
+    output: "static",
     integrations: [
         sanity({
             projectId: "jt1bq8i3",
