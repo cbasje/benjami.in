@@ -1,15 +1,13 @@
 ---
-import type { PortableTextProps } from "astro-portabletext/types";
 import { PortableText } from "astro-portabletext";
-// Custom components
-import MyBlock from "./blocks/MyBlock.astro";
-import MyList from "./blocks/MyList.astro";
-import MyMark from "./blocks/MyMark.astro";
-import ImageBlock from "./blocks/Image.astro";
-import CodeBlock from "./blocks/Code.astro";
-import PrototypeBlock from "./blocks/Prototype.astro";
-// Lib
+import type { PortableTextProps } from "astro-portabletext/types";
 import { mergeComponents } from "astro-portabletext/utils";
+
+import BlockQuote from "./blocks/BlockQuote.astro";
+import Code from "./blocks/Code.astro";
+import Image from "./blocks/Image.astro";
+import Link from "./blocks/Link.astro";
+import Prototype from "./blocks/Prototype.astro";
 
 export interface Props {
     value: PortableTextProps["value"];
@@ -21,13 +19,17 @@ const { value, components: overrideComponents = {} } = Astro.props;
 const components = mergeComponents(
     {
         type: {
-            image: ImageBlock,
-            code: CodeBlock,
-            prototype: PrototypeBlock,
+            image: Image,
+            code: Code,
+            prototype: Prototype,
         },
-        block: MyBlock,
-        list: MyList,
-        mark: MyMark,
+        block: {
+            blockquote: BlockQuote,
+        },
+        list: {},
+        mark: {
+            link: Link,
+        },
     },
     overrideComponents
 );
