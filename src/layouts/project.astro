@@ -1,16 +1,11 @@
 ---
-import { createImageBuilder, useSanityClient } from "astro-sanity";
+import { urlForImage } from "../../lib/sanity";
 import type { Project } from "../../lib/types";
 import Footer from "../components/Footer.astro";
 import MainHead from "../components/MainHead.astro";
 import Nav from "../components/Nav.astro";
 
 const project: Project = Astro.props.project;
-
-export const imageBuilder = createImageBuilder(useSanityClient());
-export function urlForImage(source: string) {
-    return source && imageBuilder.image(source);
-}
 ---
 
 <html lang={project.locale || "en"}>
