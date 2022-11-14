@@ -9,7 +9,7 @@ const project: Project = Astro.props.project;
 <div class="card">
     <div
         class="titleCard"
-        style={`background-image:url(${urlForImage(project.mainImage)})`}
+        style={`background-image:url(${urlForImage(project.mainImage).url()})`}
     >
         <h1 class="title">{project.title}</h1>
     </div>

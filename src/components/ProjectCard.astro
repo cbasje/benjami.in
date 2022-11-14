@@ -1,0 +1,36 @@
+---
+import { localizePath } from "astro-i18next";
+import { urlForImage } from "../../lib/sanity";
+import ImageNotFound from "./ImageNotFound.astro";
+
+const { project, useCustomColour } = Astro.props;
+
+const imgURL = project.mainImage
+    ? urlForImage(project.mainImage).width(1500).auto("format").fit("max").url()
+    : null;
+---
+
+<div
+    role="gridcell"
+    style={useCustomColour
+        ? {
+              $$cardBg: `rgb($colors$${project.colour}100) !important`,
+          }
+        : undefined}
+>
+    <a href={localizePath(`project/${project.slug}`)}>
+        <div>
+            {
+                imgURL ? (
+                    <img width={1333} height={2000} src={imgURL} alt="..." />
+                ) : (
+                    <ImageNotFound />
+                )
+            }
+        </div>
+        <div>
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+        </div>
+    </a>
+</div>

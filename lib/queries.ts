@@ -74,7 +74,7 @@ export const notFoundQuery = groq`
 `;
 
 export const globalQuery = groq`
-*[_type == "global" && defined(__i18n_lang)] {
+*[_type == "global" && __i18n_lang == $locale] [0] {
   _id,
   siteName,
   siteDescription,

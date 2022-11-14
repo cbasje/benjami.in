@@ -1,0 +1,49 @@
+---
+import { localizePath } from "astro-i18next";
+import { Icon } from "astro-icon";
+---
+
+<header>
+    <nav>
+        <ul role="list">
+            <li role="listitem">
+                <a href={localizePath("/")}> Sebastiaan Benjamins</a>
+            </li>
+        </ul>
+        <ul role="list">
+            <li role="listitem">
+                <a
+                    title="My email address"
+                    href="mailto:Sebastiaan Benjamins <sebas@benjami.in>"
+                >
+                    <Icon
+                        name="ph:envelope-simple-bold"
+                        style="font-size: 24px"
+                        aria-hidden
+                    />
+                </a>
+            </li>
+            <li role="listitem">
+                <a title="My Github account" href="https://github.com/cbasje">
+                    <Icon
+                        name="ph:github-logo-bold"
+                        style="font-size: 24px"
+                        aria-hidden
+                    />
+                </a>
+            </li>
+            <li role="listitem">
+                <a
+                    title="My Instagram account"
+                    href="https://instagram.com/cbasje"
+                >
+                    <Icon
+                        name="ph:instagram-logo-bold"
+                        style="font-size: 24px"
+                        aria-hidden
+                    />
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>

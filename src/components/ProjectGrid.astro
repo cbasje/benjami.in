@@ -1,0 +1,18 @@
+---
+import type { Project } from "../../lib/types";
+import ProjectCard from "./ProjectCard.astro";
+
+const projects: Project[] = Astro.props.projects;
+---
+
+<div role="grid">
+    {
+        projects.map((project: Project, i: number) => (
+            <ProjectCard
+                project={project}
+                useCustomColour={projects.every((p) => !!p.colour)}
+                key={project.slug}
+            />
+        ))
+    }
+</div>
