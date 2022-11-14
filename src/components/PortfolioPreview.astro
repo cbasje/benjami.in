@@ -1,4 +1,5 @@
 ---
+import { localizePath } from "astro-i18next";
 import { createImageBuilder, useSanityClient } from "astro-sanity";
 import type { Project } from "../../lib/types";
 
@@ -27,7 +28,7 @@ export function urlForImage(source: string) {
 				</div>
 			))}
 		</div> -->
-        <a class="link" href={`/project/${project.slug}`}>
+        <a class="link" href={localizePath(`/project/${project.slug}`)}>
             <span class="linkInner">View</span>
         </a>
     </div>

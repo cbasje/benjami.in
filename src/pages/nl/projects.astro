@@ -1,14 +1,14 @@
 ---
 import { useSanityClient } from "astro-sanity";
 import i18next, { changeLanguage } from "i18next";
-import { projectListQuery } from "../../lib/queries";
-import type { Project } from "../../lib/types";
-import Footer from "../components/Footer.astro";
-import MainHead from "../components/MainHead.astro";
-import Nav from "../components/Nav.astro";
-import PortfolioPreview from "../components/PortfolioPreview.astro";
+import { projectListQuery } from "../../../lib/queries";
+import type { Project } from "../../../lib/types";
+import Footer from "../../components/Footer.astro";
+import MainHead from "../../components/MainHead.astro";
+import Nav from "../../components/Nav.astro";
+import PortfolioPreview from "../../components/PortfolioPreview.astro";
 
-changeLanguage("en");
+changeLanguage("nl");
 
 const projects = await useSanityClient().fetch(projectListQuery, {
     locale: i18next.language,

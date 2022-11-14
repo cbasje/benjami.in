@@ -1,11 +1,11 @@
 ---
 import { useSanityClient } from "astro-sanity";
 import i18next, { changeLanguage } from "i18next";
-import { projectListQuery } from "../../../lib/queries";
-import type { Project } from "../../../lib/types";
-import ProjectLayout from "../../layouts/project.astro";
+import { projectListQuery } from "../../../../lib/queries";
+import type { Project } from "../../../../lib/types";
+import ProjectLayout from "../../../layouts/project.astro";
 
-changeLanguage("en");
+changeLanguage("nl");
 
 export async function getStaticPaths() {
     const projects: Project[] = await useSanityClient().fetch(projectListQuery, {

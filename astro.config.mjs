@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import sanity from "astro-sanity";
+import astroI18next from "astro-i18next";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,5 +12,6 @@ export default defineConfig({
             apiVersion: "2021-03-25",
             useCdn: true,
         }),
+        astroI18next(),
     ],
 });
