@@ -1,14 +1,21 @@
 ---
-import MainHead from "../components/MainHead.astro";
+import { createImageBuilder, useSanityClient } from "astro-sanity";
+import type { Project } from "../../lib/types";
 import Footer from "../components/Footer.astro";
+import MainHead from "../components/MainHead.astro";
 import Nav from "../components/Nav.astro";
 
-const { content } = Astro.props;
+const project: Project = Astro.props.project;
+
+export const imageBuilder = createImageBuilder(useSanityClient());
+export function urlForImage(source: string) {
+    return source && imageBuilder.image(source);
+}
 ---
 
-<html lang={content.lang || "en"}>
+<html lang={project.locale || "en"}>
     <head>
-        <MainHead title={content.title} description={content.description} />
+        <MainHead title={project.title} description={project.description} />
         <style>
             .hero {
                 padding: 8rem;
@@ -82,17 +89,22 @@ const { content } = Astro.props;
     </head>
     <body>
         <Nav />
-        <header style={`background-image:url(${content.img})`} class="hero">
-            <h1 class="title">{content.title}</h1>
+        <header
+            class="hero"
+            style={`background-image:url(${urlForImage(project.mainImage)})`}
+        >
+            <h1 class="title">{project.title}</h1>
         </header>
         <!-- <div class="leadIn">
 			<div class="wrapper">
-				{content.tags.map((t) => <span class="tag">{t}</span>)}
-				<h3 class="tagline">{content.description}</h3>
+				{project.tags.map((t) => <span class="tag">{t}</span>)}
+				<h3 class="tagline">{project.description}</h3>
 			</div>
 		</div> -->
         <div class="wrapper">
-            <div class="content"><slot /></div>
+            <div class="content">
+                <slot />
+            </div>
         </div>
         <footer>
             <a href="/projects" class="button">View More</a>

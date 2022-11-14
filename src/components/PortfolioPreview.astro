@@ -5,7 +5,7 @@ import type { Project } from "../../lib/types";
 const project: Project = Astro.props.project;
 
 export const imageBuilder = createImageBuilder(useSanityClient());
-export function urlForImage(source: any) {
+export function urlForImage(source: string) {
     return source && imageBuilder.image(source);
 }
 ---

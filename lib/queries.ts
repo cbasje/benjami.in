@@ -4,6 +4,8 @@ const projectFields = groq`
   title,
   description,
   mainImage,
+  colour,
+  company,
   publishedAt,
   "slug": slug.current,
   "locale": __i18n_lang
@@ -19,19 +21,21 @@ const categoryFields = groq`
 export const projectQuery = groq`
 {
   "project": *[_type == "project" && slug.current == $slug && __i18n_lang == $locale] | order(_updatedAt desc) [0] {
-    body,
+    excerpt,
+    content,
     seo,
+    categories[] -> { _id, title },
     ${projectFields}
   }
 }`;
 
-export const projectsQuery = groq`
-*[_type == "project" && defined(slug.current) && __i18n_lang == $locale] {
-    ${projectFields}
-  }
+export const projectListQuery = groq`
+*[_type == "project" && defined(slug.current) && __i18n_lang == $locale] | order(publishedAt desc) [0...3] {
+  ${projectFields}
+}
 `;
 
-export const projectSlugsQuery = groq`
+export const projectPathsQuery = groq`
 *[_type == "project" && defined(slug.current) && defined(__i18n_lang)] {
   "slug": slug.current,
   "locale": __i18n_lang
@@ -47,7 +51,7 @@ export const categoryQuery = groq`
 }
 `;
 
-export const categorySlugsQuery = groq`
+export const categoryPathsQuery = groq`
 *[_type == "category" && defined(slug.current) && defined(__i18n_lang)] {
   "slug": slug.current,
   "locale": __i18n_lang
@@ -58,6 +62,8 @@ export const homeQuery = groq`
 *[_type == "home" && __i18n_lang == $locale] | order(_updatedAt desc) [0] {
   _id,
   title,
+  description,
+  callToAction,
   "locale": __i18n_lang
 }
 `;

@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-
 import netlify from "@astrojs/netlify/functions";
 import sanity from "astro-sanity";
 
@@ -11,7 +10,7 @@ export default defineConfig({
         sanity({
             projectId: "jt1bq8i3",
             dataset: "production",
-            apiVersion: "2021-10-21",
+            apiVersion: "2021-03-25",
             useCdn: true,
         }),
     ],

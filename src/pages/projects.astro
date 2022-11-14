@@ -1,22 +1,14 @@
 ---
-import MainHead from "../components/MainHead.astro";
+import { projectListQuery } from "../../lib/queries";
+import type { Project } from "../../lib/types";
 import Footer from "../components/Footer.astro";
+import MainHead from "../components/MainHead.astro";
 import Nav from "../components/Nav.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
-import { projectsQuery } from "../../lib/queries";
-import type { Project } from "../../lib/types";
 
 import { useSanityClient } from "astro-sanity";
 
-// const projects = (await Astro.glob("./project/**/*.md"))
-//     .filter(({ frontmatter }) => !!frontmatter.publishDate)
-//     .sort(
-//         (a, b) =>
-//             new Date(b.frontmatter.publishDate).valueOf() -
-//             new Date(a.frontmatter.publishDate).valueOf()
-//     );
-
-const projects = await useSanityClient().fetch(projectsQuery, {
+const projects = await useSanityClient().fetch(projectListQuery, {
     locale: "en",
 });
 ---

@@ -1,4 +1,6 @@
-export type Picture = string;
+import type { TypedObject } from "sanity";
+
+export type Image = string;
 
 export enum Locale {
     EN = "en",
@@ -8,7 +10,7 @@ export enum Locale {
 export interface Seo {
     metaTitle: string;
     metaDescription?: string;
-    shareImage?: Picture;
+    shareImage?: Image;
     isArticle?: boolean;
     locale?: Locale;
 }
@@ -31,7 +33,8 @@ export interface NotFound {
 export interface Home {
     _id: number;
     title: string;
-    description: string;
+    description?: string;
+    callToAction?: string;
     seo?: Seo;
     locale: Locale;
 }
@@ -45,15 +48,26 @@ export interface Category {
     projects?: Project[];
 }
 
+export interface Company {
+    _id: number;
+    title: string;
+    url?: string;
+    logo: string;
+}
+
+export type ProjectColour = "purple" | "green" | "blue";
 export interface Project {
     _id: string;
     title: string;
     description: string;
+    excerpt: string;
     slug: string;
     mainImage: string;
-    categories: Category[];
-    body: string;
-    publishedAt: Date;
+    colour?: ProjectColour;
+    categories: Pick<Category, "_id" | "title">[];
+    content: TypedObject[];
+    company?: Company;
+    publishedAt: string;
     seo?: Seo;
     locale: Locale;
 }
