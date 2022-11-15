@@ -1,12 +1,27 @@
 ---
 import { useSanityClient } from "astro-sanity";
 import i18next, { changeLanguage } from "i18next";
+
 import { projectsQuery } from "../../../lib/queries";
-import type { Project } from "../../../lib/types";
+import type { Project, Seo } from "../../../lib/types";
 import BlockManager from "../../components/BlockManager.astro";
-import ProjectLayout from "../../layouts/project.astro";
+import Image from "../../components/Image.astro";
+import ProjectsLayout from "../../layouts/project.astro";
+import { css, flex, grid } from "../../stitches.config";
 
 changeLanguage("en");
+
+export interface Props {
+    project: Project;
+}
+const { project } = Astro.props;
+
+const seo: Seo = {
+    metaTitle: project.title,
+    metaDescription: project.description,
+    shareImage: project.mainImage,
+    isArticle: true,
+};
 
 export async function getStaticPaths() {
     const projects: Project[] = await useSanityClient().fetch(projectsQuery, {
@@ -17,9 +32,78 @@ export async function getStaticPaths() {
         props: { project: p },
     }));
 }
-const project: Project = Astro.props.project;
+
+const banner = css({
+    width: "100%",
+    height: "auto",
+    borderRadius: "$sm",
+    aspectRatio: "3 / 2",
+    overflow: "hidden",
+});
 ---
 
-<ProjectLayout project={project}>
+<ProjectsLayout colour={project.colour} seo={seo}>
+    <div class={flex({ css: { flexDirection: "column", gap: "$1" } })}>
+        <h1>{project.title}</h1>
+        <div
+            class={grid({
+                css: { gridTemplateColumns: "repeat(2, 1fr)", gap: "$1" },
+            })}
+        >
+            <div class={flex({ css: { flexDirection: "column", gap: "$1" } })}>
+                <h3>
+                    {project.description}
+                </h3>
+
+                <div class={flex({ css: { flexDirection: "row", gap: "$1" } })}>
+                    <span>
+                        {
+                            new Intl.DateTimeFormat(i18next.language, {
+                                month: "long",
+                                year: "numeric",
+                            }).format(new Date(project.publishedAt))
+                        }
+                    </span>
+
+                    {
+                        project.company && (
+                            <>
+                                <span>-</span>
+                                {project.company.url ? (
+                                    <a href={project.company.url}>
+                                        {project.company.title}
+                                    </a>
+                                ) : (
+                                    <span>{project.company.title}</span>
+                                )}
+                            </>
+                        )
+                    }
+
+                    {
+                        project.categories && (
+                            <>
+                                <span>-</span>
+                                {project.categories
+                                    .map((c) => c.title)
+                                    .join(", ")}
+                            </>
+                        )
+                    }
+                </div>
+            </div>
+
+            <p>{project.excerpt}</p>
+        </div>
+    </div>
+
+    <div
+        class={banner({
+            css: { background: `rgb($colors$${project.colour}100)` },
+        })}
+    >
+        <Image src={project.mainImage} fillContainer />
+    </div>
+
     <BlockManager value={project.content} />
-</ProjectLayout>
+</ProjectsLayout>

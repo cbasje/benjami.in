@@ -5,7 +5,7 @@ import { SEO } from "astro-seo";
 import i18next from "i18next";
 import { globalQuery } from "../../lib/queries";
 import type { Seo } from "../../lib/types";
-import "../styles/global.css";
+import { getCssText } from "../stitches.config";
 
 export interface Props {
     seo?: Seo;
@@ -33,9 +33,6 @@ const fullSeo = {
 
 <head>
     <meta charset="UTF-8" />
-
-    <HeadHrefLangs />
-
     <SEO
         title={fullSeo.metaTitle}
         description={fullSeo.metaDescription}
@@ -52,11 +49,14 @@ const fullSeo = {
             creator: "@cbasje",
         }}
         extend={{
-            link: [{ rel: "icon", href: "/favicon.ico" }],
+            link: [{ rel: "shortcut icon", href: "/favicon.ico" }],
             meta: [
                 { name: "viewport", content: "width=device-width" },
                 { name: "generator", content: Astro.generator },
             ],
         }}
     />
+
+    <HeadHrefLangs />
+    <style id="stitches" set:html={getCssText()}></style>
 </head>

@@ -1,0 +1,26 @@
+---
+import { urlForImage } from "../../lib/sanity";
+import type { Image } from "../../lib/types";
+import { image } from "../stitches.config";
+
+export interface Props {
+    src: Image;
+    width: number;
+    height: number;
+    fillContainer?: boolean;
+}
+const { src, fillContainer, width, height } = Astro.props;
+---
+
+<img
+    class={image({ fill: fillContainer })}
+    width={width}
+    height={height}
+    src={urlForImage(src)
+        .width(width)
+        .height(height)
+        .auto("format")
+        .fit("max")
+        .url()}
+    alt={""}
+/>

@@ -1,0 +1,43 @@
+---
+import i18next from "i18next";
+import type { Seo } from "../../lib/types";
+import MainHead from "../components/MainHead.astro";
+import { css, globalStyles } from "../stitches.config";
+
+export interface Props {
+    seo?: Seo;
+    noTopPadding?: boolean;
+}
+const { seo, noTopPadding } = Astro.props;
+
+globalStyles();
+
+const container = css({
+    width: "100%",
+    height: "100%",
+
+    fontFamily: "$text",
+
+    variants: {
+        noTopPadding: {
+            false: {
+                paddingTop: "calc($headerHeight + $6)",
+            },
+        },
+    },
+});
+---
+
+<html lang={i18next.language}>
+    <MainHead seo={seo} />
+
+    <body>
+        <div
+            class={container({
+                noTopPadding: !!noTopPadding,
+            })}
+        >
+            <slot />
+        </div>
+    </body>
+</html>

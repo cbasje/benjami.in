@@ -1,14 +1,17 @@
 ---
 import { useSanityClient } from "astro-sanity";
-import i18next, { changeLanguage, t } from "i18next";
+import i18next, { changeLanguage } from "i18next";
+
 import { homeQuery, projectListQuery } from "../../lib/queries";
 import type { Home, Project } from "../../lib/types";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import MainHead from "../components/MainHead.astro";
-import ProjectGrid from "../components/ProjectGrid.astro";
-import Intro from "../components/Intro.astro";
+
 import CallToAction from "../components/CallToAction.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Intro from "../components/Intro.astro";
+import ProjectGrid from "../components/ProjectGrid.astro";
+import MainLayout from "../layouts/main.astro";
+import { css, main } from "../stitches.config";
 
 changeLanguage("en");
 
@@ -18,30 +21,59 @@ const projects: Project[] = await useSanityClient().fetch(projectListQuery, {
 const homepage: Home = await useSanityClient().fetch(homeQuery, {
     locale: i18next.language,
 });
+
+const section = css({
+    width: "100%",
+    height: "auto",
+
+    filter: "grayscale(100%)",
+    opacity: 0.7,
+    transition:
+        "filter .8s cubic-bezier(.33,1,.68,1), opacity .8s cubic-bezier(.33,1,.68,1)",
+
+    "&:hover": {
+        opacity: 1,
+        filter: "grayscale(0%)",
+    },
+
+    "& > *": {
+        width: "100%",
+        height: "100%",
+        position: "relative",
+    },
+
+    variants: {
+        for: {
+            intro: {
+                aspectRatio: 1.88,
+            },
+            projects: {
+                aspectRatio: 1.85,
+            },
+            callToAction: {
+                aspectRatio: 2.11,
+            },
+        },
+    },
+});
 ---
 
-<html lang={i18next.language}>
-    <head>
-        <MainHead seo={homepage.seo} />
+<MainLayout seo={homepage.seo}>
+    <Header />
 
-        <body>
-            <Header />
+    <main class={main()}>
+        <section class={section({ for: "intro" })}>
+            <Intro homepage={homepage} />
+        </section>
 
-            <main>
-                <section>
-                    <Intro homepage={homepage} />
-                </section>
+        <section class={section({ for: "projects" })}>
+            <ProjectGrid projects={projects} />
+        </section>
 
-                <section>
-                    <ProjectGrid projects={projects} />
-                </section>
+        <section class={section({ for: "callToAction" })}>
+            <CallToAction homepage={homepage} />
+        </section>
 
-                <section>
-                    <CallToAction homepage={homepage} />
-                </section>
-            </main>
-
-            <Footer />
-        </body>
-    </head>
-</html>
+        <Footer />
+    </main>
+</MainLayout>

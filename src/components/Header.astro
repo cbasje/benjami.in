@@ -1,18 +1,105 @@
 ---
 import { localizePath } from "astro-i18next";
 import { Icon } from "astro-icon";
+import { css } from "../stitches.config";
+
+const header = css({
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    width: "100vw",
+    padding: "$2",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 9,
+
+    "& > *": {
+        width: "100%",
+        maxWidth: 1024,
+    },
+});
+
+const nav = css({
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    background: "rgb($bg / 75%)",
+    // boxShadow: "0 6px 20px rgb(0 0 0 / 8%)",
+    WebkitBackdropFilter: "blur(15px)",
+    backdropFilter: "blur(15px)",
+    borderRadius: "$md",
+});
+
+const ul = css({
+    margin: 0,
+    padding: "$1",
+    listStyle: "none",
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    gap: "$1",
+
+    fontFamily: "$display",
+    fontWeight: "$bold",
+    textTransform: "uppercase",
+    letterSpacing: ".05em",
+
+    variants: {
+        side: {
+            left: {
+                justifyContent: "flex-start",
+            },
+            right: {
+                justifyContent: "flex-end",
+            },
+        },
+    },
+});
+
+const anchor = css({
+    paddingBlock: "$1",
+    paddingInline: "$2",
+    display: "flex",
+    flexDirection: "row",
+    gap: "$1",
+    flexGrow: 0,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "$sm",
+    transition: "background-color .2s cubic-bezier(.33,1,.68,1)",
+
+    "&:hover": {
+        backgroundColor: "rgb($gray200)",
+    },
+
+    "&:active": {
+        color: "rgb($gray50) !important",
+        backgroundColor: "rgb($gray900) !important",
+
+        "&:hover": {
+            backgroundColor: "rgb($gray900) !important",
+        },
+    },
+});
+
+const li = css({});
 ---
 
-<header>
-    <nav>
-        <ul role="list">
-            <li role="listitem">
-                <a href={localizePath("/")}> Sebastiaan Benjamins</a>
+<header class={header()}>
+    <nav class={nav()}>
+        <ul class={ul({ side: "left" })} role="list">
+            <li class={li()} role="listitem">
+                <a class={anchor()} href={localizePath("/")}>
+                    Sebastiaan Benjamins</a
+                >
             </li>
         </ul>
-        <ul role="list">
-            <li role="listitem">
+        <ul class={ul({ side: "right" })} role="list">
+            <li class={li()} role="listitem">
                 <a
+                    class={anchor()}
                     title="My email address"
                     href="mailto:Sebastiaan Benjamins <sebas@benjami.in>"
                 >
@@ -26,8 +113,12 @@ import { Icon } from "astro-icon";
                     />
                 </a>
             </li>
-            <li role="listitem">
-                <a title="My Github account" href="https://github.com/cbasje">
+            <li class={li()} role="listitem">
+                <a
+                    class={anchor()}
+                    title="My Github account"
+                    href="https://github.com/cbasje"
+                >
                     <Icon
                         name="ph:github-logo-bold"
                         style={{
@@ -38,8 +129,9 @@ import { Icon } from "astro-icon";
                     />
                 </a>
             </li>
-            <li role="listitem">
+            <li class={li()} role="listitem">
                 <a
+                    class={anchor()}
                     title="My Instagram account"
                     href="https://instagram.com/cbasje"
                 >
