@@ -3,7 +3,10 @@ import { localizePath } from "astro-i18next";
 import { urlForImage } from "../../lib/sanity";
 import type { Project } from "../../lib/types";
 
-const project: Project = Astro.props.project;
+export interface Props {
+    project: Project;
+}
+const { project } = Astro.props;
 ---
 
 <div class="card">

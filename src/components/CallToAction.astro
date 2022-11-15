@@ -2,7 +2,10 @@
 import { Icon } from "astro-icon";
 import type { Home } from "../../lib/types";
 
-const homepage: Home = Astro.props.homepage;
+export interface Props {
+    homepage: Home;
+}
+const { homepage } = Astro.props;
 ---
 
 <div>

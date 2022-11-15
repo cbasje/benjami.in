@@ -2,7 +2,10 @@
 import type { Project } from "../../lib/types";
 import ProjectCard from "./ProjectCard.astro";
 
-const projects: Project[] = Astro.props.projects;
+export interface Props {
+    projects: Project[];
+}
+const { projects } = Astro.props;
 ---
 
 <div role="grid">
