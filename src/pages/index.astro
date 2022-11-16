@@ -42,6 +42,23 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
     </main>
 </MainLayout>
 
+<script>
+    import { animate, stagger } from "motion";
+
+    animate(
+        "main > section",
+        {
+            transform: ["translateY(150px)", "none"],
+            opacity: [0, 0.7],
+        },
+        {
+            duration: 0.375,
+            easing: [0.43, 0.13, 0.23, 0.96],
+            delay: stagger(0.125),
+        }
+    );
+</script>
+
 <style lang="scss">
     .main {
         width: 100vw;
@@ -71,7 +88,7 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
             opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
 
         &:hover {
-            opacity: 1;
+            opacity: 1 !important;
             filter: grayscale(0%);
         }
 

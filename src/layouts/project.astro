@@ -42,6 +42,19 @@ const buttonColor = colour
     </div>
 </MainLayout>
 
+<script>
+    import { animate } from "motion";
+
+    animate(
+        ".contentContainer",
+        {
+            transform: ["translateY(150px)", "none"],
+            opacity: [0, 1],
+        },
+        { duration: 0.375, easing: [0.43, 0.13, 0.23, 0.96] }
+    );
+</script>
+
 <style lang="scss" define:vars={{ overlayColor, buttonColor }}>
     .overlay {
         position: fixed;
@@ -82,10 +95,8 @@ const buttonColor = colour
         margin-top: 4em;
         width: 100vw;
         height: calc(100vh - 4em);
-        overflow-y: scroll;
-
         position: relative;
-        animation: 0.375s cubic-bezier(0.43, 0.13, 0.23, 0.96) 0s dialog-in;
+        overflow-y: scroll;
 
         &:focus {
             outline: none;
@@ -148,17 +159,6 @@ const buttonColor = colour
                 font-weight: var(--fontWeights-medium);
                 text-decoration: underline wavy;
             }
-        }
-    }
-
-    @keyframes dialog-in {
-        from {
-            top: 150px;
-            opacity: 0;
-        }
-        to {
-            top: 0;
-            opacity: 1;
         }
     }
 </style>
