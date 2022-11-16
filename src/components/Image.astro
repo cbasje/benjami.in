@@ -12,7 +12,7 @@ const { src, fillContainer, width, height } = Astro.props;
 ---
 
 <img
-    class="image fill-container"
+    class={`image ${fillContainer ? "fill-container" : ""}`}
     width={width}
     height={height}
     src={urlForImage(src)
@@ -22,4 +22,5 @@ const { src, fillContainer, width, height } = Astro.props;
         .fit("max")
         .url()}
     alt={""}
+    loading="lazy"
 />

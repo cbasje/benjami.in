@@ -18,7 +18,11 @@ const buttonColor = colour
 
 <MainLayout seo={seo} noTopPadding>
     <div>
-        <aside class="overlay"></aside>
+        <a
+            href={localizePath("/")}
+            class="overlay"
+            style={{ cursor: "initial" }}
+            aria-hidden></a>
         <a href={localizePath("/")} class="icon-button" aria-label="Close">
             <Icon
                 name="ph:x-bold"
@@ -79,6 +83,9 @@ const buttonColor = colour
         width: 100vw;
         height: calc(100vh - 4em);
         overflow-y: scroll;
+
+        position: relative;
+        animation: 0.375s cubic-bezier(0.43, 0.13, 0.23, 0.96) 0s dialog-in;
 
         &:focus {
             outline: none;
@@ -141,6 +148,17 @@ const buttonColor = colour
                 font-weight: var(--fontWeights-medium);
                 text-decoration: underline wavy;
             }
+        }
+    }
+
+    @keyframes dialog-in {
+        from {
+            top: 150px;
+            opacity: 0;
+        }
+        to {
+            top: 0;
+            opacity: 1;
         }
     }
 </style>

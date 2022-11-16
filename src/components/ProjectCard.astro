@@ -41,9 +41,15 @@ const cardBg = useCustomColour
         border-radius: var(--radii-md);
         overflow: hidden;
 
-        &:hover .labelContainer {
-            opacity: 1;
-            visibility: visible;
+        &:hover {
+            .imageContainer {
+                scale: 1.05;
+            }
+
+            .labelContainer {
+                opacity: 1;
+                visibility: visible;
+            }
         }
     }
 
@@ -58,6 +64,9 @@ const cardBg = useCustomColour
     .imageContainer {
         width: 100%;
         height: 100%;
+
+        scale: 1;
+        transition: scale 0.375s cubic-bezier(0.43, 0.13, 0.23, 0.96);
     }
 
     .labelContainer {
