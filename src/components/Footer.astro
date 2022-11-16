@@ -1,84 +1,22 @@
 ---
-import { css } from "../stitches.config";
-import SpotifyPlayer from "./SpotifyPlayer.tsx";
+import SpotifyPlayer from "./SpotifyPlayer";
 
 const currentYear = new Date().getFullYear();
-
-const footer = css({
-    width: "100vw",
-    paddingBlock: "$2",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-
-    filter: "grayscale(100%)",
-    transition: "filter .8s cubic-bezier(.33,1,.68,1)",
-
-    "&:hover": {
-        filter: "grayscale(0%)",
-    },
-
-    "& > *": {
-        width: "100%",
-        maxWidth: 1024,
-    },
-});
-const aside = css({
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-});
-const ul = css({
-    margin: 0,
-    padding: 0,
-    listStyle: "none",
-    display: "flex",
-    maxWidth: "30%",
-    position: "relative",
-    alignItems: "center",
-    gap: "$2",
-
-    variants: {
-        side: {
-            left: {
-                justifyContent: "flex-start",
-            },
-            right: {
-                justifyContent: "flex-end",
-            },
-        },
-    },
-});
-const li = css({
-    maxWidth: "100%",
-
-    position: "relative",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    gap: "$1",
-
-    "& > span": {
-        fontFamily: "$display",
-        fontWeight: "$bold",
-        textTransform: "uppercase",
-    },
-});
 ---
 
-<footer class={footer()}>
-    <aside class={aside()}>
-        <ul class={ul({ side: "left" })} role="list">
-            <li class={li()} role="listitem">
+<footer class="footer">
+    <aside class="aside">
+        <ul class="ul side-left" role="list">
+            <li class="li" role="listitem">
                 &copy; Sebastiaan Benjamins, {currentYear}
             </li>
         </ul>
-        <ul class={ul({ side: "right" })} role="list">
-            <li class={li()} role="listitem">
+        <ul class="ul side-right" role="list">
+            <li class="li" role="listitem">
                 <SpotifyPlayer client:visible />
             </li>
             {/* FIXME: Move this */}
-            <!-- <li class={li()} role="listitem">
+            <!-- <li class="li" role="listitem">
                     <LanguageSwitcher
                         locale={locale}
                         onLocaleChange={handleLocaleChange}
@@ -87,3 +25,65 @@ const li = css({
         </ul>
     </aside>
 </footer>
+
+<style lang="scss">
+    .footer {
+        width: 100vw;
+        padding-block: var(--spaces-2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        filter: grayscale(100%);
+        transition: filter 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+
+        &:hover {
+            filter: grayscale(0%);
+        }
+
+        & > * {
+            width: 100%;
+            max-width: 1024px;
+        }
+    }
+
+    .aside {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        max-width: 30%;
+        position: relative;
+        align-items: center;
+        gap: var(--spaces-2);
+
+        &.side-left {
+            justify-content: flex-start;
+        }
+        &.side-right {
+            justify-content: flex-end;
+        }
+    }
+
+    .li {
+        max-width: 100%;
+
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--spaces-1);
+
+        & > span {
+            font-family: var(--fonts-display);
+            font-weight: var(--fontWeights-bold);
+            text-transform: uppercase;
+        }
+    }
+</style>

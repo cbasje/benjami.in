@@ -1,0 +1,51 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: rgb(var(--colors-bg));
+    color: rgb(var(--colors-textOnBg));
+    accent-color: rgb(var(--colors-primary));
+    caret-color: rgb(var(--colors-primary));
+    font-size: 1rem;
+    line-height: 1.5;
+}
+h1,
+h2 {
+    margin: 0 0 1.1em;
+    font-family: var(--fonts-display);
+    font-weight: var(--fontWeights-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    line-height: 1.1;
+    color: rgb(var(--colors-displayOnBg));
+
+    overflow-wrap: break-word;
+}
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--fonts-display);
+    font-weight: var(--fontWeights-regular);
+    text-transform: uppercase;
+    letter-spacing: 0.01rem;
+    line-height: 1.1;
+    color: rgb(var(--colors-displayOnBg));
+
+    overflow-wrap: break-word;
+}
+p {
+    margin: 0 0 1.5em;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+* {
+    box-sizing: border-box;
+}
+::selection {
+    background-color: rgb(var(--colors-primary));
+    color: rgb(var(--colors-textOnPrimary));
+}

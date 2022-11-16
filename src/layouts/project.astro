@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon";
+import { localizePath } from "astro-i18next";
 import type { ProjectColour, Seo } from "../../lib/types";
 import MainLayout from "./main.astro";
 
@@ -7,8 +9,138 @@ export interface Props {
     seo?: Seo;
 }
 const { colour, seo } = Astro.props;
+
+const overlayColor = `var(--colors-${colour ?? "gray"}900)`;
+const buttonColor = colour
+    ? `var(--colors-${colour}500)`
+    : "var(--colors-primary)";
 ---
 
 <MainLayout seo={seo} noTopPadding>
-    <slot />
+    <div>
+        <aside class="overlay"></aside>
+        <a href={localizePath("/")} class="icon-button" aria-label="Close">
+            <Icon
+                name="ph:x-bold"
+                style={{
+                    width: "2em",
+                    height: "2em",
+                }}
+                aria-hidden
+            />
+        </a>
+
+        <div class="contentContainer">
+            <article>
+                <slot />
+            </article>
+        </div>
+    </div>
 </MainLayout>
+
+<style lang="scss" define:vars={{ overlayColor, buttonColor }}>
+    .overlay {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-color: rgb(var(--overlayColor) / 25%);
+    }
+
+    .icon-button {
+        all: unset;
+        font-family: inherit;
+        border-radius: 100%;
+        height: 3em;
+        width: 3em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--colors-gray0);
+        position: fixed;
+        top: 0.5em;
+        right: 0.5em;
+        cursor: pointer;
+        pointer-events: all;
+        z-index: 1;
+
+        &:hover {
+            background-color: rgb(var(--buttonColor));
+        }
+        &:focus {
+            box-shadow: 0 0 0 2px rgb(var(--buttonColor) / 75%);
+        }
+    }
+
+    .contentContainer {
+        background-color: rgb(var(--colors-bg));
+        border-top-left-radius: var(--radii-md);
+        border-top-right-radius: var(--radii-md);
+        margin-top: 4em;
+        width: 100vw;
+        height: calc(100vh - 4em);
+        overflow-y: scroll;
+
+        &:focus {
+            outline: none;
+        }
+
+        // &:before {
+        //     content: "",
+        //     display: "block",
+        //     position: "absolute",
+        //     insetInline: 0,
+        //     height: "100px",
+        //     zIndex: 999,
+        //     background: "linear-gradient(to bottom,#fff 0%,transparent 100%)",
+        // },
+
+        article {
+            width: 100%;
+            margin-inline: auto;
+            padding-inline: var(--spaces-2);
+            padding-block: calc(var(--spaces-6) * 2);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spaces-6);
+
+            > :global(:not(section)) {
+                width: 100%;
+                max-width: 1024px;
+                height: auto;
+            }
+            > :global(section) {
+                width: 100%;
+                max-width: 60ch;
+                height: auto;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: var(--spaces-3);
+
+                > :global(*) {
+                    width: 100%;
+                    margin: 0;
+                }
+                :global(iframe) {
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                }
+                :global(:is(img, iframe)) {
+                    border-radius: var(--radii-sm);
+                    aspect-ratio: 3 / 2;
+                    overflow: hidden;
+                    object-fit: cover;
+                }
+            }
+            :global(a) {
+                color: rgb(var(--colors-purple400));
+                font-weight: var(--fontWeights-medium);
+                text-decoration: underline wavy;
+            }
+        }
+    }
+</style>

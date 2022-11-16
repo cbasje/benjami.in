@@ -1,54 +1,14 @@
 ---
 import type { Project } from "../../lib/types";
 import ProjectCard from "./ProjectCard.astro";
-import { css } from "../stitches.config";
 
 export interface Props {
     projects: Project[];
 }
 const { projects } = Astro.props;
-
-const grid = css({
-    "& > :first-child": {
-        gridArea: "main",
-        $$cardBg: "rgb($colors$purple100)",
-    },
-    "& > :nth-child(2)": {
-        gridArea: "side-up",
-        $$cardBg: "rgb($colors$green100)",
-    },
-    "& > :nth-child(3)": {
-        gridArea: "side-down",
-        $$cardBg: "rgb($colors$blue100)",
-    },
-
-    variants: {
-        type: {
-            linear: {
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "stretch",
-                gap: "$2",
-            },
-            masonry: {
-                display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
-                gridTemplateRows: "repeat(2, 1fr)",
-                gridTemplateAreas: "'main side-up' 'main side-down'",
-                gridGap: "$2",
-                alignItems: "stretch",
-            },
-        },
-    },
-});
 ---
 
-<div
-    class={grid({
-        type: { "@initial": "masonry", "@sm": "linear" },
-    })}
-    role="grid"
->
+<div class="grid for-projects" role="grid">
     {
         projects.map((project: Project, i: number) => (
             <ProjectCard
@@ -59,3 +19,37 @@ const grid = css({
         ))
     }
 </div>
+
+<style lang="scss">
+    .grid.for-projects {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas:
+            "main side-up"
+            "main side-down";
+        grid-gap: var(--spaces-2);
+        align-items: stretch;
+
+        :global(:first-child) {
+            grid-area: main;
+            --cardBg: rgb(var(--colors-purple100));
+        }
+        :global(:nth-child(2)) {
+            grid-area: side-up;
+            --cardBg: rgb(var(--colors-green100));
+        }
+        :global(:nth-child(3)) {
+            grid-area: side-down;
+            --cardBg: rgb(var(--colors-blue100));
+        }
+    }
+
+    @media (width <= 640px) {
+        .grid.for-projects {
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+            gap: var(--spaces-2);
+        }
+    }
+</style>

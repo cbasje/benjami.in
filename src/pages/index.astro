@@ -11,7 +11,6 @@ import Header from "../components/Header.astro";
 import Intro from "../components/Intro.astro";
 import ProjectGrid from "../components/ProjectGrid.astro";
 import MainLayout from "../layouts/main.astro";
-import { css, main } from "../stitches.config";
 
 changeLanguage("en");
 
@@ -21,59 +20,75 @@ const projects: Project[] = await useSanityClient().fetch(projectListQuery, {
 const homepage: Home = await useSanityClient().fetch(homeQuery, {
     locale: i18next.language,
 });
-
-const section = css({
-    width: "100%",
-    height: "auto",
-
-    filter: "grayscale(100%)",
-    opacity: 0.7,
-    transition:
-        "filter .8s cubic-bezier(.33,1,.68,1), opacity .8s cubic-bezier(.33,1,.68,1)",
-
-    "&:hover": {
-        opacity: 1,
-        filter: "grayscale(0%)",
-    },
-
-    "& > *": {
-        width: "100%",
-        height: "100%",
-        position: "relative",
-    },
-
-    variants: {
-        for: {
-            intro: {
-                aspectRatio: 1.88,
-            },
-            projects: {
-                aspectRatio: 1.85,
-            },
-            callToAction: {
-                aspectRatio: 2.11,
-            },
-        },
-    },
-});
 ---
 
 <MainLayout seo={homepage.seo}>
     <Header />
 
-    <main class={main()}>
-        <section class={section({ for: "intro" })}>
+    <main class="main">
+        <section class="section for-intro">
             <Intro homepage={homepage} />
         </section>
 
-        <section class={section({ for: "projects" })}>
+        <section class="section for-projects">
             <ProjectGrid projects={projects} />
         </section>
 
-        <section class={section({ for: "callToAction" })}>
+        <section class="section for-intro">
             <CallToAction homepage={homepage} />
         </section>
 
         <Footer />
     </main>
 </MainLayout>
+
+<style lang="scss">
+    .main {
+        width: 100vw;
+        margin-inline: auto;
+        padding-inline: var(--spaces-2);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spaces-6);
+
+        & > * {
+            width: 100%;
+            max-width: 1024px;
+        }
+    }
+
+    .section {
+        width: 100%;
+        height: auto;
+        position: relative;
+
+        filter: grayscale(100%);
+        opacity: 0.7;
+        transition: filter 0.8s cubic-bezier(0.33, 1, 0.68, 1),
+            opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+
+        &:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        & > :global(*) {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        &.for-intro {
+            aspect-ratio: 1.88;
+        }
+        &.for-projects {
+            aspect-ratio: 1.85;
+        }
+        &.for-calltoaction {
+            aspect-ratio: 2.11;
+        }
+    }
+</style>

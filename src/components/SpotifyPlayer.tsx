@@ -1,77 +1,10 @@
-import { useState } from "react";
 import type { Fetcher } from "swr";
 import useSWR from "swr";
 import type { SpotifyData } from "../../lib/types";
-import { css } from "../stitches.config";
 
-const link = css({
-    maxWidth: "100%",
-
-    display: "flex",
-    flexDirection: "row",
-    gap: "$2",
-    borderRadius: "$md",
-    lineHeight: "24px",
-    letterSpacing: "-.01em",
-});
-
-const textContainer = css({
-    maxWidth: "100%",
-
-    display: "flex",
-    flexDirection: "column",
-    minWidth: 0,
-    height: "3rem",
-    alignItems: "flex-end",
-    justifyContent: "center",
-    textAlign: "end",
-
-    "& > span": {
-        maxWidth: "100%",
-
-        fontFamily: "$display",
-        fontWeight: "$regular",
-        fontSize: "smaller",
-        lineHeight: 1.5,
-        textTransform: "uppercase",
-        overflow: "hidden",
-        whiteSpace: "nowrap",
-        textOverflow: "ellipsis",
-
-        "&:first-child": { fontWeight: "$bold" },
-    },
-});
-
-const image = css({
-    borderRadius: "$full",
-    width: "3rem",
-    height: "3rem",
-});
-
-const imagePlaceholder = css({
-    borderRadius: "$full",
-    width: "3rem",
-    height: "3rem",
-    background: "rgb($green400)",
-});
-const svg = css({
-    width: "100%",
-    height: "100%",
-});
+import Styles from "../styles/spotify-player.module.scss";
 
 const SpotifyPlayer = () => {
-    // const fetcher = async (url: string): Promise<SpotifyData> => {
-    //     const res = await fetch(url);
-    //     return res.json();
-    // };
-
-    // const [data, setData] = useState<SpotifyData | null>(null);
-
-    // const interval = setInterval(async () => {
-    //     const fetchData = await fetcher("/.netlify/functions/now-playing");
-    //     setData(fetchData);
-    // }, 30 * 1000);
-
     const fetcher: Fetcher<SpotifyData> = async (url: string) => {
         const res = await fetch(url);
         return res.json();
@@ -96,8 +29,8 @@ const SpotifyPlayer = () => {
     };
 
     return isPlaying ? (
-        <a className={link()} href={songUrl ?? ""} target="_blank">
-            <div className={textContainer()}>
+        <a className={Styles.link} href={songUrl ?? ""} target="_blank">
+            <div className={Styles.textContainer}>
                 <span>Now playing</span>
                 <span>
                     {title} - {artist}
@@ -106,7 +39,7 @@ const SpotifyPlayer = () => {
 
             {albumImage && (
                 <img
-                    className={image()}
+                    className={Styles.image}
                     src={albumImage.url}
                     width={albumImage.width}
                     height={albumImage.height}
@@ -117,15 +50,15 @@ const SpotifyPlayer = () => {
             )}
         </a>
     ) : (
-        <span className={link()}>
-            <div className={textContainer()}>
+        <span className={Styles.link}>
+            <div className={Styles.textContainer}>
                 <span>Offline</span>
                 <span>Spotify</span>
             </div>
 
-            <div className={imagePlaceholder()}>
+            <div className={Styles.imagePlaceholder}>
                 <svg
-                    className={svg()}
+                    className={Styles.svg}
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
                     viewBox="0 0 256 256"

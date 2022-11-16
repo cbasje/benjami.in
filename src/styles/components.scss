@@ -1,0 +1,103 @@
+.flex {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spaces-1);
+}
+.grid {
+    display: grid;
+}
+
+.line {
+    all: unset;
+    height: 1.4;
+    background: rgb(var(--colors-gray900) / 8%);
+}
+
+.button {
+    all: unset;
+
+    cursor: pointer;
+    user-select: none;
+    outline: currentColor;
+    border-radius: var(--radii-sm);
+
+    transition: background 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+
+    --gradient: linear-gradient(
+        135deg,
+        rgb(var(--colors-purple400)),
+        rgb(var(--colors-blue400)),
+        rgb(var(--colors-green400))
+    );
+    &:hover {
+        --gradient: linear-gradient(
+            135deg,
+            rgb(var(--colors-purple300)),
+            rgb(var(--colors-blue300)),
+            rgb(var(--colors-green300))
+        );
+    }
+
+    &.size-regular {
+        padding-block: var(--spaces-1);
+        padding-inline: var(--spaces-2);
+    }
+    &.size-large {
+        padding-block: var(--spaces-2);
+        padding-inline: var(--spaces-3);
+
+        font-size: x-large;
+        font-family: var(--fonts-display);
+        font-weight: var(--fontWeights-bold);
+        text-transform: uppercase;
+    }
+
+    &.variant-primary {
+        background: var(--gradient);
+        color: rgb(var(--colors-textOnPrimary));
+    }
+    &.variant-black {
+        color: rgb(var(--colors-gray100));
+        background: rgb(var(--colors-gray900));
+
+        &:hover {
+            background: rgb(var(--colors-gray700));
+        }
+    }
+    &.variant-primary-outlined {
+        color: rgb(var(--colors-textOnBg));
+        background: none;
+
+        &:hover {
+            background: none;
+        }
+    }
+
+    &.outlined {
+        position: relative;
+        margin: var(--spaces-1);
+
+        &:before {
+            content: "";
+            display: block;
+            padding: var(--spaces-1);
+            position: absolute;
+            inset: calc(var(--spaces-1) * -1);
+            border-radius: inherit;
+            background: var(--gradient);
+            mask: linear-gradient(black, black) content-box,
+                linear-gradient(black, black);
+            mask-composite: exclude;
+            z-index: -1;
+        }
+    }
+}
+
+.image {
+    object-fit: cover;
+
+    &.fill-container {
+        width: 100%;
+        height: 100%;
+    }
+}

@@ -1,0 +1,91 @@
+:root {
+    // MARK: colors
+    --colors-purple50: 250 245 255;
+    --colors-purple100: 243 232 255;
+    --colors-purple200: 233 213 255;
+    --colors-purple300: 216 180 254;
+    --colors-purple400: 192 132 252;
+    --colors-purple500: 168 85 247;
+    --colors-purple600: 147 51 234;
+    --colors-purple700: 126 34 206;
+    --colors-purple800: 107 33 168;
+    --colors-purple900: 88 28 135;
+    --colors-green50: 240 253 244;
+    --colors-green100: 220 252 231;
+    --colors-green200: 187 247 208;
+    --colors-green300: 134 239 172;
+    --colors-green400: 74 222 128;
+    --colors-green500: 34 197 94;
+    --colors-green600: 22 163 74;
+    --colors-green700: 21 128 61;
+    --colors-green800: 22 101 52;
+    --colors-green900: 20 83 45;
+    --colors-blue50: 236 254 255;
+    --colors-blue100: 207 250 254;
+    --colors-blue200: 165 243 252;
+    --colors-blue300: 103 232 249;
+    --colors-blue400: 34 211 238;
+    --colors-blue500: 6 182 212;
+    --colors-blue600: 8 145 178;
+    --colors-blue700: 14 116 144;
+    --colors-blue800: 21 94 117;
+    --colors-blue900: 22 78 99;
+    --colors-gray50: 249 250 251;
+    --colors-gray100: 243 244 246;
+    --colors-gray200: 229 231 235;
+    --colors-gray300: 209 213 219;
+    --colors-gray400: 156 163 175;
+    --colors-gray500: 107 114 128;
+    --colors-gray600: 75 85 99;
+    --colors-gray700: 55 65 81;
+    --colors-gray800: 31 41 55;
+    --colors-gray900: 17 24 39;
+
+    --colors-primary: var(--colors-purple300);
+    --colors-primaryDark: var(--colors-purple500);
+    --colors-textOnPrimary: var(--colors-gray100);
+    --colors-displayOnPrimary: var(--colors-gray50);
+    --colors-bg: var(--colors-gray50);
+    --colors-textOnBg: var(--colors-gray800);
+    --colors-displayOnBg: var(--colors-gray900);
+
+    // MARK: space
+    --spaces-1: 0.5rem;
+    --spaces-2: 1rem;
+    --spaces-3: 1.5rem;
+    --spaces-4: 2rem;
+    --spaces-5: 2.5rem;
+    --spaces-6: 3rem;
+
+    --spaces-headerHeight: 5.5rem;
+    --spaces-footerHeight: 4.5rem;
+
+    // MARK: radii
+    --radii-sm: 0.5rem;
+    --radii-md: 1rem;
+    --radii-lg: 1.5rem;
+    --radii-full: 99999px;
+
+    // MARK: fonts
+    --fonts-display: Space Mono, -apple-system, BlinkMacSystemFont, Segoe UI,
+        Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+        Segoe UI Symbol;
+    --fonts-text: Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+        Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+        Segoe UI Symbol;
+    --fonts-mono: Space Mono, monospace;
+    --fonts-dyslexic: -apple-system, Apple Color Emoji, Segoe UI Emoji,
+        Segoe UI Symbol;
+
+    // MARK: fontSizes
+
+    // MARK: fontWeights
+    --fontWeights-regular: 400;
+    --fontWeights-medium: 500;
+    --fontWeights-bold: 700;
+
+    // MARK: media
+    --media-sm: 640px;
+    --media-md: 960px;
+    --media-lg: 1280px;
+}

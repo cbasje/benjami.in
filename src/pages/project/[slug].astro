@@ -7,7 +7,6 @@ import type { Project, Seo } from "../../../lib/types";
 import BlockManager from "../../components/BlockManager.astro";
 import Image from "../../components/Image.astro";
 import ProjectsLayout from "../../layouts/project.astro";
-import { css, flex, grid } from "../../stitches.config";
 
 changeLanguage("en");
 
@@ -15,6 +14,10 @@ export interface Props {
     project: Project;
 }
 const { project } = Astro.props;
+
+const projectColor = project.colour
+    ? `--colors-${project.colour}900`
+    : undefined;
 
 const seo: Seo = {
     metaTitle: project.title,
@@ -32,30 +35,18 @@ export async function getStaticPaths() {
         props: { project: p },
     }));
 }
-
-const banner = css({
-    width: "100%",
-    height: "auto",
-    borderRadius: "$sm",
-    aspectRatio: "3 / 2",
-    overflow: "hidden",
-});
 ---
 
 <ProjectsLayout colour={project.colour} seo={seo}>
-    <div class={flex({ css: { flexDirection: "column", gap: "$1" } })}>
-        <h1>{project.title}</h1>
-        <div
-            class={grid({
-                css: { gridTemplateColumns: "repeat(2, 1fr)", gap: "$1" },
-            })}
-        >
-            <div class={flex({ css: { flexDirection: "column", gap: "$1" } })}>
-                <h3>
+    <div class="flex" style={{ flexDirection: "column" }}>
+        <h1 class="heading">{project.title}</h1>
+        <div class="grid" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+            <div class="flex" style={{ flexDirection: "column" }}>
+                <h3 class="description">
                     {project.description}
                 </h3>
 
-                <div class={flex({ css: { flexDirection: "row", gap: "$1" } })}>
+                <div class="flex">
                     <span>
                         {
                             new Intl.DateTimeFormat(i18next.language, {
@@ -97,13 +88,29 @@ const banner = css({
         </div>
     </div>
 
-    <div
-        class={banner({
-            css: { background: `rgb($colors$${project.colour}100)` },
-        })}
-    >
+    <div class="banner">
         <Image src={project.mainImage} fillContainer />
     </div>
 
     <BlockManager value={project.content} />
 </ProjectsLayout>
+
+<style lang="scss">
+    .heading {
+        margin: 0;
+        font-size: 2rem;
+    }
+    .description {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+
+    .banner {
+        width: 100%;
+        height: auto;
+        border-radius: var(--radii-sm);
+        aspect-ratio: 3 / 2;
+        overflow: hidden;
+        background-color: rgb(var(--projectColor));
+    }
+</style>
