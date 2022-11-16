@@ -46,7 +46,7 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
     import { animate, stagger } from "motion";
 
     animate(
-        "main > section",
+        "main > .section",
         {
             transform: ["translateY(150px)", "none"],
             opacity: [0, 0.7],
@@ -71,7 +71,7 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
         align-items: center;
         gap: var(--spaces-6);
 
-        & > * {
+        > :global(*) {
             width: 100%;
             max-width: 1024px;
         }
@@ -82,8 +82,11 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
         height: auto;
         position: relative;
 
+        // Set for animation
+        transform: translateY(150px);
+        opacity: 0;
+
         filter: grayscale(100%);
-        opacity: 0.7;
         transition: filter 0.8s cubic-bezier(0.33, 1, 0.68, 1),
             opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
 
