@@ -26,15 +26,15 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
     <Header />
 
     <main class="main">
-        <section class="section for-intro">
+        <section class="section for-intro grayscale">
             <Intro homepage={homepage} />
         </section>
 
-        <section class="section for-projects">
+        <section class="section for-projects grayscale">
             <ProjectGrid projects={projects} />
         </section>
 
-        <section class="section for-intro">
+        <section class="section for-intro grayscale">
             <CallToAction homepage={homepage} />
         </section>
 
@@ -75,6 +75,17 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
             width: 100%;
             max-width: 1024px;
         }
+
+        :global(.grayscale) {
+            filter: grayscale(100%);
+            transition: filter 0.8s cubic-bezier(0.33, 1, 0.68, 1),
+                opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+
+            &:hover {
+                opacity: 1 !important;
+                filter: grayscale(0%);
+            }
+        }
     }
 
     .section {
@@ -84,16 +95,7 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
 
         // Set for animation
         transform: translateY(150px);
-        opacity: 0;
-
-        filter: grayscale(100%);
-        transition: filter 0.8s cubic-bezier(0.33, 1, 0.68, 1),
-            opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
-
-        &:hover {
-            opacity: 1 !important;
-            filter: grayscale(0%);
-        }
+        opacity: 0.7;
 
         & > :global(*) {
             width: 100%;
