@@ -16,9 +16,12 @@ export interface Props {
 
 const { seo } = Astro.props;
 
-const { defaultSeo, siteName } = await useSanityClient().fetch(globalQuery, {
-    locale: i18next.language,
-});
+const { siteName, siteKeywords, defaultSeo } = await useSanityClient().fetch(
+    globalQuery,
+    {
+        locale: i18next.language,
+    }
+);
 
 const seoWithDefaults: Seo = {
     ...defaultSeo,
@@ -31,6 +34,7 @@ const fullSeo = {
         seoWithDefaults.metaTitle === siteName
             ? siteName
             : `${seoWithDefaults.metaTitle} | ${siteName}`,
+    siteKeywords: siteKeywords ?? "",
 };
 ---
 
@@ -54,6 +58,8 @@ const fullSeo = {
         extend={{
             link: [{ rel: "shortcut icon", href: "/favicon.ico" }],
             meta: [
+                { name: "author", content: "Sebastiaan Benjamins" },
+                { name: "keywords", content: fullSeo.siteKeywords },
                 { name: "viewport", content: "width=device-width" },
                 { name: "generator", content: Astro.generator },
             ],

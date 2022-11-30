@@ -10,8 +10,8 @@ export default {
             type: "string",
         },
         {
-            name: "siteDescription",
-            title: "Site description",
+            name: "siteKeywords",
+            title: "Keywords",
             type: "text",
         },
         {
