@@ -11,7 +11,7 @@ const { homepage } = Astro.props;
 <div class="cta-container">
     <svg
         class="svg"
-        viewBox="0 0 1384 658"
+        viewBox="0 0 1384 736"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
     >
@@ -43,7 +43,7 @@ const { homepage } = Astro.props;
             x="4"
             y="4"
             width="1376"
-            height="650"
+            height="728"
             stroke-opacity="0.1"
             stroke-width="8"></rect>
         <defs>
@@ -108,7 +108,13 @@ const { homepage } = Astro.props;
                     result="effect1_foregroundBlur_545_173"></feGaussianBlur>
             </filter>
             <clip-path id="clip0_545_173">
-                <rect width="1384" height="658" rx="16" fill="white"></rect>
+                <rect
+                    width="1384"
+                    height="736"
+                    fill="white"
+                    style={{
+                        rx: "var(--radii-md)",
+                    }}></rect>
             </clip-path>
         </defs>
     </svg>
