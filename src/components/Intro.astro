@@ -168,6 +168,18 @@ const { homepage } = Astro.props;
         z-index: -1;
     }
 
+    @media only screen and (width <= 960px) {
+        .text-container {
+            max-width: 65%;
+            .heading {
+                font-size: 3.5rem;
+            }
+            .paragraph {
+                font-size: 1.1rem;
+            }
+        }
+    }
+
     @media only screen and (width <= 640px) {
         .text-container {
             max-width: 70%;
