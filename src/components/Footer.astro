@@ -45,6 +45,7 @@ const currentYear = new Date().getFullYear();
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: var(--spaces-4);
     }
 
     .ul {
@@ -78,6 +79,12 @@ const currentYear = new Date().getFullYear();
             font-family: var(--fonts-display);
             font-weight: var(--fontWeights-bold);
             text-transform: uppercase;
+        }
+    }
+
+    @media only screen and (width <= 640px) {
+        .ul {
+            max-width: 50%;
         }
     }
 </style>

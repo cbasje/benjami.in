@@ -108,7 +108,13 @@ const { homepage } = Astro.props;
                     result="effect1_foregroundBlur_545_173"></feGaussianBlur>
             </filter>
             <clip-path id="clip0_545_173">
-                <rect width="1384" height="658" rx="16" fill="white"></rect>
+                <rect
+                    width="1384"
+                    height="658"
+                    fill="white"
+                    style={{
+                        rx: "var(--radii-md)",
+                    }}></rect>
             </clip-path>
         </defs>
     </svg>
