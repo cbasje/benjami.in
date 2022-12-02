@@ -48,13 +48,12 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
     animate(
         "main > .section",
         {
-            transform: ["translateY(150px)", "none"],
             opacity: [0, 0.7],
         },
         {
-            duration: 0.375,
+            duration: 0.75,
             easing: [0.43, 0.13, 0.23, 0.96],
-            delay: stagger(0.125),
+            delay: stagger(0.25),
         }
     );
 </script>
@@ -94,7 +93,6 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
         position: relative;
 
         // Set for animation
-        transform: translateY(150px);
         opacity: 0.7;
 
         & > :global(*) {
