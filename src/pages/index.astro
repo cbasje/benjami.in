@@ -26,15 +26,15 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
     <Header />
 
     <main class="main">
-        <section class="section for-intro grayscale">
+        <section class="section grayscale" data-for="intro">
             <Intro homepage={homepage} />
         </section>
 
-        <section class="section for-projects grayscale">
+        <section class="section grayscale" data-for="projects">
             <ProjectGrid projects={projects} />
         </section>
 
-        <section class="section for-intro grayscale">
+        <section class="section grayscale" data-for="cta">
             <CallToAction homepage={homepage} />
         </section>
 
@@ -101,14 +101,28 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
             position: relative;
         }
 
-        &.for-intro {
+        &[data-for="intro"] {
             aspect-ratio: 1.88;
         }
-        &.for-projects {
+        &[data-for="projects"] {
             aspect-ratio: 1.85;
         }
-        &.for-calltoaction {
+        &[data-for="cta"] {
             aspect-ratio: 2.11;
+        }
+    }
+
+    @media only screen and (width <= 640px) {
+        .section {
+            &[data-for="intro"] {
+                aspect-ratio: 2 / 3;
+            }
+            &[data-for="projects"] {
+                aspect-ratio: 2 / 3;
+            }
+            &[data-for="cta"] {
+                aspect-ratio: 1;
+            }
         }
     }
 </style>
