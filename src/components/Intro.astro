@@ -8,9 +8,9 @@ const { homepage } = Astro.props;
 ---
 
 <div is="intro-background">
-    <div class="textContainer">
-        <h1 class="heading" role="heading">{homepage.title}</h1>
-        <p class="paragraph">{homepage.description}</p>
+    <div class="text-container">
+        <h1 role="heading">{homepage.title}</h1>
+        <p>{homepage.description}</p>
     </div>
 
     <svg
@@ -129,7 +129,7 @@ const { homepage } = Astro.props;
         }
     }
 
-    div.textContainer {
+    div.text-container {
         position: absolute;
         bottom: var(--spaces-3);
         left: var(--spaces-3);
@@ -138,13 +138,13 @@ const { homepage } = Astro.props;
         flex-direction: column;
         gap: var(--spaces-2);
 
-        .heading {
+        h1 {
             margin: 0;
             font-size: 5rem;
             line-height: 1.1;
         }
 
-        .paragraph {
+        p {
             margin: 0;
             font-size: 1.25rem;
         }
@@ -159,25 +159,25 @@ const { homepage } = Astro.props;
     }
 
     @media only screen and (width <= 960px) {
-        .text-container {
+        div.text-container {
             max-width: 65%;
-            .heading {
+            h1 {
                 font-size: 3.5rem;
             }
-            .paragraph {
+            p {
                 font-size: 1.1rem;
             }
         }
     }
 
     @media only screen and (width <= 640px) {
-        .text-container {
+        div.text-container {
             max-width: 70%;
 
-            .heading {
+            h1 {
                 font-size: 2.5rem;
             }
-            .paragraph {
+            p {
                 font-size: 1.1rem;
             }
         }
