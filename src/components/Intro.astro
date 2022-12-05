@@ -7,7 +7,7 @@ export interface Props {
 const { homepage } = Astro.props;
 ---
 
-<div is="intro-background">
+<div is="blur-background">
     <div class="text-container">
         <h1 role="heading">{homepage.title}</h1>
         <p>{homepage.description}</p>
@@ -58,41 +58,8 @@ const { homepage } = Astro.props;
     </svg>
 </div>
 
-<script>
-    class IntroBackground extends HTMLDivElement {
-        constructor() {
-            super();
-
-            let div = this;
-
-            let divBounds = div.getBoundingClientRect();
-
-            div.addEventListener("mousemove", (e) => {
-                const x = (e.screenX - divBounds.x) / divBounds.width;
-                const y = (e.screenY - divBounds.y) / divBounds.height;
-
-                div.style.setProperty("--cursor-x", String(x));
-                div.style.setProperty("--cursor-y", String(y));
-            });
-
-            div.addEventListener("mouseout", (e) => {
-                div.style.removeProperty("--cursor-x");
-                div.style.removeProperty("--cursor-y");
-            });
-
-            document.addEventListener("scroll", () => {
-                divBounds = div.getBoundingClientRect();
-            });
-        }
-    }
-
-    customElements.define("intro-background", IntroBackground, {
-        extends: "div",
-    });
-</script>
-
 <style lang="scss">
-    div[is="intro-background"] {
+    div[is="blur-background"] {
         --cursor-y: 0.7;
         --cursor-x: 0.7;
 

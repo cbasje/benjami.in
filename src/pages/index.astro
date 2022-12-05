@@ -56,6 +56,42 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
             delay: stagger(0.25),
         }
     );
+
+    class BlurBackground extends HTMLDivElement {
+        constructor() {
+            super();
+
+            let div = this,
+                divBounds: DOMRect;
+
+            div.addEventListener("mousemove", (e) => {
+                const x = (e.pageX - divBounds.x) / divBounds.width;
+                const y = (e.pageY - divBounds.y) / divBounds.height;
+
+                div.style.setProperty("--cursor-x", String(x));
+                div.style.setProperty("--cursor-y", String(y));
+            });
+
+            div.addEventListener("mouseout", (e) => {
+                div.style.removeProperty("--cursor-x");
+                div.style.removeProperty("--cursor-y");
+            });
+
+            const resetBoundingRect = () => {
+                divBounds = div.getBoundingClientRect();
+                console.log({ x: divBounds.x, y: divBounds.y });
+            };
+
+            document.addEventListener("scroll", resetBoundingRect);
+            window.addEventListener("resize", resetBoundingRect);
+
+            resetBoundingRect();
+        }
+    }
+
+    customElements.define("blur-background", BlurBackground, {
+        extends: "div",
+    });
 </script>
 
 <style lang="scss">
