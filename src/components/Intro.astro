@@ -7,9 +7,8 @@ export interface Props {
 const { homepage } = Astro.props;
 ---
 
-<div is="blur-background">
-    <div class="text-container">
         <h1 role="heading">{homepage.title}</h1>
+<blur-background role="none">
         <p>{homepage.description}</p>
     </div>
 
@@ -56,10 +55,12 @@ const { homepage } = Astro.props;
             </clipPath>
         </defs>
     </svg>
-</div>
+</blur-background>
 
 <style lang="scss">
-    div[is="blur-background"] {
+    blur-background {
+        display: block;
+
         --cursor-y: 0.7;
         --cursor-x: 0.7;
 

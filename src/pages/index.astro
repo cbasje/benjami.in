@@ -57,12 +57,13 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
         }
     );
 
-    class BlurBackground extends HTMLDivElement {
+    // Add BlurBackground custom element (used in Intro.astro & CallToAction.astro)
+    class BlurBackground extends HTMLElement {
         constructor() {
             super();
 
             let div = this,
-                divBounds: DOMRect;
+                divBounds: DOMRect | undefined;
 
             div.addEventListener("mousemove", (e) => {
                 const x = (e.pageX - divBounds.x) / divBounds.width;
@@ -72,9 +73,9 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
                 div.style.setProperty("--cursor-y", String(y));
             });
 
-            div.addEventListener("mouseout", (e) => {
-                div.style.removeProperty("--cursor-x");
-                div.style.removeProperty("--cursor-y");
+            div?.addEventListener("mouseout", (e) => {
+                div?.style.removeProperty("--cursor-x");
+                div?.style.removeProperty("--cursor-y");
             });
 
             const resetBoundingRect = () => {
@@ -82,16 +83,14 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
                 console.log({ x: divBounds.x, y: divBounds.y });
             };
 
-            document.addEventListener("scroll", resetBoundingRect);
+            window.addEventListener("scroll", resetBoundingRect);
             window.addEventListener("resize", resetBoundingRect);
 
             resetBoundingRect();
         }
     }
 
-    customElements.define("blur-background", BlurBackground, {
-        extends: "div",
-    });
+    customElements.define("blur-background", BlurBackground);
 </script>
 
 <style lang="scss">

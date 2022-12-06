@@ -8,7 +8,7 @@ export interface Props {
 const { homepage } = Astro.props;
 ---
 
-<div is="blur-background">
+<blur-background role="none">
     <svg
         class="svg"
         viewBox="0 0 1384 658"
@@ -61,10 +61,10 @@ const { homepage } = Astro.props;
             />
         </div>
     </a>
-</div>
+</blur-background>
 
 <style lang="scss">
-    div[is="blur-background"] {
+    blur-background {
         display: flex;
         justify-content: center;
         align-items: center;
