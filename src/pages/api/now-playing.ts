@@ -1,4 +1,4 @@
-import type { Handler } from "@netlify/functions";
+import type { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
 import { getNowPlaying } from "../../../lib/now-playing";
 import type { SpotifyData } from "../../../lib/types";
 
@@ -9,7 +9,10 @@ const parseArtist = (artists: any[]): string => {
     return artists.map((a: any) => a.name)[0] ?? "";
 };
 
-const handler: Handler = async (event, context) => {
+const handler: Handler = async (
+    event: HandlerEvent,
+    context: HandlerContext
+) => {
     const response = await getNowPlaying();
 
     if (!response.ok || response.status === 204 || response.status >= 400) {
