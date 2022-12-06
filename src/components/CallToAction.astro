@@ -9,36 +9,6 @@ const { homepage } = Astro.props;
 ---
 
 <blur-background role="none">
-    <svg
-        class="svg"
-        viewBox="0 0 1384 658"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <rect
-            style={{
-                stroke: "rgb(var(--colors-gray900))",
-                rx: "var(--radii-md)",
-            }}
-            x="4"
-            y="4"
-            width="1376"
-            height="650"
-            stroke-opacity="0.1"
-            stroke-width="8"></rect>
-        <defs>
-            <clip-path id="clip0_545_173">
-                <rect
-                    width="1384"
-                    height="658"
-                    fill="white"
-                    style={{
-                        rx: "var(--radii-md)",
-                    }}></rect>
-            </clip-path>
-        </defs>
-    </svg>
-
     <a
         class="button variant-black size-large"
         href="mailto:Sebastiaan Benjamins <sebas@benjami.in>"
@@ -63,6 +33,13 @@ const { homepage } = Astro.props;
         justify-content: center;
         align-items: center;
 
+        box-sizing: border-box;
+        background-clip: padding-box;
+
+        --border-size: 6px;
+        border: var(--border-size) solid rgb(0 0 0 / 10%);
+        border-radius: var(--radii-md);
+
         a.button {
             mix-blend-mode: multiply;
 
@@ -84,10 +61,10 @@ const { homepage } = Astro.props;
         &:before {
             content: "";
             display: block;
-            width: 100%;
-            height: 100%;
+            width: calc(100% + var(--border-size) * 2);
+            height: calc(100% + var(--border-size) * 2);
             position: absolute;
-            inset: 0;
+            inset: calc(var(--border-size) * -1);
             z-index: -1;
 
             opacity: 0.5;

@@ -27,26 +27,7 @@ const { homepage } = Astro.props;
             height={1133}
             clip-path="url(#clipHeadshot)"
         />
-        <rect
-            style={{
-                stroke: "rgb(var(--colors-gray900))",
-                rx: "var(--radii-md)",
-            }}
-            x="4"
-            y="54"
-            width="1376"
-            height="728"
-            stroke-opacity="0.1"
-            stroke-width="8"></rect>
         <defs>
-            <clipPath id="clipBlobs">
-                <rect
-                    style={{ rx: "var(--radii-md)" }}
-                    y="50"
-                    width="1384"
-                    height="736"
-                    fill="white"></rect>
-            </clipPath>
             <clipPath id="clipHeadshot">
                 <rect
                     style={{ rx: "var(--radii-md)" }}
@@ -62,16 +43,23 @@ const { homepage } = Astro.props;
     blur-background {
         display: block;
 
+        box-sizing: border-box;
+        background-clip: padding-box;
+
+        --border-size: 6px;
+        border: var(--border-size) solid rgb(0 0 0 / 10%);
+        border-radius: var(--radii-md);
+
         --cursor-y: 0.7;
         --cursor-x: 0.7;
 
         &:before {
             content: "";
             display: block;
-            width: 100%;
-            height: 100%;
+            width: calc(100% + var(--border-size) * 2);
+            height: calc(100% + var(--border-size) * 2);
             position: absolute;
-            inset: 0;
+            inset: calc(var(--border-size) * -1);
             z-index: -1;
 
             border-radius: var(--radii-md);
