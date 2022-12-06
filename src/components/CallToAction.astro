@@ -8,48 +8,12 @@ export interface Props {
 const { homepage } = Astro.props;
 ---
 
-<div is="blur-background">
-    <svg
-        class="svg"
-        viewBox="0 0 1384 658"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <rect
-            style={{
-                stroke: "rgb(var(--colors-gray900))",
-                rx: "var(--radii-md)",
-            }}
-            x="4"
-            y="4"
-            width="1376"
-            height="650"
-            stroke-opacity="0.1"
-            stroke-width="8"></rect>
-        <defs>
-            <clip-path id="clip0_545_173">
-                <rect
-                    width="1384"
-                    height="658"
-                    fill="white"
-                    style={{
-                        rx: "var(--radii-md)",
-                    }}></rect>
-            </clip-path>
-        </defs>
-    </svg>
-
+<blur-background role="none">
     <a
         class="button variant-black size-large"
         href="mailto:Sebastiaan Benjamins <sebas@benjami.in>"
     >
-        <div
-            class="flex"
-            style={{
-                alignItems: "center",
-                gap: "$2",
-            }}
-        >
+        <div role="none">
             <span>{homepage.callToAction ?? "Let's talk"}</span>
             <Icon
                 name="ph:envelope-simple-bold"
@@ -61,19 +25,33 @@ const { homepage } = Astro.props;
             />
         </div>
     </a>
-</div>
+</blur-background>
 
 <style lang="scss">
-    div[is="blur-background"] {
+    blur-background {
         display: flex;
         justify-content: center;
         align-items: center;
 
-        .button {
+        box-sizing: border-box;
+        background-clip: padding-box;
+
+        --border-size: 6px;
+        border: var(--border-size) solid rgb(0 0 0 / 10%);
+        border-radius: var(--radii-md);
+
+        a.button {
             mix-blend-mode: multiply;
+
+            > div {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: var(--spaces-2);
+            }
         }
 
-        &:has(.button:active)::before {
+        &:has(a.button:active)::before {
             opacity: 1;
         }
 
@@ -83,10 +61,10 @@ const { homepage } = Astro.props;
         &:before {
             content: "";
             display: block;
-            width: 100%;
-            height: 100%;
+            width: calc(100% + var(--border-size) * 2);
+            height: calc(100% + var(--border-size) * 2);
             position: absolute;
-            inset: 0;
+            inset: calc(var(--border-size) * -1);
             z-index: -1;
 
             opacity: 0.5;
@@ -114,11 +92,11 @@ const { homepage } = Astro.props;
                     transparent 60%
                 );
         }
-    }
 
-    .svg {
-        position: absolute;
-        inset: 0;
-        z-index: -1;
+        > svg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
     }
 </style>

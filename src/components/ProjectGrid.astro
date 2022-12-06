@@ -8,7 +8,7 @@ export interface Props {
 const { projects } = Astro.props;
 ---
 
-<div class="grid" role="grid" data-for="projects">
+<div class="grid" role="grid">
     {
         projects.map((project: Project, i: number) => (
             <ProjectCard
@@ -21,7 +21,9 @@ const { projects } = Astro.props;
 </div>
 
 <style lang="scss">
-    .grid[data-for="projects"] {
+    .grid {
+        display: grid;
+
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
         grid-template-areas:
@@ -45,7 +47,7 @@ const { projects } = Astro.props;
     }
 
     @media only screen and (width <= 640px) {
-        .grid[data-for="projects"] {
+        .grid {
             display: flex;
             flex-direction: column;
             justify-content: stretch;

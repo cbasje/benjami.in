@@ -38,15 +38,15 @@ export async function getStaticPaths() {
 ---
 
 <ProjectsLayout colour={project.colour} seo={seo}>
-    <div class="flex" style={{ flexDirection: "column" }}>
-        <h1 class="heading">{project.title}</h1>
-        <div class="heading-intro">
-            <div class="flex" style={{ flexDirection: "column" }}>
+    <header>
+        <h1>{project.title}</h1>
+        <div class="intro" role="presentation">
+            <div role="none">
                 <h3 class="description">
                     {project.description}
                 </h3>
 
-                <div class="flex">
+                <div role="none">
                     <span>
                         {
                             new Intl.DateTimeFormat(i18next.language, {
@@ -86,9 +86,9 @@ export async function getStaticPaths() {
 
             <p>{project.excerpt}</p>
         </div>
-    </div>
+    </header>
 
-    <div class="banner">
+    <div role="banner">
         <Image src={project.mainImage} fillContainer />
     </div>
 
@@ -96,22 +96,41 @@ export async function getStaticPaths() {
 </ProjectsLayout>
 
 <style lang="scss">
-    .heading {
-        margin: 0;
-        font-size: 2rem;
-    }
-    .description {
-        margin: 0;
-        font-size: 1.5rem;
+    header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spaces-1);
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spaces-3);
+
+            > div {
+                display: flex;
+                flex-direction: column;
+                gap: var(--spaces-1);
+
+                h3.description {
+                    margin: 0;
+                    font-size: 1.5rem;
+                }
+
+                > div {
+                    display: flex;
+                    flex-direction: row;
+                    gap: var(--spaces-1);
+                }
+            }
+        }
     }
 
-    .heading-intro {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spaces-3);
-    }
-
-    .banner {
+    div[role="banner"] {
         width: 100%;
         height: auto;
         border-radius: var(--radii-sm);
@@ -121,7 +140,7 @@ export async function getStaticPaths() {
     }
 
     @media only screen and (width <= 640px) {
-        .heading-intro {
+        header .intro {
             display: flex;
             flex-direction: column;
             gap: var(--spaces-3);

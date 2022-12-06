@@ -23,6 +23,7 @@ const buttonColor = colour
             class="overlay"
             style={{ cursor: "initial" }}
             aria-hidden></a>
+
         <a href={localizePath("/")} class="icon-button" aria-label="Close">
             <Icon
                 name="ph:x-bold"
@@ -34,7 +35,7 @@ const buttonColor = colour
             />
         </a>
 
-        <div class="contentContainer">
+        <div class="content-container">
             <article>
                 <slot />
             </article>
@@ -46,7 +47,7 @@ const buttonColor = colour
     import { animate } from "motion";
 
     animate(
-        ".contentContainer",
+        ".content-container",
         {
             transform: ["translateY(150px)", "none"],
             opacity: [0, 1],
@@ -88,7 +89,7 @@ const buttonColor = colour
         }
     }
 
-    .contentContainer {
+    .content-container {
         background-color: rgb(var(--colors-bg));
         border-top-left-radius: var(--radii-md);
         border-top-right-radius: var(--radii-md);
