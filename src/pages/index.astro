@@ -65,12 +65,16 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
             let div = this,
                 divBounds: DOMRect | undefined;
 
-            div.addEventListener("mousemove", (e) => {
-                const x = (e.pageX - divBounds.x) / divBounds.width;
-                const y = (e.pageY - divBounds.y) / divBounds.height;
+            div?.addEventListener("mousemove", (e) => {
+                if (!divBounds) return;
 
-                div.style.setProperty("--cursor-x", String(x));
-                div.style.setProperty("--cursor-y", String(y));
+                const x =
+                    (e.pageX - window.scrollX - divBounds.x) / divBounds.width;
+                const y =
+                    (e.pageY - window.scrollY - divBounds.y) / divBounds.height;
+
+                div?.style.setProperty("--cursor-x", String(x));
+                div?.style.setProperty("--cursor-y", String(y));
             });
 
             div?.addEventListener("mouseout", (e) => {
@@ -78,9 +82,10 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
                 div?.style.removeProperty("--cursor-y");
             });
 
-            const resetBoundingRect = () => {
-                divBounds = div.getBoundingClientRect();
-                console.log({ x: divBounds.x, y: divBounds.y });
+            const resetBoundingRect = (e?: Event) => {
+                divBounds = div?.getBoundingClientRect();
+                if (divBounds && process.env.NODE_ENV === "development")
+                    console.log({ x: divBounds.x, y: divBounds.y });
             };
 
             window.addEventListener("scroll", resetBoundingRect);
