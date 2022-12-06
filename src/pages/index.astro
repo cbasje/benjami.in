@@ -7,7 +7,7 @@ import type { Home, Project } from "../../lib/types";
 
 import CallToAction from "../components/CallToAction.astro";
 import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import Nav from "../components/Nav.astro";
 import Intro from "../components/Intro.astro";
 import ProjectGrid from "../components/ProjectGrid.astro";
 import MainLayout from "../layouts/main.astro";
@@ -23,9 +23,9 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
 ---
 
 <MainLayout seo={homepage.seo}>
-    <Header />
+    <Nav />
 
-    <main class="main">
+    <main>
         <section class="section grayscale" data-for="intro">
             <Intro homepage={homepage} />
         </section>
@@ -45,8 +45,9 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
 <script>
     import { animate, stagger } from "motion";
 
+    // Animate sections on loading
     animate(
-        "main > .section",
+        "main > section",
         {
             opacity: [0, 0.7],
         },
@@ -99,7 +100,7 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
 </script>
 
 <style lang="scss">
-    .main {
+    main {
         width: 100vw;
         margin-inline: auto;
         padding-inline: var(--spaces-2);
@@ -114,20 +115,9 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
             width: 100%;
             max-width: 1024px;
         }
-
-        :global(.grayscale) {
-            filter: grayscale(100%);
-            transition: filter 0.8s cubic-bezier(0.33, 1, 0.68, 1),
-                opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
-
-            &:hover {
-                opacity: 1 !important;
-                filter: grayscale(0%);
-            }
-        }
     }
 
-    .section {
+    section {
         width: 100%;
         height: auto;
         position: relative;
@@ -153,7 +143,10 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
     }
 
     @media only screen and (width <= 640px) {
-        .section {
+        section {
+            // FIXME: should be 1 for small screens
+            opacity: 1 !important;
+
             &[data-for="intro"] {
                 aspect-ratio: 2 / 3;
             }
@@ -162,6 +155,21 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
             }
             &[data-for="cta"] {
                 aspect-ratio: 1;
+            }
+        }
+    }
+
+    @media only screen and (width > 640px) {
+        main {
+            :global(.grayscale) {
+                filter: grayscale(100%);
+                transition: filter 0.8s cubic-bezier(0.33, 1, 0.68, 1),
+                    opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+
+                &:hover {
+                    opacity: 1 !important;
+                    filter: grayscale(0%);
+                }
             }
         }
     }

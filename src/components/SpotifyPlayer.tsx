@@ -29,7 +29,7 @@ const SpotifyPlayer = () => {
     };
 
     return isPlaying ? (
-        <a className={Styles.link} href={songUrl ?? ""} target="_blank">
+        <a className={Styles.player} href={songUrl ?? ""} target="_blank">
             <div className={Styles.textContainer}>
                 <span>Now playing</span>
                 <span>
@@ -39,7 +39,7 @@ const SpotifyPlayer = () => {
 
             {albumImage && (
                 <img
-                    className={Styles.image}
+                    className={Styles.img}
                     src={albumImage.url}
                     width={albumImage.width}
                     height={albumImage.height}
@@ -50,7 +50,7 @@ const SpotifyPlayer = () => {
             )}
         </a>
     ) : (
-        <span className={Styles.link}>
+        <span className={Styles.player}>
             <div className={Styles.textContainer}>
                 <span>Offline</span>
                 <span>Spotify</span>

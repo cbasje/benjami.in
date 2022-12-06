@@ -1,0 +1,161 @@
+---
+import { localizePath } from "astro-i18next";
+import { Icon } from "astro-icon";
+---
+
+<div class="nav-container" role="presentation">
+    <nav>
+        <ul class="side-left" role="list">
+            <li role="listitem">
+                <a href={localizePath("/")}>Sebastiaan Benjamins</a>
+            </li>
+        </ul>
+        <ul class="side-right" role="list">
+            <li role="listitem">
+                <a
+                    title="My email address"
+                    href="mailto:Sebastiaan Benjamins <sebas@benjami.in>"
+                >
+                    <Icon
+                        name="ph:envelope-simple-bold"
+                        style={{
+                            width: "24px",
+                            height: "24px",
+                        }}
+                        aria-hidden
+                    />
+                </a>
+            </li>
+            <li role="listitem">
+                <a title="My Github account" href="https://github.com/cbasje">
+                    <Icon
+                        name="ph:github-logo-bold"
+                        style={{
+                            width: "24px",
+                            height: "24px",
+                        }}
+                        aria-hidden
+                    />
+                </a>
+            </li>
+            <li role="listitem">
+                <a
+                    title="My LinkedIn account"
+                    href="https://www.linkedin.com/in/sebastiaanbenjamins/"
+                >
+                    <Icon
+                        name="ph:linkedin-logo-bold"
+                        style={{
+                            width: "24px",
+                            height: "24px",
+                        }}
+                        aria-hidden
+                    />
+                </a>
+            </li>
+            <li role="listitem">
+                <a
+                    title="My Instagram account"
+                    href="https://instagram.com/cbasje"
+                >
+                    <Icon
+                        name="ph:instagram-logo-bold"
+                        style={{
+                            width: "24px",
+                            height: "24px",
+                        }}
+                        aria-hidden
+                    />
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <style lang="scss">
+        div.nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100vw;
+            padding: var(--spaces-2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9;
+
+            > * {
+                width: 100%;
+                max-width: 1024px;
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(var(--colors-bg) / 75%);
+            // box-shadow: "0 6px 20px rgb(0 0 0 / 8%);
+            backdrop-filter: blur(15px);
+            border-radius: var(--radii-md);
+        }
+
+        ul {
+            margin: 0;
+            padding: var(--spaces-1);
+            list-style: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: var(--spaces-1);
+
+            font-family: var(--fonts-display);
+            font-weight: var(--fontWeights-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+
+            &.side-left {
+                justify-content: flex-start;
+            }
+            &.side-right {
+                justify-content: flex-end;
+            }
+
+            li a {
+                padding-block: var(--spaces-1);
+                padding-inline: var(--spaces-2);
+                display: flex;
+                flex-direction: row;
+                gap: var(--spaces-1);
+                flex-grow: 0;
+                justify-content: center;
+                align-items: center;
+                border-radius: var(--radii-sm);
+                transition: background-color 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+
+                &:hover {
+                    background-color: rgb(var(--colors-gray200));
+                }
+
+                &:active {
+                    color: rgb(var(--colors-gray50)) !important;
+                    background-color: rgb(var(--colors-gray900)) !important;
+
+                    &:hover {
+                        background-color: rgb(var(--colors-gray900)) !important;
+                    }
+                }
+            }
+        }
+
+        @media only screen and (width <= 960px) {
+            ul {
+                padding: 0;
+
+                &.side-right {
+                    gap: 0;
+                }
+            }
+        }
+    </style>
+</div>

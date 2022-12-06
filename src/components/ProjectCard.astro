@@ -43,7 +43,9 @@ const cardBg = useCustomColour
 
         &:hover {
             .image-container {
-                scale: 1.05;
+                :global(> img) {
+                    scale: 1.05;
+                }
             }
 
             .label-container {
@@ -64,9 +66,13 @@ const cardBg = useCustomColour
     .image-container {
         width: 100%;
         height: 100%;
+        border-radius: var(--radii-md);
+        overflow: hidden;
 
-        scale: 1;
-        transition: scale 0.375s cubic-bezier(0.43, 0.13, 0.23, 0.96);
+        :global(> img) {
+            scale: 1;
+            transition: scale 0.375s cubic-bezier(0.43, 0.13, 0.23, 0.96);
+        }
     }
 
     .label-container {

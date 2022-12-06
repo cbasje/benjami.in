@@ -7,10 +7,11 @@ export interface Props {
 const { homepage } = Astro.props;
 ---
 
-        <h1 role="heading">{homepage.title}</h1>
 <blur-background role="none">
+    <header>
+        <h1>{homepage.title}</h1>
         <p>{homepage.description}</p>
-    </div>
+    </header>
 
     <svg
         class="svg"
@@ -99,7 +100,7 @@ const { homepage } = Astro.props;
         }
     }
 
-    div.text-container {
+    header {
         position: absolute;
         bottom: var(--spaces-3);
         left: var(--spaces-3);
@@ -129,7 +130,7 @@ const { homepage } = Astro.props;
     }
 
     @media only screen and (width <= 960px) {
-        div.text-container {
+        header {
             max-width: 65%;
             h1 {
                 font-size: 3.5rem;
@@ -141,7 +142,7 @@ const { homepage } = Astro.props;
     }
 
     @media only screen and (width <= 640px) {
-        div.text-container {
+        header {
             max-width: 70%;
 
             h1 {

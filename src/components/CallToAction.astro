@@ -43,13 +43,7 @@ const { homepage } = Astro.props;
         class="button variant-black size-large"
         href="mailto:Sebastiaan Benjamins <sebas@benjami.in>"
     >
-        <div
-            class="flex"
-            style={{
-                alignItems: "center",
-                gap: "$2",
-            }}
-        >
+        <div role="none">
             <span>{homepage.callToAction ?? "Let's talk"}</span>
             <Icon
                 name="ph:envelope-simple-bold"
@@ -69,11 +63,18 @@ const { homepage } = Astro.props;
         justify-content: center;
         align-items: center;
 
-        .button {
+        a.button {
             mix-blend-mode: multiply;
+
+            > div {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: var(--spaces-2);
+            }
         }
 
-        &:has(.button:active)::before {
+        &:has(a.button:active)::before {
             opacity: 1;
         }
 
@@ -114,11 +115,11 @@ const { homepage } = Astro.props;
                     transparent 60%
                 );
         }
-    }
 
-    .svg {
-        position: absolute;
-        inset: 0;
-        z-index: -1;
+        > svg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
     }
 </style>
