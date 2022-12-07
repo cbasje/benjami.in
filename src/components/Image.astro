@@ -4,8 +4,8 @@ import type { Image } from "../../lib/types";
 
 export interface Props {
     src: Image;
-    width?: number;
-    height?: number;
+    width: number;
+    height: number;
     fillContainer?: boolean;
 }
 const { src, fillContainer, width, height } = Astro.props;
@@ -16,8 +16,8 @@ const { src, fillContainer, width, height } = Astro.props;
     width={width}
     height={height}
     src={urlForImage(src)
-        .width(width ?? 0)
-        .height(height ?? 0)
+        .width(width)
+        .height(height)
         .auto("format")
         .fit("max")
         .url()}

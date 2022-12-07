@@ -89,7 +89,12 @@ export async function getStaticPaths() {
     </header>
 
     <div role="banner">
-        <Image src={project.mainImage} fillContainer />
+        <Image
+            src={project.mainImage}
+            width={1024}
+            height={683}
+            fillContainer
+        />
     </div>
 
     <BlockManager value={project.content} />
