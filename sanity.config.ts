@@ -1,22 +1,34 @@
-import { createConfig } from "sanity";
-import { deskTool } from "sanity/desk";
+import { defineConfig } from "sanity";
 import { schemaTypes } from "./schemas";
 import { withDocumentI18nPlugin } from "@sanity/document-internationalization";
+import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
+import { visionTool } from "@sanity/vision";
 
-export default createConfig({
+const basePath = "/studio";
+
+export default defineConfig({
+    basePath,
+
     name: "default",
-    title: "api-benjamiin",
+    title: import.meta.env.SANITY_STUDIO_PROJECT_TITLE || "benjami.in",
+    projectId: import.meta.env.SANITY_STUDIO_PROJECT_ID!,
+    dataset: import.meta.env.SANITY_STUDIO_DATASET!,
 
-    projectId: "jt1bq8i3",
-    dataset: "production",
-
-    plugins: withDocumentI18nPlugin([], {
-        base: "en",
-        languages: [
-            { id: "en", title: "English" },
-            { id: "nl", title: "Nederlands" },
+    plugins: withDocumentI18nPlugin(
+        [
+            unsplashImageAsset(),
+            visionTool({
+                defaultApiVersion: "2022-08-08",
+            }),
         ],
-    }),
+        {
+            base: "en",
+            languages: [
+                { id: "en", title: "English" },
+                { id: "nl", title: "Nederlands" },
+            ],
+        }
+    ),
 
     schema: {
         types: schemaTypes,

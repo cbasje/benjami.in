@@ -1,33 +1,28 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-    name: "seo",
-    title: "SEO",
+    name: "company",
+    title: "Company",
     type: "object",
     fields: [
         defineField({
-            name: "metaTitle",
-            title: "Meta title",
+            name: "title",
+            title: "Title",
             type: "string",
             validation: (Rule) => Rule.required(),
         }),
         defineField({
-            name: "metaDescription",
-            title: "Meta description",
-            type: "string",
+            name: "url",
+            title: "URL",
+            type: "url",
         }),
         defineField({
-            name: "shareImage",
-            title: "Share image",
+            name: "logo",
+            title: "Logo",
             type: "image",
             options: {
                 hotspot: true,
             },
-        }),
-        defineField({
-            name: "isArticle",
-            title: "Is article?",
-            type: "boolean",
         }),
     ],
 });
