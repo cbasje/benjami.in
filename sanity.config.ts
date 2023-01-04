@@ -2,6 +2,7 @@ import { defineConfig } from "sanity";
 import { schemaTypes } from "./schemas";
 import { withDocumentI18nPlugin } from "@sanity/document-internationalization";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
+import { cloudinarySchemaPlugin } from "sanity-plugin-cloudinary";
 import { visionTool } from "@sanity/vision";
 
 const basePath = "/studio";
@@ -17,6 +18,7 @@ export default defineConfig({
     plugins: withDocumentI18nPlugin(
         [
             unsplashImageAsset(),
+            cloudinarySchemaPlugin(),
             visionTool({
                 defaultApiVersion: "2022-08-08",
             }),

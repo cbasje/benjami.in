@@ -43,6 +43,11 @@ export default defineType({
             },
         }),
         defineField({
+            name: "henk",
+            title: "Main image",
+            type: "cloudinaryImage",
+        }),
+        defineField({
             name: "colour",
             title: "Colour",
             type: "string",

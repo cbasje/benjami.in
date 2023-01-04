@@ -5,11 +5,13 @@ import category from "./category";
 import company from "./company";
 import global from "./global";
 import home from "./home";
+import image from "./image";
 import notFound from "./not-found";
 import project from "./project";
 import seo from "./seo";
 
 export const schemaTypes = [
+    image,
     blockContent,
     code,
     prototype,
