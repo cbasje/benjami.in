@@ -47,11 +47,17 @@
         border-radius: var(--radii-full);
         width: 3rem;
         height: 3rem;
-        background: rgb(var(--colors-green400));
+        background: hsl(var(--colors-green400));
     }
 
     .svg {
         width: 100%;
         height: 100%;
+    }
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+    .imagePlaceholder {
+        background: hsl(var(--colors-green700));
     }
 }

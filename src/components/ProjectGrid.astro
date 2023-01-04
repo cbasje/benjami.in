@@ -34,15 +34,15 @@ const { projects } = Astro.props;
 
         :global(:first-child) {
             grid-area: main;
-            --cardBg: rgb(var(--colors-purple100));
+            --cardBg: hsl(var(--colors-purple100));
         }
         :global(:nth-child(2)) {
             grid-area: side-up;
-            --cardBg: rgb(var(--colors-green100));
+            --cardBg: hsl(var(--colors-green100));
         }
         :global(:nth-child(3)) {
             grid-area: side-down;
-            --cardBg: rgb(var(--colors-blue100));
+            --cardBg: hsl(var(--colors-blue100));
         }
     }
 

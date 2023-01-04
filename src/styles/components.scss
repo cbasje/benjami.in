@@ -1,7 +1,7 @@
 .line {
     all: unset;
     height: 1.4;
-    background: rgb(var(--colors-gray900) / 8%);
+    background: hsl(var(--colors-gray900) / 8%);
 }
 
 a:not(.overlay) {
@@ -23,16 +23,16 @@ a:not(.overlay) {
 
     --gradient: linear-gradient(
         135deg,
-        rgb(var(--colors-purple400)),
-        rgb(var(--colors-blue400)),
-        rgb(var(--colors-green400))
+        hsl(var(--colors-purple400)),
+        hsl(var(--colors-blue400)),
+        hsl(var(--colors-green400))
     );
     &:hover {
         --gradient: linear-gradient(
             135deg,
-            rgb(var(--colors-purple300)),
-            rgb(var(--colors-blue300)),
-            rgb(var(--colors-green300))
+            hsl(var(--colors-purple300)),
+            hsl(var(--colors-blue300)),
+            hsl(var(--colors-green300))
         );
     }
 
@@ -52,18 +52,18 @@ a:not(.overlay) {
 
     &.variant-primary {
         background: var(--gradient);
-        color: rgb(var(--colors-textOnPrimary));
+        color: hsl(var(--colors-textOnPrimary));
     }
     &.variant-black {
-        color: rgb(var(--colors-gray100));
-        background: rgb(var(--colors-gray900));
+        color: hsl(var(--colors-gray100));
+        background: hsl(var(--colors-gray900));
 
         &:hover {
-            background: rgb(var(--colors-gray700));
+            background: hsl(var(--colors-gray700));
         }
     }
     &.variant-primary-outlined {
-        color: rgb(var(--colors-textOnBg));
+        color: hsl(var(--colors-textOnBg));
         background: none;
 
         &:hover {

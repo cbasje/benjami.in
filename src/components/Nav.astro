@@ -95,8 +95,8 @@ import { Icon } from "astro-icon";
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: rgb(var(--colors-bg) / 75%);
-        // box-shadow: "0 6px 20px rgb(0 0 0 / 8%);
+        background: hsl(var(--colors-bg) / 75%);
+        // box-shadow: "0 6px 20px hsl(0 0 0 / 8%);
         backdrop-filter: blur(15px);
         border-radius: var(--radii-md);
     }
@@ -135,15 +135,15 @@ import { Icon } from "astro-icon";
             transition: background-color 0.2s cubic-bezier(0.33, 1, 0.68, 1);
 
             &:hover {
-                background-color: rgb(var(--colors-gray200));
+                background-color: hsl(var(--colors-gray200));
             }
 
             &:active {
-                color: rgb(var(--colors-gray50)) !important;
-                background-color: rgb(var(--colors-gray900)) !important;
+                color: hsl(var(--colors-gray50)) !important;
+                background-color: hsl(var(--colors-gray900)) !important;
 
                 &:hover {
-                    background-color: rgb(var(--colors-gray900)) !important;
+                    background-color: hsl(var(--colors-gray900)) !important;
                 }
             }
         }

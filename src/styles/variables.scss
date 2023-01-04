@@ -1,55 +1,49 @@
 @import "./open-color.scss";
 
 :root {
-    // MARK: colors
-    --colors-purple50: 250 245 255;
-    --colors-purple100: 243 232 255;
-    --colors-purple200: 233 213 255;
-    --colors-purple300: 216 180 254;
-    --colors-purple400: 192 132 252;
-    --colors-purple500: 168 85 247;
-    --colors-purple600: 147 51 234;
-    --colors-purple700: 126 34 206;
-    --colors-purple800: 107 33 168;
-    --colors-purple900: 88 28 135;
-    --colors-green50: 240 253 244;
-    --colors-green100: 220 252 231;
-    --colors-green200: 187 247 208;
-    --colors-green300: 134 239 172;
-    --colors-green400: 74 222 128;
-    --colors-green500: 34 197 94;
-    --colors-green600: 22 163 74;
-    --colors-green700: 21 128 61;
-    --colors-green800: 22 101 52;
-    --colors-green900: 20 83 45;
-    --colors-blue50: 236 254 255;
-    --colors-blue100: 207 250 254;
-    --colors-blue200: 165 243 252;
-    --colors-blue300: 103 232 249;
-    --colors-blue400: 34 211 238;
-    --colors-blue500: 6 182 212;
-    --colors-blue600: 8 145 178;
-    --colors-blue700: 14 116 144;
-    --colors-blue800: 21 94 117;
-    --colors-blue900: 22 78 99;
-    --colors-gray50: 249 250 251;
-    --colors-gray100: 243 244 246;
-    --colors-gray200: 229 231 235;
-    --colors-gray300: 209 213 219;
-    --colors-gray400: 156 163 175;
-    --colors-gray500: 107 114 128;
-    --colors-gray600: 75 85 99;
-    --colors-gray700: 55 65 81;
-    --colors-gray800: 31 41 55;
-    --colors-gray900: 17 24 39;
+    // #a4f755
 
-    --colors-primary: var(--colors-purple300);
-    --colors-primaryDark: var(--colors-purple500);
-    --colors-textOnPrimary: var(--colors-gray100);
-    --colors-displayOnPrimary: var(--colors-gray50);
-    --colors-bg: var(--colors-gray50);
-    --colors-textOnBg: var(--colors-gray800);
-    --colors-displayOnBg: var(--colors-gray900);
+    // MARK: colors
+    --colors-purple50: 270 100% 98%;
+    --colors-purple100: 269 100% 95%;
+    --colors-purple200: 269 100% 92%;
+    --colors-purple300: 269 97% 85%;
+    --colors-purple400: 270 95% 75%;
+    --colors-purple500: 271 91% 65%;
+    --colors-purple600: 271 81% 56%;
+    --colors-purple700: 272 72% 47%;
+    --colors-purple800: 273 67% 39%;
+    --colors-purple900: 274 66% 32%;
+    --colors-green50: 138 76% 97%;
+    --colors-green100: 141 84% 93%;
+    --colors-green200: 141 79% 85%;
+    --colors-green300: 142 77% 73%;
+    --colors-green400: 142 69% 58%;
+    --colors-green500: 142 71% 45%;
+    --colors-green600: 142 76% 36%;
+    --colors-green700: 142 72% 29%;
+    --colors-green800: 143 66% 24%;
+    --colors-green900: 144 61% 20%;
+    --colors-blue50: 183 100% 96%;
+    --colors-blue100: 185 96% 90%;
+    --colors-blue200: 186 94% 82%;
+    --colors-blue300: 187 92% 69%;
+    --colors-blue400: 188 86% 53%;
+    --colors-blue500: 189 94% 43%;
+    --colors-blue600: 192 91% 36%;
+    --colors-blue700: 193 82% 31%;
+    --colors-blue800: 194 70% 27%;
+    --colors-blue900: 196 64% 24%;
+    --colors-gray50: 210 20% 98%;
+    --colors-gray100: 220 14% 96%;
+    --colors-gray200: 220 13% 91%;
+    --colors-gray300: 216 12% 84%;
+    --colors-gray400: 218 11% 65%;
+    --colors-gray500: 220 9% 46%;
+    --colors-gray600: 215 14% 34%;
+    --colors-gray700: 217 19% 27%;
+    --colors-gray800: 215 28% 17%;
+    --colors-gray900: 221 39% 11%;
 
     // MARK: space
     --spaces-1: 0.5rem;
@@ -90,4 +84,26 @@
     --media-sm: 640px;
     --media-md: 960px;
     --media-lg: 1280px;
+}
+
+body {
+    --colors-primary: var(--colors-purple300);
+    --colors-primaryDark: var(--colors-purple500);
+    --colors-textOnPrimary: var(--colors-gray100);
+    --colors-displayOnPrimary: var(--colors-gray50);
+    --colors-bg: var(--colors-gray50);
+    --colors-textOnBg: var(--colors-gray800);
+    --colors-displayOnBg: var(--colors-gray900);
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+    body {
+        --colors-primary: var(--colors-purple600);
+        --colors-primaryDark: var(--colors-purple400);
+        --colors-textOnPrimary: var(--colors-gray100);
+        --colors-displayOnPrimary: var(--colors-gray50);
+        --colors-bg: var(--colors-gray900);
+        --colors-textOnBg: var(--colors-gray200);
+        --colors-displayOnBg: var(--colors-gray300);
+    }
 }

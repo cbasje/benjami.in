@@ -47,11 +47,15 @@ const { homepage } = Astro.props;
         background-clip: padding-box;
 
         --border-size: 6px;
-        border: var(--border-size) solid rgb(0 0 0 / 10%);
+        border: var(--border-size) solid hsl(0 0 0 / 10%);
         border-radius: var(--radii-md);
 
         --cursor-y: 0.7;
         --cursor-x: 0.7;
+
+        --primary: var(--colors-purple300);
+        --secondary: var(--colors-green200);
+        --tertiary: var(--colors-blue300);
 
         &:before {
             content: "";
@@ -68,23 +72,31 @@ const { homepage } = Astro.props;
             will-change: background, opacity;
             transition: opacity 600ms ease 0s;
             background: radial-gradient(
-                    circle farthest-side at calc((var(--cursor-x) + 0.2) * 100%)
-                        calc((var(--cursor-y) - 0.1) * 100%),
-                    rgb(var(--colors-green200)) 0%,
+                    circle farthest-side at calc((var(--cursor-x) - 0.3) * 100%)
+                        calc((var(--cursor-y) + 0.1) * 100%),
+                    hsl(var(--primary)) 0%,
                     transparent 60%
                 ),
                 radial-gradient(
-                    circle farthest-side at calc((var(--cursor-x) - 0.3) * 100%)
-                        calc((var(--cursor-y) + 0.1) * 100%),
-                    rgb(var(--colors-purple300)) 0%,
+                    circle farthest-side at calc((var(--cursor-x) + 0.2) * 100%)
+                        calc((var(--cursor-y) - 0.1) * 100%),
+                    hsl(var(--secondary)) 0%,
                     transparent 60%
                 ),
                 radial-gradient(
                     circle farthest-side at calc((var(--cursor-x) - 0.1) * 100%)
                         calc((var(--cursor-y) + 0.1) * 100%),
-                    rgb(var(--colors-blue300)) 0%,
+                    hsl(var(--tertiary)) 0%,
                     transparent 60%
                 );
+        }
+    }
+
+    @media only screen and (prefers-color-scheme: dark) {
+        blur-background {
+            --primary: var(--colors-purple800);
+            --secondary: var(--colors-green900);
+            --tertiary: var(--colors-blue800);
         }
     }
 
