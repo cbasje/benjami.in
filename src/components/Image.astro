@@ -1,17 +1,19 @@
 ---
 import { urlForImage } from "../../lib/sanity";
-import type { Image } from "../../lib/types";
+import type { Image as ImageType } from "../../lib/types";
+import { Image } from "@astrojs/image/components";
 
 export interface Props {
-    src: Image;
+    src: ImageType;
     width: number;
     height: number;
     fillContainer?: boolean;
+    alt: string;
 }
-const { src, fillContainer, width, height } = Astro.props;
+const { src, width, height, fillContainer, alt } = Astro.props;
 ---
 
-<img
+<Image
     class={`image ${fillContainer ? "fill-container" : ""}`}
     width={width}
     height={height}
@@ -19,8 +21,10 @@ const { src, fillContainer, width, height } = Astro.props;
         .width(width)
         .height(height)
         .auto("format")
+        .format("webp")
         .fit("max")
         .url()}
-    alt={""}
+    alt={alt}
+    format="webp"
     loading="lazy"
 />

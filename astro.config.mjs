@@ -3,6 +3,7 @@ import fonts from "astro-fonts-next";
 import astroI18next from "astro-i18next";
 import sanity from "astro-sanity";
 import { defineConfig } from "astro/config";
+import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,5 +23,6 @@ export default defineConfig({
             ],
         }),
         react(),
+        image(),
     ],
 });

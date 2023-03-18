@@ -16,9 +16,10 @@ const cardBg = useCustomColour
             {
                 project.mainImage ? (
                     <Image
+                        alt={`Main image of ${project.title}`}
                         src={project.mainImage}
-                        width={1333}
-                        height={2000}
+                        width={512}
+                        height={512}
                         fillContainer
                     />
                 ) : (
