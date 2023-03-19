@@ -1,2 +1,0 @@
-[build]
-  functions = "./src/pages/api"
