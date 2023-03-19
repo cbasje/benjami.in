@@ -19,8 +19,12 @@ StyleDictionaryPackage.registerFormat({
         return `${this.selector} {
             ${dictionary.allProperties
                 .map((prop) => {
-                    const rgbValue = hexToRgb(prop.value);
-                    return `  --${prop.name}: ${rgbValue.r} ${rgbValue.g} ${rgbValue.b};`;
+                    if (prop.type === "color") {
+                        const rgbValue = hexToRgb(prop.value);
+                        return `--${prop.name}: ${rgbValue.r} ${rgbValue.g} ${rgbValue.b};`;
+                    } else {
+                        return `--${prop.name}: ${prop.value};`;
+                    }
                 })
                 .join("\n")}
         }`;

@@ -6,11 +6,11 @@
         "type": "color"
       },
       "subtle": {
-        "value": "#323232",
+        "value": "#111827",
         "type": "color"
       },
       "muted": {
-        "value": "#757575",
+        "value": "#4b5563",
         "type": "color"
       }
     },
@@ -24,21 +24,21 @@
         "type": "color"
       },
       "muted": {
-        "value": "#eeeeee",
+        "value": "#e5e7eb",
         "type": "color"
       },
       "subtle": {
-        "value": "#9e9e9e",
+        "value": "#6b7280",
         "type": "color"
       }
     },
     "accent": {
       "default": {
-        "value": "#f59e0b",
+        "value": "#06b6d4",
         "type": "color"
       },
       "subtle": {
-        "value": "#78350f",
+        "value": "#164e63",
         "type": "color"
       }
     }
