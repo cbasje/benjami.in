@@ -1,8 +1,13 @@
 ---
 import { localizePath } from "astro-i18next";
+import type { Project } from "../../lib/types";
 import Image from "./Image.astro";
 import ImageNotFound from "./ImageNotFound.astro";
 
+export interface Props {
+    project: Project;
+    useCustomColour: boolean;
+}
 const { project, useCustomColour } = Astro.props;
 
 const cardBg = useCustomColour
@@ -16,9 +21,10 @@ const cardBg = useCustomColour
             {
                 project.mainImage ? (
                     <Image
+                        alt={`Main image of ${project.title}`}
                         src={project.mainImage}
-                        width={1333}
-                        height={2000}
+                        width={512}
+                        height={512}
                         fillContainer
                     />
                 ) : (

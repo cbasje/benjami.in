@@ -4,6 +4,9 @@ import { localizePath } from "astro-i18next";
 import type { ProjectColour, Seo } from "../../lib/types";
 import MainLayout from "./main.astro";
 
+import "@fontsource/inter";
+import "@fontsource/space-mono";
+
 export interface Props {
     colour?: ProjectColour;
     seo?: Seo;
@@ -147,6 +150,7 @@ const buttonColor = colour
 
                 > :global(*) {
                     width: 100%;
+                    height: auto;
                     margin: 0;
                 }
                 :global(iframe) {

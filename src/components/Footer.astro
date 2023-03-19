@@ -1,5 +1,5 @@
 ---
-import SpotifyPlayer from "./SpotifyPlayer";
+import SpotifyPlayerWrapper from "./SpotifyPlayerWrapper.svelte";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -13,7 +13,7 @@ const currentYear = new Date().getFullYear();
         </ul>
         <ul class="side-right">
             <li>
-                <SpotifyPlayer client:visible />
+                <SpotifyPlayerWrapper client:only />
             </li>
             {/* FIXME: Move this */}
             <!-- <li>

@@ -1,4 +1,4 @@
-import type { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
+import type { APIRoute } from "astro";
 import { getNowPlaying } from "../../../lib/now-playing";
 import type { SpotifyData } from "../../../lib/types";
 
@@ -9,20 +9,18 @@ const parseArtist = (artists: any[]): string => {
     return artists.map((a: any) => a.name)[0] ?? "";
 };
 
-const handler: Handler = async (
-    event: HandlerEvent,
-    context: HandlerContext
-) => {
+export const get: APIRoute = async () => {
     const response = await getNowPlaying();
 
     if (!response.ok || response.status === 204 || response.status >= 400) {
-        return {
-            statusCode: 200,
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
+        return new Response(
+            JSON.stringify({
                 isPlaying: false,
             }),
-        };
+            {
+                status: 200,
+            }
+        );
     }
 
     const song: any = await response.json();
@@ -36,11 +34,7 @@ const handler: Handler = async (
         songUrl: song.item.external_urls.spotify,
     };
 
-    return {
-        statusCode: 200,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data }),
-    };
+    return new Response(JSON.stringify(data), {
+        status: 200,
+    });
 };
-
-export { handler };
