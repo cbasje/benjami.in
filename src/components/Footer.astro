@@ -1,27 +1,16 @@
 ---
-import SpotifyPlayerWrapper from "./SpotifyPlayerWrapper.svelte";
+import Social from "./Social.astro";
 
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="grayscale">
     <aside>
-        <ul class="side-left">
+        <Social />
+        <ul>
             <li>
                 &copy; Sebastiaan Benjamins, {currentYear}
             </li>
-        </ul>
-        <ul class="side-right">
-            <li>
-                <SpotifyPlayerWrapper client:only />
-            </li>
-            {/* FIXME: Move this */}
-            <!-- <li>
-                    <LanguageSwitcher
-                        locale={locale}
-                        onLocaleChange={handleLocaleChange}
-                    />
-                </li> -->
         </ul>
     </aside>
 </footer>
@@ -57,13 +46,6 @@ const currentYear = new Date().getFullYear();
         position: relative;
         align-items: center;
         gap: var(--spaces-2);
-
-        &.side-left {
-            justify-content: flex-start;
-        }
-        &.side-right {
-            justify-content: flex-end;
-        }
 
         li {
             max-width: 100%;
