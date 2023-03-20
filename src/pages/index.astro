@@ -8,6 +8,7 @@ import type { Home, Project } from "../../lib/types";
 import RotaryDial from "../components/RotaryDial.svelte";
 import Footer from "../components/Footer.astro";
 import MainLayout from "../layouts/main.astro";
+import Nav from "../components/Nav.astro";
 
 changeLanguage("en");
 
@@ -20,6 +21,8 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
 ---
 
 <MainLayout seo={homepage.seo}>
+    <Nav />
+
     <main>
         <RotaryDial client:only />
 
@@ -86,7 +89,7 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
 
 <style lang="scss">
     main {
-        width: 100vw;
+        height: 100vh;
         margin-inline: auto;
         padding-inline: var(--spaces-2);
 
