@@ -69,7 +69,7 @@ import { Icon } from "astro-icon";
         align-items: center;
 
         font-family: var(--fonts-display);
-        font-weight: var(--fontWeights-bold);
+        font-weight: var(--font-weights-bold);
         text-transform: uppercase;
         letter-spacing: 0.05em;
 
@@ -86,15 +86,15 @@ import { Icon } from "astro-icon";
             transition: background-color 0.2s cubic-bezier(0.33, 1, 0.68, 1);
 
             &:hover {
-                background-color: rgb(var(--colors-gray200));
+                background-color: rgb(var(--colors-grey-200));
             }
 
             &:active {
-                color: rgb(var(--colors-gray50)) !important;
-                background-color: rgb(var(--colors-gray900)) !important;
+                color: rgb(var(--colors-grey-50)) !important;
+                background-color: rgb(var(--colors-grey-900)) !important;
 
                 &:hover {
-                    background-color: rgb(var(--colors-gray900)) !important;
+                    background-color: rgb(var(--colors-grey-900)) !important;
                 }
             }
         }

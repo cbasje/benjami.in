@@ -11,7 +11,7 @@ export interface Props {
 const { project, useCustomColour } = Astro.props;
 
 const cardBg = useCustomColour
-    ? `rgb(var(--colors-${project.colour}100)) !important`
+    ? `rgb(var(--colors-${project.colour}-100)) !important`
     : undefined;
 ---
 
@@ -92,7 +92,7 @@ const cardBg = useCustomColour
         padding-inline: var(--spaces-2);
         padding-block: var(--spaces-1);
         border-radius: var(--radii-sm);
-        background: rgb(var(--colors-bg) / 75%);
+        background: rgb(var(--theme-bg-default) / 75%);
         backdrop-filter: blur(25px);
 
         opacity: 0;

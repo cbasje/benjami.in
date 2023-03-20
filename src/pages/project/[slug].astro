@@ -16,7 +16,7 @@ export interface Props {
 const { project } = Astro.props;
 
 const projectColor = project.colour
-    ? `--colors-${project.colour}900`
+    ? `--colors-${project.colour}-900`
     : undefined;
 
 const seo: Seo = {

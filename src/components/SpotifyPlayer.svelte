@@ -95,7 +95,7 @@
                 max-width: 100%;
 
                 font-family: var(--fonts-display);
-                font-weight: var(--fontWeights-regular);
+                font-weight: var(--font-weights-regular);
                 font-size: smaller;
                 line-height: 1.5;
                 text-transform: uppercase;
@@ -104,7 +104,7 @@
                 text-overflow: ellipsis;
 
                 &:first-child {
-                    font-weight: var(--fontWeights-bold);
+                    font-weight: var(--font-weights-bold);
                 }
             }
         }
@@ -119,7 +119,7 @@
             border-radius: var(--radii-full);
             width: 3rem;
             height: 3rem;
-            background: rgb(var(--colors-green400));
+            background: rgb(var(--colors-green-400));
         }
 
         .svg {

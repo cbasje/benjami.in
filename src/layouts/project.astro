@@ -16,10 +16,10 @@ export interface Props {
 }
 const { colour, seo } = Astro.props;
 
-const overlayColor = `var(--colors-${colour ?? "gray"}900)`;
+const overlayColor = `var(--colors-${colour ?? "grey"}-900)`;
 const buttonColor = colour
-    ? `var(--colors-${colour}500)`
-    : "var(--colors-primary)";
+    ? `var(--colors-${colour}-500)`
+    : "var(--theme-accent-default)";
 ---
 
 <MainLayout seo={seo} noTopPadding>
@@ -79,7 +79,7 @@ const buttonColor = colour
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        color: var(--colors-gray0);
+        color: var(--colors-grey-50);
         position: fixed;
         top: 0.5em;
         right: 0.5em;
@@ -96,7 +96,7 @@ const buttonColor = colour
     }
 
     .content-container {
-        background-color: rgb(var(--colors-bg));
+        background-color: rgb(var(--theme-bg-default));
         border-top-left-radius: var(--radii-md);
         border-top-right-radius: var(--radii-md);
         margin-top: 4em;
@@ -167,8 +167,8 @@ const buttonColor = colour
                 }
             }
             :global(a) {
-                color: rgb(var(--colors-purple400));
-                font-weight: var(--fontWeights-medium);
+                color: rgb(var(--colors-purple-400));
+                font-weight: var(--font-weights-medium);
                 text-decoration: underline wavy;
             }
         }

@@ -1,10 +1,10 @@
 body {
     padding: 0;
     margin: 0;
-    background-color: rgb(var(--colors-bg));
-    color: rgb(var(--colors-textOnBg));
-    accent-color: rgb(var(--colors-primary));
-    caret-color: rgb(var(--colors-primary));
+    background-color: rgb(var(--theme-bg-default));
+    color: rgb(var(--theme-fg-default));
+    accent-color: rgb(var(--theme-accent-default));
+    caret-color: rgb(var(--theme-accent-default));
     font-size: 1rem;
     line-height: 1.5;
 }
@@ -12,11 +12,11 @@ h1,
 h2 {
     margin: 0 0 1.1em;
     font-family: var(--fonts-display);
-    font-weight: var(--fontWeights-bold);
+    font-weight: var(--font-weights-bold);
     text-transform: uppercase;
     letter-spacing: 0.05rem;
     line-height: 1.1;
-    color: rgb(var(--colors-displayOnBg));
+    color: rgb(var(--theme-fg-default));
 
     overflow-wrap: break-word;
 }
@@ -25,11 +25,11 @@ h4,
 h5,
 h6 {
     font-family: var(--fonts-display);
-    font-weight: var(--fontWeights-regular);
+    font-weight: var(--font-weights-regular);
     text-transform: uppercase;
     letter-spacing: 0.01rem;
     line-height: 1.1;
-    color: rgb(var(--colors-displayOnBg));
+    color: rgb(var(--theme-fg-default));
 
     overflow-wrap: break-word;
 }
@@ -46,6 +46,6 @@ a {
     box-sizing: border-box;
 }
 ::selection {
-    background-color: rgb(var(--colors-primary));
-    color: rgb(var(--colors-textOnPrimary));
+    background-color: rgb(var(--theme-accent-default));
+    color: rgb(var(--theme-fg-on-accent));
 }
