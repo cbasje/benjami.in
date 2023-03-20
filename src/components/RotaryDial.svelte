@@ -221,9 +221,11 @@
 
 <style lang="scss">
     .dial-container {
-        width: 80vmin;
-        height: 80vmin;
-        position: relative;
+        flex: 1;
+        display: grid;
+        place-content: center;
+        justify-content: stretch;
+        align-items: stretch;
 
         cursor: grab;
 
@@ -231,32 +233,41 @@
             cursor: grabbing;
         }
 
-        .image-list > li {
-            width: 50%;
-            height: 50%;
-            position: absolute;
-            top: 25%;
-            left: 25%;
+        > * {
+            grid-area: 1/1;
+        }
 
-            border-radius: 50%;
-            overflow: hidden;
+        .image-list {
+            margin: 0;
+            padding: 0;
 
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
-            }
+            > li {
+                width: 50%;
+                height: 50%;
+                position: absolute;
+                top: 25%;
+                left: 25%;
 
-            &:not(.active) {
-                display: none;
+                border-radius: 50%;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+
+                &:not(.active) {
+                    display: none;
+                }
             }
         }
 
         svg.dial {
-            width: 100%;
-            height: 100%;
-            position: absolute;
+            width: 80vmin;
+            height: auto;
+            aspect-ratio: 1;
             pointer-events: none;
             user-select: none;
 
@@ -265,7 +276,7 @@
                 transform-origin: center;
 
                 > circle {
-                    stroke: rgb(var(--theme-bg-subtle));
+                    stroke: rgb(var(--theme-bg-muted));
                 }
             }
             .numbers > path {
