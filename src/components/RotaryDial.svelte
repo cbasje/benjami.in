@@ -240,6 +240,7 @@
         .image-list {
             margin: 0;
             padding: 0;
+            position: relative;
 
             > li {
                 width: 50%;
