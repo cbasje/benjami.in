@@ -36,8 +36,10 @@
         "react-is": "^18.2.0",
         "sanity": "^3.8.3",
         "sanity-plugin-cloudinary": "^1.1.1",
+        "style-dictionary": "^3.7.2",
         "styled-components": "^5.3.6",
-        "svelte": "^3.58.0"
+        "svelte": "^3.58.0",
+        "token-transformer": "^0.0.32"
     },
     "devDependencies": {
         "@iconify/svelte": "^3.1.0",
