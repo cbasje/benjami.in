@@ -6,8 +6,10 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v3
+            - name: Checkout repo
+              uses: actions/checkout@v3
               with:
+                  fetch-depth: 0
                   token: ${{ secrets.ACCESS_TOKEN }}
 
             - name: Setup Node.js environment
@@ -16,12 +18,19 @@ jobs:
                   node-version: "16"
 
             # Install dependencies
-            - run: yarn install
+            - name: Install NPM Packages
+              run: npm install
+              env:
+                  NODE_AUTH_TOKEN: $\{{ secrets.PAT }}
 
             # Generate translations with astro-i18next package
-            - run: npx astro-i18next generate
+            - name: Run astro-i18next
+              run: npx astro-i18next generate
+              env:
+                  NODE_AUTH_TOKEN: $\{{ secrets.PAT }}
 
             # Add files that were created during a run
-            - uses: stefanzweifel/git-auto-commit-action@v4
+            - name: Commit changes
+              uses: stefanzweifel/git-auto-commit-action@v4
               with:
                   commit_message: Update translations
