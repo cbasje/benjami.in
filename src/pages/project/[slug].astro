@@ -1,7 +1,6 @@
 ---
 import { useSanityClient } from "astro-sanity";
 import i18next, { changeLanguage } from "i18next";
-
 import { projectsQuery } from "../../../lib/queries";
 import type { Project, Seo } from "../../../lib/types";
 import BlockManager from "../../components/BlockManager.astro";
@@ -14,18 +13,15 @@ export interface Props {
     project: Project;
 }
 const { project } = Astro.props;
-
 const projectColor = project.colour
     ? `--colors-${project.colour}900`
     : undefined;
-
 const seo: Seo = {
     metaTitle: project.title,
     metaDescription: project.description,
     shareImage: project.mainImage,
     isArticle: true,
 };
-
 export async function getStaticPaths() {
     const projects: Project[] = await useSanityClient().fetch(projectsQuery, {
         locale: i18next.language,
