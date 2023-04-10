@@ -9,7 +9,7 @@ jobs:
             contents: write
 
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
               with:
                   fetch-depth: 0
                   token: ${{secrets.BOT_ACCESS_TOKEN}}
@@ -31,3 +31,5 @@ jobs:
                   commit_user_name: cbasje-bot
                   commit_user_email: github-bot@benjami.in
                   commit_author: Github Actions Bot <github-bot@benjami.in>
+
+                  push_options: --force
