@@ -3,7 +3,7 @@
 ## Stack
 
 -   Site generator: [Astro](https://astro.build/)
--   Interactive framework: [React](https://docs.astro.build/en/core-concepts/framework-components/)
+-   Interactive framework: [Svelte](https://docs.astro.build/en/guides/integrations-guide/svelte/)
 -   Styling: [SCSS](https://sass-lang.com/documentation/syntax)
 -   CMS: [Sanity](https://www.sanity.io/)
 
