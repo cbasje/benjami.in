@@ -10,6 +10,14 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
+              with:
+                  token: ${{secrets.BOT_ACCESS_TOKEN}}
+
+            - name: Setup Git
+              run: |
+                  git config user.name "cbasje-bot"
+                  git config user.email "github-bot@benjami.in"
+
             - name: Setup Node.js environment
               uses: actions/setup-node@v2
 
