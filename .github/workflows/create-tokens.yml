@@ -1,4 +1,4 @@
-name: CI
+name: Create Tokens
 on: [push]
 
 jobs:
@@ -6,20 +6,39 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v2
+            - name: Checkout repo
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+                  token: ${{ secrets.ACCESS_TOKEN }}
+
             - name: Setup Node.js environment
-              uses: actions/setup-node@v2.4.0
-            # Install dependencies
-            - run: yarn install
+              uses: actions/setup-node@v2
+              with:
+                  node-version: "16"
+
+              # Install dependencies
+            - name: Install NPM Packages
+              run: npm install
+
             # Transform Figma Tokens JSON to something Style Dictionary can read
-            - run: npx token-transformer tokens.json tokens/global.json global
+            - name: Transform Figma Tokens to Style Dictionary
+              run: npx token-transformer tokens.json tokens/global.json global
+
             # Create a light theme, exclude the global tokens
-            - run: npx token-transformer tokens.json tokens/light.json global,light,theme global
+            - name: Create light theme
+              run: npx token-transformer tokens.json tokens/light.json global,light,theme global
+
             # Create a dark theme, exclude the global tokens
-            - run: npx token-transformer tokens.json tokens/dark.json global,dark,theme global
+            - name: Create dark theme
+              run: npx token-transformer tokens.json tokens/dark.json global,dark,theme global
+
             # Convert tokens according to Style Dictionary config
-            - run: node build.mjs
+            - name: Convert tokens
+              run: node build.mjs
+
             # Add files that were created during a run, e.g. created files from style dictionary or token-transformer.
-            - uses: stefanzweifel/git-auto-commit-action@v4
+            - name: Commit changes
+              uses: stefanzweifel/git-auto-commit-action@v4
               with:
                   commit_message: Update Tokens
