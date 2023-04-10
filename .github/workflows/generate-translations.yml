@@ -5,15 +5,22 @@ jobs:
     build:
         runs-on: ubuntu-latest
 
+        permissions:
+            contents: write
+
         steps:
             - uses: actions/checkout@v2
             - name: Setup Node.js environment
-              uses: actions/setup-node@v2.4.0
+              uses: actions/setup-node@v2
+
             # Install dependencies
             - run: yarn install
+
             # Generate translations with astro-i18next package
             - run: npx astro-i18next generate
+
             # Add files that were created during a run
             - uses: stefanzweifel/git-auto-commit-action@v4
               with:
-                  commit_message: Update i18n
+                  commit_message: Update translations
+                  push_options: "--force"
