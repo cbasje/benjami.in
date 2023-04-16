@@ -2,11 +2,11 @@
 import { useSanityClient } from "astro-sanity";
 import i18next, { changeLanguage } from "i18next";
 
-import { projectsQuery } from "../../../lib/queries";
-import type { Project, Seo } from "../../../lib/types";
-import BlockManager from "../../components/BlockManager.astro";
-import Image from "../../components/Image.astro";
-import ProjectsLayout from "../../layouts/project.astro";
+import { projectsQuery } from "@/lib/queries";
+import type { Project, Seo } from "@/lib/types";
+import BlockManager from "@/components/BlockManager.astro";
+import Image from "@/components/Image.astro";
+import ProjectsLayout from "@/layouts/project.astro";
 
 changeLanguage("en");
 

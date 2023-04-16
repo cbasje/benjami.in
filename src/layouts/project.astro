@@ -1,14 +1,14 @@
 ---
 import { Icon } from "astro-icon";
 import { localizePath } from "astro-i18next";
-import type { ProjectColour, Seo } from "../../lib/types";
+import type { ProjectColour, Seo } from "@/lib/types";
 import MainLayout from "./main.astro";
 
 import "@fontsource/inter";
 import "@fontsource/space-mono";
-import "../../output/global.css";
-import "../../output/light.css";
-import "../../output/dark.css";
+import "@/output/global.css";
+import "@/output/light.css";
+import "@/output/dark.css";
 
 export interface Props {
     colour?: ProjectColour;

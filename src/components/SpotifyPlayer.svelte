@@ -1,6 +1,6 @@
 <script lang="ts">
     import { useQuery } from "@sveltestack/svelte-query";
-    import type { SpotifyData } from "../../lib/types";
+    import type { SpotifyData } from "@/lib/types";
 
     const queryResult = useQuery<SpotifyData>("repoData", () =>
         fetch("/api/now-playing").then((res) => res.json())
