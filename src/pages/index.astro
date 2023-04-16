@@ -2,13 +2,13 @@
 import { useSanityClient } from "astro-sanity";
 import i18next, { changeLanguage } from "i18next";
 
-import { homeQuery, projectListQuery } from "@/lib/queries";
-import type { Home, Project } from "@/lib/types";
+import { homeQuery, projectListQuery } from "../../lib/queries";
+import type { Home, Project } from "../../lib/types";
 
-import RotaryDial from "@/components/RotaryDial.svelte";
-import Footer from "@/components/Footer.astro";
-import MainLayout from "@/layouts/main.astro";
-import Nav from "@/components/Nav.astro";
+import RotaryDial from "../components/RotaryDial.svelte";
+import Footer from "../components/Footer.astro";
+import MainLayout from "../layouts/main.astro";
+import Nav from "../components/Nav.astro";
 
 changeLanguage("en");
 

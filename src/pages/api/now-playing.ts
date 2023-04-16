@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
-import { getNowPlaying } from "@/lib/now-playing";
-import type { SpotifyData } from "@/lib/types";
+import { getNowPlaying } from "../../../lib/now-playing";
+import type { SpotifyData } from "../../../lib/types";
 
 const parseName = (name: string): string => {
     return name.split(/[(-]/i)[0];

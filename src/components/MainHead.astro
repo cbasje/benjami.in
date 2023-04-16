@@ -3,11 +3,11 @@ import { HeadHrefLangs } from "astro-i18next/components";
 import { useSanityClient } from "astro-sanity";
 import { SEO } from "astro-seo";
 import i18next from "i18next";
-import { globalQuery } from "@/lib/queries";
-import type { Seo } from "@/lib/types";
+import { globalQuery } from "../../lib/queries";
+import type { Seo } from "../../lib/types";
 
-import "@/styles/global.scss";
-import "@/styles/components.scss";
+import "../styles/global.scss";
+import "../styles/components.scss";
 
 export interface Props {
     seo?: Seo;
