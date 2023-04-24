@@ -35,7 +35,7 @@ jobs:
 
             # Convert tokens according to Style Dictionary config
             - name: Convert tokens
-              run: node build.mjs
+              run: node tokens/build.mjs
 
             # Add files that were created during a run, e.g. created files from style dictionary or token-transformer.
             - name: Commit changes
