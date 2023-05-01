@@ -249,14 +249,25 @@
                 top: 25%;
                 left: 25%;
 
+                padding: 0;
+
                 border-radius: 50%;
                 overflow: hidden;
 
-                img {
+                a {
                     width: 100%;
                     height: 100%;
-                    object-fit: cover;
-                    object-position: center;
+                    display: block;
+
+                    margin: 0;
+                    padding: 0;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                    }
                 }
 
                 &:not(.active) {

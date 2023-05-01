@@ -1,5 +1,5 @@
 :root {
-            --colors-black: 23 23 23;
+                --colors-black: 23 23 23;
 --colors-white: 255 255 255;
 --colors-purple-50: 250 245 255;
 --colors-purple-100: 243 232 255;
@@ -57,8 +57,8 @@
 --font-weights-regular: 400;
 --font-weights-medium: 500;
 --font-weights-bold: 700;
---fonts-display: "Space Mono", -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
---fonts-text: "Inter", -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
---fonts-mono: "Space Mono", monospace;
+--fonts-sans: "Atkinson Hyperlegible", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+--fonts-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+--fonts-mono: "Space Mono", ui-monospace, SFMono-Regular, Dank Mono, Operator Mono, Inconsolata, Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro, monospace;
 --fonts-dyslexic: -apple-system, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-        }
+            }

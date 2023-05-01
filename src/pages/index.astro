@@ -1,6 +1,6 @@
 ---
 import { useSanityClient } from "astro-sanity";
-import i18next, { changeLanguage } from "i18next";
+import i18next from "i18next";
 
 import { homeQuery, projectListQuery } from "../../lib/queries";
 import type { Home, Project } from "../../lib/types";
@@ -9,8 +9,6 @@ import RotaryDial from "../components/RotaryDial.svelte";
 import Footer from "../components/Footer.astro";
 import MainLayout from "../layouts/main.astro";
 import Nav from "../components/Nav.astro";
-
-changeLanguage("en");
 
 const projects: Project[] = await useSanityClient().fetch(projectListQuery, {
     locale: i18next.language,
@@ -26,66 +24,19 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
     <main>
         <RotaryDial client:only />
 
+        <ul>
+            {
+                projects.map((p) => (
+                    <li>
+                        <a href={`/project/${p.slug}`}>{p.title}</a>
+                    </li>
+                ))
+            }
+        </ul>
+
         <Footer />
     </main>
 </MainLayout>
-
-<script>
-    import { animate, stagger } from "motion";
-
-    // Animate sections on loading
-    animate(
-        "main > section",
-        {
-            opacity: [0, 0.7],
-        },
-        {
-            duration: 0.75,
-            easing: [0.43, 0.13, 0.23, 0.96],
-            delay: stagger(0.25),
-        }
-    );
-
-    // Add BlurBackground custom element (used in Intro.astro & CallToAction.astro)
-    class BlurBackground extends HTMLElement {
-        constructor() {
-            super();
-
-            let div = this,
-                divBounds: DOMRect | undefined;
-
-            div?.addEventListener("mousemove", (e) => {
-                if (!divBounds) return;
-
-                const x =
-                    (e.pageX - window.scrollX - divBounds.x) / divBounds.width;
-                const y =
-                    (e.pageY - window.scrollY - divBounds.y) / divBounds.height;
-
-                div?.style.setProperty("--cursor-x", String(x));
-                div?.style.setProperty("--cursor-y", String(y));
-            });
-
-            div?.addEventListener("mouseout", (e) => {
-                div?.style.removeProperty("--cursor-x");
-                div?.style.removeProperty("--cursor-y");
-            });
-
-            const resetBoundingRect = (e?: Event) => {
-                divBounds = div?.getBoundingClientRect();
-                if (divBounds && process.env.NODE_ENV === "development")
-                    console.log({ x: divBounds.x, y: divBounds.y });
-            };
-
-            window.addEventListener("scroll", resetBoundingRect);
-            window.addEventListener("resize", resetBoundingRect);
-
-            resetBoundingRect();
-        }
-    }
-
-    customElements.define("blur-background", BlurBackground);
-</script>
 
 <style lang="scss">
     main {
@@ -102,63 +53,6 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
         > :global(*) {
             width: 100%;
             max-width: 1024px;
-        }
-    }
-
-    section {
-        width: 100%;
-        height: auto;
-        position: relative;
-
-        // Set for animation
-        opacity: 0.7;
-
-        & > :global(*) {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        &[data-for="intro"] {
-            aspect-ratio: 1.88;
-        }
-        &[data-for="projects"] {
-            aspect-ratio: 1.85;
-        }
-        &[data-for="cta"] {
-            aspect-ratio: 2.11;
-        }
-    }
-
-    @media only screen and (width <= 640px) {
-        section {
-            // FIXME: should be 1 for small screens
-            opacity: 1 !important;
-
-            &[data-for="intro"] {
-                aspect-ratio: 2 / 3;
-            }
-            &[data-for="projects"] {
-                aspect-ratio: 2 / 3;
-            }
-            &[data-for="cta"] {
-                aspect-ratio: 1;
-            }
-        }
-    }
-
-    @media only screen and (width > 640px) {
-        main {
-            :global(.grayscale) {
-                filter: grayscale(100%);
-                transition: filter 0.8s cubic-bezier(0.33, 1, 0.68, 1),
-                    opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
-
-                &:hover {
-                    opacity: 1 !important;
-                    filter: grayscale(0%);
-                }
-            }
         }
     }
 </style>
