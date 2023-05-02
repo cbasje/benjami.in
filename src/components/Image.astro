@@ -1,7 +1,7 @@
 ---
 import { urlForImage } from "../../lib/sanity";
 import type { Image as ImageType } from "../../lib/types";
-import { Image } from "@astrojs/image/components";
+import { Image as AstroImage } from "@astrojs/image/components";
 
 export interface Props {
     src: ImageType;
@@ -13,7 +13,7 @@ export interface Props {
 const { src, width, height, fillContainer, alt } = Astro.props;
 ---
 
-<Image
+<AstroImage
     class={`image ${fillContainer ? "fill-container" : ""}`}
     width={width}
     height={height}

@@ -1,10 +1,9 @@
+import image from "@astrojs/image";
 import svelte from "@astrojs/svelte";
 import astroI18next from "astro-i18next";
 import sanity from "astro-sanity";
 import { defineConfig } from "astro/config";
-import image from "@astrojs/image";
 
-// https://astro.build/config
 export default defineConfig({
     output: "static",
     site: "https://benjami.in",
@@ -16,6 +15,9 @@ export default defineConfig({
             useCdn: true,
         }),
         astroI18next(),
+        // image({
+        //     serviceEntryPoint: "@astrojs/image/sharp",
+        // }),
         image(),
         svelte(),
     ],
