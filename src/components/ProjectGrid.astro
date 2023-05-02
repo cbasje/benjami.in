@@ -46,7 +46,7 @@ const { projects } = Astro.props;
         }
     }
 
-    @media only screen and (width <= 640px) {
+    @media (--md-n-below) {
         .grid {
             display: flex;
             flex-direction: column;

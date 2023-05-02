@@ -32,7 +32,7 @@ StyleDictionaryPackage.registerFormat({
                 ${content}
             }`;
         } else {
-            return `@media only screen and (prefers-color-scheme: ${this.selector}) {
+            return `@media (--OS${this.selector}) {
                 :root {
                     ${content}
                 }

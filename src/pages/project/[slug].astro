@@ -145,7 +145,7 @@ export async function getStaticPaths() {
         background-color: rgb(var(--projectColor));
     }
 
-    @media only screen and (width <= 640px) {
+    @media (--md-n-below) {
         header .intro {
             display: flex;
             flex-direction: column;
