@@ -94,7 +94,6 @@
             > span {
                 max-width: 100%;
 
-                font-family: var(--fonts-display);
                 font-weight: var(--font-weights-regular);
                 font-size: smaller;
                 line-height: 1.5;
