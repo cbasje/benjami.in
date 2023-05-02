@@ -248,21 +248,17 @@
       "type": "fontWeights"
     }
   },
-  "_fonts": {
-    "display": {
-      "value": "\"Space Mono\", -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+  "_font": {
+    "sans": {
+      "value": "\"Atkinson Hyperlegible\", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif",
       "type": "fontFamilies"
     },
-    "text": {
-      "value": "\"Inter\", -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+    "serif": {
+      "value": "ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif",
       "type": "fontFamilies"
     },
     "mono": {
-      "value": "\"Space Mono\", monospace",
-      "type": "fontFamilies"
-    },
-    "dyslexic": {
-      "value": "-apple-system, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+      "value": "\"Space Mono\", ui-monospace, SFMono-Regular, Dank Mono, Operator Mono, Inconsolata, Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro, monospace",
       "type": "fontFamilies"
     }
   }
