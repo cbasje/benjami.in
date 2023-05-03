@@ -1,15 +1,15 @@
 ---
 import { useSanityClient } from "astro-sanity";
-import i18next from "i18next";
-
+import i18next, { changeLanguage } from "i18next";
 import { homeQuery, projectListQuery } from "../../lib/queries";
 import type { Home, Project } from "../../lib/types";
-
 import RotaryDial from "../components/RotaryDial.svelte";
 import Footer from "../components/Footer.astro";
 import Image from "../components/Image.astro";
 import MainLayout from "../layouts/main.astro";
 import Nav from "../components/Nav.astro";
+
+changeLanguage("en");
 
 const projects: Project[] = await useSanityClient().fetch(projectListQuery, {
     locale: i18next.language,
@@ -17,40 +17,43 @@ const projects: Project[] = await useSanityClient().fetch(projectListQuery, {
 const homepage: Home = await useSanityClient().fetch(homeQuery, {
     locale: i18next.language,
 });
-
 type DialElement = {
     index: number;
-    data?: { slug: string; title: string; image: string };
+    data?: {
+        slug: string;
+        title: string;
+        image: string;
+    };
 };
 const elements: DialElement[] = [
     {
         index: 1,
         data: projects.length
             ? {
-                  slug: projects[0].slug,
-                  title: projects[0].title,
-                  image: projects[0].mainImage,
-              }
+                slug: projects[0].slug,
+                title: projects[0].title,
+                image: projects[0].mainImage,
+            }
             : undefined,
     },
     {
         index: 2,
         data: projects.length
             ? {
-                  slug: projects[1].slug,
-                  title: projects[1].title,
-                  image: projects[1].mainImage,
-              }
+                slug: projects[1].slug,
+                title: projects[1].title,
+                image: projects[1].mainImage,
+            }
             : undefined,
     },
     {
         index: 3,
         data: projects.length
             ? {
-                  slug: projects[2].slug,
-                  title: projects[2].title,
-                  image: projects[2].mainImage,
-              }
+                slug: projects[2].slug,
+                title: projects[2].title,
+                image: projects[2].mainImage,
+            }
             : undefined,
     },
     { index: 4 },
