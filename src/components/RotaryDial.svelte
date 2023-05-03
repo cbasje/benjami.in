@@ -18,18 +18,18 @@
     let isGrabbing = false;
 
     // Remove 'active' class from all list items, except the one at the correct index
-    let imageList: HTMLUListElement;
+    let destinationList: HTMLUListElement;
     $: if (num !== null) {
         const index = num === 0 ? 10 : num;
 
-        imageList
+        destinationList
             ?.querySelector(`li:nth-child(${index})`)
             ?.classList.add("active");
-        imageList
+        destinationList
             ?.querySelectorAll(`li:not(:nth-child(${index}))`)
             .forEach((l) => l.classList.remove("active"));
     } else {
-        imageList
+        destinationList
             ?.querySelectorAll("li")
             .forEach((l) => l.classList.remove("active"));
     }
@@ -96,7 +96,7 @@
         const finalIndex = finalNumber - 1;
         if (!elementSlugs.at(finalIndex)) return;
 
-        location.assign(`project/${elementSlugs.at(finalIndex)!}`);
+        location.assign(elementSlugs.at(finalIndex)!);
     };
 
     function pointerMove(e: PointerEvent) {
@@ -137,17 +137,16 @@
 </script>
 
 <div
-    class="dial-container"
+    class="dial"
     class:grabbing={isGrabbing}
     bind:this={containerElement}
     on:pointerdown={pointerDown}
     on:touchmove|preventDefault
 >
-    <ul class="image-list" bind:this={imageList}>
+    <ul class="destination-list" bind:this={destinationList}>
         <slot />
     </ul>
     <svg
-        class="dial"
         width="400"
         height="400"
         viewBox="0 0 400 400"
@@ -231,7 +230,7 @@
 </div>
 
 <style lang="scss">
-    .dial-container {
+    .dial {
         flex: 1;
         display: grid;
         place-content: center;
@@ -248,7 +247,7 @@
             grid-area: 1/1;
         }
 
-        .image-list {
+        ul.destination-list {
             margin: 0;
             padding: 0;
             position: relative;
@@ -290,7 +289,7 @@
             }
         }
 
-        svg.dial {
+        > svg {
             width: 80vmin;
             height: auto;
             aspect-ratio: 1;
