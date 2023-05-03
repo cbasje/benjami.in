@@ -1,5 +1,4 @@
 .line {
-    all: unset;
     height: 1.4;
     background: rgb(var(--colors-grey-900) / 8%);
 }
@@ -14,11 +13,8 @@ a:not(.overlay) {
     }
 }
 .button {
-    all: unset;
-
     cursor: pointer;
-    user-select: none;
-    outline: currentColor;
+    color: inherit;
     border-radius: var(--radii-sm);
 
     --gradient: linear-gradient(
