@@ -1,6 +1,8 @@
 <script lang="ts">
     import { onMount } from "svelte";
 
+    export let elementSlugs: (string | undefined)[];
+
     let containerElement: HTMLDivElement;
     let rect: DOMRect;
 
@@ -15,13 +17,16 @@
     let num: number | null = null;
     let isGrabbing = false;
 
+    // Remove 'active' class from all list items, except the one at the correct index
     let imageList: HTMLUListElement;
     $: if (num !== null) {
+        const index = num === 0 ? 10 : num;
+
         imageList
-            ?.querySelector(`li:nth-child(${num})`)
+            ?.querySelector(`li:nth-child(${index})`)
             ?.classList.add("active");
         imageList
-            ?.querySelectorAll(`li:not(:nth-child(${num}))`)
+            ?.querySelectorAll(`li:not(:nth-child(${index}))`)
             .forEach((l) => l.classList.remove("active"));
     } else {
         imageList
@@ -83,6 +88,17 @@
         }
     };
 
+    const sendNumber = (finalNumber: number | null) => {
+        console.log(finalNumber);
+
+        if (!finalNumber) return;
+
+        const finalIndex = finalNumber - 1;
+        if (!elementSlugs.at(finalIndex)) return;
+
+        location.assign(`project/${elementSlugs.at(finalIndex)!}`);
+    };
+
     function pointerMove(e: PointerEvent) {
         e.preventDefault();
 
@@ -110,8 +126,8 @@
 
     function pointerUp() {
         goBack();
+        sendNumber(num);
 
-        console.log(num);
         num = null;
         isGrabbing = false;
 

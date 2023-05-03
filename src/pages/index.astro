@@ -67,7 +67,10 @@ const elements: DialElement[] = [
     <Nav />
 
     <main>
-        <RotaryDial client:only>
+        <RotaryDial
+            elementSlugs={elements.map((el) => el.data?.slug)}
+            client:only
+        >
             {
                 elements.map((el) => (
                     // <li class:active={i % 10 === num}>
