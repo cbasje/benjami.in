@@ -28,19 +28,32 @@
 
 @layer overrides {
     @import "./themes/global.scss";
-    @import "./themes/dark.scss";
-    @import "./themes/light.scss";
+
+    @media (--OSlight) {
+        @import "./themes/light.scss";
+
+        // FIXME: put in DS
+        :root {
+            --surface-document: var(--gray-0);
+            --surface-1: var(--gray-2);
+        }
+    }
+    @media (--OSdark) {
+        @import "./themes/dark.scss";
+
+        :root {
+            // FIXME: put in DS
+            --surface-document: var(--gray-12);
+            --surface-1: var(--gray-10);
+        }
+    }
 
     :root {
-        --surface-document: var(--gray-12);
-        --surface-1: var(--gray-10);
-
         background-color: var(--surface-document);
         color: rgb(var(--theme-fg-default));
         accent-color: rgb(var(--theme-accent-default));
         caret-color: rgb(var(--theme-accent-default));
     }
-
     h1,
     h2 {
         // margin: 0 0 1.1em;

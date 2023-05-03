@@ -27,17 +27,15 @@ StyleDictionaryPackage.registerFormat({
             })
             .join("\n");
 
-        if (this.selector === "global") {
-            return `:root {
-                ${content}
-            }`;
-        } else {
-            return `@media (--OS${this.selector}) {
-                :root {
-                    ${content}
-                }
-            }`;
-        }
+        // if (this.selector === "global") {
+        return `:root {
+            ${content}
+        }`;
+        // } else {
+        //     return `:root[data-theme=$this.selector] {
+        //          ${content}
+        //     }`;
+        // }
     },
 });
 

@@ -1,13 +1,11 @@
-@media (--OSlight) {
-                :root {
-                    --theme-bg-default: 255 255 255;
---theme-bg-subtle: 243 244 246;
---theme-bg-muted: 209 213 219;
---theme-fg-default: 23 23 23;
---theme-fg-on-accent: 255 255 255;
---theme-fg-muted: 55 65 81;
---theme-fg-subtle: 107 114 128;
---theme-accent-default: 168 85 247;
---theme-accent-subtle: 243 232 255;
-                }
-            }
+:root {
+    --theme-bg-default: 255 255 255;
+    --theme-bg-subtle: 243 244 246;
+    --theme-bg-muted: 209 213 219;
+    --theme-fg-default: 23 23 23;
+    --theme-fg-on-accent: 255 255 255;
+    --theme-fg-muted: 55 65 81;
+    --theme-fg-subtle: 107 114 128;
+    --theme-accent-default: 168 85 247;
+    --theme-accent-subtle: 243 232 255;
+}
