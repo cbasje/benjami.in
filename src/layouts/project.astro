@@ -10,10 +10,7 @@ export interface Props {
 }
 const { colour, seo } = Astro.props;
 
-const overlayColor = `var(--colors-${colour ?? "grey"}-900)`;
-const buttonColor = colour
-    ? `var(--colors-${colour}-500)`
-    : "var(--theme-accent-default)";
+const themeAccentDefault = `var(--colors-${colour ?? "grey"}-500)`;
 ---
 
 <MainLayout seo={seo} noTopPadding>
@@ -56,12 +53,12 @@ const buttonColor = colour
     );
 </script>
 
-<style lang="scss" define:vars={{ overlayColor, buttonColor }}>
+<style lang="scss" define:vars={{ "theme-accent-default": themeAccentDefault }}>
     .overlay {
         position: fixed;
         inset: 0;
         z-index: -1;
-        background-color: rgb(var(--overlayColor) / 25%);
+        background-color: rgb(var(--theme-accent-default) / 25%);
     }
 
     .icon-button {
@@ -81,10 +78,10 @@ const buttonColor = colour
         z-index: 1;
 
         &:hover {
-            background-color: rgb(var(--buttonColor));
+            background-color: rgb(var(--theme-accent-default));
         }
         &:focus {
-            box-shadow: 0 0 0 2px rgb(var(--buttonColor) / 75%);
+            box-shadow: 0 0 0 2px rgb(var(--theme-accent-default) / 75%);
         }
     }
 
