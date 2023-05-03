@@ -1,19 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
 
-    let images: string[] = [
-        "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-        "https://images.unsplash.com/photo-1676839670988-55a7e968f5f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-        "https://images.unsplash.com/photo-1676858125564-6f78ffab1c01?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-        "https://images.unsplash.com/photo-1676799911060-72c098f7ad3d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-        "https://images.unsplash.com/photo-1676809672355-92896820e83b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-        "https://images.unsplash.com/photo-1676805534914-fa461aafdf19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-        "https://images.unsplash.com/photo-1676804957733-e96df35d9878?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-        "https://images.unsplash.com/photo-1676806850845-97ae96df2e55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-        "https://images.unsplash.com/photo-1675868069194-c7d8763942cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-        "https://images.unsplash.com/photo-1676584358837-4b02f2945a3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-    ];
-
     let containerElement: HTMLDivElement;
     let rect: DOMRect;
 
@@ -27,6 +14,20 @@
 
     let num: number | null = null;
     let isGrabbing = false;
+
+    let imageList: HTMLUListElement;
+    $: if (num !== null) {
+        imageList
+            ?.querySelector(`li:nth-child(${num})`)
+            ?.classList.add("active");
+        imageList
+            ?.querySelectorAll(`li:not(:nth-child(${num}))`)
+            .forEach((l) => l.classList.remove("active"));
+    } else {
+        imageList
+            ?.querySelectorAll("li")
+            .forEach((l) => l.classList.remove("active"));
+    }
 
     // Rotation is the angle traveled
     $: rotation = (currentAngle - startAngle) % 360;
@@ -126,14 +127,8 @@
     on:pointerdown={pointerDown}
     on:touchmove|preventDefault
 >
-    <ul class="image-list">
-        {#each images as img, i}
-            <li class:active={i % 10 === num}>
-                <a href="/project/id">
-                    <img src={img} alt="" loading="lazy" />
-                </a>
-            </li>
-        {/each}
+    <ul class="image-list" bind:this={imageList}>
+        <slot />
     </ul>
     <svg
         class="dial"
@@ -242,9 +237,12 @@
             padding: 0;
             position: relative;
 
-            > li {
+            :global(li) {
                 width: 50%;
                 height: 50%;
+                max-inline-size: unset;
+                max-block-size: unset;
+
                 position: absolute;
                 top: 25%;
                 left: 25%;
@@ -253,26 +251,26 @@
 
                 border-radius: 50%;
                 overflow: hidden;
+            }
 
-                a {
-                    width: 100%;
-                    height: 100%;
-                    display: block;
+            :global(li a) {
+                width: 100%;
+                height: 100%;
+                display: block;
 
-                    margin: 0;
-                    padding: 0;
+                margin: 0;
+                padding: 0;
+            }
 
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        object-position: center;
-                    }
-                }
+            :global(li img) {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
 
-                &:not(.active) {
-                    display: none;
-                }
+            :global(li:not(.active)) {
+                display: none;
             }
         }
 
@@ -281,7 +279,6 @@
             height: auto;
             aspect-ratio: 1;
             pointer-events: none;
-            user-select: none;
 
             .circles {
                 rotate: calc(var(--rotation) * 1deg);

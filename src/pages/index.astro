@@ -7,6 +7,7 @@ import type { Home, Project } from "../../lib/types";
 
 import RotaryDial from "../components/RotaryDial.svelte";
 import Footer from "../components/Footer.astro";
+import Image from "../components/Image.astro";
 import MainLayout from "../layouts/main.astro";
 import Nav from "../components/Nav.astro";
 
@@ -16,23 +17,76 @@ const projects: Project[] = await useSanityClient().fetch(projectListQuery, {
 const homepage: Home = await useSanityClient().fetch(homeQuery, {
     locale: i18next.language,
 });
+
+type DialElement = {
+    index: number;
+    data?: { slug: string; title: string; image: string };
+};
+const elements: DialElement[] = [
+    {
+        index: 1,
+        data: projects.length
+            ? {
+                  slug: projects[0].slug,
+                  title: projects[0].title,
+                  image: projects[0].mainImage,
+              }
+            : undefined,
+    },
+    {
+        index: 2,
+        data: projects.length
+            ? {
+                  slug: projects[1].slug,
+                  title: projects[1].title,
+                  image: projects[1].mainImage,
+              }
+            : undefined,
+    },
+    {
+        index: 3,
+        data: projects.length
+            ? {
+                  slug: projects[2].slug,
+                  title: projects[2].title,
+                  image: projects[2].mainImage,
+              }
+            : undefined,
+    },
+    { index: 4 },
+    { index: 5 },
+    { index: 6 },
+    { index: 7 },
+    { index: 8 },
+    { index: 9 },
+    { index: 0 },
+];
 ---
 
 <MainLayout seo={homepage.seo}>
     <Nav />
 
     <main>
-        <RotaryDial client:only />
-
-        <ul>
+        <RotaryDial client:only>
             {
-                projects.map((p) => (
+                elements.map((el) => (
+                    // <li class:active={i % 10 === num}>
                     <li>
-                        <a href={`/project/${p.slug}`}>{p.title}</a>
+                        {el.data && (
+                            <a href={`/project/${el.data.slug}`}>
+                                <Image
+                                    alt={`Main image of ${el.data.title}`}
+                                    src={el.data.image}
+                                    width={512}
+                                    height={512}
+                                    fillContainer
+                                />
+                            </a>
+                        )}
                     </li>
                 ))
             }
-        </ul>
+        </RotaryDial>
 
         <Footer />
     </main>
