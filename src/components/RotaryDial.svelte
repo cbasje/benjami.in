@@ -235,9 +235,7 @@
     .dial {
         flex: 1;
         display: grid;
-        place-content: center;
-        justify-content: stretch;
-        align-items: stretch;
+        place-content: stretch;
 
         cursor: grab;
 
@@ -321,9 +319,7 @@
 
     @media (--md-n-above) {
         .dial {
-            > svg {
-                max-width: 80vmin;
-            }
+            max-width: 80vmin;
         }
     }
 </style>
