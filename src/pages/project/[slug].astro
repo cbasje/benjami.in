@@ -95,6 +95,8 @@ export async function getStaticPaths() {
 </ProjectsLayout>
 
 <style lang="scss">
+    @import "open-props/media";
+
     header {
         display: flex;
         flex-direction: column;
@@ -105,9 +107,9 @@ export async function getStaticPaths() {
             font-size: var(--font-size-7);
         }
 
-        .intro {
+        div.intro {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
             gap: var(--spaces-3);
 
             > div {
@@ -138,11 +140,11 @@ export async function getStaticPaths() {
         background-color: rgb(var(--projectColor));
     }
 
-    @media (--md-n-below) {
-        header .intro {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spaces-3);
+    @media (--md-n-above) {
+        header {
+            div.intro {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     }
 </style>

@@ -230,6 +230,8 @@
 </div>
 
 <style lang="scss">
+    @import "open-props/media";
+
     .dial {
         flex: 1;
         display: grid;
@@ -291,7 +293,7 @@
         }
 
         > svg {
-            width: 80vmin;
+            width: 100%;
             height: auto;
             aspect-ratio: 1;
             pointer-events: none;
@@ -313,6 +315,14 @@
             #clipNumbers > path {
                 rotate: calc(var(--rotation) * 1deg);
                 transform-origin: center;
+            }
+        }
+    }
+
+    @media (--md-n-above) {
+        .dial {
+            > svg {
+                max-width: 80vmin;
             }
         }
     }

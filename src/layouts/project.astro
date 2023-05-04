@@ -90,7 +90,8 @@ const themeAccentDefault = `var(--colors-${colour ?? "grey"}-500)`;
         border-top-left-radius: var(--radii-md);
         border-top-right-radius: var(--radii-md);
         margin-top: 4em;
-        width: 100vw;
+        width: 100%;
+        min-height: 100vh;
         position: relative;
         overflow-y: scroll;
 
@@ -120,7 +121,7 @@ const themeAccentDefault = `var(--colors-${colour ?? "grey"}-500)`;
 
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             gap: var(--spaces-6);
 
