@@ -15,7 +15,7 @@ a:not(.overlay) {
 .button {
     cursor: pointer;
     color: inherit;
-    border-radius: var(--radii-sm);
+    border-radius: var(--radius-2);
 
     --gradient: linear-gradient(
         135deg,

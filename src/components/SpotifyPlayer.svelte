@@ -76,7 +76,7 @@
         display: flex;
         flex-direction: row;
         gap: var(--spaces-2);
-        border-radius: var(--radii-md);
+        border-radius: var(--radius-3);
         line-height: 24px;
         letter-spacing: -0.01em;
 
@@ -109,13 +109,13 @@
         }
 
         img {
-            border-radius: var(--radii-full);
+            border-radius: var(--radius-round);
             width: 3rem;
             height: 3rem;
         }
 
         .image-placeholder {
-            border-radius: var(--radii-full);
+            border-radius: var(--radius-round);
             width: 3rem;
             height: 3rem;
             background: rgb(var(--colors-green-400));

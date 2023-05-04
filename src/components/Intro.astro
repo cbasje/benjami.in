@@ -30,7 +30,7 @@ const { homepage } = Astro.props;
         <defs>
             <clipPath id="clipHeadshot">
                 <rect
-                    style={{ rx: "var(--radii-md)" }}
+                    style={{ rx: "var(--radius-3)" }}
                     width="1384"
                     height="786"
                     fill="white"></rect>
@@ -50,7 +50,7 @@ const { homepage } = Astro.props;
 
         --border-size: 6px;
         border: var(--border-size) solid rgb(0 0 0 / 10%);
-        border-radius: var(--radii-md);
+        border-radius: var(--radius-3);
 
         --cursor-y: 0.7;
         --cursor-x: 0.7;
@@ -64,7 +64,7 @@ const { homepage } = Astro.props;
             inset: calc(var(--border-size) * -1);
             z-index: -1;
 
-            border-radius: var(--radii-md);
+            border-radius: var(--radius-3);
             overflow: hidden;
 
             will-change: background, opacity;
