@@ -116,14 +116,14 @@ const themeAccentDefault = `var(--colors-${colour ?? "grey"}-500)`;
         article {
             width: 100%;
             margin-inline: auto;
-            padding-inline: var(--spaces-2);
-            padding-block: calc(var(--spaces-6) * 2);
+            padding-inline: var(--size-3);
+            padding-block: calc(var(--size-8) * 2);
 
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            gap: var(--spaces-6);
+            gap: var(--size-8);
 
             > :global(:not(section)) {
                 width: 100%;
@@ -139,7 +139,7 @@ const themeAccentDefault = `var(--colors-${colour ?? "grey"}-500)`;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: var(--spaces-3);
+                gap: var(--size-5);
 
                 > :global(*) {
                     width: 100%;

@@ -31,30 +31,30 @@ const elements: DialElement[] = [
         index: 1,
         data: projects.length
             ? {
-                slug: localizePath(`project/${projects[0].slug}`),
-                title: projects[0].title,
-                image: projects[0].mainImage,
-            }
+                  slug: localizePath(`project/${projects[0].slug}`),
+                  title: projects[0].title,
+                  image: projects[0].mainImage,
+              }
             : undefined,
     },
     {
         index: 2,
         data: projects.length
             ? {
-                slug: localizePath(`project/${projects[1].slug}`),
-                title: projects[1].title,
-                image: projects[1].mainImage,
-            }
+                  slug: localizePath(`project/${projects[1].slug}`),
+                  title: projects[1].title,
+                  image: projects[1].mainImage,
+              }
             : undefined,
     },
     {
         index: 3,
         data: projects.length
             ? {
-                slug: localizePath(`project/${projects[2].slug}`),
-                title: projects[2].title,
-                image: projects[2].mainImage,
-            }
+                  slug: localizePath(`project/${projects[2].slug}`),
+                  title: projects[2].title,
+                  image: projects[2].mainImage,
+              }
             : undefined,
     },
     { index: 4 },
@@ -117,7 +117,7 @@ const elements: DialElement[] = [
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: var(--spaces-6);
+        gap: var(--size-8);
 
         > :global(*) {
             width: 100%;
@@ -134,7 +134,7 @@ const elements: DialElement[] = [
 
     @media (--md-n-above) {
         main {
-            padding-inline: var(--spaces-2);
+            padding-inline: var(--size-3);
         }
     }
 </style>

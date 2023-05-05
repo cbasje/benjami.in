@@ -75,7 +75,7 @@
 
         display: flex;
         flex-direction: row;
-        gap: var(--spaces-2);
+        gap: var(--size-3);
         border-radius: var(--radius-3);
         line-height: 24px;
         letter-spacing: -0.01em;

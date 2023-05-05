@@ -34,11 +34,11 @@ a:not(.overlay) {
 
     &.size-regular {
         padding-block: var(--spaces-1);
-        padding-inline: var(--spaces-2);
+        padding-inline: var(--size-3);
     }
     &.size-large {
-        padding-block: var(--spaces-2);
-        padding-inline: var(--spaces-3);
+        padding-block: var(--size-3);
+        padding-inline: var(--size-5);
 
         font-size: x-large;
         font-weight: var(--font-weight-7);
