@@ -1,8 +1,6 @@
 @import "open-props/media";
-
-@layer normalize {
-    @import "open-props/normalize";
-}
+@import "open-props/normalize" layer(normalize);
+@import "open-props/easings" layer(base);
 
 @layer theme {
     @layer colors {

@@ -16,6 +16,7 @@
 
     let num: number | null = null;
     let isGrabbing = false;
+    let isResetting = false;
 
     // Remove 'active' class from all list items, except the one at the correct index
     let destinationList: HTMLUListElement;
@@ -78,13 +79,17 @@
 
     const goBack = () => {
         if (rotation > startRotation) {
+            isResetting = true;
             rotation -= 5;
 
             requestAnimationFrame((_) => {
                 goBack();
             });
 
-            if (rotation - startRotation < 0.05) rotation = startRotation;
+            if (rotation - startRotation < 0.05) {
+                rotation = startRotation;
+                isResetting = false;
+            }
         }
     };
 
@@ -139,6 +144,7 @@
 <div
     class="dial"
     class:grabbing={isGrabbing}
+    class:resetting={isResetting}
     bind:this={containerElement}
     on:pointerdown={pointerDown}
     on:touchmove|preventDefault
@@ -241,6 +247,13 @@
 
         &.grabbing {
             cursor: grabbing;
+        }
+
+        &:not(.grabbing, .resetting):hover {
+            > svg .circles {
+                --rotation: 3 !important;
+                transition: rotate 200ms var(--ease-elastic-4);
+            }
         }
 
         > * {
