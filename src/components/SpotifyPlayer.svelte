@@ -94,7 +94,7 @@
             > span {
                 max-width: 100%;
 
-                font-weight: var(--font-weights-regular);
+                font-weight: var(--font-weight-5);
                 font-size: smaller;
                 line-height: 1.5;
                 text-transform: uppercase;
@@ -103,7 +103,7 @@
                 text-overflow: ellipsis;
 
                 &:first-child {
-                    font-weight: var(--font-weights-bold);
+                    font-weight: var(--font-weight-7);
                 }
             }
         }
