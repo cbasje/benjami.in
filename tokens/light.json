@@ -2,25 +2,25 @@
   "theme": {
     "bg": {
       "default": {
-        "value": "#ffffff",
+        "value": "#f9fafb",
         "type": "color"
       },
       "subtle": {
-        "value": "#f3f4f6",
+        "value": "#e5e7eb",
         "type": "color"
       },
       "muted": {
-        "value": "#d1d5db",
+        "value": "#9ca3af",
         "type": "color"
       }
     },
     "fg": {
       "default": {
-        "value": "#171717",
+        "value": "#111827",
         "type": "color"
       },
       "onAccent": {
-        "value": "#ffffff",
+        "value": "#f9fafb",
         "type": "color"
       },
       "muted": {

@@ -2,11 +2,11 @@
   "theme": {
     "bg": {
       "default": {
-        "value": "#171717",
+        "value": "#111827",
         "type": "color"
       },
       "subtle": {
-        "value": "#111827",
+        "value": "#1f2937",
         "type": "color"
       },
       "muted": {
@@ -16,11 +16,11 @@
     },
     "fg": {
       "default": {
-        "value": "#ffffff",
+        "value": "#f9fafb",
         "type": "color"
       },
       "onAccent": {
-        "value": "#ffffff",
+        "value": "#f9fafb",
         "type": "color"
       },
       "muted": {
