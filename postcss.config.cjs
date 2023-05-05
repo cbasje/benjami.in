@@ -2,7 +2,7 @@
 const config = {
     plugins: [
         require("postcss-custom-media"),
-        require("postcss-nested"),
+        require("postcss-preset-env"),
         require("autoprefixer"),
     ],
 };
