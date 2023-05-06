@@ -203,16 +203,16 @@
             />
         </g>
         <g class="circles" style="--rotation: {rotation}">
-            <circle cx="269" cy="342" r="32" stroke="black" stroke-width="2" />
-            <circle cx="200" cy="358" r="32" stroke="black" stroke-width="2" />
-            <circle cx="131" cy="342" r="32" stroke="black" stroke-width="2" />
-            <circle cx="76" cy="299" r="32" stroke="black" stroke-width="2" />
-            <circle cx="46" cy="235" r="32" stroke="black" stroke-width="2" />
-            <circle cx="46" cy="165" r="32" stroke="black" stroke-width="2" />
-            <circle cx="76" cy="101" r="32" stroke="black" stroke-width="2" />
-            <circle cx="131" cy="58" r="32" stroke="black" stroke-width="2" />
-            <circle cx="200" cy="42" r="32" stroke="black" stroke-width="2" />
-            <circle cx="269" cy="58" r="32" stroke="black" stroke-width="2" />
+            <circle cx="269" cy="342" r="32" />
+            <circle cx="200" cy="358" r="32" />
+            <circle cx="131" cy="342" r="32" />
+            <circle cx="76" cy="299" r="32" />
+            <circle cx="46" cy="235" r="32" />
+            <circle cx="46" cy="165" r="32" />
+            <circle cx="76" cy="101" r="32" />
+            <circle cx="131" cy="58" r="32" />
+            <circle cx="200" cy="42" r="32" />
+            <circle cx="269" cy="58" r="32" />
         </g>
         <path
             class="triangle"
@@ -323,6 +323,7 @@
 
                 > circle {
                     stroke: var(--theme-surface-3);
+                    stroke-width: 1;
                 }
             }
             .numbers > path {
