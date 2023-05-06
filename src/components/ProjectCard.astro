@@ -11,7 +11,7 @@ export interface Props {
 const { project, useCustomColour } = Astro.props;
 
 const cardBg = useCustomColour
-    ? `rgb(var(--colors-${project.colour}-100)) !important`
+    ? `rgb(var(--color-${project.colour}-100)) !important`
     : undefined;
 ---
 
@@ -87,12 +87,12 @@ const cardBg = useCustomColour
         display: flex;
         flex-direction: row;
         align-items: baseline;
-        gap: var(--spaces-1);
+        gap: var(--size-2);
         position: absolute;
-        bottom: var(--spaces-1);
-        inset-inline: var(--spaces-1);
+        bottom: var(--size-2);
+        inset-inline: var(--size-2);
         padding-inline: var(--size-3);
-        padding-block: var(--spaces-1);
+        padding-block: var(--size-2);
         border-radius: var(--radius-2);
         background: rgb(var(--theme-bg-default) / 75%);
         backdrop-filter: blur(25px);

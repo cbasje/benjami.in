@@ -10,7 +10,7 @@ export interface Props {
 }
 const { colour, seo } = Astro.props;
 
-const themeAccentDefault = `var(--colors-${colour ?? "grey"}-500)`;
+const themeAccentDefault = `var(--color-${colour ?? "grey"}-500)`;
 ---
 
 <MainLayout seo={seo}>
@@ -69,7 +69,7 @@ const themeAccentDefault = `var(--colors-${colour ?? "grey"}-500)`;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        color: var(--colors-grey-50);
+        color: var(--color-neutral-50);
         position: fixed;
         top: 0.5em;
         right: 0.5em;
