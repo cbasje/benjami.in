@@ -4,6 +4,7 @@ const config = {
         require("postcss-custom-media"),
         // require("postcss-preset-env"),
         require("autoprefixer"),
+        require("cssnano"),
     ],
 };
 
