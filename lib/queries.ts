@@ -3,7 +3,7 @@ import groq from "groq";
 const projectFields = groq`
   title,
   description,
-  mainImage,
+  mainImageRound,
   colour,
   company,
   publishedAt,
@@ -20,11 +20,12 @@ const categoryFields = groq`
 
 export const projectsQuery = groq`
 *[_type == "project" && defined(slug.current) && __i18n_lang == $locale] {
-    excerpt,
-    content,
-    seo,
-    categories[] -> { _id, title },
-    ${projectFields}
+  mainImage,
+  excerpt,
+  content,
+  seo,
+  categories[] -> { _id, title },
+  ${projectFields}
 }`;
 
 export const projectListQuery = groq`

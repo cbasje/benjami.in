@@ -43,6 +43,11 @@ export default defineType({
             },
         }),
         defineField({
+            name: "mainImageRound",
+            title: "Main image (Round)",
+            type: "image",
+        }),
+        defineField({
             name: "colour",
             title: "Colour",
             type: "string",

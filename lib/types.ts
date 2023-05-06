@@ -63,6 +63,7 @@ export interface Project {
     excerpt: string;
     slug: string;
     mainImage: string;
+    mainImageRound: string;
     colour?: ProjectColour;
     categories: Pick<Category, "_id" | "title">[];
     content: TypedObject[];

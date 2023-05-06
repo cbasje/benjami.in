@@ -3,7 +3,7 @@ import { localizePath } from "astro-i18next";
 import { useSanityClient } from "astro-sanity";
 import i18next, { changeLanguage } from "i18next";
 import { homeQuery, projectListQuery } from "../../lib/queries";
-import type { Home, Project } from "../../lib/types";
+import type { Home, Project, ProjectColour } from "../../lib/types";
 import Footer from "../components/Footer.astro";
 import Image from "../components/Image.astro";
 import Nav from "../components/Nav.astro";
@@ -24,6 +24,7 @@ type DialElement = {
         slug: string;
         title: string;
         image: string;
+        colour?: ProjectColour;
     };
 };
 const elements: DialElement[] = [
@@ -31,30 +32,33 @@ const elements: DialElement[] = [
         index: 1,
         data: projects.length
             ? {
-                slug: localizePath(`project/${projects[0].slug}`),
-                title: projects[0].title,
-                image: projects[0].mainImage,
-            }
+                  slug: localizePath(`project/${projects[0].slug}`),
+                  title: projects[0].title,
+                  image: projects[0].mainImageRound,
+                  colour: projects[0].colour,
+              }
             : undefined,
     },
     {
         index: 2,
         data: projects.length
             ? {
-                slug: localizePath(`project/${projects[1].slug}`),
-                title: projects[1].title,
-                image: projects[1].mainImage,
-            }
+                  slug: localizePath(`project/${projects[1].slug}`),
+                  title: projects[1].title,
+                  image: projects[1].mainImageRound,
+                  colour: projects[1].colour,
+              }
             : undefined,
     },
     {
         index: 3,
         data: projects.length
             ? {
-                slug: localizePath(`project/${projects[2].slug}`),
-                title: projects[2].title,
-                image: projects[2].mainImage,
-            }
+                  slug: localizePath(`project/${projects[2].slug}`),
+                  title: projects[2].title,
+                  image: projects[2].mainImageRound,
+                  colour: projects[2].colour,
+              }
             : undefined,
     },
     { index: 4 },
@@ -79,7 +83,10 @@ const elements: DialElement[] = [
                 {
                     elements.map((el) => (
                         // <li class:active={i % 10 === num}>
-                        <li role="listitem">
+                        <li
+                            role="listitem"
+                            style={`--background: var(--gradient-${el.data?.colour})`}
+                        >
                             {el.data && (
                                 <a
                                     href={localizePath(
@@ -90,8 +97,7 @@ const elements: DialElement[] = [
                                         alt={`Main image of ${el.data.title}`}
                                         src={el.data.image}
                                         width={512}
-                                        height={512}
-                                        fillContainer
+                                        height={576}
                                     />
                                 </a>
                             )}

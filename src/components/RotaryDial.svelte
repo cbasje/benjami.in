@@ -279,13 +279,14 @@
 
                 list-style: none;
                 border-radius: 50%;
-                overflow: hidden;
+                background: var(--background);
             }
 
             :global(li a) {
                 width: 100%;
                 height: 100%;
                 display: block;
+                position: relative;
 
                 margin: 0;
                 padding: 0;
@@ -293,9 +294,9 @@
 
             :global(li img) {
                 width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
+                height: auto;
+                position: absolute;
+                bottom: 0;
             }
 
             :global(li:not(.active)) {
