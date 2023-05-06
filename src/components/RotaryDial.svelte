@@ -314,14 +314,14 @@
                 transform-origin: center;
 
                 > circle {
-                    stroke: rgb(var(--theme-bg-muted));
+                    stroke: var(--theme-surface-3);
                 }
             }
             .numbers > path {
-                fill: rgb(var(--theme-fg-default));
+                fill: var(--theme-text-1);
             }
             .triangle {
-                fill: rgb(var(--theme-fg-default));
+                fill: var(--theme-text-1);
             }
             #clipNumbers > path {
                 rotate: calc(var(--rotation) * 1deg);

@@ -10,7 +10,7 @@ export interface Props {
 }
 const { colour, seo } = Astro.props;
 
-const themeAccentDefault = `var(--color-${colour ?? "grey"}-500)`;
+const themeAccent1 = colour ? `var(--color-${colour}-5)` : undefined;
 ---
 
 <MainLayout seo={seo}>
@@ -53,12 +53,13 @@ const themeAccentDefault = `var(--color-${colour ?? "grey"}-500)`;
     );
 </script>
 
-<style lang="scss" define:vars={{ "theme-accent-default": themeAccentDefault }}>
+<style lang="scss" define:vars={{ "theme-accent-1": themeAccent1 }}>
     .overlay {
         position: fixed;
         inset: 0;
         z-index: -1;
-        background-color: rgb(var(--theme-accent-default) / 25%);
+        background-color: var(--theme-accent-1);
+        opacity: 25%;
     }
 
     .icon-button {
@@ -69,7 +70,7 @@ const themeAccentDefault = `var(--color-${colour ?? "grey"}-500)`;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        color: var(--color-neutral-50);
+        color: var(--theme-text-on-accent);
         position: fixed;
         top: 0.5em;
         right: 0.5em;
@@ -78,10 +79,11 @@ const themeAccentDefault = `var(--color-${colour ?? "grey"}-500)`;
         z-index: 1;
 
         &:hover {
-            background-color: rgb(var(--theme-accent-default));
+            background-color: var(--theme-accent-1);
         }
         &:focus {
-            box-shadow: 0 0 0 2px rgb(var(--theme-accent-default) / 75%);
+            outline-offset: 2px;
+            outline-color: var(--theme-accent-1);
         }
     }
 

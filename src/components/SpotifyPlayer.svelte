@@ -118,7 +118,7 @@
             border-radius: var(--radius-round);
             width: 3rem;
             height: 3rem;
-            background: rgb(var(--color-green-400));
+            background: var(--color-green-4);
         }
 
         .svg {

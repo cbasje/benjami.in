@@ -1,6 +1,6 @@
 .line {
     height: 1.4;
-    background: rgb(var(--color-grey-900) / 8%);
+    background: var(--color-surface-2);
 }
 
 a:not(.overlay) {
@@ -47,18 +47,18 @@ a:not(.overlay) {
 
     &.variant-primary {
         background: var(--gradient);
-        color: rgb(var(--theme-fg-on-accent));
+        color: var(--theme-text-on-accent);
     }
     &.variant-black {
-        color: rgb(var(--color-grey-100));
-        background: rgb(var(--color-grey-900));
+        color: var(--color-surface-2);
+        background: var(--color-text-1);
 
         &:hover {
-            background: rgb(var(--color-grey-700));
+            background: var(--color-surface-3);
         }
     }
     &.variant-primary-outlined {
-        color: rgb(var(--theme-fg-default));
+        color: var(--theme-surface-1);
         background: none;
 
         &:hover {
