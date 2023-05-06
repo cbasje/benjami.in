@@ -18,12 +18,12 @@ StyleDictionaryPackage.registerFormat({
 
         const content = dictionary.allProperties
             .map((prop) => {
-                if (prop.type === "color") {
-                    const rgbValue = hexToRgb(prop.value);
-                    return `--${prop.name}: ${rgbValue.r} ${rgbValue.g} ${rgbValue.b};`;
-                } else {
-                    return `--${prop.name}: ${prop.value};`;
-                }
+                // if (prop.type === "color") {
+                //     const rgbValue = hexToRgb(prop.value);
+                //     return `--${prop.name}: ${rgbValue.r} ${rgbValue.g} ${rgbValue.b};`;
+                // } else {
+                return `--${prop.name}: ${prop.value};`;
+                // }
             })
             .join("\n");
 
