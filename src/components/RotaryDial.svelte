@@ -280,6 +280,8 @@
                 list-style: none;
                 border-radius: 50%;
                 background: var(--background);
+
+                transition: opacity 150ms var(--ease-elastic-3);
             }
 
             :global(li a) {
@@ -299,8 +301,13 @@
                 bottom: 0;
             }
 
+            :global(li.active) {
+                opacity: 1;
+                visibility: visible;
+            }
             :global(li:not(.active)) {
-                display: none;
+                opacity: 0;
+                visibility: hidden;
             }
         }
 
