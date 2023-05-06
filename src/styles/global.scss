@@ -35,25 +35,13 @@
 
     @media (--OSlight) {
         @import "./themes/light.scss";
-
-        // FIXME: put in DS
-        :root {
-            --surface-document: var(--gray-0);
-            --surface-1: var(--gray-2);
-        }
     }
     @media (--OSdark) {
         @import "./themes/dark.scss";
-
-        :root {
-            // FIXME: put in DS
-            --surface-document: var(--gray-12);
-            --surface-1: var(--gray-10);
-        }
     }
 
     :root {
-        background-color: var(--surface-document);
+        background-color: var(--theme-surface-1);
         color: var(--theme-text-1);
         accent-color: var(--theme-accent-1);
         caret-color: var(--theme-accent-1);

@@ -85,7 +85,11 @@ const elements: DialElement[] = [
                         // <li class:active={i % 10 === num}>
                         <li
                             role="listitem"
-                            style={`--background: var(--gradient-${el.data?.colour})`}
+                            style={
+                                el.data?.colour
+                                    ? `--background: var(--gradient-${el.data?.colour})`
+                                    : "--background: var(--theme-surface-2)"
+                            }
                         >
                             {el.data && (
                                 <a

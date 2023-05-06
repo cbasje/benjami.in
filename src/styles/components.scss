@@ -1,6 +1,6 @@
 .line {
     height: 1.4;
-    background: var(--color-surface-2);
+    background: var(--theme-surface-2);
 }
 
 a:not(.overlay) {
@@ -50,11 +50,11 @@ a:not(.overlay) {
         color: var(--theme-text-on-accent);
     }
     &.variant-black {
-        color: var(--color-surface-2);
+        color: var(--theme-surface-2);
         background: var(--color-text-1);
 
         &:hover {
-            background: var(--color-surface-3);
+            background: var(--theme-surface-3);
         }
     }
     &.variant-primary-outlined {
