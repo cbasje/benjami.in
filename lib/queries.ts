@@ -60,6 +60,7 @@ export const homeQuery = groq`
 export const notFoundQuery = groq`
 *[_type == "not-found" && __i18n_lang == $locale] | order(_updatedAt desc) [0] {
   title,
+  description,
   "locale": __i18n_lang
 }
 `;
