@@ -143,6 +143,10 @@ const themeAccent1 = colour ? `var(--color-${colour}-5)` : undefined;
                 align-items: center;
                 gap: var(--size-5);
 
+                :global(h2, h3, h4, h5, h6) {
+                    max-inline-size: unset;
+                }
+
                 > :global(*) {
                     width: 100%;
                     height: auto;
@@ -157,10 +161,6 @@ const themeAccent1 = colour ? `var(--color-${colour}-5)` : undefined;
                     overflow: hidden;
                     object-fit: cover;
                 }
-            }
-            :global(a) {
-                font-weight: var(--font-weight-5);
-                // text-decoration: underline wavy;
             }
         }
     }

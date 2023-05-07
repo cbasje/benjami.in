@@ -37,9 +37,9 @@ export async function getStaticPaths() {
         <h1>{project.title}</h1>
         <div class="intro" role="presentation">
             <div role="none">
-                <h3 class="description">
+                <h2 class="description">
                     {project.description}
-                </h3>
+                </h2>
 
                 <div role="none">
                     <span>
@@ -105,8 +105,8 @@ export async function getStaticPaths() {
         gap: var(--size-2);
 
         h1 {
-            margin: 0;
-            font-size: var(--font-size-7);
+            font-size: var(--font-size-6);
+            line-height: var(--font-lineheight-1);
         }
 
         div.intro {
@@ -119,9 +119,11 @@ export async function getStaticPaths() {
                 flex-direction: column;
                 gap: var(--size-2);
 
-                h3.description {
+                h2.description {
                     margin: 0;
-                    font-size: 1.5rem;
+                    font-size: var(--font-size-4);
+                    font-weight: var(--font-weight-4);
+                    line-height: var(--font-lineheight-0);
                 }
 
                 > div {
