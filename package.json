@@ -5,11 +5,12 @@
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
-        "build": "npx astro-i18next generate && astro build",
+        "build": "generate:i18n && astro build",
         "preview": "astro preview",
         "astro": "astro",
         "sanity:dev": "sanity dev",
-        "sanity:build": "sanity build"
+        "sanity:deploy": "sanity deploy",
+        "generate:i18n": "npx astro-i18next generate"
     },
     "dependencies": {
         "@astrojs/image": "^0.16.6",

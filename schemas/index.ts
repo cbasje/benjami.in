@@ -1,3 +1,4 @@
+import { about } from "./about";
 import { category } from "./category";
 import { company } from "./company";
 import { global } from "./global";
@@ -11,5 +12,6 @@ export const schemaTypes = [
     global.schema(),
     home.schema(),
     notFound.schema(),
+    about.schema(),
     project.schema(),
 ];

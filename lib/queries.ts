@@ -57,6 +57,14 @@ export const homeQuery = groq`
 }
 `;
 
+export const aboutQuery = groq`
+*[_type == "about" && __i18n_lang == $locale] | order(_updatedAt desc) [0] {
+  title,
+  description,
+  "locale": __i18n_lang
+}
+`;
+
 export const notFoundQuery = groq`
 *[_type == "not-found" && __i18n_lang == $locale] | order(_updatedAt desc) [0] {
   title,

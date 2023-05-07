@@ -1,11 +1,12 @@
 import { s } from "@sanity-typed/schema-builder";
-import type { seo } from "../schemas/seo";
-import type { global } from "../schemas/global";
-import type { notFound } from "../schemas/not-found";
-import type { home } from "../schemas/home";
+import type { about } from "../schemas/about";
 import type { category } from "../schemas/category";
 import type { company } from "../schemas/company";
+import type { global } from "../schemas/global";
+import type { home } from "../schemas/home";
+import type { notFound } from "../schemas/not-found";
 import type { project } from "../schemas/project";
+import type { seo } from "../schemas/seo";
 
 export enum Locale {
     EN = "en",
@@ -31,6 +32,8 @@ export type Home = Omit<s.infer<typeof home>, "links"> & {
         image?: Image;
     }[];
 };
+
+export type About = s.infer<typeof about>;
 
 export type Category = Omit<s.infer<typeof category>, "projects"> & {
     locale: string;

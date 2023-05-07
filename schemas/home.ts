@@ -16,18 +16,6 @@ export const home = s.document({
             type: s.string(),
         },
         {
-            name: "description",
-            title: "Description",
-            optional: true,
-            type: s.text(),
-        },
-        {
-            name: "callToAction",
-            title: "Call-To-Action",
-            optional: true,
-            type: s.string(),
-        },
-        {
             name: "links",
             title: "Links",
             optional: false,
