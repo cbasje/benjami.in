@@ -5,8 +5,8 @@ import type { ProjectColour, Seo } from "../../lib/types";
 import MainLayout from "./main.astro";
 
 export interface Props {
-    colour?: ProjectColour;
-    seo?: Seo;
+    colour?: string;
+    seo?: Omit<Seo, "_type">;
 }
 const { colour, seo } = Astro.props;
 

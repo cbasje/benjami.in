@@ -1,29 +1,30 @@
-import { EarthAmericasIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
+import { s } from "@sanity-typed/schema-builder";
+import { EarthGlobeIcon } from "@sanity/icons";
+import { seo } from "./seo";
 
-export default defineType({
+export const global = s.document({
     name: "global",
     title: "Global SEO",
-    icon: EarthAmericasIcon,
-    type: "document",
+    icon: EarthGlobeIcon,
     i18n: true,
     fields: [
-        defineField({
+        {
             name: "siteName",
             title: "Site name",
-            type: "string",
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
+            optional: false,
+            type: s.string(),
+        },
+        {
             name: "siteKeywords",
             title: "Keywords",
-            type: "text",
-        }),
-        defineField({
+            optional: true,
+            type: s.text(),
+        },
+        {
             name: "defaultSeo",
             title: "Default SEO",
-            type: "seo",
-            validation: (Rule) => Rule.required(),
-        }),
+            optional: false,
+            type: seo,
+        },
     ],
 });

@@ -4,7 +4,7 @@ import type { Seo } from "../../lib/types";
 import MainHead from "../components/MainHead.astro";
 
 export interface Props {
-    seo?: Seo;
+    seo?: Omit<Seo, "_type">;
 }
 const { seo } = Astro.props;
 ---

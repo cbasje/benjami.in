@@ -17,7 +17,7 @@ const { src, width, height, fillContainer, alt } = Astro.props;
     class={`image ${fillContainer ? "fill-container" : ""}`}
     width={width}
     height={height}
-    src={urlForImage(src)
+    src={urlForImage(src.asset._ref)
         .width(width)
         .height(height)
         .auto("format")

@@ -1,77 +1,38 @@
-import type { TypedObject } from "sanity";
-
-export type Image = string;
+import { s } from "@sanity-typed/schema-builder";
+import type { seo } from "../schemas/seo";
+import type { global } from "../schemas/global";
+import type { notFound } from "../schemas/not-found";
+import type { home } from "../schemas/home";
+import type { category } from "../schemas/category";
+import type { company } from "../schemas/company";
+import type { project } from "../schemas/project";
 
 export enum Locale {
     EN = "en",
     NL = "nl",
 }
 
-export interface Seo {
-    metaTitle: string;
-    metaDescription?: string;
-    shareImage?: Image;
-    isArticle?: boolean;
-    locale?: Locale;
-}
+const image = s.image();
+export type Image = s.infer<typeof image>;
 
-export interface Global {
-    _id: number;
-    siteName: string;
-    siteKeywords: string;
-    defaultSeo: Seo;
-    locale?: Locale;
-}
+export type Seo = s.infer<typeof seo>;
+export type GlobalSeo = s.infer<typeof global> & { locale: string };
 
-export interface NotFound {
-    _id: number;
-    title: string;
-    description?: string;
-    seo?: Seo;
-}
+export type NotFound = s.infer<typeof notFound>;
 
-export interface Home {
-    _id: number;
-    title: string;
-    description?: string;
-    callToAction?: string;
-    seo?: Seo;
-    locale: Locale;
-}
+export type Home = s.infer<typeof home> & { locale: string };
 
-export interface Category {
-    _id: number;
-    title: string;
-    description: string;
-    slug: string;
-    locale: Locale;
-    projects?: Project[];
-}
+export type Category = s.infer<typeof category> & {
+    locale: string;
+    projects?: Project;
+};
 
-export interface Company {
-    _id: number;
-    title: string;
-    url?: string;
-    logo: string;
-}
+export type Company = s.infer<typeof company>;
 
 export type ProjectColour = "purple" | "green" | "blue";
-export interface Project {
-    _id: string;
-    title: string;
-    description: string;
-    excerpt: string;
-    slug: string;
-    mainImage: string;
-    mainImageRound: string;
-    colour?: ProjectColour;
-    categories: Pick<Category, "_id" | "title">[];
-    content: TypedObject[];
-    company?: Company;
-    publishedAt: string;
-    seo?: Seo;
-    locale: Locale;
-}
+export type Project = s.infer<typeof project> & {
+    locale: string;
+};
 
 export interface SpotifyData {
     isPlaying: boolean;

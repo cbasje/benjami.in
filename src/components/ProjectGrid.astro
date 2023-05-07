@@ -14,7 +14,6 @@ const { projects } = Astro.props;
             <ProjectCard
                 project={project}
                 useCustomColour={projects.every((p) => !!p.colour)}
-                key={project.slug}
             />
         ))
     }

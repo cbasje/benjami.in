@@ -2,7 +2,7 @@
 import { useSanityClient } from "astro-sanity";
 import i18next, { changeLanguage } from "i18next";
 import { projectsQuery } from "../../../lib/queries";
-import type { Project, Seo } from "../../../lib/types";
+import type { Category, Project, Seo } from "../../../lib/types";
 import BlockManager from "../../components/BlockManager.astro";
 import Image from "../../components/Image.astro";
 import ProjectsLayout from "../../layouts/project.astro";
@@ -13,14 +13,16 @@ export interface Props {
     project: Project;
 }
 const { project } = Astro.props;
-const seo: Seo = {
+const seo: Omit<Seo, "_type"> = {
     metaTitle: project.title,
     metaDescription: project.description,
     shareImage: project.mainImage,
     isArticle: true,
 };
 export async function getStaticPaths() {
-    const projects: Project[] = await useSanityClient().fetch(projectsQuery, {
+    const projects: (Project & {
+        categories: Pick<Category, "_id" | "title">[];
+    })[] = await useSanityClient().fetch(projectsQuery, {
         locale: i18next.language,
     });
     return projects.map((p) => ({

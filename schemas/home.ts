@@ -1,34 +1,36 @@
+import { s } from "@sanity-typed/schema-builder";
 import { HomeIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
+import { seo } from "./seo";
 
-export default defineType({
+export const home = s.document({
     name: "home",
     title: "Home page",
     icon: HomeIcon,
-    type: "document",
     i18n: true,
     fields: [
-        defineField({
+        {
             name: "title",
             title: "Title",
-            type: "string",
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
+            optional: false,
+            type: s.string(),
+        },
+        {
             name: "description",
             title: "Description",
-            type: "text",
-        }),
-        defineField({
+            optional: true,
+            type: s.text(),
+        },
+        {
             name: "callToAction",
             title: "Call-To-Action",
-            type: "string",
-        }),
-        defineField({
+            optional: true,
+            type: s.string(),
+        },
+        {
             name: "seo",
             title: "SEO",
-            type: "seo",
-            validation: (Rule) => Rule.required(),
-        }),
+            optional: false,
+            type: seo,
+        },
     ],
 });
