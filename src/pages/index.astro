@@ -6,7 +6,6 @@ import { homeQuery } from "../../lib/queries";
 import type { Home } from "../../lib/types";
 import Footer from "../components/Footer.astro";
 import SanityImage from "../components/Image.astro";
-import Nav from "../components/Nav.astro";
 import RotaryDial from "../components/RotaryDial.svelte";
 import MainLayout from "../layouts/main.astro";
 
@@ -27,8 +26,6 @@ const links = homepage.links.map((el) => {
 ---
 
 <MainLayout seo={homepage.seo}>
-    <Nav />
-
     <main>
         <div class="dial-wrapper">
             <RotaryDial elementSlugs={links} client:only>
