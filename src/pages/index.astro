@@ -2,8 +2,8 @@
 import { localizePath } from "astro-i18next";
 import { useSanityClient } from "astro-sanity";
 import i18next, { changeLanguage } from "i18next";
-import { homeQuery, projectListQuery } from "../../lib/queries";
-import type { Home, Image, Project, ProjectColour } from "../../lib/types";
+import { homeQuery } from "../../lib/queries";
+import type { Home } from "../../lib/types";
 import Footer from "../components/Footer.astro";
 import SanityImage from "../components/Image.astro";
 import Nav from "../components/Nav.astro";
@@ -12,63 +12,18 @@ import MainLayout from "../layouts/main.astro";
 
 changeLanguage("en");
 
-const projects: Project[] = await useSanityClient().fetch(projectListQuery, {
-    locale: i18next.language,
-});
 const homepage: Home = await useSanityClient().fetch(homeQuery, {
     locale: i18next.language,
 });
-type DialElement = {
-    index: number;
-    data?: {
-        slug: string;
-        title: string;
-        image: Image;
-        colour?: ProjectColour;
-    };
-};
-const elements: DialElement[] = [
-    {
-        index: 1,
-        data: projects.length
-            ? {
-                slug: localizePath(`project/${projects[0].slug}`),
-                title: projects[0].title,
-                image: projects[0].mainImageRound,
-                colour: projects[0].colour as ProjectColour,
-            }
-            : undefined,
-    },
-    {
-        index: 2,
-        data: projects.length
-            ? {
-                slug: localizePath(`project/${projects[1].slug}`),
-                title: projects[1].title,
-                image: projects[1].mainImageRound,
-                colour: projects[1].colour as ProjectColour,
-            }
-            : undefined,
-    },
-    {
-        index: 3,
-        data: projects.length
-            ? {
-                slug: localizePath(`project/${projects[2].slug}`),
-                title: projects[2].title,
-                image: projects[2].mainImageRound,
-                colour: projects[2].colour as ProjectColour,
-            }
-            : undefined,
-    },
-    { index: 4 },
-    { index: 5 },
-    { index: 6 },
-    { index: 7 },
-    { index: 8 },
-    { index: 9 },
-    { index: 0 },
-];
+const links = homepage.links.map((el) => {
+    if (el.slug) {
+        return localizePath(`/${el.slug}`);
+    } else if (el.url) {
+        return el.url;
+    } else {
+        return "#";
+    }
+});
 ---
 
 <MainLayout seo={homepage.seo}>
@@ -76,30 +31,23 @@ const elements: DialElement[] = [
 
     <main>
         <div class="dial-wrapper">
-            <RotaryDial
-                elementSlugs={elements.map((el) => el.data?.slug)}
-                client:only
-            >
+            <RotaryDial elementSlugs={links} client:only>
                 {
-                    elements.map((el) => (
+                    homepage.links.map((el, i) => (
                         // <li class:active={i % 10 === num}>
                         <li
                             role="listitem"
                             style={
-                                el.data?.colour
-                                    ? `--background: var(--gradient-${el.data?.colour})`
+                                el.colour
+                                    ? `--background: var(--gradient-${el.colour})`
                                     : "--background: var(--theme-surface-2)"
                             }
                         >
-                            {el.data && (
-                                <a
-                                    href={localizePath(
-                                        `/project/${el.data.slug}`
-                                    )}
-                                >
+                            {el.image && (
+                                <a href={links[i]}>
                                     <SanityImage
-                                        alt={`Main image of ${el.data.title}`}
-                                        src={el.data.image}
+                                        alt={`Main image of ${el.title}`}
+                                        src={el.image}
                                         width={512}
                                         height={576}
                                     />

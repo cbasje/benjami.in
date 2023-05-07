@@ -20,9 +20,19 @@ export type GlobalSeo = s.infer<typeof global> & { locale: string };
 
 export type NotFound = s.infer<typeof notFound>;
 
-export type Home = s.infer<typeof home> & { locale: string };
+export type Home = Omit<s.infer<typeof home>, "links"> & {
+    locale: string;
+    links: {
+        _type: "reference" | "general-link";
+        colour: string;
+        url?: string;
+        slug?: string;
+        title: string;
+        image?: Image;
+    }[];
+};
 
-export type Category = s.infer<typeof category> & {
+export type Category = Omit<s.infer<typeof category>, "projects"> & {
     locale: string;
     projects?: Project;
 };

@@ -19,10 +19,10 @@ const cardBg = useCustomColour
     <a class="link" href={localizePath(`project/${project.slug}`)}>
         <div class="image-container">
             {
-                project.mainImage ? (
+                project.headerImage ? (
                     <Image
                         alt={`Main image of ${project.title}`}
-                        src={project.mainImage}
+                        src={project.headerImage}
                         width={512}
                         height={512}
                         fillContainer

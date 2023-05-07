@@ -5,6 +5,16 @@ import { category } from "./category";
 import { company } from "./company";
 import { seo } from "./seo";
 
+export const projectColour = s.string({
+    options: {
+        list: [
+            { title: "Purple", value: "purple" },
+            { title: "Green", value: "green" },
+            { title: "Blue", value: "blue" },
+        ],
+    },
+});
+
 export const project = s.document({
     name: "project",
     title: "Project",
@@ -41,8 +51,8 @@ export const project = s.document({
             }),
         },
         {
-            name: "mainImage",
-            title: "Main image",
+            name: "headerImage",
+            title: "Header image",
             optional: false,
             type: s.image({
                 options: {
@@ -51,24 +61,10 @@ export const project = s.document({
             }),
         },
         {
-            name: "mainImageRound",
-            title: "Main image (Round)",
-            optional: false,
-            type: s.image(),
-        },
-        {
             name: "colour",
             title: "Colour",
             optional: true,
-            type: s.string({
-                options: {
-                    list: [
-                        { title: "Purple", value: "purple" },
-                        { title: "Green", value: "green" },
-                        { title: "Blue", value: "blue" },
-                    ],
-                },
-            }),
+            type: projectColour,
         },
         {
             name: "categories",
@@ -107,7 +103,8 @@ export const project = s.document({
     preview: {
         select: {
             title: "title",
-            media: "mainImage",
+            media: "headerImage",
+            subtitle: "description",
         },
     },
 });

@@ -16,7 +16,7 @@ const { project } = Astro.props;
 const seo: Omit<Seo, "_type"> = {
     metaTitle: project.title,
     metaDescription: project.description,
-    shareImage: project.mainImage,
+    shareImage: project.headerImage,
     isArticle: true,
 };
 export async function getStaticPaths() {
@@ -36,7 +36,7 @@ export async function getStaticPaths() {
     <header>
         <h1>{project.title}</h1>
         <div class="intro" role="presentation">
-            <div role="none">
+            <div role="complementary">
                 <h2 class="description">
                     {project.description}
                 </h2>
@@ -79,14 +79,14 @@ export async function getStaticPaths() {
                 </div>
             </div>
 
-            <p>{project.excerpt}</p>
+            <p role="doc-preface">{project.excerpt}</p>
         </div>
     </header>
 
     <div role="banner">
         <Image
-            alt={`Main image of ${project.mainImage}`}
-            src={project.mainImage}
+            alt={`Header image of ${project.title}`}
+            src={project.headerImage}
             width={1024}
             height={683}
             fillContainer
