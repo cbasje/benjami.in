@@ -61,6 +61,12 @@ export const project = s.document({
             }),
         },
         {
+            name: "headerImageRound",
+            title: "Header image (Round)",
+            optional: false,
+            type: s.image(),
+        },
+        {
             name: "colour",
             title: "Colour",
             optional: true,

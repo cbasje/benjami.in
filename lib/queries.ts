@@ -16,19 +16,6 @@ export const projectsQuery = groq`
   "locale": __i18n_lang
 }`;
 
-// export const projectListQuery = groq`
-// *[_type == "project" && defined(slug.current) && __i18n_lang == $locale] | order(publishedAt desc) [0...3] {
-//   title,
-//   description,
-//   mainImageRound,
-//   colour,
-//   company,
-//   publishedAt,
-//   "slug": slug.current,
-//   "locale": __i18n_lang
-// }
-// `;
-
 export const projectPathsQuery = groq`
 *[_type == "project" && defined(slug.current) && defined(__i18n_lang)] {
   "slug": slug.current,
@@ -55,7 +42,7 @@ export const homeQuery = groq`
       colour,
       'slug': 'project/' + slug.current,
       title,
-      'image': mainImageRound,
+      'image': headerImageRound,
     },
     _type == 'general-link' => {
       _type,
