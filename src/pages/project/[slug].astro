@@ -20,9 +20,7 @@ const seo: Omit<Seo, "_type"> = {
     isArticle: true,
 };
 export async function getStaticPaths() {
-    const projects: (Project & {
-        categories: Pick<Category, "_id" | "title">[];
-    })[] = await useSanityClient().fetch(projectsQuery, {
+    const projects: Project[] = await useSanityClient().fetch(projectsQuery, {
         locale: i18next.language,
     });
     return projects.map((p) => ({

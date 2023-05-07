@@ -40,8 +40,9 @@ export type Category = Omit<s.infer<typeof category>, "projects"> & {
 export type Company = s.infer<typeof company>;
 
 export type ProjectColour = "purple" | "green" | "blue";
-export type Project = s.infer<typeof project> & {
+export type Project = Omit<s.infer<typeof project>, "categories"> & {
     locale: string;
+    categories: Pick<Category, "_id" | "title">[];
 };
 
 export interface SpotifyData {
