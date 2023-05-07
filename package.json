@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
-        "build": "generate:i18n && astro build",
+        "build": "yarn run generate:i18n && astro build",
         "preview": "astro preview",
         "astro": "astro",
         "sanity:dev": "sanity dev",
