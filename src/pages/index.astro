@@ -18,11 +18,9 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
 const links = homepage.links.map((el) => {
     if (el.slug) {
         return localizePath(`/${el.slug}`);
-    }
-    else if (el.url) {
+    } else if (el.url) {
         return el.url;
-    }
-    else {
+    } else {
         return "#";
     }
 });
@@ -46,7 +44,15 @@ const links = homepage.links.map((el) => {
                             }
                         >
                             {el.image && (
-                                <a href={links[i]}>
+                                <a
+                                    href={links[i]}
+                                    title={`Link to my ${el.title}`}
+                                    rel={
+                                        !links[i].startsWith("/")
+                                            ? "nofollow me"
+                                            : undefined
+                                    }
+                                >
                                     <SanityImage
                                         alt={`Main image of ${el.title}`}
                                         src={el.image}

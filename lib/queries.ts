@@ -41,7 +41,7 @@ export const homeQuery = groq`
       _type,
       colour,
       'slug': 'project/' + slug.current,
-      title,
+      'title': title + ' project',
       'image': headerImageRound,
     },
     _type == 'general-link' => {
