@@ -1,51 +1,25 @@
 import groq from "groq";
 
-const projectFields = groq`
-  title,
-  description,
-  mainImage,
-  colour,
-  company,
-  publishedAt,
-  "slug": slug.current,
-  "locale": __i18n_lang
-`;
-
-const categoryFields = groq`
-  title,
-  description,
-  "slug": slug.current,
-  "locale": __i18n_lang
-`;
-
 export const projectsQuery = groq`
 *[_type == "project" && defined(slug.current) && __i18n_lang == $locale] {
-    excerpt,
-    content,
-    seo,
-    categories[] -> { _id, title },
-    ${projectFields}
+  title,
+  description,
+  company,
+  colour,
+  headerImage,
+  excerpt,
+  content,
+  seo,
+  publishedAt,
+  categories[] -> { _id, title },
+  "slug": slug.current,
+  "locale": __i18n_lang
 }`;
-
-export const projectListQuery = groq`
-*[_type == "project" && defined(slug.current) && __i18n_lang == $locale] | order(publishedAt desc) [0...3] {
-  ${projectFields}
-}
-`;
 
 export const projectPathsQuery = groq`
 *[_type == "project" && defined(slug.current) && defined(__i18n_lang)] {
   "slug": slug.current,
   "locale": __i18n_lang
-}
-`;
-
-export const categoryQuery = groq`
-{
-  "category": *[_type == "category" && slug.current == $slug && __i18n_lang == $locale] | order(_updatedAt desc) [0] {
-    ${categoryFields},
-    "projects": *[_type=="project" && references(^._id)]{ ${projectFields} }
-  }
 }
 `;
 
@@ -61,7 +35,32 @@ export const homeQuery = groq`
   _id,
   title,
   description,
-  callToAction,
+  links[] {
+    _type == 'reference' => @->{
+      _type,
+      colour,
+      'slug': 'project/' + slug.current,
+      'title': title + ' project',
+      'image': headerImageRound,
+    },
+    _type == 'general-link' => {
+      _type,
+      colour,
+      url,
+      'slug': slug.current,
+      title,
+      image,
+    }
+  },
+  "locale": __i18n_lang
+}
+`;
+
+export const aboutQuery = groq`
+*[_type == "about" && __i18n_lang == $locale] | order(_updatedAt desc) [0] {
+  title,
+  description,
+  image,
   "locale": __i18n_lang
 }
 `;
@@ -69,6 +68,7 @@ export const homeQuery = groq`
 export const notFoundQuery = groq`
 *[_type == "not-found" && __i18n_lang == $locale] | order(_updatedAt desc) [0] {
   title,
+  description,
   "locale": __i18n_lang
 }
 `;

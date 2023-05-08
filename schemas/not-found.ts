@@ -1,29 +1,30 @@
+import { s } from "@sanity-typed/schema-builder";
 import { ErrorOutlineIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
+import { seo } from "./seo";
 
-export default defineType({
+export const notFound = s.document({
     name: "not-found",
     title: "404 page",
     icon: ErrorOutlineIcon,
-    type: "document",
     i18n: true,
     fields: [
-        defineField({
+        {
             name: "title",
             title: "Title",
-            type: "string",
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
+            optional: false,
+            type: s.string(),
+        },
+        {
             name: "description",
             title: "Description",
-            type: "text",
-        }),
-        defineField({
+            optional: true,
+            type: s.text(),
+        },
+        {
             name: "seo",
             title: "SEO",
-            type: "seo",
-            validation: (Rule) => Rule.required(),
-        }),
+            optional: false,
+            type: seo,
+        },
     ],
 });

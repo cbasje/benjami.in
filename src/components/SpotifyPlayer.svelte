@@ -75,8 +75,8 @@
 
         display: flex;
         flex-direction: row;
-        gap: var(--spaces-2);
-        border-radius: var(--radii-md);
+        gap: var(--size-3);
+        border-radius: var(--radius-3);
         line-height: 24px;
         letter-spacing: -0.01em;
 
@@ -94,8 +94,7 @@
             > span {
                 max-width: 100%;
 
-                font-family: var(--fonts-display);
-                font-weight: var(--fontWeights-regular);
+                font-weight: var(--font-weight-5);
                 font-size: smaller;
                 line-height: 1.5;
                 text-transform: uppercase;
@@ -104,22 +103,22 @@
                 text-overflow: ellipsis;
 
                 &:first-child {
-                    font-weight: var(--fontWeights-bold);
+                    font-weight: var(--font-weight-7);
                 }
             }
         }
 
         img {
-            border-radius: var(--radii-full);
+            border-radius: var(--radius-round);
             width: 3rem;
             height: 3rem;
         }
 
         .image-placeholder {
-            border-radius: var(--radii-full);
+            border-radius: var(--radius-round);
             width: 3rem;
             height: 3rem;
-            background: rgb(var(--colors-green400));
+            background: var(--color-green-4);
         }
 
         .svg {

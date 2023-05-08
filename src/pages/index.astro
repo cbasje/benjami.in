@@ -1,174 +1,106 @@
 ---
+import { localizePath } from "astro-i18next";
 import { useSanityClient } from "astro-sanity";
 import i18next, { changeLanguage } from "i18next";
-import { homeQuery, projectListQuery } from "../../lib/queries";
-import type { Home, Project } from "../../lib/types";
-import CallToAction from "../components/CallToAction.astro";
+import { homeQuery } from "../../lib/queries";
+import type { Home } from "../../lib/types";
 import Footer from "../components/Footer.astro";
-import Intro from "../components/Intro.astro";
-import Nav from "../components/Nav.astro";
-import ProjectGrid from "../components/ProjectGrid.astro";
+import SanityImage from "../components/Image.astro";
+import RotaryDial from "../components/RotaryDial.svelte";
 import MainLayout from "../layouts/main.astro";
 
 changeLanguage("en");
 
-const projects: Project[] = await useSanityClient().fetch(projectListQuery, {
-    locale: i18next.language,
-});
 const homepage: Home = await useSanityClient().fetch(homeQuery, {
     locale: i18next.language,
+});
+const links = homepage.links.map((el) => {
+    if (el.slug) {
+        return localizePath(`/${el.slug}`);
+    }
+    else if (el.url) {
+        return el.url;
+    }
+    else {
+        return "#";
+    }
 });
 ---
 
 <MainLayout seo={homepage.seo}>
-    <Nav />
-
     <main>
-        <section class="section grayscale" data-for="intro">
-            <Intro homepage={homepage} />
-        </section>
-
-        <section class="section grayscale" data-for="projects">
-            <ProjectGrid projects={projects} />
-        </section>
-
-        <section class="section grayscale" data-for="cta">
-            <CallToAction homepage={homepage} />
-        </section>
+        <div class="dial-wrapper">
+            <RotaryDial elementSlugs={links} client:only>
+                {
+                    homepage.links.map((el, i) => (
+                        // <li class:active={i % 10 === num}>
+                        <li
+                            role="listitem"
+                            style={
+                                el.colour
+                                    ? `--background: var(--theme-gradient-${el.colour})`
+                                    : "--background: var(--theme-surface-2)"
+                            }
+                        >
+                            {el.image && (
+                                <a
+                                    href={links[i]}
+                                    title={`Link to my ${el.title}`}
+                                    rel={
+                                        !links[i].startsWith("/")
+                                            ? "nofollow me"
+                                            : undefined
+                                    }
+                                >
+                                    <SanityImage
+                                        alt={`Main image of ${el.title}`}
+                                        src={el.image}
+                                        width={512}
+                                        height={576}
+                                    />
+                                </a>
+                            )}
+                        </li>
+                    ))
+                }
+            </RotaryDial>
+        </div>
 
         <Footer />
     </main>
 </MainLayout>
 
-<script>
-    import { animate, stagger } from "motion";
-
-    // Animate sections on loading
-    animate(
-        "main > section",
-        {
-            opacity: [0, 0.7],
-        },
-        {
-            duration: 0.75,
-            easing: [0.43, 0.13, 0.23, 0.96],
-            delay: stagger(0.25),
-        }
-    );
-
-    // Add BlurBackground custom element (used in Intro.astro & CallToAction.astro)
-    class BlurBackground extends HTMLElement {
-        constructor() {
-            super();
-
-            let div = this,
-                divBounds: DOMRect | undefined;
-
-            div?.addEventListener("mousemove", (e) => {
-                if (!divBounds) return;
-
-                const x =
-                    (e.pageX - window.scrollX - divBounds.x) / divBounds.width;
-                const y =
-                    (e.pageY - window.scrollY - divBounds.y) / divBounds.height;
-
-                div?.style.setProperty("--cursor-x", String(x));
-                div?.style.setProperty("--cursor-y", String(y));
-            });
-
-            div?.addEventListener("mouseout", (e) => {
-                div?.style.removeProperty("--cursor-x");
-                div?.style.removeProperty("--cursor-y");
-            });
-
-            const resetBoundingRect = (e?: Event) => {
-                divBounds = div?.getBoundingClientRect();
-                if (divBounds && process.env.NODE_ENV === "development")
-                    console.log({ x: divBounds.x, y: divBounds.y });
-            };
-
-            window.addEventListener("scroll", resetBoundingRect);
-            window.addEventListener("resize", resetBoundingRect);
-
-            resetBoundingRect();
-        }
-    }
-
-    customElements.define("blur-background", BlurBackground);
-</script>
-
 <style lang="scss">
+    @import "open-props/media";
+
     main {
-        width: 100vw;
+        min-height: 100vh;
         margin-inline: auto;
-        padding-inline: var(--spaces-2);
+        padding-inline: var(--size-1);
+        padding-block: var(--size-3);
 
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: var(--spaces-6);
+        gap: var(--size-8);
 
         > :global(*) {
             width: 100%;
             max-width: 1024px;
         }
-    }
 
-    section {
-        width: 100%;
-        height: auto;
-        position: relative;
-
-        // Set for animation
-        opacity: 0.7;
-
-        & > :global(*) {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        &[data-for="intro"] {
-            aspect-ratio: 1.88;
-        }
-        &[data-for="projects"] {
-            aspect-ratio: 1.85;
-        }
-        &[data-for="cta"] {
-            aspect-ratio: 2.11;
+        .dial-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 
-    @media only screen and (width <= 640px) {
-        section {
-            // FIXME: should be 1 for small screens
-            opacity: 1 !important;
-
-            &[data-for="intro"] {
-                aspect-ratio: 2 / 3;
-            }
-            &[data-for="projects"] {
-                aspect-ratio: 2 / 3;
-            }
-            &[data-for="cta"] {
-                aspect-ratio: 1;
-            }
-        }
-    }
-
-    @media only screen and (width > 640px) {
+    @media (--md-n-above) {
         main {
-            :global(.grayscale) {
-                filter: grayscale(100%);
-                transition: filter 0.8s cubic-bezier(0.33, 1, 0.68, 1),
-                    opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
-
-                &:hover {
-                    opacity: 1 !important;
-                    filter: grayscale(0%);
-                }
-            }
+            padding: var(--size-3);
         }
     }
 </style>

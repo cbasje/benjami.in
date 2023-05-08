@@ -1,0 +1,123 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<ul role="list">
+    <li role="listitem">
+        <a
+            class="button"
+            title="My email address"
+            rel="nofollow me"
+            href="mailto:Sebastiaan Benjamins <sebas@benjami.in>"
+        >
+            <Icon
+                name="ph:envelope-simple-fill"
+                style={{
+                    width: "24px",
+                    height: "24px",
+                }}
+                aria-hidden
+            />
+        </a>
+    </li>
+    <li role="listitem">
+        <a
+            class="button"
+            title="My Mastodon account"
+            rel="nofollow me"
+            href="https://mas.to/@sebastiaan"
+        >
+            <Icon
+                name="mdi:mastodon"
+                style={{
+                    width: "24px",
+                    height: "24px",
+                }}
+                aria-hidden
+            />
+        </a>
+    </li>
+    <li role="listitem">
+        <a
+            class="button"
+            title="My Github account"
+            rel="nofollow me"
+            href="https://github.com/cbasje"
+        >
+            <Icon
+                name="ph:github-logo-fill"
+                style={{
+                    width: "24px",
+                    height: "24px",
+                }}
+                aria-hidden
+            />
+        </a>
+    </li>
+    <li role="listitem">
+        <a
+            class="button"
+            title="My LinkedIn account"
+            rel="nofollow me"
+            href="https://www.linkedin.com/in/sebastiaanbenjamins/"
+        >
+            <Icon
+                name="ph:linkedin-logo-fill"
+                style={{
+                    width: "24px",
+                    height: "24px",
+                }}
+                aria-hidden
+            />
+        </a>
+    </li>
+    <li role="listitem">
+        <a
+            class="button"
+            title="My Instagram account"
+            rel="nofollow me"
+            href="https://instagram.com/cbasje"
+        >
+            <Icon
+                name="ph:instagram-logo-fill"
+                style={{
+                    width: "24px",
+                    height: "24px",
+                }}
+                aria-hidden
+            />
+        </a>
+    </li>
+</ul>
+
+<style lang="scss">
+    @import "open-props/media";
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        position: relative;
+        align-items: center;
+        gap: var(--size-2);
+
+        font-weight: var(--font-weight-7);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+
+        li {
+            padding: 0;
+
+            a {
+                flex-grow: 0;
+            }
+        }
+    }
+
+    @media (--lg-n-below) {
+        ul {
+            gap: 0;
+        }
+    }
+</style>

@@ -8,9 +8,11 @@ import CodeBlock from "./blocks/Code.astro";
 import ImageBlock from "./blocks/Image.astro";
 import LinkBlock from "./blocks/Link.astro";
 import PrototypeBlock from "./blocks/Prototype.astro";
+import type { s } from "@sanity-typed/schema-builder";
+import type { blockContent } from "../../schemas/blockContent";
 
 export interface Props {
-    value: PortableTextProps["value"];
+    value?: s.infer<typeof blockContent>;
     components?: PortableTextProps["components"];
 }
 
@@ -36,5 +38,5 @@ const components = mergeComponents(
 ---
 
 <section>
-    <PortableText value={value} components={components} />
+    {value && <PortableText value={value} components={components} />}
 </section>

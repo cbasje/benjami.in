@@ -1,13 +1,11 @@
+import { s } from "@sanity-typed/schema-builder";
 import { ImageIcon } from "@sanity/icons";
-import { defineType } from "sanity";
+import { code } from "./blocks/code";
+import { prototype } from "./blocks/prototype";
 
-export default defineType({
-    title: "Block Content",
-    name: "blockContent",
-    type: "array",
+export const blockContent = s.array({
     of: [
-        {
-            type: "block",
+        s.block({
             styles: [
                 { title: "Normal", value: "normal" },
                 { title: "H1", value: "h1" },
@@ -32,31 +30,17 @@ export default defineType({
                                 title: "URL",
                                 name: "href",
                                 type: "url",
-                                validation: (Rule) =>
-                                    Rule.uri({
-                                        scheme: [
-                                            "http",
-                                            "https",
-                                            "mailto",
-                                            "tel",
-                                        ],
-                                    }),
                             },
                         ],
                     },
                 ],
             },
-        },
-        {
-            type: "image",
-            options: { hotspot: true },
+        }),
+        s.image({
+            hotspot: true,
             icon: ImageIcon,
-        },
-        {
-            type: "code",
-        },
-        {
-            type: "prototype",
-        },
+        }),
+        code,
+        prototype,
     ],
 });

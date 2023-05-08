@@ -1,51 +1,103 @@
-body {
-    padding: 0;
-    margin: 0;
-    background-color: rgb(var(--colors-bg));
-    color: rgb(var(--colors-textOnBg));
-    accent-color: rgb(var(--colors-primary));
-    caret-color: rgb(var(--colors-primary));
-    font-size: 1rem;
-    line-height: 1.5;
-}
-h1,
-h2 {
-    margin: 0 0 1.1em;
-    font-family: var(--fonts-display);
-    font-weight: var(--fontWeights-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
-    line-height: 1.1;
-    color: rgb(var(--colors-displayOnBg));
+@import "open-props/media";
 
-    overflow-wrap: break-word;
+@layer normalize {
+    @import "open-props/normalize";
 }
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--fonts-display);
-    font-weight: var(--fontWeights-regular);
-    text-transform: uppercase;
-    letter-spacing: 0.01rem;
-    line-height: 1.1;
-    color: rgb(var(--colors-displayOnBg));
 
-    overflow-wrap: break-word;
+@layer base {
+    @import "open-props/easings";
 }
-p {
-    margin: 0 0 1.5em;
-    overflow-wrap: break-word;
-    line-height: 1.5;
+
+@layer theme {
+    @layer colors {
+        @import "open-props/colors";
+    }
+
+    @layer sizes {
+        @import "open-props/borders";
+        @import "open-props/sizes";
+    }
+
+    @layer fonts {
+        @import "open-props/fonts";
+        @import "./fonts.scss";
+    }
 }
-a {
-    color: inherit;
-    text-decoration: none;
+
+@layer components {
+    @import "open-props/buttons";
+
+    @import "./components.scss";
 }
-* {
-    box-sizing: border-box;
-}
-::selection {
-    background-color: rgb(var(--colors-primary));
-    color: rgb(var(--colors-textOnPrimary));
+
+@layer overrides {
+    @import "./themes/global.scss";
+
+    @media (--OSlight) {
+        @import "./themes/light.scss";
+    }
+    @media (--OSdark) {
+        @import "./themes/dark.scss";
+    }
+
+    :root {
+        background-color: var(--theme-surface-1);
+        color: var(--theme-text-1);
+        accent-color: var(--theme-accent-1);
+        caret-color: var(--theme-accent-1);
+    }
+    h1 {
+        margin: 0 0 var(--size-3) 0;
+        font-size: var(--font-size-6);
+        font-family: var(--font-display);
+        font-weight: var(--font-weight-7);
+        text-transform: uppercase;
+        letter-spacing: var(--font-letterspacing-3);
+        line-height: var(--font-lineheight-2);
+    }
+    h2 {
+        margin: 0 0 var(--size-1) 0;
+        font-size: var(--font-size-5);
+        font-family: var(--font-display);
+        font-weight: var(--font-weight-5);
+        text-transform: uppercase;
+        letter-spacing: var(--font-letterspacing-3);
+        line-height: var(--font-lineheight-2);
+    }
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: var(--font-weight-5);
+        text-transform: uppercase;
+        letter-spacing: var(--font-letterspacing-3);
+        line-height: var(--font-lineheight-2);
+    }
+    h3 {
+        font-size: var(--font-size-4);
+    }
+    h4 {
+        font-size: var(--font-size-3);
+    }
+    h5,
+    h6 {
+        font-size: var(--font-size-1);
+    }
+    p {
+        // margin: 0 0 1.5em;
+        line-height: var(--font-lineheight-3);
+    }
+    a:not(.button) {
+        color: var(--theme-accent-1);
+        text-decoration: underline wavy;
+    }
+    a,
+    button,
+    input {
+        outline-color: var(--theme-accent-1);
+    }
+    ::selection {
+        background-color: var(--theme-accent-1);
+        color: var(--theme-text-on-accent);
+    }
 }

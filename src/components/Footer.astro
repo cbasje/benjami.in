@@ -1,39 +1,29 @@
 ---
-import SpotifyPlayerWrapper from "./SpotifyPlayerWrapper.svelte";
+import Social from "./Social.astro";
 
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="grayscale">
+<footer>
     <aside>
-        <ul class="side-left">
+        <Social />
+        <ul>
             <li>
                 &copy; Sebastiaan Benjamins, {currentYear}
             </li>
-        </ul>
-        <ul class="side-right">
-            <li>
-                <SpotifyPlayerWrapper client:only />
-            </li>
-            {/* FIXME: Move this */}
-            <!-- <li>
-                    <LanguageSwitcher
-                        locale={locale}
-                        onLocaleChange={handleLocaleChange}
-                    />
-                </li> -->
         </ul>
     </aside>
 </footer>
 
 <style lang="scss">
+    @import "open-props/media";
+
     footer {
-        width: 100%;
-        padding-block: var(--spaces-2);
+        padding-block: var(--size-3);
         display: flex;
         justify-content: center;
         align-items: center;
-        opacity: 0.7;
+        color: var(--theme-text-3);
 
         & > * {
             width: 100%;
@@ -43,9 +33,10 @@ const currentYear = new Date().getFullYear();
 
     aside {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        gap: var(--spaces-4);
+        gap: var(--size-7);
     }
 
     ul {
@@ -53,38 +44,35 @@ const currentYear = new Date().getFullYear();
         padding: 0;
         list-style: none;
         display: flex;
-        max-width: 30%;
+        flex-direction: column;
         position: relative;
         align-items: center;
-        gap: var(--spaces-2);
-
-        &.side-left {
-            justify-content: flex-start;
-        }
-        &.side-right {
-            justify-content: flex-end;
-        }
+        gap: var(--size-2);
 
         li {
             max-width: 100%;
+            padding: 0;
 
             position: relative;
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: var(--spaces-1);
+            gap: var(--size-2);
 
             & > span {
-                font-family: var(--fonts-display);
-                font-weight: var(--fontWeights-bold);
+                font-weight: var(--font-weight-7);
                 text-transform: uppercase;
             }
         }
     }
 
-    @media only screen and (width <= 640px) {
-        ul {
-            max-width: 50%;
+    @media (--md-n-above) {
+        aside {
+            flex-direction: row;
+
+            ul {
+                max-width: 30%;
+            }
         }
     }
 </style>

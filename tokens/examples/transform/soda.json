@@ -1,0 +1,369 @@
+{
+  "0": {
+    "value": "0%",
+    "type": "letterSpacing"
+  },
+  "1": {
+    "value": 8,
+    "type": "paragraphSpacing"
+  },
+  "2": {
+    "value": 15,
+    "type": "fontSizes"
+  },
+  "3": {
+    "value": 17,
+    "type": "fontSizes"
+  },
+  "4": {
+    "value": 18,
+    "type": "fontSizes"
+  },
+  "5": {
+    "value": 19,
+    "type": "fontSizes"
+  },
+  "6": {
+    "value": 21,
+    "type": "fontSizes"
+  },
+  "7": {
+    "value": 28,
+    "type": "fontSizes"
+  },
+  "8": {
+    "value": 30,
+    "type": "fontSizes"
+  },
+  "9": {
+    "value": 32,
+    "type": "fontSizes"
+  },
+  "10": {
+    "value": 36,
+    "type": "fontSizes"
+  },
+  "11": {
+    "value": 44,
+    "type": "fontSizes"
+  },
+  "12": {
+    "value": 44,
+    "type": "fontSizes"
+  },
+  "info": {
+    "light": {
+      "value": "#e6effa",
+      "type": "color"
+    },
+    "default": {
+      "value": "#64aaff",
+      "type": "color"
+    },
+    "dark": {
+      "value": "#0060d5",
+      "type": "color"
+    }
+  },
+  "succes": {
+    "light": {
+      "value": "#ddf8e4",
+      "type": "color"
+    },
+    "default": {
+      "value": "#58b871",
+      "type": "color"
+    },
+    "dark": {
+      "value": "#007e4a",
+      "type": "color"
+    }
+  },
+  "warning": {
+    "light": {
+      "value": "#fff5d1",
+      "type": "color"
+    },
+    "default": {
+      "value": "#f4ca3b",
+      "type": "color"
+    },
+    "dark": {
+      "value": "#a45a00",
+      "type": "color"
+    }
+  },
+  "error": {
+    "light": {
+      "value": "#ffece4",
+      "type": "color"
+    },
+    "default": {
+      "value": "#e94400",
+      "type": "color"
+    },
+    "dark": {
+      "value": "#c20005",
+      "type": "color"
+    }
+  },
+  "CTA-secondary": {
+    "default": {
+      "value": "#000000",
+      "type": "color"
+    },
+    "tap": {
+      "value": "#5d5d5d",
+      "type": "color"
+    }
+  },
+  "CTA-primary": {
+    "default": {
+      "value": "#82e1ff",
+      "type": "color"
+    },
+    "tap": {
+      "value": "#aee7ff",
+      "type": "color"
+    }
+  },
+  "discount": {
+    "value": "{brand.tertiary}",
+    "type": "color",
+    "failedToResolve": true
+  },
+  "primary": {
+    "value": "#000000",
+    "type": "color"
+  },
+  "secondary": {
+    "value": "#82e1ff",
+    "type": "color"
+  },
+  "tertiary": {
+    "value": "#ff6b00",
+    "type": "color"
+  },
+  "global": {
+    "value": 8,
+    "type": "spacing"
+  },
+  "005": {
+    "value": "{spacing.global}*0.5",
+    "type": "spacing",
+    "failedToResolve": true
+  },
+  "015": {
+    "value": "{spacing.global}*1.5",
+    "type": "spacing",
+    "failedToResolve": true
+  },
+  "02": {
+    "value": "{spacing.global}*2",
+    "type": "spacing",
+    "failedToResolve": true
+  },
+  "025": {
+    "value": "{spacing.global}*2.5",
+    "type": "spacing",
+    "failedToResolve": true
+  },
+  "03": {
+    "value": "{spacing.global}*3",
+    "type": "spacing",
+    "failedToResolve": true
+  },
+  "04": {
+    "value": "{spacing.global}*4",
+    "type": "spacing",
+    "failedToResolve": true
+  },
+  "05": {
+    "value": "{spacing.global}*5",
+    "type": "spacing",
+    "failedToResolve": true
+  },
+  "06": {
+    "value": "{spacing.global}*6",
+    "type": "spacing",
+    "failedToResolve": true
+  },
+  "07": {
+    "value": "{spacing.global}*7",
+    "type": "spacing",
+    "failedToResolve": true
+  },
+  "08": {
+    "value": "{spacing.global}*8",
+    "type": "spacing",
+    "failedToResolve": true
+  },
+  "none": {
+    "value": "none",
+    "type": "textDecoration"
+  },
+  "line-through": {
+    "value": "line-through",
+    "type": "textDecoration"
+  },
+  "default": {
+    "value": {
+      "fontFamily": "$fontFamilies.manrope",
+      "fontWeight": "$fontWeights.manrope-1",
+      "lineHeight": "$lineHeights.2",
+      "fontSize": "$fontSize.2",
+      "letterSpacing": "$letterSpacing.0",
+      "paragraphSpacing": "$paragraphSpacing.0",
+      "textCase": "$textCase.none",
+      "textDecoration": "$textDecoration.none"
+    },
+    "type": "typography",
+    "failedToResolve": true
+  },
+  "small": {
+    "value": {
+      "color": "#0000001a",
+      "type": "dropShadow",
+      "x": 0,
+      "y": 2,
+      "blur": 8,
+      "spread": 0,
+      "fontFamily": "$fontFamilies.manrope",
+      "fontWeight": "$fontWeights.manrope-1",
+      "lineHeight": "$lineHeights.2",
+      "fontSize": "$fontSize.1",
+      "letterSpacing": "$letterSpacing.0",
+      "paragraphSpacing": "$paragraphSpacing.0",
+      "textCase": "$textCase.none",
+      "textDecoration": "$textDecoration.none"
+    },
+    "type": "typography",
+    "failedToResolve": true
+  },
+  "bold": {
+    "value": {
+      "fontFamily": "$fontFamilies.manrope",
+      "fontWeight": "$fontWeights.manrope-1",
+      "lineHeight": "$lineHeights.5",
+      "fontSize": "$fontSize.0",
+      "letterSpacing": "$letterSpacing.0",
+      "paragraphSpacing": "$paragraphSpacing.0",
+      "textCase": "$textCase.none",
+      "textDecoration": "$textDecoration.none"
+    },
+    "type": "typography",
+    "failedToResolve": true
+  },
+  "regular": {
+    "value": {
+      "fontFamily": "$fontFamilies.manrope",
+      "fontWeight": "$fontWeights.manrope-3",
+      "lineHeight": "$lineHeights.5",
+      "fontSize": "$fontSize.0",
+      "letterSpacing": "$letterSpacing.0",
+      "paragraphSpacing": "$paragraphSpacing.0",
+      "textCase": "$textCase.none",
+      "textDecoration": "$textDecoration.none"
+    },
+    "type": "typography",
+    "failedToResolve": true
+  },
+  "01": {
+    "value": {
+      "fontFamily": "$fontFamilies.manrope",
+      "fontWeight": "$fontWeights.manrope-1",
+      "lineHeight": "$lineHeights.2",
+      "fontSize": "$fontSize.10",
+      "letterSpacing": "$letterSpacing.0",
+      "paragraphSpacing": "$paragraphSpacing.0",
+      "textCase": "$textCase.none",
+      "textDecoration": "$textDecoration.none"
+    },
+    "type": "typography",
+    "failedToResolve": true
+  },
+  "subscript-01": {
+    "value": {
+      "fontFamily": "$fontFamilies.manrope",
+      "fontWeight": "$fontWeights.manrope-1",
+      "lineHeight": "$lineHeights.3",
+      "fontSize": "$fontSize.5",
+      "letterSpacing": "$letterSpacing.0",
+      "paragraphSpacing": "$paragraphSpacing.0",
+      "textCase": "$textCase.none",
+      "textDecoration": "$textDecoration.none"
+    },
+    "type": "typography",
+    "failedToResolve": true
+  },
+  "subscript-02": {
+    "value": {
+      "fontFamily": "$fontFamilies.manrope",
+      "fontWeight": "$fontWeights.manrope-1",
+      "lineHeight": "$lineHeights.3",
+      "fontSize": "$fontSize.2",
+      "letterSpacing": "$letterSpacing.0",
+      "paragraphSpacing": "$paragraphSpacing.0",
+      "textCase": "$textCase.none",
+      "textDecoration": "$textDecoration.none"
+    },
+    "type": "typography",
+    "failedToResolve": true
+  },
+  "old": {
+    "value": {
+      "fontFamily": "$fontFamilies.manrope",
+      "fontWeight": "$fontWeights.manrope-2",
+      "lineHeight": "$lineHeights.3",
+      "fontSize": "$fontSize.1",
+      "letterSpacing": "$letterSpacing.0",
+      "paragraphSpacing": "$paragraphSpacing.0",
+      "textCase": "$textCase.none",
+      "textDecoration": "$textDecoration.line-through"
+    },
+    "type": "typography",
+    "failedToResolve": true
+  },
+  "manrope-0": {
+    "value": "ExtraBold",
+    "type": "fontWeights"
+  },
+  "manrope-1": {
+    "value": "Bold",
+    "type": "fontWeights"
+  },
+  "manrope-2": {
+    "value": "SemiBold",
+    "type": "fontWeights"
+  },
+  "manrope-3": {
+    "value": "Regular",
+    "type": "fontWeights"
+  },
+  "manrope": {
+    "value": "Manrope",
+    "type": "fontFamilies"
+  },
+  "large": {
+    "value": {
+      "color": "#0000001a",
+      "type": "dropShadow",
+      "x": 0,
+      "y": 4,
+      "blur": 25,
+      "spread": 0
+    },
+    "type": "boxShadow"
+  },
+  "medium": {
+    "value": {
+      "color": "#0000001a",
+      "type": "dropShadow",
+      "x": 0,
+      "y": 3,
+      "blur": 15,
+      "spread": 0
+    },
+    "type": "boxShadow"
+  }
+}

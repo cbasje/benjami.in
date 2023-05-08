@@ -2,7 +2,7 @@
 import { useSanityClient } from "astro-sanity";
 import i18next, { changeLanguage } from "i18next";
 import { projectsQuery } from "../../../lib/queries";
-import type { Project, Seo } from "../../../lib/types";
+import type { Category, Project, Seo } from "../../../lib/types";
 import BlockManager from "../../components/BlockManager.astro";
 import Image from "../../components/Image.astro";
 import ProjectsLayout from "../../layouts/project.astro";
@@ -13,13 +13,10 @@ export interface Props {
     project: Project;
 }
 const { project } = Astro.props;
-const projectColor = project.colour
-    ? `--colors-${project.colour}900`
-    : undefined;
-const seo: Seo = {
+const seo: Omit<Seo, "_type"> = {
     metaTitle: project.title,
     metaDescription: project.description,
-    shareImage: project.mainImage,
+    shareImage: project.headerImage,
     isArticle: true,
 };
 export async function getStaticPaths() {
@@ -37,10 +34,10 @@ export async function getStaticPaths() {
     <header>
         <h1>{project.title}</h1>
         <div class="intro" role="presentation">
-            <div role="none">
-                <h3 class="description">
+            <div role="complementary">
+                <h2 class="description">
                     {project.description}
-                </h3>
+                </h2>
 
                 <div role="none">
                     <span>
@@ -80,14 +77,14 @@ export async function getStaticPaths() {
                 </div>
             </div>
 
-            <p>{project.excerpt}</p>
+            <p role="doc-preface">{project.excerpt}</p>
         </div>
     </header>
 
     <div role="banner">
         <Image
-            alt={`Main image of ${project.mainImage}`}
-            src={project.mainImage}
+            alt={`Header image of ${project.title}`}
+            src={project.headerImage}
             width={1024}
             height={683}
             fillContainer
@@ -98,35 +95,39 @@ export async function getStaticPaths() {
 </ProjectsLayout>
 
 <style lang="scss">
+    @import "open-props/media";
+
     header {
         display: flex;
         flex-direction: column;
-        gap: var(--spaces-1);
+        gap: var(--size-2);
 
         h1 {
-            margin: 0;
-            font-size: 2rem;
+            font-size: var(--font-size-6);
+            line-height: var(--font-lineheight-1);
         }
 
-        .intro {
+        div.intro {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--spaces-3);
+            grid-template-columns: 1fr;
+            gap: var(--size-5);
 
             > div {
                 display: flex;
                 flex-direction: column;
-                gap: var(--spaces-1);
+                gap: var(--size-2);
 
-                h3.description {
+                h2.description {
                     margin: 0;
-                    font-size: 1.5rem;
+                    font-size: var(--font-size-4);
+                    font-weight: var(--font-weight-4);
+                    line-height: var(--font-lineheight-0);
                 }
 
                 > div {
                     display: flex;
                     flex-direction: row;
-                    gap: var(--spaces-1);
+                    gap: var(--size-2);
                 }
             }
         }
@@ -135,17 +136,17 @@ export async function getStaticPaths() {
     div[role="banner"] {
         width: 100%;
         height: auto;
-        border-radius: var(--radii-sm);
+        border-radius: var(--radius-2);
         aspect-ratio: 3 / 2;
         overflow: hidden;
         background-color: rgb(var(--projectColor));
     }
 
-    @media only screen and (width <= 640px) {
-        header .intro {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spaces-3);
+    @media (--md-n-above) {
+        header {
+            div.intro {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     }
 </style>

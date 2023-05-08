@@ -1,92 +1,114 @@
+import { s } from "@sanity-typed/schema-builder";
 import { FolderIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
+import { blockContent } from "./blockContent";
+import { category } from "./category";
+import { company } from "./company";
+import { seo } from "./seo";
 
-export default defineType({
+export const projectColour = s.string({
+    options: {
+        list: [
+            { title: "Purple", value: "purple" },
+            { title: "Green", value: "green" },
+            { title: "Blue", value: "blue" },
+        ],
+    },
+});
+
+export const project = s.document({
     name: "project",
     title: "Project",
     icon: FolderIcon,
-    type: "document",
     i18n: true,
     fields: [
-        defineField({
+        {
             name: "title",
             title: "Title",
-            type: "string",
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
+            optional: false,
+            type: s.string(),
+        },
+        {
             name: "description",
             title: "Description",
-            type: "string",
-        }),
-        defineField({
+            optional: true,
+            type: s.string(),
+        },
+        {
             name: "excerpt",
             title: "Excerpt",
-            type: "text",
-        }),
-        defineField({
+            optional: true,
+            type: s.text(),
+        },
+        {
             name: "slug",
             title: "Slug",
-            type: "slug",
-            options: {
-                source: "title",
-                maxLength: 96,
-            },
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-            name: "mainImage",
-            title: "Main image",
-            type: "image",
-            options: {
+            optional: false,
+            type: s.slug({
+                options: {
+                    source: "title",
+                    maxLength: 96,
+                },
+            }),
+        },
+        {
+            name: "headerImage",
+            title: "Header image",
+            optional: false,
+            type: s.image({
                 hotspot: true,
-            },
-        }),
-        defineField({
+            }),
+        },
+        {
+            name: "headerImageRound",
+            title: "Header image (Round)",
+            optional: false,
+            type: s.image(),
+        },
+        {
             name: "colour",
             title: "Colour",
-            type: "string",
-            options: {
-                list: [
-                    { title: "Purple", value: "purple" },
-                    { title: "Green", value: "green" },
-                    { title: "Blue", value: "blue" },
-                ],
-            },
-        }),
-        defineField({
+            optional: true,
+            type: projectColour,
+        },
+        {
             name: "categories",
             title: "Categories",
-            type: "array",
-            of: [{ type: "reference", to: { type: "category" } }],
-        }),
-        defineField({
+            optional: true,
+            type: s.array({
+                of: [s.reference({ to: [category] })],
+            }),
+        },
+        {
             name: "content",
             title: "Content",
-            type: "blockContent",
-        }),
-        defineField({
+            optional: true,
+            type: blockContent,
+        },
+        {
             name: "company",
             title: "Company",
-            type: "company",
-        }),
-        defineField({
+            optional: true,
+            type: company,
+        },
+        {
             name: "publishedAt",
             title: "Published at",
-            type: "datetime",
-        }),
-        defineField({
+            optional: false,
+            type: s.datetime(),
+        },
+        {
             name: "seo",
             title: "SEO",
-            type: "seo",
-            validation: (Rule) => Rule.required(),
-        }),
+            optional: false,
+            type: seo,
+        },
     ],
 
     preview: {
         select: {
             title: "title",
-            media: "mainImage",
+            media: "headerImage",
+            subtitle: "description",
         },
     },
 });

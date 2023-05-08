@@ -1,34 +1,72 @@
+import { s } from "@sanity-typed/schema-builder";
 import { HomeIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
+import { project, projectColour } from "./project";
+import { seo } from "./seo";
 
-export default defineType({
+export const home = s.document({
     name: "home",
     title: "Home page",
     icon: HomeIcon,
-    type: "document",
     i18n: true,
     fields: [
-        defineField({
+        {
             name: "title",
             title: "Title",
-            type: "string",
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-            name: "description",
-            title: "Description",
-            type: "text",
-        }),
-        defineField({
-            name: "callToAction",
-            title: "Call-To-Action",
-            type: "string",
-        }),
-        defineField({
+            optional: false,
+            type: s.string(),
+        },
+        {
+            name: "links",
+            title: "Links",
+            optional: false,
+            type: s.array({
+                max: 10,
+                of: [
+                    s.objectNamed({
+                        name: "general-link",
+                        title: "General link",
+                        fields: [
+                            {
+                                name: "title",
+                                title: "Title",
+                                optional: false,
+                                type: s.string(),
+                            },
+                            {
+                                name: "url",
+                                title: "URL",
+                                optional: true,
+                                type: s.url(),
+                            },
+                            {
+                                name: "slug",
+                                title: "Slug",
+                                optional: true,
+                                type: s.slug(),
+                            },
+                            {
+                                name: "image",
+                                title: "Image",
+                                optional: false,
+                                type: s.image(),
+                            },
+                            {
+                                name: "colour",
+                                title: "Colour",
+                                optional: true,
+                                type: projectColour,
+                            },
+                        ],
+                    }),
+                    s.reference({ to: [project] }),
+                ],
+            }),
+        },
+        {
             name: "seo",
             title: "SEO",
-            type: "seo",
-            validation: (Rule) => Rule.required(),
-        }),
+            optional: false,
+            type: seo,
+        },
     ],
 });

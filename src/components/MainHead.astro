@@ -4,24 +4,21 @@ import { useSanityClient } from "astro-sanity";
 import { SEO } from "astro-seo";
 import i18next from "i18next";
 import { globalQuery } from "../../lib/queries";
-import type { Seo } from "../../lib/types";
+import { urlForImage } from "../../lib/sanity";
+import type { GlobalSeo, Image, Seo } from "../../lib/types";
 
-import "../styles/variables.scss";
 import "../styles/global.scss";
-import "../styles/components.scss";
 
 export interface Props {
-    seo?: Seo;
+    seo?: Omit<Seo, "_type">;
 }
 
 const { seo } = Astro.props;
 
-const { siteName, siteKeywords, defaultSeo } = await useSanityClient().fetch(
-    globalQuery,
-    {
+const { siteName, siteKeywords, defaultSeo }: GlobalSeo =
+    await useSanityClient().fetch(globalQuery, {
         locale: i18next.language,
-    }
-);
+    });
 
 const seoWithDefaults: Seo = {
     ...defaultSeo,
@@ -36,6 +33,16 @@ const fullSeo = {
             : `${seoWithDefaults.metaTitle} | ${siteName}`,
     siteKeywords: siteKeywords ?? "",
 };
+
+const getImage = (src: Image) => {
+    return urlForImage(src.asset._ref)
+        .width(1200)
+        .height(630)
+        .auto("format")
+        .format("png")
+        .fit("max")
+        .url();
+};
 ---
 
 <head>
@@ -47,7 +54,7 @@ const fullSeo = {
             basic: {
                 type: fullSeo.isArticle ? "article" : "website",
                 title: seoWithDefaults.metaTitle,
-                image: fullSeo.shareImage ?? "",
+                image: fullSeo.shareImage ? getImage(fullSeo.shareImage) : "",
             },
         }}
         twitter={{

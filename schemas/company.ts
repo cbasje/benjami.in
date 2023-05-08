@@ -1,28 +1,28 @@
-import { defineField, defineType } from "sanity";
+import { s } from "@sanity-typed/schema-builder";
 
-export default defineType({
+export const company = s.objectNamed({
     name: "company",
     title: "Company",
-    type: "object",
     fields: [
-        defineField({
+        {
             name: "title",
             title: "Title",
-            type: "string",
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
+            optional: false,
+            type: s.string(),
+        },
+        {
             name: "url",
             title: "URL",
-            type: "url",
-        }),
-        defineField({
+            optional: true,
+            type: s.url(),
+        },
+        {
             name: "logo",
             title: "Logo",
-            type: "image",
-            options: {
+            optional: true,
+            type: s.image({
                 hotspot: true,
-            },
-        }),
+            }),
+        },
     ],
 });

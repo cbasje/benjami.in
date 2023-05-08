@@ -1,26 +1,54 @@
 ---
-import { changeLanguage } from "i18next";
-import MainHead from "../components/MainHead.astro";
+import { useSanityClient } from "astro-sanity";
+import i18next, { changeLanguage } from "i18next";
+import { notFoundQuery } from "../../lib/queries";
+import type { NotFound } from "../../lib/types";
 import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+import MainLayout from "../layouts/main.astro";
 
 changeLanguage("en");
+
+const notFound: NotFound = await useSanityClient().fetch(notFoundQuery, {
+    locale: i18next.language,
+});
 ---
 
-<html lang="en">
-    <head>
-        <MainHead title="Not Found" />
-        <style>
-            .wrapper {
-                margin-top: 2em;
-                margin-bottom: 2em;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="wrapper">
-            <h1>Page Not Found</h1>
-            <p>Not found</p>
+<MainLayout seo={notFound.seo}>
+    <main>
+        <Nav />
+
+        <div class="content-wrapper">
+            <h1>{notFound.title}</h1>
+            <p>{notFound.description}</p>
         </div>
+
         <Footer />
-    </body>
-</html>
+    </main>
+</MainLayout>
+
+<style lang="scss">
+    @import "open-props/media";
+
+    main {
+        min-height: 100vh;
+        margin-inline: auto;
+        padding: var(--size-3);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: var(--size-8);
+
+        > :global(*) {
+            width: 100%;
+            max-width: 1024px;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding-block: var(--size-10);
+        }
+    }
+</style>

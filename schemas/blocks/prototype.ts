@@ -1,30 +1,30 @@
+import { s } from "@sanity-typed/schema-builder";
 import { PresentationIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
 
-export default defineType({
+export const prototype = s.objectNamed({
     name: "prototype",
     title: "Prototype",
     icon: PresentationIcon,
-    type: "object",
     fields: [
-        defineField({
+        {
             name: "src",
             title: "Source",
-            type: "string",
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
+            optional: false,
+            type: s.string(),
+        },
+        {
             name: "provider",
             title: "Provider",
-            type: "string",
-            options: {
-                list: [
-                    { title: "Figma", value: "figma" },
-                    { title: "Framer", value: "framer" },
-                    { title: "Website", value: "website" },
-                ],
-            },
-            validation: (Rule) => Rule.required(),
-        }),
+            optional: false,
+            type: s.string({
+                options: {
+                    list: [
+                        { title: "Figma", value: "figma" },
+                        { title: "Framer", value: "framer" },
+                        { title: "Website", value: "website" },
+                    ],
+                },
+            }),
+        },
     ],
 });

@@ -1,33 +1,34 @@
-import { defineField, defineType } from "sanity";
+import { s } from "@sanity-typed/schema-builder";
 
-export default defineType({
+export const seo = s.objectNamed({
     name: "seo",
     title: "SEO",
-    type: "object",
     fields: [
-        defineField({
+        {
             name: "metaTitle",
             title: "Meta title",
-            type: "string",
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
+            optional: false,
+            type: s.string(),
+        },
+        {
             name: "metaDescription",
             title: "Meta description",
-            type: "string",
-        }),
-        defineField({
+            optional: true,
+            type: s.text(),
+        },
+        {
             name: "shareImage",
             title: "Share image",
-            type: "image",
-            options: {
+            optional: true,
+            type: s.image({
                 hotspot: true,
-            },
-        }),
-        defineField({
+            }),
+        },
+        {
             name: "isArticle",
             title: "Is article?",
-            type: "boolean",
-        }),
+            optional: true,
+            type: s.boolean(),
+        },
     ],
 });

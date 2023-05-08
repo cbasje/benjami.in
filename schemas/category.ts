@@ -1,33 +1,34 @@
+import { s } from "@sanity-typed/schema-builder";
 import { StarIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
 
-export default defineType({
+export const category = s.document({
     name: "category",
     title: "Category",
     icon: StarIcon,
-    type: "document",
     i18n: true,
     fields: [
-        defineField({
+        {
             name: "title",
             title: "Title",
-            type: "string",
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
+            optional: false,
+            type: s.string(),
+        },
+        {
             name: "description",
             title: "Description",
-            type: "string",
-        }),
-        defineField({
+            optional: true,
+            type: s.string(),
+        },
+        {
             name: "slug",
             title: "Slug",
-            type: "slug",
-            options: {
-                source: "title",
-                maxLength: 96,
-            },
-            validation: (Rule) => Rule.required(),
-        }),
+            optional: false,
+            type: s.slug({
+                options: {
+                    source: "title",
+                    maxLength: 96,
+                },
+            }),
+        },
     ],
 });
