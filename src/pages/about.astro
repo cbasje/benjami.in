@@ -33,21 +33,6 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
                     height={480}
                 />
             </div>
-
-            <a
-                class="button size-large variant-primary"
-                href="mailto:Sebastiaan Benjamins <sebas@benjami.in>"
-            >
-                <span>{about.callToAction ?? "Let's talk"}</span>
-                <Icon
-                    name="ph:envelope-simple-bold"
-                    style={{
-                        width: "32px",
-                        height: "32px",
-                    }}
-                    aria-hidden
-                />
-            </a>
         </header>
 
         <Footer />
@@ -58,10 +43,9 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
     @import "open-props/media";
 
     main {
-        height: 100vh;
+        min-height: 100vh;
         margin-inline: auto;
-        padding-block: var(--size-3);
-        padding-inline: var(--size-2);
+        padding: var(--size-3);
 
         display: flex;
         flex-direction: column;
@@ -80,15 +64,15 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
             flex-direction: column;
             justify-content: center;
             align-items: stretch;
+            gap: var(--size-10);
+            padding-block: var(--size-10);
 
             > div {
                 align-self: stretch;
                 display: flex;
-                flex-direction: row;
+                flex-direction: column-reverse;
                 justify-content: space-between;
                 align-items: flex-end;
-                gap: var(--size-10);
-                padding-block-end: var(--size-10);
 
                 .text-wrapper {
                     display: flex;
@@ -96,6 +80,7 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
                     max-inline-size: var(--size-content-3);
 
                     h1 {
+                        line-height: var(--font-lineheight-1);
                         font-size: var(--font-size-7);
                     }
                     p {
@@ -107,8 +92,8 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
                 :global(img) {
                     flex: 0;
                     aspect-ratio: 3/4;
-                    align-self: flex-start;
-                    margin-block-end: var(--size-10);
+                    align-self: flex-end;
+                    margin-block-end: calc(var(--size-10) * -1);
                 }
             }
 
@@ -120,7 +105,19 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
 
     @media (--md-n-above) {
         main {
-            padding-inline: var(--size-3);
+            header {
+                padding: 0;
+
+                > div {
+                    flex-direction: row;
+                    gap: var(--size-10);
+
+                    :global(img) {
+                        margin-block-end: var(--size-10);
+                        align-self: flex-start;
+                    }
+                }
+            }
         }
     }
 </style>
