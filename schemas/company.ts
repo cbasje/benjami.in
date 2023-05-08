@@ -21,9 +21,7 @@ export const company = s.objectNamed({
             title: "Logo",
             optional: true,
             type: s.image({
-                options: {
-                    hotspot: true,
-                },
+                hotspot: true,
             }),
         },
     ],

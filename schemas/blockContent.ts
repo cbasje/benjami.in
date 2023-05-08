@@ -37,7 +37,7 @@ export const blockContent = s.array({
             },
         }),
         s.image({
-            options: { hotspot: true },
+            hotspot: true,
             icon: ImageIcon,
         }),
         code,

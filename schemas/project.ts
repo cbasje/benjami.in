@@ -55,9 +55,7 @@ export const project = s.document({
             title: "Header image",
             optional: false,
             type: s.image({
-                options: {
-                    hotspot: true,
-                },
+                hotspot: true,
             }),
         },
         {

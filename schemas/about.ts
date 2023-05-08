@@ -21,6 +21,14 @@ export const about = s.document({
             type: s.text(),
         },
         {
+            name: "image",
+            title: "Image",
+            optional: false,
+            type: s.image({
+                hotspot: true,
+            }),
+        },
+        {
             name: "seo",
             title: "SEO",
             optional: false,

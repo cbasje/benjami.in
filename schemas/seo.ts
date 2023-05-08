@@ -21,9 +21,7 @@ export const seo = s.objectNamed({
             title: "Share image",
             optional: true,
             type: s.image({
-                options: {
-                    hotspot: true,
-                },
+                hotspot: true,
             }),
         },
         {

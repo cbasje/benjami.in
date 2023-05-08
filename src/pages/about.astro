@@ -4,6 +4,7 @@ import i18next, { changeLanguage } from "i18next";
 import { aboutQuery } from "../../lib/queries";
 import type { About } from "../../lib/types";
 import Footer from "../components/Footer.astro";
+import SanityImage from "../components/Image.astro";
 import MainLayout from "../layouts/main.astro";
 
 changeLanguage("en");
@@ -11,13 +12,26 @@ changeLanguage("en");
 const about: About = await useSanityClient().fetch(aboutQuery, {
     locale: i18next.language,
 });
+console.log("🚀 ---------------------------------------------------------🚀");
+console.log("🚀 ~ constabout:About=awaituseSanityClient ~ about:", about);
+console.log("🚀 ---------------------------------------------------------🚀");
 ---
 
 <MainLayout seo={about.seo}>
     <main>
-        <div class="content-wrapper">
-            <h1>{about.title}</h1>
-            <p>{about.description}</p>
+        <div class="header-wrapper">
+            <header>
+                <div class="text-wrapper">
+                    <h1>{about.title}</h1>
+                    <p>{about.description}</p>
+                </div>
+                <SanityImage
+                    alt="Picture of me, Sebastiaan Benjamins, smiling at the camera"
+                    src={about.image}
+                    width={360}
+                    height={480}
+                />
+            </header>
         </div>
 
         <Footer />
@@ -30,7 +44,7 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
     main {
         height: 100vh;
         margin-inline: auto;
-        padding-block: var(--size-11);
+        padding-block: var(--size-3);
         padding-inline: var(--size-2);
 
         display: flex;
@@ -44,8 +58,41 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
             max-width: 1024px;
         }
 
-        .content-wrapper {
+        div.header-wrapper {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+
+            header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+                gap: var(--size-10);
+
+                .text-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    max-inline-size: var(--size-content-3);
+
+                    h1 {
+                        font-size: var(--font-size-7);
+                    }
+                    p {
+                        line-height: var(--font-lineheight-4);
+                        font-size: var(--font-size-2);
+                    }
+                }
+
+                :global(img) {
+                    flex: 0;
+                    aspect-ratio: 3/4;
+                    align-self: flex-start;
+                    margin-block-end: var(--size-10);
+                }
+            }
         }
     }
 
