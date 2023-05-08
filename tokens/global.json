@@ -1,5 +1,59 @@
 {
   "_color": {
+    "red": {
+      "0": {
+        "value": "#fff0f6",
+        "type": "color"
+      },
+      "1": {
+        "value": "#ffdeeb",
+        "type": "color"
+      },
+      "2": {
+        "value": "#fcc2d7",
+        "type": "color"
+      },
+      "3": {
+        "value": "#faa2c1",
+        "type": "color"
+      },
+      "4": {
+        "value": "#f783ac",
+        "type": "color"
+      },
+      "5": {
+        "value": "#f06595",
+        "type": "color"
+      },
+      "6": {
+        "value": "#e64980",
+        "type": "color"
+      },
+      "7": {
+        "value": "#d6336c",
+        "type": "color"
+      },
+      "8": {
+        "value": "#c2255c",
+        "type": "color"
+      },
+      "9": {
+        "value": "#a61e4d",
+        "type": "color"
+      },
+      "10": {
+        "value": "#8c1941",
+        "type": "color"
+      },
+      "11": {
+        "value": "#731536",
+        "type": "color"
+      },
+      "12": {
+        "value": "#59102a",
+        "type": "color"
+      }
+    },
     "purple": {
       "0": {
         "value": "#f3f0ff",

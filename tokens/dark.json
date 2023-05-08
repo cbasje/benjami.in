@@ -41,20 +41,20 @@
         "value": "#15aabf",
         "type": "color"
       }
-    }
-  },
-  "_gradient": {
-    "green": {
-      "value": "linear-gradient(165deg, #20c997 0%, #087f5b 100%)",
-      "type": "color"
     },
-    "purple": {
-      "value": "linear-gradient(165deg, #845ef7 0%, #5f3dc4 100%)",
-      "type": "color"
-    },
-    "blue": {
-      "value": "linear-gradient(165deg, #22b8cf 0%, #0b7285 100%)",
-      "type": "color"
+    "_gradient": {
+      "green": {
+        "value": "linear-gradient(165deg, #96f2d7 0%, #3bc9db 100%)",
+        "type": "color"
+      },
+      "purple": {
+        "value": "linear-gradient(170deg, #d0bfff 0%, #f783ac 100%)",
+        "type": "color"
+      },
+      "blue": {
+        "value": "linear-gradient(165deg, #99e9f2 0%, #9775fa 100%)",
+        "type": "color"
+      }
     }
   }
 }
