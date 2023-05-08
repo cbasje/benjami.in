@@ -17,9 +17,11 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
 const links = homepage.links.map((el) => {
     if (el.slug) {
         return localizePath(`/${el.slug}`);
-    } else if (el.url) {
+    }
+    else if (el.url) {
         return el.url;
-    } else {
+    }
+    else {
         return "#";
     }
 });
