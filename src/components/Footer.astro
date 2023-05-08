@@ -4,7 +4,7 @@ import Social from "./Social.astro";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="grayscale">
+<footer>
     <aside>
         <Social />
         <ul>
@@ -19,7 +19,6 @@ const currentYear = new Date().getFullYear();
     @import "open-props/media";
 
     footer {
-        width: 100%;
         padding-block: var(--size-3);
         display: flex;
         justify-content: center;
@@ -47,10 +46,11 @@ const currentYear = new Date().getFullYear();
         max-width: 30%;
         position: relative;
         align-items: center;
-        gap: var(--size-3);
+        gap: var(--size-2);
 
         li {
             max-width: 100%;
+            padding: 0;
 
             position: relative;
             display: flex;

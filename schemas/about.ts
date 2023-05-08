@@ -26,6 +26,9 @@ export const about = s.document({
             optional: false,
             type: s.image({
                 hotspot: true,
+                options: {
+                    metadata: ["blurhash"],
+                },
             }),
         },
         {

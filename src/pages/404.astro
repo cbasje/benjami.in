@@ -4,6 +4,7 @@ import i18next, { changeLanguage } from "i18next";
 import { notFoundQuery } from "../../lib/queries";
 import type { NotFound } from "../../lib/types";
 import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
 import MainLayout from "../layouts/main.astro";
 
 changeLanguage("en");
@@ -15,6 +16,8 @@ const notFound: NotFound = await useSanityClient().fetch(notFoundQuery, {
 
 <MainLayout seo={notFound.seo}>
     <main>
+        <Nav />
+
         <div class="content-wrapper">
             <h1>{notFound.title}</h1>
             <p>{notFound.description}</p>

@@ -1,0 +1,47 @@
+---
+import { localizePath } from "astro-i18next";
+import { Icon } from "astro-icon";
+---
+
+<nav>
+    <a class="button" title="Go back to the Home page" href={localizePath("/")}>
+        <Icon
+            name="ph:caret-left-bold"
+            style={{
+                width: "24px",
+                height: "24px",
+            }}
+            aria-hidden
+        />
+        <span>Back</span>
+    </a>
+</nav>
+
+<style lang="scss">
+    @import "open-props/media";
+
+    nav {
+        padding-block: var(--size-3);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: var(--text-2);
+
+        a {
+            padding-block: var(--size-2);
+            padding-inline: var(--size-3);
+            display: flex;
+            flex-direction: row;
+            gap: var(--size-2);
+            flex-grow: 0;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--radius-2);
+            transition: background-color 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+
+            &:hover {
+                background-color: var(--surface-2);
+            }
+        }
+    }
+</style>

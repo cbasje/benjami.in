@@ -5,6 +5,7 @@ import { aboutQuery } from "../../lib/queries";
 import type { About } from "../../lib/types";
 import Footer from "../components/Footer.astro";
 import SanityImage from "../components/Image.astro";
+import Nav from "../components/Nav.astro";
 import MainLayout from "../layouts/main.astro";
 
 changeLanguage("en");
@@ -12,13 +13,12 @@ changeLanguage("en");
 const about: About = await useSanityClient().fetch(aboutQuery, {
     locale: i18next.language,
 });
-console.log("🚀 ---------------------------------------------------------🚀");
-console.log("🚀 ~ constabout:About=awaituseSanityClient ~ about:", about);
-console.log("🚀 ---------------------------------------------------------🚀");
 ---
 
 <MainLayout seo={about.seo}>
     <main>
+        <Nav />
+
         <div class="header-wrapper">
             <header>
                 <div class="text-wrapper">
@@ -51,7 +51,7 @@ console.log("🚀 ---------------------------------------------------------🚀"
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        gap: var(--size-8);
+        gap: var(--size-3);
 
         > :global(*) {
             width: 100%;
