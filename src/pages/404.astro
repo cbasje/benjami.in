@@ -31,10 +31,9 @@ const notFound: NotFound = await useSanityClient().fetch(notFoundQuery, {
     @import "open-props/media";
 
     main {
-        height: 100vh;
+        min-height: 100vh;
         margin-inline: auto;
-        padding-block: var(--size-3);
-        padding-inline: var(--size-2);
+        padding: var(--size-3);
 
         display: flex;
         flex-direction: column;
@@ -49,12 +48,7 @@ const notFound: NotFound = await useSanityClient().fetch(notFoundQuery, {
 
         .content-wrapper {
             flex: 1;
-        }
-    }
-
-    @media (--md-n-above) {
-        main {
-            padding-inline: var(--size-3);
+            padding-block: var(--size-10);
         }
     }
 </style>

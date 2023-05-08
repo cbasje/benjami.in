@@ -74,10 +74,9 @@ const links = homepage.links.map((el) => {
     @import "open-props/media";
 
     main {
-        height: 100vh;
+        min-height: 100vh;
         margin-inline: auto;
-        padding-block: var(--size-3);
-        padding-inline: var(--size-2);
+        padding: var(--size-3);
 
         display: flex;
         flex-direction: column;
@@ -95,12 +94,6 @@ const links = homepage.links.map((el) => {
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-    }
-
-    @media (--md-n-above) {
-        main {
-            padding-inline: var(--size-3);
         }
     }
 </style>

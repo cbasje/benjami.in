@@ -23,7 +23,7 @@ const currentYear = new Date().getFullYear();
         display: flex;
         justify-content: center;
         align-items: center;
-        color: var(--text-2);
+        color: var(--theme-text-3);
 
         & > * {
             width: 100%;
@@ -33,6 +33,7 @@ const currentYear = new Date().getFullYear();
 
     aside {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
         gap: var(--size-7);
@@ -43,7 +44,7 @@ const currentYear = new Date().getFullYear();
         padding: 0;
         list-style: none;
         display: flex;
-        max-width: 30%;
+        flex-direction: column;
         position: relative;
         align-items: center;
         gap: var(--size-2);
@@ -65,9 +66,13 @@ const currentYear = new Date().getFullYear();
         }
     }
 
-    @media (--md-n-below) {
-        ul {
-            max-width: 50%;
+    @media (--md-n-above) {
+        aside {
+            flex-direction: row;
+
+            ul {
+                max-width: 30%;
+            }
         }
     }
 </style>
