@@ -2,15 +2,15 @@
   "theme": {
     "surface": {
       "1": {
-        "value": "#f8f9fa",
-        "type": "color"
-      },
-      "2": {
         "value": "#e9ecef",
         "type": "color"
       },
-      "3": {
+      "2": {
         "value": "#ced4da",
+        "type": "color"
+      },
+      "3": {
+        "value": "#868e96",
         "type": "color"
       }
     },
