@@ -11,18 +11,32 @@ export interface Props {
     alt: string;
 }
 const { src, width, height, fillContainer, alt } = Astro.props;
+
+// FIXME: Implement this properly
+const srcUrl = urlForImage(src)
+    .width(width * 2)
+    .height(height * 2)
+    .format("webp")
+    .quality(100)
+    .fit("max")
+    .url();
 ---
 
+<!-- 
 <AstroImage
-    class={`image ${fillContainer ? "fill-container" : ""}`}
+    class={`image${fillContainer ? " fill-container" : ""}`}
     width={width}
     height={height}
-    src={urlForImage(src)
-        .width(width)
-        .height(height)
-        .format("webp")
-        .fit("max")
-        .url()}
+    src={srcUrl}
+    alt={alt}
+    loading="lazy"
+    quality={100}
+/> -->
+<img
+    class={`image${fillContainer ? " fill-container" : ""}`}
+    width={width}
+    height={height}
+    src={srcUrl}
     alt={alt}
     loading="lazy"
 />

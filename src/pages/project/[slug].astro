@@ -4,7 +4,7 @@ import i18next, { changeLanguage } from "i18next";
 import { projectsQuery } from "../../../lib/queries";
 import type { Category, Project, Seo } from "../../../lib/types";
 import BlockManager from "../../components/BlockManager.astro";
-import Image from "../../components/Image.astro";
+import SanityImage from "../../components/SanityImage.astro";
 import ProjectsLayout from "../../layouts/project.astro";
 
 changeLanguage("en");
@@ -82,7 +82,7 @@ export async function getStaticPaths() {
     </header>
 
     <div role="banner">
-        <Image
+        <SanityImage
             alt={`Header image of ${project.title}`}
             src={project.headerImage}
             width={1024}

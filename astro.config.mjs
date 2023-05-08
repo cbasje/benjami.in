@@ -15,9 +15,7 @@ export default defineConfig({
             useCdn: true,
         }),
         astroI18next(),
-        image({
-            serviceEntryPoint: "@astrojs/image/sharp",
-        }),
+        image(),
         svelte(),
     ],
 });
