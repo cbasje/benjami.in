@@ -7,6 +7,7 @@ import Footer from "../components/Footer.astro";
 import SanityImage from "../components/Image.astro";
 import Nav from "../components/Nav.astro";
 import MainLayout from "../layouts/main.astro";
+import { Icon } from "astro-icon";
 
 changeLanguage("en");
 
@@ -19,8 +20,8 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
     <main>
         <Nav />
 
-        <div class="header-wrapper">
-            <header>
+        <header>
+            <div>
                 <div class="text-wrapper">
                     <h1>{about.title}</h1>
                     <p>{about.description}</p>
@@ -31,8 +32,23 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
                     width={360}
                     height={480}
                 />
-            </header>
-        </div>
+            </div>
+
+            <a
+                class="button size-large variant-primary"
+                href="mailto:Sebastiaan Benjamins <sebas@benjami.in>"
+            >
+                <span>{about.callToAction ?? "Let's talk"}</span>
+                <Icon
+                    name="ph:envelope-simple-bold"
+                    style={{
+                        width: "32px",
+                        height: "32px",
+                    }}
+                    aria-hidden
+                />
+            </a>
+        </header>
 
         <Footer />
     </main>
@@ -58,14 +74,15 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
             max-width: 1024px;
         }
 
-        div.header-wrapper {
+        header {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: stretch;
 
-            header {
+            > div {
+                align-self: stretch;
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
@@ -93,6 +110,10 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
                     align-self: flex-start;
                     margin-block-end: var(--size-10);
                 }
+            }
+
+            > a.button {
+                align-self: center;
             }
         }
     }
