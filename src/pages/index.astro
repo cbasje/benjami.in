@@ -17,11 +17,9 @@ const homepage: Home = await useSanityClient().fetch(homeQuery, {
 const links = homepage.links.map((el) => {
     if (el.slug) {
         return localizePath(`/${el.slug}`);
-    }
-    else if (el.url) {
+    } else if (el.url) {
         return el.url;
-    }
-    else {
+    } else {
         return "#";
     }
 });
@@ -69,6 +67,23 @@ const links = homepage.links.map((el) => {
         <Footer />
     </main>
 </MainLayout>
+
+<script>
+    import { animate, stagger } from "motion";
+
+    // Animate sections on loading
+    animate(
+        "main > *",
+        {
+            opacity: [0, 1],
+        },
+        {
+            duration: 0.75,
+            easing: [0.43, 0.13, 0.23, 0.96],
+            delay: stagger(0.25),
+        }
+    );
+</script>
 
 <style lang="scss">
     @import "open-props/media";
