@@ -94,7 +94,14 @@ export async function getStaticPaths() {
     <BlockManager value={project.content} />
 </ProjectsLayout>
 
-<style lang="scss">
+<style
+    lang="scss"
+    define:vars={{
+        background: project.colour
+            ? `var(--theme-gradient-${project.colour})`
+            : "var(--theme-surface-2)",
+    }}
+>
     @import "open-props/media";
 
     header {
@@ -139,7 +146,7 @@ export async function getStaticPaths() {
         border-radius: var(--radius-2);
         aspect-ratio: 3 / 2;
         overflow: hidden;
-        background-color: rgb(var(--projectColor));
+        background: var(--background);
     }
 
     @media (--md-n-above) {
