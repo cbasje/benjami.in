@@ -5,87 +5,52 @@ import { Icon } from "astro-icon";
 <ul role="list">
     <li role="listitem">
         <a
-            class="button"
+            class="social-link"
             title="My email address"
             rel="nofollow me"
             href="mailto:Sebastiaan Benjamins <sebas@benjami.in>"
         >
-            <Icon
-                name="ph:envelope-simple-fill"
-                style={{
-                    width: "24px",
-                    height: "24px",
-                }}
-                aria-hidden
-            />
+            <Icon name="ph:envelope-simple-fill" aria-hidden />
         </a>
     </li>
     <li role="listitem">
         <a
-            class="button"
+            class="social-link"
             title="My Mastodon account"
             rel="nofollow me"
             href="https://mas.to/@sebastiaan"
         >
-            <Icon
-                name="mdi:mastodon"
-                style={{
-                    width: "24px",
-                    height: "24px",
-                }}
-                aria-hidden
-            />
+            <Icon name="mdi:mastodon" aria-hidden />
         </a>
     </li>
     <li role="listitem">
         <a
-            class="button"
+            class="social-link"
             title="My Github account"
             rel="nofollow me"
             href="https://github.com/cbasje"
         >
-            <Icon
-                name="ph:github-logo-fill"
-                style={{
-                    width: "24px",
-                    height: "24px",
-                }}
-                aria-hidden
-            />
+            <Icon name="ph:github-logo-fill" aria-hidden />
         </a>
     </li>
     <li role="listitem">
         <a
-            class="button"
+            class="social-link"
             title="My LinkedIn account"
             rel="nofollow me"
             href="https://www.linkedin.com/in/sebastiaanbenjamins/"
         >
-            <Icon
-                name="ph:linkedin-logo-fill"
-                style={{
-                    width: "24px",
-                    height: "24px",
-                }}
-                aria-hidden
-            />
+            <Icon name="ph:linkedin-logo-fill" aria-hidden />
         </a>
     </li>
     <li role="listitem">
         <a
-            class="button"
+            class="social-link"
             title="My Instagram account"
             rel="nofollow me"
             href="https://instagram.com/cbasje"
         >
-            <Icon
-                name="ph:instagram-logo-fill"
-                style={{
-                    width: "24px",
-                    height: "24px",
-                }}
-                aria-hidden
-            />
+            <Icon name="ph:instagram-logo-fill" aria-hidden />
         </a>
     </li>
 </ul>
@@ -97,20 +62,45 @@ import { Icon } from "astro-icon";
         margin: 0;
         padding: 0;
         list-style: none;
+
         display: flex;
-        position: relative;
         align-items: center;
         gap: var(--size-2);
 
         font-weight: var(--font-weight-7);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
 
         li {
             padding: 0;
+            margin: 0;
 
-            a {
+            a.social-link {
                 flex-grow: 0;
+                display: block;
+
+                color: inherit;
+                text-decoration: none;
+                text-shadow: none;
+
+                border-radius: var(--radius-round);
+                padding-block: var(--size-2);
+                padding-inline: var(--size-3);
+
+                scale: 1;
+                transition: scale 0.375s var(--ease-squish-4),
+                    color 0.2s var(--ease-in-out-4);
+
+                &:active {
+                    scale: 0.95;
+                }
+
+                &:hover {
+                    color: var(--theme-accent-1);
+                }
+
+                > :global(svg) {
+                    width: var(--font-size-4);
+                    height: var(--font-size-4);
+                }
             }
         }
     }

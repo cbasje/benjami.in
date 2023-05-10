@@ -95,6 +95,7 @@
     button,
     input {
         outline-color: var(--theme-accent-1);
+        outline-offset: var(--size-1);
     }
     ::selection {
         background-color: var(--theme-accent-1);

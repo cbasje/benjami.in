@@ -281,7 +281,7 @@
                 border-radius: 50%;
                 background: var(--background);
 
-                transition: opacity 150ms var(--ease-elastic-3);
+                transition: opacity 140ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
             }
 
             :global(li a) {
@@ -325,8 +325,8 @@
                 transform-origin: center;
 
                 > circle {
-                    stroke: var(--theme-surface-3);
-                    stroke-width: 1;
+                    stroke: var(--theme-text-1);
+                    stroke-width: 0.5;
                 }
             }
             .numbers > path {

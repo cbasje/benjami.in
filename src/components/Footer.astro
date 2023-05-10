@@ -23,7 +23,6 @@ const currentYear = new Date().getFullYear();
         display: flex;
         justify-content: center;
         align-items: center;
-        color: var(--theme-text-3);
 
         & > * {
             width: 100%;
@@ -43,27 +42,6 @@ const currentYear = new Date().getFullYear();
         margin: 0;
         padding: 0;
         list-style: none;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        align-items: center;
-        gap: var(--size-2);
-
-        li {
-            max-width: 100%;
-            padding: 0;
-
-            position: relative;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: var(--size-2);
-
-            & > span {
-                font-weight: var(--font-weight-7);
-                text-transform: uppercase;
-            }
-        }
     }
 
     @media (--md-n-above) {
