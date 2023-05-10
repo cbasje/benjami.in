@@ -292,6 +292,8 @@
 
                 margin: 0;
                 padding: 0;
+
+                border-radius: var(--radius-6) var(--radius-6) 50% 50%;
             }
 
             :global(li img) {
@@ -303,11 +305,12 @@
 
             :global(li.active) {
                 opacity: 1;
-                visibility: visible;
             }
             :global(li:not(.active)) {
                 opacity: 0;
-                visibility: hidden;
+            }
+            :global(li:focus-within) {
+                opacity: 1;
             }
         }
 
