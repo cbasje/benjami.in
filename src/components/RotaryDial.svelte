@@ -309,7 +309,7 @@
             :global(li:not(.active)) {
                 opacity: 0;
             }
-            :global(li:focus-within) {
+            :global(li:has(:focus-visible)) {
                 opacity: 1;
             }
         }
