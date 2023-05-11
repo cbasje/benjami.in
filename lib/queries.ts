@@ -56,6 +56,27 @@ export const homeQuery = groq`
 }
 `;
 
+export const footerQuery = groq`
+*[_type == "footer" && __i18n_lang == $locale] | order(_updatedAt desc) [0] {
+  _id,
+  title,
+  links[] {
+    _type == 'resume' => @->{
+      _type,
+      title,
+      'fileUrl': file.asset->url,
+    },
+    _type == 'social-link' => {
+      _type,
+      title,
+      url,
+      icon,
+    }
+  },
+  "locale": __i18n_lang
+}
+`;
+
 export const aboutQuery = groq`
 *[_type == "about" && __i18n_lang == $locale] | order(_updatedAt desc) [0] {
   title,

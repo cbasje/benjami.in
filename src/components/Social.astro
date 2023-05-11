@@ -1,58 +1,31 @@
 ---
 import { Icon } from "astro-icon";
+import type { Resume, SocialLink } from "../../lib/types";
+
+interface Props {
+    links: (SocialLink | Resume)[];
+}
+const { links } = Astro.props;
 ---
 
 <ul role="list">
-    <li role="listitem">
-        <a
-            class="social-link"
-            title="My email address"
-            rel="nofollow me"
-            href="mailto:Sebastiaan Benjamins <sebas@benjami.in>"
-        >
-            <Icon name="ph:envelope-simple-fill" aria-hidden />
-        </a>
-    </li>
-    <li role="listitem">
-        <a
-            class="social-link"
-            title="My Mastodon account"
-            rel="nofollow me"
-            href="https://mas.to/@sebastiaan"
-        >
-            <Icon name="mdi:mastodon" aria-hidden />
-        </a>
-    </li>
-    <li role="listitem">
-        <a
-            class="social-link"
-            title="My Github account"
-            rel="nofollow me"
-            href="https://github.com/cbasje"
-        >
-            <Icon name="ph:github-logo-fill" aria-hidden />
-        </a>
-    </li>
-    <li role="listitem">
-        <a
-            class="social-link"
-            title="My LinkedIn account"
-            rel="nofollow me"
-            href="https://www.linkedin.com/in/sebastiaanbenjamins/"
-        >
-            <Icon name="ph:linkedin-logo-fill" aria-hidden />
-        </a>
-    </li>
-    <li role="listitem">
-        <a
-            class="social-link"
-            title="My Instagram account"
-            rel="nofollow me"
-            href="https://instagram.com/cbasje"
-        >
-            <Icon name="ph:instagram-logo-fill" aria-hidden />
-        </a>
-    </li>
+    {
+        links.map((l) =>
+            l._type == "social-link" ? (
+                <li role="listitem">
+                    <a title={l.title} rel="nofollow me" href={l.url}>
+                        <Icon name={l.icon} aria-hidden />
+                    </a>
+                </li>
+            ) : (
+                <li role="listitem">
+                    <a title={l.title} rel="nofollow me" href={l.fileUrl}>
+                        <Icon name="ph:file-text-fill" aria-hidden />
+                    </a>
+                </li>
+            )
+        )
+    }
 </ul>
 
 <style lang="scss">
@@ -73,7 +46,7 @@ import { Icon } from "astro-icon";
             padding: 0;
             margin: 0;
 
-            a.social-link {
+            a {
                 flex-grow: 0;
                 display: block;
 

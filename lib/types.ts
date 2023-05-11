@@ -2,6 +2,7 @@ import { s } from "@sanity-typed/schema-builder";
 import type { about } from "../schemas/about";
 import type { category } from "../schemas/category";
 import type { company } from "../schemas/company";
+import type { footer, resume, socialLink } from "../schemas/footer";
 import type { global } from "../schemas/global";
 import type { home } from "../schemas/home";
 import type { notFound } from "../schemas/not-found";
@@ -62,3 +63,9 @@ interface AlbumImage {
     width: number;
     height: number;
 }
+
+export type SocialLink = s.infer<typeof socialLink>;
+export type Resume = Omit<s.infer<typeof resume>, "file"> & { fileUrl: string };
+export type Footer = Omit<s.infer<typeof footer>, "links"> & {
+    links: (SocialLink | Resume)[];
+};

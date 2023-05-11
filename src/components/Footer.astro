@@ -1,15 +1,23 @@
 ---
+import { useSanityClient } from "astro-sanity";
+import i18next from "i18next";
+import { footerQuery } from "../../lib/queries";
+import type { Footer } from "../../lib/types";
 import Social from "./Social.astro";
 
 const currentYear = new Date().getFullYear();
+
+const footer: Footer = await useSanityClient().fetch(footerQuery, {
+    locale: i18next.language,
+});
 ---
 
 <footer>
     <aside>
-        <Social />
+        <Social links={footer.links} />
         <ul>
             <li>
-                &copy; Sebastiaan Benjamins, {currentYear}
+                &copy; {footer.title}, {currentYear}
             </li>
         </ul>
     </aside>
