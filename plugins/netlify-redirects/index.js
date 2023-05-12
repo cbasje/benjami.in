@@ -30,7 +30,6 @@ const fs = require("fs");
 
 const routes = {
     nl: {
-        "/": "/",
         "/about": "/over",
     },
 };
@@ -38,10 +37,16 @@ const routes = {
 module.exports = {
     onPostBuild: ({ constants }) => {
         console.log("Attempting to create dist/_redirects...");
+        console.log("🚀 ~ constants:", constants);
 
-        const red = Object.keys(routes).map((l) =>
-            Object.keys(l).map((r) => `${r} /${l}${r} 301 Language=${l}\n`)
-        );
+        let red = "";
+        for (const l in routes) {
+            red += `/ /${l} 301 Language=${l}\n`;
+            for (const r in routes[l]) {
+                red += `${r} /${l}${r} 301 Language=${l}\n`;
+            }
+        }
+        console.log("🚀 ~ red:", red);
 
         fs.appendFile(
             `/opt/build/repo/${constants.PUBLISH_DIR}/_redirects`,

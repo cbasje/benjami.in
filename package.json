@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
-        "build": "astro-i18n sync && astro build && cp _redirects dist/_redirects",
+        "build": "astro-i18n sync && astro build",
         "preview": "astro preview",
         "astro": "astro",
         "sanity:dev": "sanity dev",
