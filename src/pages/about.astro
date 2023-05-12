@@ -1,18 +1,17 @@
 ---
+import { astroI18n } from "astro-i18n";
 import { useSanityClient } from "astro-sanity";
-import i18next, { changeLanguage } from "i18next";
 import { aboutQuery } from "../../lib/queries";
 import type { About } from "../../lib/types";
 import Footer from "../components/Footer.astro";
-import SanityImage from "../components/SanityImage.astro";
 import Nav from "../components/Nav.astro";
+import SanityImage from "../components/SanityImage.astro";
 import MainLayout from "../layouts/main.astro";
-import { Icon } from "astro-icon";
 
-changeLanguage("en");
+astroI18n.init(Astro);
 
 const about: About = await useSanityClient().fetch(aboutQuery, {
-    locale: i18next.language,
+    locale: astroI18n.langCode,
 });
 ---
 

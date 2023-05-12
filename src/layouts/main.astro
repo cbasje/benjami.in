@@ -1,7 +1,9 @@
 ---
-import i18next from "i18next";
+import { astroI18n } from "astro-i18n";
 import type { Seo } from "../../lib/types";
 import MainHead from "../components/MainHead.astro";
+
+astroI18n.init(Astro);
 
 export interface Props {
     seo?: Omit<Seo, "_type">;
@@ -10,7 +12,7 @@ const { seo } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang={i18next.language}>
+<html lang={astroI18n.langCode}>
     <MainHead seo={seo} />
 
     <body>

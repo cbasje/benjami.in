@@ -1,16 +1,16 @@
 ---
+import { astroI18n } from "astro-i18n";
 import { useSanityClient } from "astro-sanity";
-import i18next, { changeLanguage } from "i18next";
 import { notFoundQuery } from "../../lib/queries";
 import type { NotFound } from "../../lib/types";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 import MainLayout from "../layouts/main.astro";
 
-changeLanguage("en");
+astroI18n.init(Astro);
 
 const notFound: NotFound = await useSanityClient().fetch(notFoundQuery, {
-    locale: i18next.language,
+    locale: astroI18n.langCode,
 });
 ---
 

@@ -1,14 +1,16 @@
 ---
+import { astroI18n } from "astro-i18n";
 import { useSanityClient } from "astro-sanity";
-import i18next from "i18next";
 import { footerQuery } from "../../lib/queries";
 import type { Footer } from "../../lib/types";
 import Social from "./Social.astro";
 
+astroI18n.init(Astro);
+
 const currentYear = new Date().getFullYear();
 
 const footer: Footer = await useSanityClient().fetch(footerQuery, {
-    locale: i18next.language,
+    locale: astroI18n.langCode,
 });
 ---
 

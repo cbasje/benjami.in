@@ -1,13 +1,13 @@
 ---
+import { astroI18n } from "astro-i18n";
 import { useSanityClient } from "astro-sanity";
-import i18next, { changeLanguage } from "i18next";
 import { projectsQuery } from "../../../lib/queries";
-import type { Category, Project, Seo } from "../../../lib/types";
+import type { Project, Seo } from "../../../lib/types";
 import BlockManager from "../../components/BlockManager.astro";
 import SanityImage from "../../components/SanityImage.astro";
 import ProjectsLayout from "../../layouts/project.astro";
 
-changeLanguage("en");
+astroI18n.init(Astro);
 
 export interface Props {
     project: Project;
@@ -21,7 +21,7 @@ const seo: Omit<Seo, "_type"> = {
 };
 export async function getStaticPaths() {
     const projects: Project[] = await useSanityClient().fetch(projectsQuery, {
-        locale: i18next.language,
+        locale: astroI18n.langCode,
     });
     return projects.map((p) => ({
         params: { slug: p.slug },
@@ -42,7 +42,7 @@ export async function getStaticPaths() {
                 <div role="none">
                     <span>
                         {
-                            new Intl.DateTimeFormat(i18next.language, {
+                            new Intl.DateTimeFormat(astroI18n.langCode, {
                                 month: "long",
                                 year: "numeric",
                             }).format(new Date(project.publishedAt))

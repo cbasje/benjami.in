@@ -1,10 +1,12 @@
 ---
-import { localizePath } from "astro-i18next";
+import { astroI18n, l, t } from "astro-i18n";
 import { Icon } from "astro-icon";
+
+astroI18n.init(Astro);
 ---
 
 <nav>
-    <a class="button" title="Go back to the Home page" href={localizePath("/")}>
+    <a class="button" title={t("index.ui.back-title")} href={l("/")}>
         <Icon
             name="ph:caret-left-bold"
             style={{
@@ -13,7 +15,7 @@ import { Icon } from "astro-icon";
             }}
             aria-hidden
         />
-        <span>Back</span>
+        <span>{t("index.ui.back")}</span>
     </a>
 </nav>
 

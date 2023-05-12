@@ -1,13 +1,13 @@
 ---
-import { HeadHrefLangs } from "astro-i18next/components";
+import { astroI18n } from "astro-i18n";
 import { useSanityClient } from "astro-sanity";
 import { SEO } from "astro-seo";
-import i18next from "i18next";
 import { globalQuery } from "../../lib/queries";
 import { urlForImage } from "../../lib/sanity";
 import type { GlobalSeo, Image, Seo } from "../../lib/types";
-
 import "../styles/global.scss";
+
+astroI18n.init(Astro);
 
 export interface Props {
     seo?: Omit<Seo, "_type">;
@@ -17,7 +17,7 @@ const { seo } = Astro.props;
 
 const { siteName, siteKeywords, defaultSeo }: GlobalSeo =
     await useSanityClient().fetch(globalQuery, {
-        locale: i18next.language,
+        locale: astroI18n.langCode,
     });
 
 const seoWithDefaults: Seo = {
@@ -76,6 +76,4 @@ const getImage = (src: Image) => {
             ],
         }}
     />
-
-    <HeadHrefLangs />
 </head>
