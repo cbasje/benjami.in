@@ -30,10 +30,8 @@ const fs = require("fs");
 module.exports = {
     onPostBuild: ({ constants }) => {
         console.log("Attempting to append _redirects to dist/_redirects...");
-        fs.readdir("/opt/build/repo/src/pages/", "utf-8", function (err, data) {
-            console.log("🚀 ---------------🚀");
+        fs.readdir("/opt/build/repo/src/pages", "utf-8", function (err, data) {
             console.log("🚀 ~ data:", data);
-            console.log("🚀 ---------------🚀");
 
             if (err) {
                 console.log(
