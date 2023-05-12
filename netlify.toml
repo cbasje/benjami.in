@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/"
+  to = "/nl"
+  status = 301
+  force = false
+  conditions = {Language = ["nl"]}
