@@ -1,6 +1,5 @@
 [[redirects]]
-  from = "/"
-  to = "/nl"
-  status = 301
-  force = false
+  from = "/*"
+  to = "/nl/:splat"
+  status = 302
   conditions = {Language = ["nl"]}
