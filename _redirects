@@ -1,0 +1,2 @@
+# Redirect users with Dutch language preference from / to /nl
+/*  /nl/:splat  302  Language=nl
