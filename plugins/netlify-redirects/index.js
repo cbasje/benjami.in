@@ -41,9 +41,9 @@ module.exports = {
 
         let red = "";
         for (const l in routes) {
-            red += `/ /${l} 301 Language=${l}\n`;
+            red += `/ /${l} 301! Language=${l}\n`;
             for (const r in routes[l]) {
-                red += `${r} /${l}${r} 301 Language=${l}\n`;
+                red += `${r} /${l}${r} 301! Language=${l}\n`;
             }
         }
         console.log("🚀 ~ red:", red);
