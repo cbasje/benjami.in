@@ -25,6 +25,10 @@ a.button {
     justify-content: center;
     align-items: center;
 
+    > svg[astro-icon] {
+        width: var(--font-size-4);
+        height: var(--font-size-4);
+    }
     &:has(svg ~ span) {
         padding: var(--size-2);
 
@@ -57,8 +61,12 @@ a.button {
         text-transform: uppercase;
     }
 
+    &.button-blur {
+        backdrop-filter: blur(10px);
+        background: color-mix(in srgb, var(--theme-surface-1) 35%, transparent);
+    }
     &.button-primary:not(.outlined) {
-        background: var(--gradient);
+        background: var(--theme-accent-1);
         color: var(--theme-text-on-accent);
         border: none;
     }

@@ -77,8 +77,12 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
                     display: flex;
                     flex-direction: column;
                     max-inline-size: var(--size-content-3);
+                    z-index: var(--layer-1);
 
                     h1 {
+                        max-inline-size: calc(10ch + 1rem);
+                        background: var(--theme-surface-1);
+                        padding: 0.6rem 1rem 0 0;
                         line-height: var(--font-lineheight-1);
                         font-size: var(--font-size-7);
                     }

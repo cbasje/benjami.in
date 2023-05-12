@@ -52,7 +52,7 @@ const themeAccent1 = colour ? `var(--color-${colour}-5)` : undefined;
     .overlay {
         position: fixed;
         inset: 0;
-        z-index: -1;
+        z-index: var(--layer-1);
         background-color: var(--theme-accent-1);
         opacity: 25%;
     }
@@ -73,7 +73,7 @@ const themeAccent1 = colour ? `var(--color-${colour}-5)` : undefined;
         position: fixed;
         right: var(--size-3);
         top: var(--size-3);
-        z-index: 1;
+        z-index: var(--layer-2);
 
         > svg {
             width: var(--font-size-4);
@@ -90,6 +90,7 @@ const themeAccent1 = colour ? `var(--color-${colour}-5)` : undefined;
         min-height: 100vh;
         position: relative;
         overflow-y: scroll;
+        z-index: var(--layer-2);
 
         // Set for animation
         transform: translateY(150px);

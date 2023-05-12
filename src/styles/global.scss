@@ -2,6 +2,7 @@
 
 @layer normalize {
     @import "open-props/normalize";
+    @import "open-props/zindex";
 }
 
 @layer base {
@@ -100,5 +101,6 @@
     ::selection {
         background-color: var(--theme-accent-1);
         color: var(--theme-text-on-accent);
+        text-shadow: none;
     }
 }

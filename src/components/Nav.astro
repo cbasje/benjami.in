@@ -6,15 +6,12 @@ astroI18n.init(Astro);
 ---
 
 <nav>
-    <a class="button" title={t("index.ui.back-title")} href={l("/")}>
-        <Icon
-            name="ph:caret-left-bold"
-            style={{
-                width: "24px",
-                height: "24px",
-            }}
-            aria-hidden
-        />
+    <a
+        class="button button-blur"
+        title={t("index.ui.back-title")}
+        href={l("/")}
+    >
+        <Icon name="ph:caret-left-bold" aria-hidden />
         <span>{t("index.ui.back")}</span>
     </a>
 </nav>
