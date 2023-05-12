@@ -39,10 +39,13 @@ module.exports = {
             }
 
             const red = data
-                .filter((f) => f.endsWith(".astro"))
+                .filter((f) => f.endsWith(".astro") || f.includes("404"))
                 .map((f) => {
-                    const route = f.replace(".astro", "");
-                    return `/${route} /nl/${route} 301 Language=nl\n`;
+                    const route =
+                        "/" + f.includes("index")
+                            ? f.replace(".astro", "")
+                            : "";
+                    return `${route} /nl${route} 301 Language=nl\n`;
                 });
 
             fs.appendFile(
