@@ -5,7 +5,7 @@ import sanity from "astro-sanity";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-    output: "static",
+    output: "server",
     site: "https://benjami.in",
     integrations: [
         // @ts-expect-error
