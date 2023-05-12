@@ -1,5 +1,5 @@
 ---
-import { astroI18n } from "astro-i18n";
+import { astroI18n, l } from "astro-i18n";
 import { useSanityClient } from "astro-sanity";
 import { SEO } from "astro-seo";
 import { globalQuery } from "../../lib/queries";
@@ -8,6 +8,8 @@ import type { GlobalSeo, Image, Seo } from "../../lib/types";
 import "../styles/global.scss";
 
 astroI18n.init(Astro);
+const { langCodes } = astroI18n;
+const currentUrl = Astro.url;
 
 export interface Props {
     seo?: Omit<Seo, "_type">;
@@ -76,4 +78,14 @@ const getImage = (src: Image) => {
             ],
         }}
     />
+
+    {
+        langCodes.map((code) => (
+            <link
+                rel="alternate"
+                hreflang={code}
+                href={currentUrl.host + l(currentUrl.pathname, {}, code)}
+            />
+        ))
+    }
 </head>
