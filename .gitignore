@@ -26,5 +26,3 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
-
-src/pages/nl/*
