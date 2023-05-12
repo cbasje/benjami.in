@@ -3,6 +3,7 @@ const fs = require("fs");
 const routes = {
     nl: {
         about: "over",
+        "project/*": "nl/project/:splat",
     },
 };
 
