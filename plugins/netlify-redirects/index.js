@@ -27,38 +27,32 @@ const fs = require("fs");
 //         );
 //     });
 // };
+
+const routes = {
+    nl: {
+        "/": "/",
+        "/about": "/over",
+    },
+};
+
 module.exports = {
     onPostBuild: ({ constants }) => {
-        console.log("Attempting to append _redirects to dist/_redirects...");
-        fs.readdir("/opt/build/repo/src/pages", "utf-8", function (err, data) {
-            if (err) {
-                console.log(
-                    "Failed to read redirects, do you have a '_redirects' file in the root of your project?"
-                );
-                throw err;
-            }
+        console.log("Attempting to create dist/_redirects...");
 
-            const red = data
-                .filter((f) => f.endsWith(".astro") || f.includes("404"))
-                .map((f) => {
-                    const route =
-                        "/" + f.includes("index")
-                            ? f.replace(".astro", "")
-                            : "";
-                    return `${route} /nl${route} 301 Language=nl\n`;
-                });
+        const red = Object.keys(routes).map((l) =>
+            Object.keys(l).map((r) => `${r} /${l}${r} 301 Language=${l}\n`)
+        );
 
-            fs.appendFile(
-                `/opt/build/repo/${constants.PUBLISH_DIR}/_redirects`,
-                red,
-                function (err) {
-                    if (err) {
-                        console.log("Fail");
-                        throw err;
-                    }
-                    console.log("Success");
+        fs.appendFile(
+            `/opt/build/repo/${constants.PUBLISH_DIR}/_redirects`,
+            red,
+            function (err) {
+                if (err) {
+                    console.log("Fail");
+                    throw err;
                 }
-            );
-        });
+                console.log("Success");
+            }
+        );
     },
 };
