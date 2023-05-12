@@ -3,7 +3,9 @@ import svelte from "@astrojs/svelte";
 import i18n from "astro-i18n";
 import sanity from "astro-sanity";
 import { defineConfig } from "astro/config";
+import netlify from "@astrojs/netlify/functions";
 
+// https://astro.build/config
 export default defineConfig({
     output: "server",
     site: "https://benjami.in",
@@ -19,4 +21,5 @@ export default defineConfig({
         image(),
         svelte(),
     ],
+    adapter: netlify(),
 });
