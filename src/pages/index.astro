@@ -1,27 +1,24 @@
 ---
-import { localizePath } from "astro-i18next";
+import { astroI18n, l } from "astro-i18n";
 import { useSanityClient } from "astro-sanity";
-import i18next, { changeLanguage } from "i18next";
 import { homeQuery } from "../../lib/queries";
 import type { Home } from "../../lib/types";
 import Footer from "../components/Footer.astro";
-import SanityImage from "../components/SanityImage.astro";
 import RotaryDial from "../components/RotaryDial.svelte";
+import SanityImage from "../components/SanityImage.astro";
 import MainLayout from "../layouts/main.astro";
 
-changeLanguage("en");
+astroI18n.init(Astro);
 
 const homepage: Home = await useSanityClient().fetch(homeQuery, {
-    locale: i18next.language,
+    locale: astroI18n.langCode,
 });
 const links = homepage.links.map((el) => {
     if (el.slug) {
-        return localizePath(`/${el.slug}`);
-    }
-    else if (el.url) {
+        return l(`/${el.slug}`);
+    } else if (el.url) {
         return el.url;
-    }
-    else {
+    } else {
         return "#";
     }
 });

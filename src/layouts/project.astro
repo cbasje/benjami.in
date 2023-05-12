@@ -1,8 +1,10 @@
 ---
-import { localizePath } from "astro-i18next";
+import { astroI18n, l } from "astro-i18n";
 import { Icon } from "astro-icon";
-import type { ProjectColour, Seo } from "../../lib/types";
+import type { Seo } from "../../lib/types";
 import MainLayout from "./main.astro";
+
+astroI18n.init(Astro);
 
 export interface Props {
     colour?: string;
@@ -16,16 +18,12 @@ const themeAccent1 = colour ? `var(--color-${colour}-5)` : undefined;
 <MainLayout seo={seo}>
     <div>
         <a
-            href={localizePath("/")}
+            href={l("/")}
             class="overlay"
             style={{ cursor: "initial" }}
             aria-hidden></a>
 
-        <a
-            href={localizePath("/")}
-            class="button icon-button"
-            aria-label="Close"
-        >
+        <a href={l("/")} class="button icon-button" aria-label="Close">
             <Icon name="ph:x-bold" aria-hidden />
         </a>
 

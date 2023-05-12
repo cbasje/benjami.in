@@ -5,12 +5,14 @@
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
-        "build": "yarn run generate:i18n && astro build",
+        "build": "astro-i18n sync && astro build",
         "preview": "astro preview",
         "astro": "astro",
         "sanity:dev": "sanity dev",
         "sanity:deploy": "sanity deploy",
-        "generate:i18n": "npx astro-i18next generate"
+        "i18n:sync": "astro-i18n sync",
+        "i18n:install": "astro-i18n install",
+        "i18n:extract:keys": "astro-i18n extract:keys"
     },
     "dependencies": {
         "@astrojs/image": "^0.16.6",
@@ -21,7 +23,7 @@
         "@sanity/vision": "^3.9.1",
         "@sveltestack/svelte-query": "^1.6.0",
         "astro": "^2.3.3",
-        "astro-i18next": "^1.0.0-beta.21",
+        "astro-i18n": "^1.6.10",
         "astro-icon": "^0.8.0",
         "astro-portabletext": "^0.8.0",
         "astro-sanity": "^1.1.5",
