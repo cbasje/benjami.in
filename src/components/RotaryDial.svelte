@@ -249,13 +249,6 @@
             cursor: grabbing;
         }
 
-        &:not(.grabbing, .resetting):hover {
-            > svg .circles {
-                --rotation: 3 !important;
-                transition: rotate 200ms var(--ease-elastic-4);
-            }
-        }
-
         > * {
             grid-area: 1/1;
         }
@@ -348,6 +341,13 @@
     @media (--md-n-above) {
         .dial {
             max-width: 80vmin;
+
+            &:not(.grabbing, .resetting):hover {
+                > svg .circles {
+                    --rotation: 3 !important;
+                    transition: rotate 200ms var(--ease-elastic-4);
+                }
+            }
         }
     }
 </style>
