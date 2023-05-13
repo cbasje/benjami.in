@@ -2,29 +2,29 @@
   "theme": {
     "surface": {
       "1": {
-        "value": "#f1f3f5",
+        "value": "#f8f9fa",
         "type": "color"
       },
       "2": {
-        "value": "#dee2e6",
+        "value": "#e9ecef",
         "type": "color"
       },
       "3": {
-        "value": "#adb5bd",
+        "value": "#ced4da",
         "type": "color"
       }
     },
     "text": {
       "1": {
-        "value": "#030507",
+        "value": "#0d0f12",
         "type": "color"
       },
       "2": {
-        "value": "#212529",
+        "value": "#343a40",
         "type": "color"
       },
       "3": {
-        "value": "#868e96",
+        "value": "#adb5bd",
         "type": "color"
       },
       "onAccent": {
