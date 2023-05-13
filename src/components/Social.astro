@@ -60,15 +60,10 @@ const { links } = Astro.props;
 
             a {
                 &:not(:hover) {
-                    border: 1px solid transparent;
+                    border-color: var(--theme-surface-2);
+                    margin-inline: 0;
                 }
             }
-        }
-    }
-
-    @media (--lg-n-below) {
-        ul {
-            gap: 0;
         }
     }
 </style>

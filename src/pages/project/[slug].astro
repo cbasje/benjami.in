@@ -68,9 +68,11 @@ export async function getStaticPaths() {
                         project.categories && (
                             <>
                                 <span>-</span>
-                                {project.categories
-                                    .map((c) => c.title)
-                                    .join(", ")}
+                                <div class="categories">
+                                    {project.categories.map((c) => (
+                                        <a class="button">{c.title}</a>
+                                    ))}
+                                </div>
                             </>
                         )
                     }
@@ -117,7 +119,7 @@ export async function getStaticPaths() {
         div.intro {
             display: grid;
             grid-template-columns: 1fr;
-            gap: var(--size-5);
+            gap: var(--size-4);
 
             > div {
                 display: flex;
@@ -135,6 +137,23 @@ export async function getStaticPaths() {
                     display: flex;
                     flex-direction: row;
                     gap: var(--size-2);
+
+                    > div.categories {
+                        display: flex;
+                        flex-direction: row;
+                        gap: var(--size-1);
+
+                        > :global(a) {
+                            margin: 0;
+                            padding-block: 0;
+                            padding-inline: var(--size-2);
+                            /* background: var(--color-blue-2); */
+
+                            &:not(:hover) {
+                                border-color: var(--theme-surface-3);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -152,6 +171,7 @@ export async function getStaticPaths() {
     @media (--md-n-above) {
         header {
             div.intro {
+                gap: var(--size-5);
                 grid-template-columns: repeat(2, 1fr);
             }
         }
