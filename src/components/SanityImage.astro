@@ -1,7 +1,6 @@
 ---
 import { urlForImage } from "../../lib/sanity";
 import type { Image as ImageType } from "../../lib/types";
-import { Image as AstroImage } from "@astrojs/image/components";
 
 export interface Props {
     src: ImageType;
@@ -22,16 +21,6 @@ const srcUrl = urlForImage(src)
     .url();
 ---
 
-<!-- 
-<AstroImage
-    class={`image${fillContainer ? " fill-container" : ""}`}
-    width={width}
-    height={height}
-    src={srcUrl}
-    alt={alt}
-    loading="lazy"
-    quality={100}
-/> -->
 <img
     class={`image${fillContainer ? " fill-container" : ""}`}
     width={width}

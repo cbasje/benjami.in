@@ -1,4 +1,3 @@
-import image from "@astrojs/image";
 import svelte from "@astrojs/svelte";
 import i18n from "astro-i18n";
 import sanity from "astro-sanity";
@@ -16,7 +15,6 @@ export default defineConfig({
             useCdn: true,
         }),
         i18n(),
-        image(),
         svelte(),
     ],
 });
