@@ -1,10 +1,17 @@
 ---
 import { Code } from "astro/components";
+import type { CodeBlock } from "../../../lib/types";
 
+interface Props {
+    node: CodeBlock;
+}
 const { node } = Astro.props;
 ---
 
-<Code code={node.content} lang={node.lang} theme="css-variables" />
+<figure>
+    <!-- <figcaption></figcaption> -->
+    <Code code={node.content} lang={node.lang} theme="css-variables" />
+</figure>
 
 <style>
     /* FIXME: */

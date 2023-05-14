@@ -1,11 +1,18 @@
 ---
-type PrototypeProvider = "figma" | "framer" | "website";
+import type { PrototypeBlock } from "../../../lib/types";
+
+interface Props {
+    node: PrototypeBlock;
+}
 const { node } = Astro.props;
 ---
 
-<iframe
-    width="640"
-    height="480"
-    src={node.src}
-    title={`A ${node.provider} prototype`}
-    allowfullscreen></iframe>
+<figure>
+    <iframe
+        width="640"
+        height="480"
+        src={node.src}
+        title={`A ${node.provider} prototype`}
+        allowfullscreen></iframe>
+    <!-- <figcaption></figcaption> -->
+</figure>

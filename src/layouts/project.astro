@@ -111,42 +111,6 @@ const themeAccent1 = colour ? `var(--color-${colour}-5)` : undefined;
             justify-content: flex-start;
             align-items: center;
             gap: var(--size-8);
-
-            > :global(:not(section)) {
-                width: 100%;
-                max-width: 1024px;
-                height: auto;
-            }
-            > :global(section) {
-                width: 100%;
-                max-width: 60ch;
-                height: auto;
-
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: var(--size-5);
-
-                :global(h2, h3, h4, h5, h6) {
-                    max-inline-size: unset;
-                }
-
-                > :global(*) {
-                    width: 100%;
-                    height: auto;
-                    margin: 0;
-                }
-                :global(iframe) {
-                    border: 1px solid rgba(0, 0, 0, 0.1);
-                }
-                :global(:is(img, iframe)) {
-                    border-radius: var(--radius-2);
-                    aspect-ratio: 3 / 2;
-                    overflow: hidden;
-                    object-fit: cover;
-                }
-            }
         }
     }
 

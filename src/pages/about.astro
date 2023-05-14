@@ -28,8 +28,8 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
                 <SanityImage
                     alt="Picture of me, Sebastiaan Benjamins, smiling at the camera"
                     src={about.image}
-                    width={360}
-                    height={480}
+                    width={720}
+                    height={960}
                 />
             </div>
         </header>
@@ -54,7 +54,7 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
 
         > :global(*) {
             width: 100%;
-            max-width: 1024px;
+            max-inline-size: var(--size-lg);
         }
 
         header {
@@ -94,7 +94,9 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
 
                 :global(img) {
                     flex: 0;
+                    width: 360px;
                     aspect-ratio: 3/4;
+
                     align-self: flex-end;
                     margin-block-end: calc(var(--size-10) * -1);
                 }

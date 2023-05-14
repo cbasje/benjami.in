@@ -1,14 +1,20 @@
 ---
 import { astroI18n, l } from "astro-i18n";
+import type { Props, Mark } from "astro-portabletext/types";
 
 astroI18n.init(Astro);
 
-const { node } = Astro.props;
+const { node } = Astro.props as Props<
+    Mark<{
+        title: string;
+        href: string;
+    }>
+>;
 
 const linkRegex =
     /^(?:https?:\/\/)?(?:localhost:\d{4}|(?:next\.)?benjami\.in)(\/?[\w\/]*$)/g;
 
-const href = node.href || "";
+const href = node.markDef.href || "";
 const isInternalLink = href && linkRegex.test(href);
 ---
 
@@ -16,6 +22,7 @@ const isInternalLink = href && linkRegex.test(href);
     href={isInternalLink ? l(href.replace(linkRegex, "$1")) : href}
     target={!isInternalLink ? "_blank" : ""}
     rel={!isInternalLink ? "rel='noopener noreferrer noindex nofollow'" : ""}
+    title={node.markDef.title}
 >
     <slot />
 </a>

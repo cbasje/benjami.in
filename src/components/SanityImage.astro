@@ -1,31 +1,55 @@
 ---
 import { urlForImage } from "../../lib/sanity";
-import type { Image as ImageType } from "../../lib/types";
+import type { Image } from "../../lib/types";
 
 export interface Props {
-    src: ImageType;
+    src: Image;
     width: number;
-    height: number;
-    fillContainer?: boolean;
-    alt: string;
+    height?: number;
+    alt?: string;
 }
-const { src, width, height, fillContainer, alt } = Astro.props;
+const { src, width, height, alt } = Astro.props;
 
-// FIXME: Implement this properly
-const srcUrl = urlForImage(src)
-    .width(width * 2)
-    .height(height * 2)
+const aspectRatioLg = height ? width / height : 2 / 3;
+const heightLg = height ? height : Math.round(width * aspectRatioLg);
+
+const aspectRatioSm = height ? width / height : 6 / 5;
+const widthSm = Math.round(width / 2);
+const heightSm = height
+    ? Math.round(height / 2)
+    : Math.round(widthSm * aspectRatioSm);
+
+const srcLg = urlForImage(src)
+    .width(width)
+    .height(heightLg)
+    .format("webp")
+    .quality(100)
+    .fit("max")
+    .url();
+const srcSm = urlForImage(src)
+    .width(widthSm)
+    .height(heightSm)
     .format("webp")
     .quality(100)
     .fit("max")
     .url();
 ---
 
-<img
-    class={`image${fillContainer ? " fill-container" : ""}`}
-    width={width}
-    height={height}
-    src={srcUrl}
-    alt={alt}
-    loading="lazy"
-/>
+<figure>
+    <picture>
+        <source media="(min-width: 768px)" srcset={srcLg} />
+        <img src={srcSm} alt={alt ?? src.alt} loading="lazy" />
+    </picture>
+    {src.caption && <figcaption>{src.caption}</figcaption>}
+</figure>
+
+<style lang="scss">
+    picture {
+        width: 100%;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+</style>

@@ -4,6 +4,7 @@ import { blockContent } from "./blockContent";
 import { category } from "./category";
 import { company } from "./company";
 import { seo } from "./seo";
+import { image } from "./image";
 
 export const projectColour = s.string({
     options: {
@@ -54,15 +55,13 @@ export const project = s.document({
             name: "headerImage",
             title: "Header image",
             optional: false,
-            type: s.image({
-                hotspot: true,
-            }),
+            type: image,
         },
         {
             name: "headerImageRound",
             title: "Header image (Round)",
             optional: false,
-            type: s.image(),
+            type: image,
         },
         {
             name: "colour",

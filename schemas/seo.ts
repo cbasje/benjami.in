@@ -1,4 +1,5 @@
 import { s } from "@sanity-typed/schema-builder";
+import { image } from "./image";
 
 export const seo = s.objectNamed({
     name: "seo",
@@ -20,9 +21,7 @@ export const seo = s.objectNamed({
             name: "shareImage",
             title: "Share image",
             optional: true,
-            type: s.image({
-                hotspot: true,
-            }),
+            type: image,
         },
         {
             name: "isArticle",

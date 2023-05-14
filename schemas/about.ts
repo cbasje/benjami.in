@@ -1,6 +1,7 @@
 import { s } from "@sanity-typed/schema-builder";
 import { UserIcon } from "@sanity/icons";
 import { seo } from "./seo";
+import { image } from "./image";
 
 export const about = s.document({
     name: "about",
@@ -24,12 +25,7 @@ export const about = s.document({
             name: "image",
             title: "Image",
             optional: false,
-            type: s.image({
-                hotspot: true,
-                options: {
-                    metadata: ["blurhash"],
-                },
-            }),
+            type: image,
         },
         {
             name: "seo",

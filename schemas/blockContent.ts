@@ -1,11 +1,16 @@
 import { s } from "@sanity-typed/schema-builder";
-import { ImageIcon } from "@sanity/icons";
 import { code } from "./blocks/code";
 import { prototype } from "./blocks/prototype";
+import { image } from "./image";
+import { divider } from "./blocks/divider";
+import { link } from "./blocks/link";
 
 export const blockContent = s.array({
     of: [
         s.block({
+            options: {
+                spellCheck: true,
+            },
             styles: [
                 { title: "Normal", value: "normal" },
                 { title: "H1", value: "h1" },
@@ -19,28 +24,14 @@ export const blockContent = s.array({
                 decorators: [
                     { title: "Strong", value: "strong" },
                     { title: "Emphasis", value: "em" },
+                    { title: "Code", value: "code" },
                 ],
-                annotations: [
-                    {
-                        title: "URL",
-                        name: "link",
-                        type: "object",
-                        fields: [
-                            {
-                                title: "URL",
-                                name: "href",
-                                type: "url",
-                            },
-                        ],
-                    },
-                ],
+                annotations: [link],
             },
         }),
-        s.image({
-            hotspot: true,
-            icon: ImageIcon,
-        }),
+        image,
         code,
         prototype,
+        divider,
     ],
 });

@@ -2,6 +2,7 @@ import { s } from "@sanity-typed/schema-builder";
 import { HomeIcon } from "@sanity/icons";
 import { project, projectColour } from "./project";
 import { seo } from "./seo";
+import { image } from "./image";
 
 export const home = s.document({
     name: "home",
@@ -48,7 +49,7 @@ export const home = s.document({
                                 name: "image",
                                 title: "Image",
                                 optional: false,
-                                type: s.image(),
+                                type: image,
                             },
                             {
                                 name: "colour",

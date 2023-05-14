@@ -1,8 +1,11 @@
 ---
+import type { Image } from "../../../lib/types";
 import SanityImage from "../SanityImage.astro";
 
+interface Props {
+    node: Image;
+}
 const { node } = Astro.props;
 ---
 
-<!-- FIXME: -->
-<SanityImage src={node} width={768} height={512} />
+<SanityImage src={node} width={768} />

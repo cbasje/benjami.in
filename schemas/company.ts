@@ -1,4 +1,5 @@
 import { s } from "@sanity-typed/schema-builder";
+import { image } from "./image";
 
 export const company = s.objectNamed({
     name: "company",
@@ -20,9 +21,7 @@ export const company = s.objectNamed({
             name: "logo",
             title: "Logo",
             optional: true,
-            type: s.image({
-                hotspot: true,
-            }),
+            type: image,
         },
     ],
 });

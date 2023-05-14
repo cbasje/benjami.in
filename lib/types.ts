@@ -1,10 +1,14 @@
-import { s } from "@sanity-typed/schema-builder";
+import type { s } from "@sanity-typed/schema-builder";
 import type { about } from "../schemas/about";
+import type { code } from "../schemas/blocks/code";
+import type { divider } from "../schemas/blocks/divider";
+import type { prototype } from "../schemas/blocks/prototype";
 import type { category } from "../schemas/category";
 import type { company } from "../schemas/company";
 import type { footer, resume, socialLink } from "../schemas/footer";
 import type { global } from "../schemas/global";
 import type { home } from "../schemas/home";
+import type { image } from "../schemas/image";
 import type { notFound } from "../schemas/not-found";
 import type { project } from "../schemas/project";
 import type { seo } from "../schemas/seo";
@@ -14,7 +18,10 @@ export enum Locale {
     NL = "nl",
 }
 
-const image = s.image();
+export type CodeBlock = s.infer<typeof code>;
+export type PrototypeBlock = s.infer<typeof prototype>;
+export type DividerBlock = s.infer<typeof divider>;
+
 export type Image = s.infer<typeof image>;
 
 export type Seo = s.infer<typeof seo>;
