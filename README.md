@@ -8,7 +8,9 @@ My personal portfolio showing my UX and design projects/skills. The development 
 
 -   Site generator: [Astro](https://astro.build/)
 -   Interactive framework: [Svelte](https://docs.astro.build/en/guides/integrations-guide/svelte/)
+-   Deployment: [Netlify](https://netlify.com/)
 -   Styling: [SCSS](https://sass-lang.com/documentation/syntax)
+-   Icons: [Phosphor Icons](https://phosphoricons.com/)
 -   CMS: [Sanity](https://www.sanity.io/)
 
 ## Development
