@@ -73,12 +73,15 @@ const getImage = (src: Image, type?: "twitter") => {
                 : undefined,
         }}
         twitter={{
-            card: "summary",
+            title: fullSeo.metaTitle,
+            description: fullSeo.metaDescription,
+            card: "summary_large_image",
             site: "@cbasje",
             creator: "@cbasje",
             image: fullSeo.shareImage
                 ? getImage(fullSeo.shareImage, "twitter")
                 : "",
+            imageAlt: fullSeo.shareImage?.alt,
         }}
         extend={{
             link: [{ rel: "shortcut icon", href: "/favicon.ico" }],
