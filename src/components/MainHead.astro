@@ -36,10 +36,10 @@ const fullSeo = {
     siteKeywords: siteKeywords ?? "",
 };
 
-const getImage = (src: Image) => {
+const getImage = (src: Image, type?: "twitter") => {
     return urlForImage(src.asset._ref)
-        .width(1200)
-        .height(630)
+        .width(type === "twitter" ? 1280 : 1200)
+        .height(type === "twitter" ? 640 : 630)
         .auto("format")
         .format("png")
         .fit("max")
@@ -57,12 +57,28 @@ const getImage = (src: Image) => {
                 type: fullSeo.isArticle ? "article" : "website",
                 title: seoWithDefaults.metaTitle,
                 image: fullSeo.shareImage ? getImage(fullSeo.shareImage) : "",
+                url: currentUrl.href,
             },
+            optional: {
+                description: fullSeo.metaDescription,
+                siteName: import.meta.env.SITE,
+            },
+            image: fullSeo.shareImage
+                ? {
+                      secureUrl: getImage(fullSeo.shareImage),
+                      width: 1280,
+                      height: 640,
+                      alt: fullSeo.shareImage.alt,
+                  }
+                : undefined,
         }}
         twitter={{
-            card: "summary_large_image",
+            card: "summary",
             site: "@cbasje",
             creator: "@cbasje",
+            image: fullSeo.shareImage
+                ? getImage(fullSeo.shareImage, "twitter")
+                : "",
         }}
         extend={{
             link: [{ rel: "shortcut icon", href: "/favicon.ico" }],
