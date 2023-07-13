@@ -1451,6 +1451,11 @@
   dependencies:
     postcss-value-parser "^4.2.0"
 
+"@csstools/postcss-global-data@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@csstools/postcss-global-data/-/postcss-global-data-2.0.0.tgz#45f050dc079a5a6bc34b7e62230d6dba54bab87c"
+  integrity sha512-yaI3+hBJw7ljUhM0INqnFzG8nsDD+Si/FFUWw6uRLQHUALnXyxpSeihOIvG35y03GhpmiEU6qsADbVVGDHKSLw==
+
 "@csstools/postcss-gradients-interpolation-method@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@csstools/postcss-gradients-interpolation-method/-/postcss-gradients-interpolation-method-4.0.0.tgz#ac0a28b0a9e299a8627be8ae9aad6d6eaa487a84"

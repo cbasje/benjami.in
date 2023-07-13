@@ -236,8 +236,6 @@
 </div>
 
 <style lang="scss">
-    @import "open-props/media";
-
     .dial {
         flex: 1;
         display: grid;
