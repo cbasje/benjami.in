@@ -11,7 +11,6 @@ My personal portfolio showing my UX and design projects/skills. The development 
 -   Deployment: [Netlify](https://netlify.com/)
 -   Styling: [SCSS](https://sass-lang.com/documentation/syntax)
 -   Icons: [Phosphor Icons](https://phosphoricons.com/)
--   CMS: [Sanity](https://www.sanity.io/)
 
 ## Development
 
