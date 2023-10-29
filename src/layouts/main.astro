@@ -1,12 +1,12 @@
 ---
 import { astroI18n } from "astro-i18n";
-import type { Seo } from "../../lib/types";
 import MainHead from "../components/MainHead.astro";
+import type { Seo } from "../content/config";
 
 astroI18n.init(Astro);
 
 export interface Props {
-    seo?: Omit<Seo, "_type">;
+    seo?: Seo;
 }
 const { seo } = Astro.props;
 ---

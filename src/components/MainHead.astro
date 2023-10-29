@@ -1,10 +1,8 @@
 ---
 import { astroI18n, l } from "astro-i18n";
-import { useSanityClient } from "astro-sanity";
-import { SEO } from "astro-seo";
-import { globalQuery } from "../../lib/queries";
-import { urlForImage } from "../../lib/sanity";
-import type { GlobalSeo, Image, Seo } from "../../lib/types";
+import { SEO as SeoHead } from "astro-seo";
+import { getDataEntryById, type CollectionEntry } from "astro:content";
+import type { Seo } from "../content/config";
 import "../styles/global.scss";
 
 astroI18n.init(Astro);
@@ -12,15 +10,18 @@ const { langCodes } = astroI18n;
 const currentUrl = Astro.url;
 
 export interface Props {
-    seo?: Omit<Seo, "_type">;
+    seo?: Seo;
 }
 
 const { seo } = Astro.props;
 
-const { siteName, siteKeywords, defaultSeo }: GlobalSeo =
-    await useSanityClient().fetch(globalQuery, {
-        locale: astroI18n.langCode,
-    });
+const {
+    siteName,
+    siteKeywords,
+    defaultSeo,
+}: CollectionEntry<"global">["data"] = (
+    await getDataEntryById("global", locale)
+).data;
 
 const seoWithDefaults: Seo = {
     ...defaultSeo,
@@ -36,27 +37,30 @@ const fullSeo = {
     siteKeywords: siteKeywords ?? "",
 };
 
-const getImage = (src: Image, type?: "twitter") => {
-    return urlForImage(src.asset._ref)
-        .width(type === "twitter" ? 1280 : 1200)
-        .height(type === "twitter" ? 640 : 630)
-        .auto("format")
-        .format("png")
-        .fit("max")
-        .url();
-};
+// FIXME:
+// const getImage = (src: Image, type?: "twitter") => {
+//     return builder
+//         .image(src.asset._ref)
+//         .width(type === "twitter" ? 1280 : 1200)
+//         .height(type === "twitter" ? 640 : 630)
+//         .auto("format")
+//         .format("png")
+//         .fit("max")
+//         .url();
+// };
 ---
 
 <head>
     <meta charset="UTF-8" />
-    <SEO
+    <SeoHead
         title={fullSeo.metaTitle}
         description={fullSeo.metaDescription}
         openGraph={{
             basic: {
                 type: fullSeo.isArticle ? "article" : "website",
                 title: seoWithDefaults.metaTitle,
-                image: fullSeo.shareImage ? getImage(fullSeo.shareImage) : "",
+                // TODO: image: fullSeo.shareImage ? getImage(fullSeo.shareImage) : "",
+                image: fullSeo.shareImage?.url ?? "",
                 url: currentUrl.href,
             },
             optional: {
@@ -65,7 +69,8 @@ const getImage = (src: Image, type?: "twitter") => {
             },
             image: fullSeo.shareImage
                 ? {
-                      secureUrl: getImage(fullSeo.shareImage),
+                      //   TODO: secureUrl: getImage(fullSeo.shareImage),
+                      secureUrl: fullSeo.shareImage.url ?? "",
                       width: 1280,
                       height: 640,
                       alt: fullSeo.shareImage.alt,
@@ -78,9 +83,9 @@ const getImage = (src: Image, type?: "twitter") => {
             card: "summary_large_image",
             site: "@cbasje",
             creator: "@cbasje",
-            image: fullSeo.shareImage
-                ? getImage(fullSeo.shareImage, "twitter")
-                : "",
+            // image: fullSeo.shareImage
+            //     ? getImage(fullSeo.shareImage, "twitter")
+            //     : "",
             imageAlt: fullSeo.shareImage?.alt,
         }}
         extend={{
