@@ -2,10 +2,11 @@
 import { SEO as SeoHead } from "astro-seo";
 import { ViewTransitions } from "astro:transitions";
 import { getDataEntryById, type CollectionEntry } from "astro:content";
-import type { Seo } from "../content/config";
+import type { Image, Seo } from "../content/config";
 import { defaultLocale, locales, type Locale } from "../i18n/ui";
 import { useTranslatedPath, useTranslations } from "../i18n/utils";
 import "../styles/global.postcss";
+import { getImage } from "astro:assets";
 
 const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
@@ -42,17 +43,26 @@ const fullSeo = {
     siteKeywords: siteKeywords ?? "",
 };
 
-// FIXME:
-// const getImage = (src: Image, type?: "twitter") => {
-//     return builder
-//         .image(src.asset._ref)
-//         .width(type === "twitter" ? 1280 : 1200)
-//         .height(type === "twitter" ? 640 : 630)
-//         .auto("format")
-//         .format("png")
-//         .fit("max")
-//         .url();
-// };
+let ogImage = "",
+    twitterImage = "";
+if (fullSeo.shareImage) {
+    ogImage = (
+        await getImage({
+            src: fullSeo.shareImage.url,
+            width: 1200,
+            height: 630,
+            format: "png",
+        })
+    ).src;
+    twitterImage = (
+        await getImage({
+            src: fullSeo.shareImage.url,
+            width: 1280,
+            height: 640,
+            format: "png",
+        })
+    ).src;
+}
 ---
 
 <head>
@@ -64,8 +74,7 @@ const fullSeo = {
             basic: {
                 type: fullSeo.isArticle ? "article" : "website",
                 title: seoWithDefaults.metaTitle,
-                // TODO: image: fullSeo.shareImage ? getImage(fullSeo.shareImage) : "",
-                image: fullSeo.shareImage?.url ?? "",
+                image: ogImage,
                 url: currentUrl.href,
             },
             optional: {
@@ -74,8 +83,7 @@ const fullSeo = {
             },
             image: fullSeo.shareImage
                 ? {
-                      //   TODO: secureUrl: getImage(fullSeo.shareImage),
-                      secureUrl: fullSeo.shareImage.url ?? "",
+                      secureUrl: ogImage,
                       width: 1280,
                       height: 640,
                       alt: fullSeo.shareImage.alt,
@@ -88,9 +96,7 @@ const fullSeo = {
             card: "summary_large_image",
             site: "@cbasje",
             creator: "@cbasje",
-            // image: fullSeo.shareImage
-            //     ? getImage(fullSeo.shareImage, "twitter")
-            //     : "",
+            image: twitterImage,
             imageAlt: fullSeo.shareImage?.alt,
         }}
         extend={{
