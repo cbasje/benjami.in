@@ -45,8 +45,6 @@ export type Company = z.infer<typeof companyType>;
 export const aboutCollection = defineCollection({
     type: "content",
     schema: z.object({
-        title: z.string(),
-        description: z.string().optional(),
         image: imageType,
         seo: seoType.optional(),
     }),
@@ -84,8 +82,6 @@ export const homeCollection = defineCollection({
 export const notFoundCollection = defineCollection({
     type: "content",
     schema: z.object({
-        title: z.string(),
-        description: z.string().optional(),
         seo: seoType.optional(),
     }),
 });

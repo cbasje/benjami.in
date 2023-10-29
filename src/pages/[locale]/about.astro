@@ -13,6 +13,7 @@ const t = useTranslations(locale);
 const l = useTranslatedPath(locale);
 
 const page = await getEntry("about", locale);
+const { Content } = await page.render();
 ---
 
 <MainLayout seo={page.data.seo}>
@@ -22,8 +23,7 @@ const page = await getEntry("about", locale);
         <header>
             <div>
                 <div class="text-wrapper">
-                    <h1>{page.data.title}</h1>
-                    <p>{page.data.description}</p>
+                    <Content />
                 </div>
                 <Image
                     src={page.data.image.url}

@@ -1,6 +1,6 @@
 ---
-title: "404: Not found"
-description: ""
+seo:
+    metaTitle: "Not found"
 ---
 
-# HOI
+# 404: Not found

@@ -1,6 +1,6 @@
 ---
-title: "404: Niet gevonden"
-description: ""
+seo:
+    metaTitle: "Niet gevonden"
 ---
 
-# HOI
+# 404: Niet gevonden
