@@ -3,9 +3,13 @@ import { Image } from "astro:assets";
 import { getDataEntryById } from "astro:content";
 import Footer from "../../components/Footer.astro";
 import RotaryDial from "../../components/RotaryDial.svelte";
-import { defaultLocale, type Locale } from "../../i18n/ui";
+import { defaultLocale, locales, type Locale } from "../../i18n/ui";
 import { useTranslatedPath, useTranslations } from "../../i18n/utils";
 import MainLayout from "../../layouts/main.astro";
+
+export function getStaticPaths() {
+    return locales.map((l) => ({ params: { locale: l } }));
+}
 
 const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
@@ -13,10 +17,6 @@ const t = useTranslations(locale);
 const l = useTranslatedPath(locale);
 
 const page = await getDataEntryById("home", locale);
-
-if (!page) {
-    return Astro.redirect("/404");
-}
 
 const links = page.data.links.map((link) => {
     if (link.projectRef) {

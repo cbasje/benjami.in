@@ -1,9 +1,17 @@
 ---
 import { Image } from "astro:assets";
-import { getDataEntryById, getEntryBySlug } from "astro:content";
+import { getCollection, getDataEntryById, getEntryBySlug } from "astro:content";
 import type { Seo } from "../../../content/config";
 import { defaultLocale, type Locale } from "../../../i18n/ui";
 import ProjectsLayout from "../../../layouts/project.astro";
+
+export async function getStaticPaths() {
+    const projects = await getCollection("project");
+    return projects.map((p) => {
+        const [locale, ...slug] = p.slug.split("/");
+        return { params: { locale, slug: slug.join("/") || undefined } };
+    });
+}
 
 const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 const { slug } = Astro.params;
