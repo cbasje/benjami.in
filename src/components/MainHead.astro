@@ -1,5 +1,6 @@
 ---
 import { SEO as SeoHead } from "astro-seo";
+import { ViewTransitions } from "astro:transitions";
 import { getDataEntryById, type CollectionEntry } from "astro:content";
 import type { Seo } from "../content/config";
 import { defaultLocale, locales, type Locale } from "../i18n/ui";
@@ -116,4 +117,6 @@ const fullSeo = {
             />
         ))
     }
+
+    <ViewTransitions />
 </head>
