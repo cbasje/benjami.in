@@ -5,7 +5,7 @@ excerpt: "Dit is een kunstwerk voor We Are Tearfund's Emerging Influencer cursus
 headerImage:
     url: "/images/climate.png"
     alt: "Het kunstwerk. Het toont een Schots loch dat vervuild is door afval uit andere landen"
-hue: 0
+hue: 275
 categories:
     - "nl/graphic-design"
 publishedAt: 2021-03-01

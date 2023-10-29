@@ -5,7 +5,7 @@ excerpt: "This is an artwork for We Are Tearfund’s Emerging Influencer course!
 headerImage:
     url: "/images/climate.png"
     alt: "The artwork created. It shows a Scottish loch polluted by rubbish from other countries"
-hue: 0
+hue: 275
 categories:
     - "en/graphic-design"
 publishedAt: 2021-03-01

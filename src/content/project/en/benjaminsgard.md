@@ -5,7 +5,7 @@ excerpt: "This is a branding design I did for a small company out in Sweden that
 headerImage:
     url: "/images/benjaminsgard.png"
     alt: "The logo of Benjaminsgård mocked up on a wooden sign"
-hue: 0
+hue: 27
 categories:
     - "en/graphic-design"
 company:

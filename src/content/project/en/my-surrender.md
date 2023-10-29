@@ -5,7 +5,7 @@ excerpt: "For a up-and-coming music producer, I had the privilege to design an a
 headerImage:
     url: "/images/surrender.png"
     alt: "The artwork created for the 'My Surrender' album"
-hue: 0
+hue: 230
 categories:
     - "en/graphic-design"
 company:

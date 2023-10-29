@@ -5,7 +5,7 @@ excerpt: "As final project for my Bachelor, I designed a community-driven online
 headerImage:
     url: "/images/map.webp"
     alt: "A mockup of a hand holding a phone with the Heat City Map app."
-hue: 0
+hue: 70
 categories:
     - "en/code"
     - "en/ux"

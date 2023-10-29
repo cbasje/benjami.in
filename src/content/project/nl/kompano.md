@@ -6,7 +6,7 @@ headerImage:
     url: "/images/kompano.webp"
     caption: "De operator kan de app in de kas gebruiken terwijl hij een veilige afstand bewaart."
     alt: "Een hand die een telefoon vasthoudt met de Kompano control app. De achtergrond toont een kas met daarin een Kompano robot."
-hue: 0
+hue: 140
 categories:
     - "nl/prototyping"
     - "nl/ux"

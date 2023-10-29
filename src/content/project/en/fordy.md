@@ -5,7 +5,7 @@ excerpt: "For the course 'Interactive Technology Design' (ITD), we imagined how 
 headerImage:
     url: "/images/fordy.webp"
     alt: "A Ford car showing one of the capabilities of Fordy: opening up the car in anticipation of the user."
-hue: 0
+hue: 260
 categories:
     - "en/prototyping"
     - "en/ux"

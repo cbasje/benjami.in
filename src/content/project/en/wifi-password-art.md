@@ -5,7 +5,7 @@ excerpt: "I designed a poster in collaboration with an Instagram account! They 
 headerImage:
     url: "/images/password.png"
     alt: "The artwork created based on Wi-Fi password characters"
-hue: 0
+hue: 95
 categories:
     - "en/graphic-design"
 publishedAt: 2021-02-01

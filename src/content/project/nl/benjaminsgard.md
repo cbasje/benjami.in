@@ -5,7 +5,7 @@ excerpt: "Dit is een branding ontwerp dat ik maakte voor een klein bedrijf in Zw
 headerImage:
     url: "/images/benjaminsgard.png"
     alt: "Het logo van Benjaminsgård opgezet op een houten bord"
-hue: 0
+hue: 27
 categories:
     - "nl/graphic-design"
 company:

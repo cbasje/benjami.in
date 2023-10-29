@@ -5,7 +5,7 @@ excerpt: "Voor het vak 'Interactive Technology Design' (ITD) stelden we ons voor
 headerImage:
     url: "/images/fordy.webp"
     alt: "Een Ford-auto die een van de mogelijkheden van Fordy laat zien: het openen van de auto in afwachting van de gebruiker."
-hue: 0
+hue: 260
 categories:
     - "nl/prototyping"
     - "nl/ux"

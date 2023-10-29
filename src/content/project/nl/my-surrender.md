@@ -5,7 +5,7 @@ excerpt: "Voor een opkomende muziekproducent had ik het voorrecht om een artwork
 headerImage:
     url: "/images/surrender.png"
     alt: "Het kunstwerk gemaakt voor het 'My Surrender' album"
-hue: 0
+hue: 230
 categories:
     - "nl/graphic-design"
 company:

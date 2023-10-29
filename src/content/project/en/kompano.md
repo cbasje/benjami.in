@@ -7,7 +7,7 @@ headerImage:
     url: "/images/kompano.webp"
     caption: "The operator can use the app in the greenhouse while keeping a safe distance"
     alt: "A hand holding a phone with the Kompano control app. The background shows a greenhouse with a Kompano robot in it."
-hue: 0
+hue: 140
 categories:
     - "en/prototyping"
     - "en/ux"

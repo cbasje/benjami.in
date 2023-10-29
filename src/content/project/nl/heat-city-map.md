@@ -5,7 +5,7 @@ excerpt: "Als eindproject voor mijn bachelor heb ik een community-driven online 
 headerImage:
     url: "/images/map.webp"
     alt: "Een mockup van een hand die een telefoon vasthoudt met de Hittestadskaartapp."
-hue: 0
+hue: 70
 categories:
     - "nl/code"
     - "nl/ux"

@@ -7,41 +7,49 @@ links:
           alt: "Foto van mij, Sebastiaan Benjamins"
     - title: "Kompano"
       projectRef: "nl/kompano"
+      hue: 140
       image:
           url: "/images/kompano-round.webp"
           alt: "Headerafbeelding van het Kompano-project"
     - title: "Fordy"
       projectRef: "nl/fordy"
+      hue: 260
       image:
           url: "/images/fordy-round.webp"
           alt: "Headerafbeelding van het Fordy-project"
     - title: "Heat City Map"
       projectRef: "nl/heat-city-map"
+      hue: 70
       image:
           url: "/images/map-round.webp"
           alt: "Headerafbeelding van het Heat City Map-project"
     - title: "'Klimaat Onrecht Teruggedraaid'"
       projectRef: "nl/climate-injustice-reversed"
+      hue: 275
       image:
           url: "/images/climate-round.webp"
           alt: "Headerafbeelding van het 'Climate Injustice Reversed'-project"
     - title: "'My Surrender'"
       projectRef: "nl/my-surrender"
+      hue: 230
       image:
           url: "/images/surrender-round.webp"
           alt: "Headerafbeelding van het 'My Surrender'-project"
     - title: "100x7"
       projectRef: "nl/100-7"
+      hue: 340
       image:
           url: "/images/7-round.webp"
           alt: "Headerafbeelding van het 100x7-project"
     - title: "Benjaminsgård"
       projectRef: "nl/benjaminsgard"
+      hue: 27
       image:
           url: "/images/benjaminsgard-round.webp"
           alt: "Headerafbeelding van het Benjaminsgård-project"
     - title: "Wifiwachtwoord kunstwerk"
       projectRef: "nl/wifi-password-art"
+      hue: 95
       image:
           url: "/images/password-round.webp"
           alt: "Headerafbeelding van het Wifi password art-project"

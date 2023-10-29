@@ -5,7 +5,7 @@ excerpt: "Ik heb een poster ontworpen in samenwerking met een Instagram account!
 headerImage:
     url: "/images/password.png"
     alt: "Het kunstwerk gemaakt van Wifiwachtwoord karakters"
-hue: 0
+hue: 95
 categories:
     - "nl/graphic-design"
 publishedAt: 2021-02-01
