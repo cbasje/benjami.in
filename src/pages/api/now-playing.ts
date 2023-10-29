@@ -9,7 +9,7 @@ const parseArtist = (artists: any[]): string => {
     return artists.map((a: any) => a.name)[0] ?? "";
 };
 
-export const get: APIRoute = async () => {
+export const GET: APIRoute = async () => {
     const response = await getNowPlaying();
 
     if (!response.ok || response.status === 204 || response.status >= 400) {
