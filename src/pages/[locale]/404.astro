@@ -8,6 +8,7 @@ import MainLayout from "../../layouts/main.astro";
 const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
 const page = await getEntry("not-found", locale);
+const { Content } = await page.render();
 ---
 
 <MainLayout seo={page.data.seo}>
@@ -15,8 +16,7 @@ const page = await getEntry("not-found", locale);
         <Nav />
 
         <div class="content-wrapper">
-            <h1>{page.data.title}</h1>
-            <p>{page.data.description}</p>
+            <Content />
         </div>
 
         <Footer />
