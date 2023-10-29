@@ -5,7 +5,7 @@ a.button {
     cursor: pointer;
 
     border-radius: var(--radius-round);
-    border: 1px solid var(--theme-text-1);
+    border: 1px solid var(--text-1);
 
     font-family: var(--font-display);
     text-transform: uppercase;
@@ -44,7 +44,7 @@ a.button {
 
     &:hover:not(:active):not([disabled]):not(button[aria-disabled="true"]) {
         transform: translate(-0.25rem, -0.25rem);
-        box-shadow: 0.25rem 0.25rem 0 var(--theme-text-1);
+        box-shadow: 0.25rem 0.25rem 0 var(--text-1);
     }
 
     &.button-large {
@@ -59,24 +59,20 @@ a.button {
 
     &.button-blur {
         backdrop-filter: blur(10px);
-        background: color-mix(
-            in oklab,
-            var(--theme-surface-1),
-            transparent 65%
-        );
+        background: color-mix(in oklab, var(--surface-1), transparent 65%);
     }
     &.button-primary:not(.outlined) {
-        background: var(--theme-accent-1);
-        color: var(--theme-text-on-accent);
+        background: var(--accent-1);
+        color: var(--text-on-accent);
         border: none;
     }
     &.button-black {
-        background: var(--theme-text-1);
-        color: var(--theme-surface-1);
+        background: var(--text-1);
+        color: var(--surface-1);
         border: none;
 
         &:hover {
-            background: var(--theme-text-2);
+            background: var(--text-2);
         }
     }
 }

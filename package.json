@@ -27,14 +27,11 @@
         "autoprefixer": "^10.4.14",
         "cssnano": "^6.0.1",
         "eslint": "^8.39.0",
-        "open-props": "^1.5.10",
-        "postcss": "^8.4.23",
-        "postcss-custom-media": "^10.0.0",
-        "postcss-preset-env": "^9.0.0",
+        "open-props": "^1.6.10",
+        "postcss": "^8.4.31",
+        "postcss-custom-media": "^10.0.2",
+        "postcss-nested": "^6.0.1",
         "prettier": "^2.8.8",
-        "sass": "^1.62.1",
-        "style-dictionary": "^3.8.0",
-        "token-transformer": "^0.0.33",
         "typescript": "^5.0.4"
     }
 }
