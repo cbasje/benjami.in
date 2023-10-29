@@ -107,9 +107,9 @@ const seo: Seo = {
 </ProjectsLayout>
 
 <style
-    lang="scss"
+    lang="postcss"
     define:vars={{
-        "color-hue": page.data.hue,
+        "color-hue": page.data.hue ? page.data.hue:'inherit' 
     }}
 >
     header,
@@ -163,7 +163,7 @@ const seo: Seo = {
                             /* background: var(--color-blue-2); */
 
                             &:not(:hover) {
-                                border-color: var(--theme-surface-3);
+                                border-color: var(--surface-3);
                             }
                         }
                     }
@@ -175,7 +175,7 @@ const seo: Seo = {
     :global(figcaption),
     :global(img + em) {
         max-inline-size: unset;
-        color: var(--theme-text-3);
+        color: var(--text-3);
         font-size: var(--font-size-1);
         font-style: normal;
     }
@@ -188,7 +188,7 @@ const seo: Seo = {
             justify-content: flex-start;
 
             :global(:is(img, picture)) {
-                background: var(--background);
+                background: var(--color-1);
                 border-radius: var(--radius-2);
                 overflow: hidden;
             }
@@ -228,7 +228,7 @@ const seo: Seo = {
         :global(hr) {
             flex-grow: 1;
             height: 0.125rem;
-            background: var(--theme-surface-2);
+            background: var(--surface-2);
 
             margin-block: var(--size-3);
         }

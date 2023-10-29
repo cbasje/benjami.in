@@ -48,11 +48,7 @@ const links = page.data.links.map((link) => {
                         ) => (
                             <li
                                 role="listitem"
-                                style={
-                                    l.hue
-                                        ? `--background: var(--theme-gradient-${l.hue})`
-                                        : "--background: var(--theme-surface-2)"
-                                }
+                                style={l.hue ? `--color-hue: ${l.hue}` : ""}
                             >
                                 {l.image && (
                                     <a
@@ -84,7 +80,7 @@ const links = page.data.links.map((link) => {
     </main>
 </MainLayout>
 
-<style lang="scss">
+<style lang="postcss">
     main {
         min-height: 100vh;
         margin-inline: auto;

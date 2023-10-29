@@ -5,7 +5,7 @@ import { getDataEntryById, type CollectionEntry } from "astro:content";
 import type { Seo } from "../content/config";
 import { defaultLocale, locales, type Locale } from "../i18n/ui";
 import { useTranslatedPath, useTranslations } from "../i18n/utils";
-import "../styles/global.scss";
+import "../styles/global.postcss";
 
 const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
