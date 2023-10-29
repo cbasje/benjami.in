@@ -1,0 +1,48 @@
+---
+import { getEntry } from "astro:content";
+import Footer from "../../components/Footer.astro";
+import Nav from "../../components/Nav.astro";
+import { defaultLocale, type Locale } from "../../i18n/ui";
+import MainLayout from "../../layouts/main.astro";
+
+const locale = (Astro.params.locale as Locale) ?? defaultLocale;
+
+const page = await getEntry("not-found", locale);
+---
+
+<MainLayout seo={page.data.seo}>
+    <main>
+        <Nav />
+
+        <div class="content-wrapper">
+            <h1>{page.data.title}</h1>
+            <p>{page.data.description}</p>
+        </div>
+
+        <Footer />
+    </main>
+</MainLayout>
+
+<style lang="postcss">
+    main {
+        min-height: 100vh;
+        margin-inline: auto;
+        padding: var(--size-3);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: var(--size-8);
+
+        > :global(*) {
+            width: 100%;
+            max-inline-size: var(--size-lg);
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding-block: var(--size-10);
+        }
+    }
+</style>

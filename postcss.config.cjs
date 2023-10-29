@@ -1,6 +1,6 @@
 const postcssCustomMedia = require("postcss-custom-media");
+const postcssNested = require("postcss-nested");
 const postcssGlobalData = require("@csstools/postcss-global-data");
-// const postcssPresetEnv = require("postcss-preset-env");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
 
@@ -11,7 +11,7 @@ const config = {
             files: ["./node_modules/open-props/media.min.css"],
         }),
         postcssCustomMedia({ preserve: true }),
-        // postcssPresetEnv,
+        postcssNested(),
         autoprefixer(),
         cssnano(),
     ],

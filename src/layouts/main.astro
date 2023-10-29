@@ -1,25 +1,25 @@
 ---
-import { astroI18n } from "astro-i18n";
-import type { Seo } from "../../lib/types";
 import MainHead from "../components/MainHead.astro";
+import type { Seo } from "../content/config";
+import { defaultLocale, type Locale } from "../i18n/ui";
 
-astroI18n.init(Astro);
+const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
 export interface Props {
-    seo?: Omit<Seo, "_type">;
+    seo?: Seo;
 }
 const { seo } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang={astroI18n.langCode}>
+<html lang={locale}>
     <MainHead seo={seo} />
 
     <body>
         <div class="container">
             <slot />
         </div>
-        <style lang="scss">
+        <style lang="postcss">
             .container {
                 width: 100%;
                 height: 100%;

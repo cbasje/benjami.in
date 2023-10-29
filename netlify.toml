@@ -1,2 +1,2 @@
-[[plugins]]
-package = "/plugins/netlify-redirects"
+[build]
+  command = "bun run build"

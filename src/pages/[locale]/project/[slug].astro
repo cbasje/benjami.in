@@ -1,0 +1,258 @@
+---
+import { Image } from "astro:assets";
+import { getDataEntryById, getEntryBySlug } from "astro:content";
+import type { Seo } from "../../../content/config";
+import { defaultLocale, type Locale } from "../../../i18n/ui";
+import ProjectsLayout from "../../../layouts/project.astro";
+
+const locale = (Astro.params.locale as Locale) ?? defaultLocale;
+const { slug } = Astro.params;
+
+const page = await getEntryBySlug("project", `${locale}/${slug}`);
+if (!page) {
+    return Astro.redirect("/404");
+}
+
+const { Content, headings } = await page.render();
+
+const seo: Seo = {
+    metaTitle: page.data.title,
+    metaDescription: page.data.description,
+    shareImage: page.data.headerImage,
+    isArticle: true,
+};
+---
+
+<ProjectsLayout hue={page.data.hue} seo={seo}>
+    <header>
+        <h1>{page.data.title}</h1>
+        <div class="intro" role="presentation">
+            <div role="complementary">
+                <h2 class="description">
+                    {page.data.description}
+                </h2>
+
+                <div role="none">
+                    <span>
+                        {
+                            new Intl.DateTimeFormat(locale, {
+                                month: "long",
+                                year: "numeric",
+                            }).format(new Date(page.data.publishedAt))
+                        }
+                    </span>
+
+                    {
+                        page.data.company && (
+                            <>
+                                <span>-</span>
+                                {page.data.company.url ? (
+                                    <a href={page.data.company.url}>
+                                        {page.data.company.title}
+                                    </a>
+                                ) : (
+                                    <span>{page.data.company.title}</span>
+                                )}
+                            </>
+                        )
+                    }
+
+                    {
+                        page.data.categories && (
+                            <>
+                                <span>-</span>
+                                <div class="categories">
+                                    {page.data.categories.map(async (c) => {
+                                        const cat = await getDataEntryById(
+                                            "category",
+                                            c.id
+                                        );
+                                        return (
+                                            <a class="button">
+                                                {cat.data.title}
+                                            </a>
+                                        );
+                                    })}
+                                </div>
+                            </>
+                        )
+                    }
+                </div>
+            </div>
+
+            <p role="doc-preface">{page.data.excerpt}</p>
+        </div>
+    </header>
+
+    <div role="banner">
+        <figure>
+            <Image
+                src={page.data.headerImage.url}
+                alt={page.data.headerImage.alt}
+                width={1380}
+                height={920}
+                widths={[1024]}
+            />
+
+            <figcaption>
+                {page.data.headerImage.caption ?? page.data.headerImage.alt}
+            </figcaption>
+        </figure>
+    </div>
+
+    <section>
+        <hr />
+        <Content />
+
+        <script src="../../../../lib/content-components"></script>
+    </section>
+</ProjectsLayout>
+
+<style
+    lang="postcss"
+    define:vars={{
+        "color-hue": page.data.hue ? page.data.hue:'inherit' 
+    }}
+>
+    header,
+    div[role="banner"] {
+        width: 100%;
+        max-inline-size: var(--size-lg);
+        height: auto;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--size-2);
+
+        h1 {
+            font-size: var(--font-size-6);
+            line-height: var(--font-lineheight-1);
+        }
+
+        div.intro {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--size-4);
+
+            > div {
+                display: flex;
+                flex-direction: column;
+                gap: var(--size-2);
+
+                h2.description {
+                    margin: 0;
+                    font-size: var(--font-size-4);
+                    font-weight: var(--font-weight-4);
+                    line-height: var(--font-lineheight-0);
+                }
+
+                > div {
+                    display: flex;
+                    flex-direction: row;
+                    gap: var(--size-2);
+
+                    > div.categories {
+                        display: flex;
+                        flex-direction: row;
+                        gap: var(--size-1);
+
+                        > :global(a) {
+                            margin: 0;
+                            padding-block: 0;
+                            padding-inline: var(--size-2);
+                            /* background: var(--color-blue-2); */
+
+                            &:not(:hover) {
+                                border-color: var(--surface-3);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    :global(figcaption),
+    :global(img + em) {
+        max-inline-size: unset;
+        color: var(--text-3);
+        font-size: var(--font-size-1);
+        font-style: normal;
+    }
+
+    div[role="banner"] {
+        width: 100%;
+        height: auto;
+
+        > :global(figure) {
+            justify-content: flex-start;
+
+            :global(:is(img, picture)) {
+                background: var(--color-1);
+                border-radius: var(--radius-2);
+                overflow: hidden;
+            }
+        }
+    }
+
+    section {
+        max-inline-size: var(--size-content-2);
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--size-6);
+
+        :global(:is(h1, h2, h3, h4, h5, h6)) {
+            padding-top: var(--size-4);
+            margin: 0;
+        }
+
+        > :global(*) {
+            width: 100%;
+        }
+        :global(iframe) {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        :global(:is(img, picture, iframe)) {
+            width: 100%;
+            aspect-ratio: 5/6;
+            border-radius: var(--radius-2);
+            overflow: hidden;
+            object-fit: cover;
+        }
+
+        :global(hr) {
+            flex-grow: 1;
+            height: 0.125rem;
+            background: var(--surface-2);
+
+            margin-block: var(--size-3);
+        }
+
+        :global(.astro-code) {
+            width: 100%;
+            border-radius: var(--radius-2);
+            padding-block: var(--size-2);
+            padding-inline: var(--size-3);
+        }
+    }
+
+    @media (--md-n-above) {
+        header {
+            div.intro {
+                gap: var(--size-5);
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        section :global(:is(img, iframe)) {
+            aspect-ratio: 3/2;
+        }
+    }
+</style>

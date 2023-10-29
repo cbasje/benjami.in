@@ -235,7 +235,7 @@
     </svg>
 </div>
 
-<style lang="scss">
+<style lang="postcss">
     .dial {
         flex: 1;
         display: grid;
@@ -270,7 +270,7 @@
 
                 list-style: none;
                 border-radius: 50%;
-                background: var(--background);
+                background: var(--color-1);
 
                 transition: opacity 140ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
@@ -319,15 +319,15 @@
                 transform-origin: center;
 
                 > circle {
-                    stroke: var(--theme-text-1);
+                    stroke: var(--text-1);
                     stroke-width: 0.5;
                 }
             }
             .numbers > path {
-                fill: var(--theme-text-1);
+                fill: var(--text-1);
             }
             .triangle {
-                fill: var(--theme-text-1);
+                fill: var(--text-1);
             }
             #clipNumbers > path {
                 rotate: calc(var(--rotation) * 1deg);

@@ -1,0 +1,114 @@
+---
+import { Image } from "astro:assets";
+import { getDataEntryById } from "astro:content";
+import Footer from "../../components/Footer.astro";
+import RotaryDial from "../../components/RotaryDial.svelte";
+import { defaultLocale, type Locale } from "../../i18n/ui";
+import { useTranslatedPath, useTranslations } from "../../i18n/utils";
+import MainLayout from "../../layouts/main.astro";
+
+const locale = (Astro.params.locale as Locale) ?? defaultLocale;
+
+const t = useTranslations(locale);
+const l = useTranslatedPath(locale);
+
+const page = await getDataEntryById("home", locale);
+
+if (!page) {
+    return Astro.redirect("/404");
+}
+
+const links = page.data.links.map((link) => {
+    if (link.projectRef) {
+        return l(
+            `/${link.projectRef.collection}/${
+                link.projectRef.slug.split("/")[1]
+            }`
+        );
+    } else if (link.slug) {
+        return l(link.slug);
+    } else if (link.url) {
+        return link.url;
+    } else {
+        return "#";
+    }
+});
+---
+
+<MainLayout seo={page.data.seo}>
+    <main>
+        <div class="dial-wrapper">
+            <RotaryDial elementSlugs={links} client:only>
+                {
+                    page.data.links.map(
+                        (
+                            l,
+                            i
+                            // <li class:active={i % 10 === num}>
+                        ) => (
+                            <li
+                                role="listitem"
+                                style={l.hue ? `--color-hue: ${l.hue}` : ""}
+                            >
+                                {l.image && (
+                                    <a
+                                        href={links[i]}
+                                        title={`Link to ${l.title}`}
+                                        rel={
+                                            !links[i].startsWith("/")
+                                                ? "nofollow me"
+                                                : undefined
+                                        }
+                                    >
+                                        <Image
+                                            src={l.image.url}
+                                            alt={l.image.alt}
+                                            width={1024}
+                                            height={1152}
+                                            widths={[512]}
+                                        />
+                                    </a>
+                                )}
+                            </li>
+                        )
+                    )
+                }
+            </RotaryDial>
+        </div>
+
+        <Footer />
+    </main>
+</MainLayout>
+
+<style lang="postcss">
+    main {
+        min-height: 100vh;
+        margin-inline: auto;
+        padding-inline: var(--size-1);
+        padding-block: var(--size-3);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--size-8);
+
+        > :global(*) {
+            width: 100%;
+            max-inline-size: var(--size-lg);
+        }
+
+        .dial-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    @media (--md-n-above) {
+        main {
+            padding: var(--size-3);
+        }
+    }
+</style>

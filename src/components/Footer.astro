@@ -1,31 +1,27 @@
 ---
-import { astroI18n } from "astro-i18n";
-import { useSanityClient } from "astro-sanity";
-import { footerQuery } from "../../lib/queries";
-import type { Footer } from "../../lib/types";
+import { getDataEntryById, getEntryBySlug } from "astro:content";
 import Social from "./Social.astro";
+import { defaultLocale, type Locale } from "../i18n/ui";
 
-astroI18n.init(Astro);
+const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
 const currentYear = new Date().getFullYear();
 
-const footer: Footer = await useSanityClient().fetch(footerQuery, {
-    locale: astroI18n.langCode,
-});
+const page = await getDataEntryById("footer", locale);
 ---
 
 <footer>
     <aside>
-        <Social links={footer.links} />
+        <Social links={page.data.links} />
         <ul>
             <li>
-                &copy; {footer.title}, {currentYear}
+                &copy; {page.data.title}, {currentYear}
             </li>
         </ul>
     </aside>
 </footer>
 
-<style lang="scss">
+<style lang="postcss">
     footer {
         padding-block: var(--size-3);
         display: flex;

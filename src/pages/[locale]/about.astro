@@ -1,0 +1,129 @@
+---
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import Footer from "../../components/Footer.astro";
+import Nav from "../../components/Nav.astro";
+import { defaultLocale, type Locale } from "../../i18n/ui";
+import { useTranslatedPath, useTranslations } from "../../i18n/utils";
+import MainLayout from "../../layouts/main.astro";
+
+const locale = (Astro.params.locale as Locale) ?? defaultLocale;
+
+const t = useTranslations(locale);
+const l = useTranslatedPath(locale);
+
+const page = await getEntry("about", locale);
+const { Content } = await page.render();
+---
+
+<MainLayout seo={page.data.seo}>
+    <main>
+        <Nav />
+
+        <header>
+            <div>
+                <div class="text-wrapper">
+                    <Content />
+                </div>
+                <Image
+                    src={page.data.image.url}
+                    alt={page.data.image.alt}
+                    width={4000}
+                    height={6000}
+                    widths={[720]}
+                />
+            </div>
+        </header>
+
+        <Footer />
+    </main>
+</MainLayout>
+
+<style lang="postcss">
+    main {
+        min-height: 100vh;
+        margin-inline: auto;
+        padding: var(--size-3);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: var(--size-3);
+
+        > :global(*) {
+            width: 100%;
+            max-inline-size: var(--size-lg);
+        }
+
+        header {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+            gap: var(--size-10);
+            padding-block: var(--size-10);
+
+            > div {
+                align-self: stretch;
+                display: flex;
+                flex-direction: column-reverse;
+                justify-content: space-between;
+                align-items: flex-end;
+
+                .text-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    max-inline-size: var(--size-content-3);
+                    z-index: var(--layer-1);
+
+                    h1 {
+                        max-inline-size: calc(10ch + 1rem);
+                        background: var(--surface-1);
+                        padding: 0.6rem 1rem 0 0;
+                        line-height: var(--font-lineheight-1);
+                        font-size: var(--font-size-7);
+                    }
+                    p {
+                        line-height: var(--font-lineheight-4);
+                        font-size: var(--font-size-2);
+                    }
+                }
+
+                :global(img) {
+                    flex: 0;
+                    width: 360px;
+                    aspect-ratio: 3/4;
+                    object-fit: cover;
+                    border-radius: var(--radius-2);
+
+                    align-self: flex-end;
+                    margin-block-end: calc(var(--size-10) * -1);
+                }
+            }
+
+            > a.button {
+                align-self: center;
+            }
+        }
+    }
+
+    @media (--md-n-above) {
+        main {
+            header {
+                padding: 0;
+
+                > div {
+                    flex-direction: row;
+                    gap: var(--size-10);
+
+                    :global(img) {
+                        margin-block-end: var(--size-10);
+                        align-self: flex-start;
+                    }
+                }
+            }
+        }
+    }
+</style>

@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon";
-import type { Resume, SocialLink } from "../../lib/types";
+import type { Resume, SocialLink } from "../content/config";
 
 interface Props {
     links: (SocialLink | Resume)[];
@@ -11,7 +11,7 @@ const { links } = Astro.props;
 <ul role="list">
     {
         links.map((l) =>
-            l._type == "social-link" ? (
+            !("file" in l) ? (
                 <li role="listitem">
                     <a
                         class="button"
@@ -29,7 +29,7 @@ const { links } = Astro.props;
                         class="button"
                         title={l.title}
                         rel="nofollow me"
-                        href={l.fileUrl}
+                        href={l.file}
                         target="_blank"
                     >
                         <Icon name="ph:file-text-fill" aria-hidden />
@@ -40,7 +40,7 @@ const { links } = Astro.props;
     }
 </ul>
 
-<style lang="scss">
+<style lang="postcss">
     ul {
         margin: 0;
         padding: 0;
@@ -57,7 +57,7 @@ const { links } = Astro.props;
             margin: 0;
 
             a:not(:hover) {
-                border-color: var(--theme-surface-2);
+                border-color: var(--surface-2);
             }
         }
     }

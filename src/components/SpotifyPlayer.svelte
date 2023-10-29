@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { useQuery } from "@sveltestack/svelte-query";
     import type { SpotifyData } from "../../lib/types";
+    import { useQuery } from "@sveltestack/svelte-query";
 
     const queryResult = useQuery<SpotifyData>("repoData", () =>
         fetch("/api/now-playing").then((res) => res.json())
@@ -69,7 +69,7 @@
     </span>
 {/if}
 
-<style lang="scss">
+<style lang="postcss">
     .player {
         max-width: 100%;
 

@@ -1,22 +1,22 @@
 ---
-import { astroI18n, l, t } from "astro-i18n";
 import { Icon } from "astro-icon";
+import { defaultLocale, type Locale } from "../i18n/ui";
+import { useTranslatedPath, useTranslations } from "../i18n/utils";
 
-astroI18n.init(Astro);
+const locale = (Astro.params.locale as Locale) ?? defaultLocale;
+
+const t = useTranslations(locale);
+const l = useTranslatedPath(locale);
 ---
 
 <nav>
-    <a
-        class="button button-blur"
-        title={t("index.ui.back-title")}
-        href={l("/")}
-    >
+    <a class="button button-blur" title={t("ui.back-title")} href={l("/")}>
         <Icon name="ph:caret-left-bold" aria-hidden />
-        <span>{t("index.ui.back")}</span>
+        <span>{t("ui.back")}</span>
     </a>
 </nav>
 
-<style lang="scss">
+<style lang="postcss">
     nav {
         position: fixed;
         padding: var(--size-3);

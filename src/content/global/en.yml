@@ -1,0 +1,9 @@
+siteName: "Sebastiaan Benjamins"
+siteKeywords: "Sebastiaan Benjamins, student, designer, front-end developer, TU Delft, UX designer, user experience designer"
+defaultSeo:
+    metaTitle: "Sebastiaan Benjamins"
+    metaDescription: "Hey, I'm Sebastiaan. I'm a designer/developer creating spaces where people can be themselves and thrive."
+    shareImage:
+        url: "/images/asd.jpg"
+        alt: "Picture of me, Sebastiaan Benjamins"
+    isArticle: false

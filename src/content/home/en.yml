@@ -1,0 +1,58 @@
+title: "Sebastiaan Benjamins"
+links:
+    - title: "'About' page"
+      slug: "/about"
+      image:
+          url: "/images/pf-round.webp"
+          alt: "Picture of me, Sebastiaan Benjamins"
+    - title: "Kompano"
+      projectRef: "en/kompano"
+      hue: 140
+      image:
+          url: "/images/kompano-round.webp"
+          alt: "Header image of the Kompano project"
+    - title: "Fordy"
+      projectRef: "en/fordy"
+      hue: 260
+      image:
+          url: "/images/fordy-round.webp"
+          alt: "Header image of the Fordy project"
+    - title: "Heat City Map"
+      projectRef: "en/heat-city-map"
+      hue: 70
+      image:
+          url: "/images/map-round.webp"
+          alt: "Header image of the Heat City Map project"
+    - title: "'Climate Injustice Reversed'"
+      projectRef: "en/climate-injustice-reversed"
+      hue: 275
+      image:
+          url: "/images/climate-round.webp"
+          alt: "Header image of the 'Climate Injustice Reversed' project"
+    - title: "'My Surrender'"
+      projectRef: "en/my-surrender"
+      hue: 230
+      image:
+          url: "/images/surrender-round.webp"
+          alt: "Header image of the 'My Surrender' project"
+    - title: "100x7"
+      projectRef: "en/100-7"
+      hue: 340
+      image:
+          url: "/images/7-round.webp"
+          alt: "Header image of the 100x7 project"
+    - title: "Benjaminsgård"
+      projectRef: "en/benjaminsgard"
+      hue: 27
+      image:
+          url: "/images/benjaminsgard-round.webp"
+          alt: "Header image of the Benjaminsgård project"
+    - title: "Wifi password art"
+      projectRef: "en/wifi-password-art"
+      hue: 95
+      image:
+          url: "/images/password-round.webp"
+          alt: "Header image of the Wifi password art project"
+seo:
+    metaTitle: "Sebastiaan Benjamins"
+    isArticle: false
