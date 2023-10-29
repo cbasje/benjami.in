@@ -1,26 +1,22 @@
 ---
-import { astroI18n } from "astro-i18n";
-import { useSanityClient } from "astro-sanity";
-import { notFoundQuery } from "../../lib/queries";
-import type { NotFound } from "../../lib/types";
-import Footer from "../components/Footer.astro";
-import Nav from "../components/Nav.astro";
-import MainLayout from "../layouts/main.astro";
+import { getEntry } from "astro:content";
+import Footer from "../../components/Footer.astro";
+import Nav from "../../components/Nav.astro";
+import { defaultLocale, type Locale } from "../../i18n/ui";
+import MainLayout from "../../layouts/main.astro";
 
-astroI18n.init(Astro);
+const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
-const notFound: NotFound = await useSanityClient().fetch(notFoundQuery, {
-    locale: astroI18n.langCode,
-});
+const page = await getEntry("not-found", locale);
 ---
 
-<MainLayout seo={notFound.seo}>
+<MainLayout seo={page.data.seo}>
     <main>
         <Nav />
 
         <div class="content-wrapper">
-            <h1>{notFound.title}</h1>
-            <p>{notFound.description}</p>
+            <h1>{page.data.title}</h1>
+            <p>{page.data.description}</p>
         </div>
 
         <Footer />

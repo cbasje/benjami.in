@@ -1,35 +1,36 @@
 ---
-import { astroI18n } from "astro-i18n";
-import { useSanityClient } from "astro-sanity";
-import { aboutQuery } from "../../lib/queries";
-import type { About } from "../../lib/types";
-import Footer from "../components/Footer.astro";
-import Nav from "../components/Nav.astro";
-import SanityImage from "../components/SanityImage.astro";
-import MainLayout from "../layouts/main.astro";
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import Footer from "../../components/Footer.astro";
+import Nav from "../../components/Nav.astro";
+import { defaultLocale, type Locale } from "../../i18n/ui";
+import { useTranslatedPath, useTranslations } from "../../i18n/utils";
+import MainLayout from "../../layouts/main.astro";
 
-astroI18n.init(Astro);
+const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
-const about: About = await useSanityClient().fetch(aboutQuery, {
-    locale: astroI18n.langCode,
-});
+const t = useTranslations(locale);
+const l = useTranslatedPath(locale);
+
+const page = await getEntry("about", locale);
 ---
 
-<MainLayout seo={about.seo}>
+<MainLayout seo={page.data.seo}>
     <main>
         <Nav />
 
         <header>
             <div>
                 <div class="text-wrapper">
-                    <h1>{about.title}</h1>
-                    <p>{about.description}</p>
+                    <h1>{page.data.title}</h1>
+                    <p>{page.data.description}</p>
                 </div>
-                <SanityImage
-                    alt="Picture of me, Sebastiaan Benjamins, smiling at the camera"
-                    src={about.image}
-                    width={720}
-                    height={960}
+                <Image
+                    src={page.data.image.url}
+                    alt={page.data.image.alt}
+                    width={4000}
+                    height={6000}
+                    widths={[720]}
                 />
             </div>
         </header>
@@ -94,6 +95,8 @@ const about: About = await useSanityClient().fetch(aboutQuery, {
                     flex: 0;
                     width: 360px;
                     aspect-ratio: 3/4;
+                    object-fit: cover;
+                    border-radius: var(--radius-2);
 
                     align-self: flex-end;
                     margin-block-end: calc(var(--size-10) * -1);

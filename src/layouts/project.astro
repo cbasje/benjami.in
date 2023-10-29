@@ -1,18 +1,18 @@
 ---
-import { astroI18n, l } from "astro-i18n";
 import { Icon } from "astro-icon";
-import type { Seo } from "../../lib/types";
+import type { Seo } from "../content/config";
+import { defaultLocale, type Locale } from "../i18n/ui";
+import { useTranslatedPath } from "../i18n/utils";
 import MainLayout from "./main.astro";
 
-astroI18n.init(Astro);
+const locale = (Astro.params.locale as Locale) ?? defaultLocale;
+const l = useTranslatedPath(locale);
 
 export interface Props {
-    colour?: string;
-    seo?: Omit<Seo, "_type">;
+    hue?: number;
+    seo?: Seo;
 }
-const { colour, seo } = Astro.props;
-
-const themeAccent1 = colour ? `var(--color-${colour}-5)` : undefined;
+const { hue, seo } = Astro.props;
 ---
 
 <MainLayout seo={seo}>
@@ -35,7 +35,8 @@ const themeAccent1 = colour ? `var(--color-${colour}-5)` : undefined;
     </div>
 </MainLayout>
 
-<script>
+<!-- FIXME: -->
+<!-- <script>
     import { animate } from "motion";
 
     animate(
@@ -46,9 +47,9 @@ const themeAccent1 = colour ? `var(--color-${colour}-5)` : undefined;
         },
         { duration: 0.375, easing: [0.43, 0.13, 0.23, 0.96] }
     );
-</script>
+</script> -->
 
-<style lang="scss" define:vars={{ "theme-accent-1": themeAccent1 }}>
+<style lang="scss" define:vars={{ "color-hue": hue }}>
     .overlay {
         position: fixed;
         inset: 0;
@@ -92,9 +93,9 @@ const themeAccent1 = colour ? `var(--color-${colour}-5)` : undefined;
         overflow-y: scroll;
         z-index: var(--layer-2);
 
-        // Set for animation
-        transform: translateY(150px);
-        opacity: 0;
+        // FIXME: Set for animation
+        // transform: translateY(150px);
+        // opacity: 0;
 
         &:focus {
             outline: none;

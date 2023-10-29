@@ -1,12 +1,16 @@
 ---
-import { astroI18n, l } from "astro-i18n";
 import { SEO as SeoHead } from "astro-seo";
 import { getDataEntryById, type CollectionEntry } from "astro:content";
 import type { Seo } from "../content/config";
+import { defaultLocale, locales, type Locale } from "../i18n/ui";
+import { useTranslatedPath, useTranslations } from "../i18n/utils";
 import "../styles/global.scss";
 
-astroI18n.init(Astro);
-const { langCodes } = astroI18n;
+const locale = (Astro.params.locale as Locale) ?? defaultLocale;
+
+const t = useTranslations(locale);
+const l = useTranslatedPath(locale);
+
 const currentUrl = Astro.url;
 
 export interface Props {
@@ -104,11 +108,11 @@ const fullSeo = {
     />
 
     {
-        langCodes.map((code) => (
+        locales.map((code) => (
             <link
                 rel="alternate"
                 hreflang={code}
-                href={currentUrl.host + l(currentUrl.pathname, {}, code)}
+                href={currentUrl.host + l(currentUrl.pathname, code)}
             />
         ))
     }
