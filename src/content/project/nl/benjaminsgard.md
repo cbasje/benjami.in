@@ -15,3 +15,5 @@ seo:
     metaTitle: "Benjaminsgård"
     isArticle: true
 ---
+
+<!-- FIXME: Instagram embed: https://www.instagram.com/benjaminsgard_se/ -->

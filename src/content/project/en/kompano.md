@@ -69,4 +69,4 @@ My main task however, was to create a prototype to use in the user testing sessi
 
 [View the prototype](https://framer.com/embed/Kompano-Final-Redesign--8yThemIu0F84D6qE7DBa/EtmYk_avt?highlights=0)
 
-<!-- FIXME: Prototype Framer https://framer.com/embed/Kompano-Final-Redesign--8yThemIu0F84D6qE7DBa/EtmYk_avt?highlights=0 -->
+<iframe is="ui-prototype" src="https://framer.com/embed/Kompano-Final-Redesign--8yThemIu0F84D6qE7DBa/EtmYk_avt?highlights=0" data-provider="Framer"/>
