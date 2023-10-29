@@ -35,20 +35,6 @@ const { hue, seo } = Astro.props;
     </div>
 </MainLayout>
 
-<!-- FIXME: -->
-<!-- <script>
-    import { animate } from "motion";
-
-    animate(
-        ".content-container",
-        {
-            transform: ["translateY(150px)", "none"],
-            opacity: [0, 1],
-        },
-        { duration: 0.375, easing: [0.43, 0.13, 0.23, 0.96] }
-    );
-</script> -->
-
 <style lang="scss" define:vars={{ "color-hue": hue }}>
     .overlay {
         position: fixed;
@@ -92,10 +78,6 @@ const { hue, seo } = Astro.props;
         position: relative;
         overflow-y: scroll;
         z-index: var(--layer-2);
-
-        // FIXME: Set for animation
-        // transform: translateY(150px);
-        // opacity: 0;
 
         &:focus {
             outline: none;
