@@ -7,6 +7,7 @@ class Prototype extends HTMLIFrameElement {
         this.title = `A ${this.dataset.provider} prototype`;
         this.allowFullscreen = true;
         this.referrerPolicy = "no-referrer";
+        this.loading = "lazy";
     }
 }
 
