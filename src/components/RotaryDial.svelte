@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { navigate } from "astro:transitions/client";
     import { onMount } from "svelte";
 
     export let elementSlugs: (string | undefined)[];
@@ -41,11 +42,11 @@
     $: pointer = { x: 0, y: 0 };
 
     const calculateRect = () => {
-        rect = containerElement.getBoundingClientRect();
+        rect = containerElement?.getBoundingClientRect();
 
         center = {
-            x: rect.left + rect.width / 2,
-            y: rect.top + rect.height / 2,
+            x: rect?.left + rect?.width / 2,
+            y: rect?.top + rect?.height / 2,
         };
     };
 
@@ -94,14 +95,15 @@
     };
 
     const sendNumber = (finalNumber: number | null) => {
-        console.log(finalNumber);
-
         if (!finalNumber) return;
 
         const finalIndex = finalNumber - 1;
-        if (!elementSlugs.at(finalIndex)) return;
+        const slug = elementSlugs.at(finalIndex);
+        console.log(finalNumber, slug);
 
-        location.assign(elementSlugs.at(finalIndex)!);
+        if (!slug) return;
+
+        navigate(slug);
     };
 
     function pointerMove(e: PointerEvent) {

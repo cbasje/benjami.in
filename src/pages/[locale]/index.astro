@@ -34,40 +34,37 @@ const links = page.data.links.map((link) => {
 <MainLayout seo={page.data.seo}>
     <main>
         <div class="dial-wrapper">
-            <RotaryDial elementSlugs={links} client:only>
+            <RotaryDial elementSlugs={links} client:load>
                 {
-                    page.data.links.map(
-                        (
-                            l,
-                            i
-                            // <li class:active={i % 10 === num}>
-                        ) => (
-                            <li
-                                role="listitem"
-                                style={l.hue ? `--color-hue: ${l.hue}` : ""}
-                            >
-                                {l.image && (
-                                    <a
-                                        href={links[i]}
-                                        title={`Link to ${l.title}`}
-                                        rel={
-                                            !links[i].startsWith("/")
-                                                ? "nofollow me"
-                                                : undefined
-                                        }
-                                    >
-                                        <Image
-                                            src={l.image.url}
-                                            alt={l.image.alt}
-                                            width={1024}
-                                            height={1152}
-                                            widths={[512]}
-                                        />
-                                    </a>
-                                )}
-                            </li>
-                        )
-                    )
+                    page.data.links.map((l, i) => (
+                        <li
+                            role="listitem"
+                            style={l.hue ? `--color-hue: ${l.hue}` : ""}
+                            transition:name={`accent-${
+                                l.projectRef?.slug ?? l.slug
+                            }`}
+                        >
+                            {l.image && (
+                                <a
+                                    href={links[i]}
+                                    title={`Link to ${l.title}`}
+                                    rel={
+                                        !links[i].startsWith("/")
+                                            ? "nofollow me"
+                                            : undefined
+                                    }
+                                >
+                                    <Image
+                                        src={l.image.url}
+                                        alt={l.image.alt}
+                                        width={1024}
+                                        height={1152}
+                                        widths={[512]}
+                                    />
+                                </a>
+                            )}
+                        </li>
+                    ))
                 }
             </RotaryDial>
         </div>

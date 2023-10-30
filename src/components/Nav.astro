@@ -9,11 +9,17 @@ const t = useTranslations(locale);
 const l = useTranslatedPath(locale);
 ---
 
-<nav>
-    <a class="button button-blur" title={t("ui.back-title")} href={l("/")}>
+<nav transition:name="nav">
+    <button
+        is="back-button"
+        class="button button-blur"
+        title={t("ui.back-title")}
+    >
         <Icon name="ph:caret-left-bold" aria-hidden />
         <span>{t("ui.back")}</span>
-    </a>
+    </button>
+
+    <script src="../../lib/button-component.ts"></script>
 </nav>
 
 <style lang="postcss">

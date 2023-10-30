@@ -12,16 +12,7 @@ export const localeTitles: Record<Locale, string> = {
     nl: "Nederlands",
 };
 
-export const ui: Record<Locale, Record<string, string>> = {
+export const ui = {
     en,
     nl,
 } as const;
-
-export const routes: Record<Locale, Record<string, string>> = {
-    en: {
-        // about: "about",
-    },
-    nl: {
-        // about: "over",
-    },
-};

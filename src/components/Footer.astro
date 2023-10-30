@@ -10,7 +10,7 @@ const currentYear = new Date().getFullYear();
 const page = await getDataEntryById("footer", locale);
 ---
 
-<footer>
+<footer transition:name="footer">
     <aside>
         <Social links={page.data.links} />
         <ul>
