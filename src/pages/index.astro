@@ -1,12 +1,14 @@
 ---
 import { defaultLocale, locales, type Locale } from "../i18n/ui";
 
-// TODO: Accept-Language
 const { headers } = Astro.request;
-console.log("🗣️ ~ headers:", headers.get("accept-language"));
-
-const userLocale = Intl.DateTimeFormat().resolvedOptions().locale.split("-")[0];
-return Astro.redirect(
-    locales.includes(userLocale as Locale) ? userLocale : defaultLocale
+const headerLangs = headers.get("accept-language")?.split(/[;,]/g);
+const localeSet = new Set(
+    headerLangs
+        ?.filter((l) => locales.includes(l.split("-")[0] as Locale))
+        .map((l) => l.split("-")[0] as Locale)
 );
+console.log("🗣️ ~ headers:", localeSet);
+
+return Astro.redirect(localeSet[0] ?? defaultLocale);
 ---
