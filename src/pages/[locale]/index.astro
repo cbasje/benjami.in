@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import { getDataEntryById } from "astro:content";
 import Footer from "../../components/Footer.astro";
-import RotaryDial from "../../components/RotaryDial.svelte";
+import RotaryDial from "../../components/RotaryDial.astro";
 import { defaultLocale, locales, type Locale } from "../../i18n/ui";
 import { useTranslatedPath, useTranslations } from "../../i18n/utils";
 import MainLayout from "../../layouts/main.astro";
@@ -34,7 +34,7 @@ const links = page.data.links.map((link) => {
 <MainLayout seo={page.data.seo}>
     <main>
         <div class="dial-wrapper">
-            <RotaryDial elementSlugs={links} client:load>
+            <RotaryDial slugs={links}>
                 {
                     page.data.links.map((l, i) => (
                         <li

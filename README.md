@@ -7,7 +7,7 @@ My personal portfolio showing my UX and design projects/skills. The development 
 ## Stack
 
 -   Site generator: [Astro](https://astro.build/)
--   Interactive framework: [Svelte](https://docs.astro.build/en/guides/integrations-guide/svelte/)
+-   Interactive framework: [Web Components](https://docs.astro.build/en/guides/client-side-scripts/#web-components-with-custom-elements)
 -   Deployment: [Netlify](https://netlify.com/)
 -   Styling: [PostCSS](https://postcss.org/)
 -   Icons: [Phosphor Icons](https://phosphoricons.com/)
