@@ -40,9 +40,6 @@ const links = page.data.links.map((link) => {
                         <li
                             role="listitem"
                             style={l.hue ? `--color-hue: ${l.hue}` : ""}
-                            transition:name={`accent-${
-                                l.projectRef?.slug ?? l.slug
-                            }`}
                         >
                             {l.image && (
                                 <a

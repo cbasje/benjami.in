@@ -23,13 +23,13 @@ const slideAnim = {
         old: [
             {
                 name: "astroFadeOut",
-                duration: "90ms",
+                duration: "100ms",
                 easing: EASE_IN_OUT_QUART,
                 fillMode: "both",
             },
             {
                 name: "slideDown",
-                duration: "220ms",
+                duration: "250ms",
                 easing: EASE_IN_OUT_QUART,
                 fillMode: "both",
             },
@@ -37,14 +37,14 @@ const slideAnim = {
         new: [
             {
                 name: "astroFadeIn",
-                duration: "210ms",
+                duration: "250ms",
                 easing: EASE_IN_OUT_QUART,
                 delay: "30ms",
                 fillMode: "both",
             },
             {
                 name: "slideUp",
-                duration: "220ms",
+                duration: "250ms",
                 easing: EASE_IN_OUT_QUART,
                 fillMode: "both",
             },
@@ -62,7 +62,7 @@ const slideAnim = {
         <button
             is="back-button"
             class="overlay"
-            transition:name={`accent-${slug}`}
+            transition:animate={fade({ duration: "170ms" })}
             aria-hidden></button>
 
         <button
