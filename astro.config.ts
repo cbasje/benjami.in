@@ -1,4 +1,4 @@
-import netlify from "@astrojs/netlify/functions";
+import netlify from "@astrojs/netlify";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
