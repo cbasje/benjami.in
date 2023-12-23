@@ -17,3 +17,6 @@ seo:
     metaTitle: "Fordy"
     isArticle: true
 ---
+
+![A Ford car showing one of the capabilities of Fordy: opening up the car in anticipation of the user.](../../../assets/images/fordy.webp)
+_A Ford car showing one of the capabilities of Fordy: opening up the car in anticipation of the user._

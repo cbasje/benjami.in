@@ -5,7 +5,7 @@ excerpt: "For the course 'Project Usability and User eXperience Assessment in De
 This Kompano app is used to control the Kompano robot. The robot cuts the leaves of tomato plants in greenhouses. Operators use the Kompano robot app to start the robot and fix any problems that might occur. An operator controls multiple Kompanos with the app daily."
 headerImage:
     url: "/images/kompano.webp"
-    caption: "The operator can use the app in the greenhouse while keeping a safe distance"
+    caption: "The operator can use the app in the greenhouse while keeping a safe distance."
     alt: "A hand holding a phone with the Kompano control app. The background shows a greenhouse with a Kompano robot in it."
 hue: 140
 categories:
@@ -20,14 +20,19 @@ seo:
     isArticle: true
 ---
 
+![A hand holding a phone with the Kompano control app. The background shows a greenhouse with a Kompano robot in it.](../../../assets/images/kompano.webp)
+_The operator can use the app in the greenhouse while keeping a safe distance._
+
+---
+
 The project was divided into two main phases. The first phase was all about looking at the current product and context. The app made by Priva was primarily for testing purposes and hadn't evolved over time with the increasing amount of functions added.
 
-![A hand holding a phone with the old Kompano control app. The background shows a greenhouse with a Kompano robot in it.](/images/kompano-1.png)
+![A hand holding a phone with the old Kompano control app. The background shows a greenhouse with a Kompano robot in it.](../../../assets/images/kompano-1.png)
 _The old app did not show the most important information well enough and the controls were confusing._
 
 The main user of the Kompano app was determined to be the existing team supervisors in greenhouses. They have many tasks such as coordinating their team, deleafing, pruning. To keep the greenhouse efficient, it’s important that the app works efficiently for them as well.
 
-![The attributes of the main user of the Kompano control app with an image of a typical greenhouse worker in the background. It tells you the main user is 20-25 years old, has Dutch or Polish nationality, has a high school degree and is responsible and experienced.](/images/kompano-2.png)
+![The attributes of the main user of the Kompano control app with an image of a typical greenhouse worker in the background. It tells you the main user is 20-25 years old, has Dutch or Polish nationality, has a high school degree and is responsible and experienced.](../../../assets/images/kompano-2.png)
 _The attributes of the main user of the Kompano control app._
 
 The four main use cases of the app are:
@@ -67,6 +72,6 @@ During the user tests, my main task was to handle documentation of audio and vid
 
 My main task however, was to create a prototype to use in the user testing sessions. The designs were first made in Figma where all team members could collaborate and we then decided to import the prototype into Framer to achieve a more realistic version of the prototype since Framer allows you to add normal React code to prototypes but keeps the visual interface similar to Figma. This enabled, for example, the ability to update the state of a Kompano which would then be updated everywhere. Also, it could be connected to a laptop on the side where I could set certain values for the user tests for the participants to work with, such as a particular error notification or low battery statuses. The participant could also chat with the laptop in real time and receive messages from the team.
 
-[View the prototype](https://framer.com/embed/Kompano-Final-Redesign--8yThemIu0F84D6qE7DBa/EtmYk_avt?highlights=0)
+View the prototype: [https://framer.com/embed/Kompano-Final-Redesign--8yThemIu0F84D6qE7DBa/EtmYk_avt](https://framer.com/embed/Kompano-Final-Redesign--8yThemIu0F84D6qE7DBa/EtmYk_avt?highlights=0)
 
 <iframe is="ui-prototype" src="https://framer.com/embed/Kompano-Final-Redesign--8yThemIu0F84D6qE7DBa/EtmYk_avt?highlights=0" data-provider="Framer"/>

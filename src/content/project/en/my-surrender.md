@@ -15,3 +15,6 @@ seo:
     metaTitle: "My Surrender"
     isArticle: true
 ---
+
+![The artwork created for the 'My Surrender' album](../../../assets/images/surrender.png)
+_The artwork created for the 'My Surrender' album_

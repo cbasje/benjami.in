@@ -14,4 +14,7 @@ seo:
     isArticle: true
 ---
 
+![The artwork created based on Wi-Fi password characters](../../../assets/images/password.png)
+_The artwork created based on Wi-Fi password characters_
+
 <!-- FIXME: Instagram grid or video's? -->

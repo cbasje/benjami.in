@@ -18,4 +18,7 @@ seo:
     isArticle: true
 ---
 
+![Een mockup van een hand die een telefoon vasthoudt met de Hittestadskaartapp.](../../../assets/images/map.webp)
+_Een mockup van een hand die een telefoon vasthoudt met de Hittestadskaartapp._
+
 <!-- FIXME: iframe https://bep.benjami.in/onboarding -->

@@ -16,4 +16,7 @@ seo:
     isArticle: true
 ---
 
+![Het logo van Benjaminsgård opgezet op een houten bord](../../../assets/images/benjaminsgard.png)
+_Het logo van Benjaminsgård opgezet op een houten bord_
+
 <!-- FIXME: Instagram embed: https://www.instagram.com/benjaminsgard_se/ -->

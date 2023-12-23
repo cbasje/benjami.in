@@ -18,4 +18,7 @@ seo:
     isArticle: true
 ---
 
+![A mockup of a hand holding a phone with the Heat City Map app.](../../../assets/images/map.webp)
+_A mockup of a hand holding a phone with the Heat City Map app._
+
 <!-- FIXME: iframe https://bep.benjami.in/onboarding -->

@@ -33,14 +33,14 @@ const seo: Seo = {
                 </h2>
 
                 <div role="none">
-                    <span>
+                    <time datetime={page.data.publishedAt.toISOString()}>
                         {
                             new Intl.DateTimeFormat(locale, {
                                 month: "long",
                                 year: "numeric",
                             }).format(new Date(page.data.publishedAt))
                         }
-                    </span>
+                    </time>
 
                     {
                         page.data.company && (
@@ -61,19 +61,21 @@ const seo: Seo = {
                         page.data.categories && (
                             <>
                                 <span>-</span>
-                                <div class="categories">
+                                <ul class="categories">
                                     {page.data.categories.map(async (c) => {
                                         const cat = await getDataEntryById(
                                             "category",
                                             c.id
                                         );
                                         return (
-                                            <a class="button">
-                                                {cat.data.title}
-                                            </a>
+                                            <li>
+                                                <a class="button">
+                                                    {cat.data.title}
+                                                </a>
+                                            </li>
                                         );
                                     })}
-                                </div>
+                                </ul>
                             </>
                         )
                     }
@@ -84,7 +86,7 @@ const seo: Seo = {
         </div>
     </header>
 
-    <div role="banner">
+    <!-- <div role="banner">
         <figure>
             <Image
                 src={page.data.headerImage.url}
@@ -98,14 +100,14 @@ const seo: Seo = {
                 {page.data.headerImage.caption ?? page.data.headerImage.alt}
             </figcaption>
         </figure>
-    </div>
+    </div> -->
 
-    <section>
-        <hr />
-        <Content />
+    <!-- <section> -->
+    <!-- <hr /> -->
+    <Content />
 
-        <script src="../../../../lib/content-components"></script>
-    </section>
+    <script src="../../../../lib/content-components"></script>
+    <!-- </section> -->
 </ProjectsLayout>
 
 <style
@@ -114,8 +116,7 @@ const seo: Seo = {
         "color-hue": page.data.hue ? page.data.hue:'inherit' 
     }}
 >
-    header,
-    div[role="banner"] {
+    header {
         width: 100%;
         max-inline-size: var(--size-lg);
         height: auto;
@@ -153,16 +154,22 @@ const seo: Seo = {
                     flex-direction: row;
                     gap: var(--size-2);
 
-                    > div.categories {
+                    > ul.categories {
                         display: flex;
                         flex-direction: row;
                         gap: var(--size-1);
 
-                        > :global(a) {
+                        padding: 0;
+                        list-style: none;
+
+                        li {
+                            margin: 0;
+                            padding: 0;
+                        }
+                        a {
                             margin: 0;
                             padding-block: 0;
                             padding-inline: var(--size-2);
-                            /* background: var(--color-blue-2); */
 
                             &:not(:hover) {
                                 border-color: var(--surface-3);
@@ -176,71 +183,12 @@ const seo: Seo = {
 
     :global(figcaption),
     :global(img + em) {
-        max-inline-size: unset;
         color: var(--text-3);
         font-size: var(--font-size-1);
         font-style: normal;
-    }
-
-    div[role="banner"] {
-        width: 100%;
-        height: auto;
-
-        > :global(figure) {
-            justify-content: flex-start;
-
-            :global(:is(img, picture)) {
-                background: var(--color-1);
-                border-radius: var(--radius-2);
-                overflow: hidden;
-            }
-        }
-    }
-
-    section {
-        max-inline-size: var(--size-content-2);
-        width: 100%;
-        height: auto;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: var(--size-6);
-
-        :global(:is(h1, h2, h3, h4, h5, h6)) {
-            padding-top: var(--size-4);
-            margin: 0;
-        }
-
-        > :global(*) {
-            width: 100%;
-        }
-        :global(iframe) {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        :global(:is(img, picture, iframe)) {
-            width: 100%;
-            aspect-ratio: 5/6;
-            border-radius: var(--radius-2);
-            overflow: hidden;
-            object-fit: cover;
-        }
-
-        :global(hr) {
-            flex-grow: 1;
-            height: 0.125rem;
-            background: var(--surface-2);
-
-            margin-block: var(--size-3);
-        }
-
-        :global(.astro-code) {
-            width: 100%;
-            border-radius: var(--radius-2);
-            padding-block: var(--size-2);
-            padding-inline: var(--size-3);
-        }
+        display: block;
+        margin-inline: auto;
+        inline-size: var(--size-content-2);
     }
 
     @media (--md-n-above) {
@@ -249,10 +197,6 @@ const seo: Seo = {
                 gap: var(--size-5);
                 grid-template-columns: repeat(2, 1fr);
             }
-        }
-
-        section :global(:is(img, iframe)) {
-            aspect-ratio: 3/2;
         }
     }
 </style>

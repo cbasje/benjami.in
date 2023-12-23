@@ -17,3 +17,6 @@ seo:
     metaTitle: "Fordy"
     isArticle: true
 ---
+
+![Een Ford-auto die een van de mogelijkheden van Fordy laat zien: het openen van de auto in afwachting van de gebruiker.](../../../assets/images/fordy.webp)
+_Een Ford-auto die een van de mogelijkheden van Fordy laat zien: het openen van de auto in afwachting van de gebruiker._

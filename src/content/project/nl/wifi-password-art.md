@@ -14,4 +14,7 @@ seo:
     isArticle: true
 ---
 
+![Het kunstwerk gemaakt van Wifiwachtwoord karakters](../../../assets/images/password.png)
+_Het kunstwerk gemaakt van Wifiwachtwoord karakters_
+
 <!-- FIXME: Instagram grid or video's? -->

@@ -16,4 +16,7 @@ seo:
     isArticle: true
 ---
 
+![The logo of Benjaminsgård mocked up on a wooden sign](../../../assets/images/benjaminsgard.png)
+_The logo of Benjaminsgård mocked up on a wooden sign_
+
 <!-- FIXME: Instagram embed: https://www.instagram.com/benjaminsgard_se/ -->

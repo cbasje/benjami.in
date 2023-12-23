@@ -19,14 +19,19 @@ seo:
     isArticle: true
 ---
 
+![Een hand die een telefoon vasthoudt met de Kompano control app. De achtergrond toont een kas met daarin een Kompano robot.](../../../assets/images/kompano.webp)
+_De operator kan de app in de kas gebruiken terwijl hij een veilige afstand bewaart._
+
+---
+
 Het project was verdeeld in twee hoofdfasen. In de eerste fase werd gekeken naar het huidige product en de context. De door Priva gemaakte app was vooral bedoeld om te testen en was in de loop der tijd niet geëvolueerd met het toenemend aantal toegevoegde functies.
 
-![Een hand die een telefoon vasthoudt met de oude Kompano control app. De achtergrond toont een kas met een Kompano robot erin.](/images/kompano-1.png)
+![Een hand die een telefoon vasthoudt met de oude Kompano control app. De achtergrond toont een kas met een Kompano robot erin.](../../../assets/images/kompano-1.png)
 _De oude app liet de belangrijkste informatie niet goed genoeg zien en de bediening was verwarrend._
 
 De belangrijkste gebruiker van de Kompano-app zijn de bestaande ploegleiders in de kassen. Zij hebben veel taken zoals het coördineren van hun ploeg, delevelen, snoeien. Om de kas efficiënt te houden is het **belangrijk dat de app ook voor hen efficiënt werkt**.
 
-![De eigenschappen van de hoofdgebruiker van de Kompano control app met op de achtergrond een afbeelding van een typische kasmedewerker. Het vertelt je dat de hoofdgebruiker 20-25 jaar oud is, de Nederlandse of Poolse nationaliteit heeft, een middelbare schooldiploma heeft en verantwoordelijk en ervaren is.](/images/kompano-2.png)
+![De eigenschappen van de hoofdgebruiker van de Kompano control app met op de achtergrond een afbeelding van een typische kasmedewerker. Het vertelt je dat de hoofdgebruiker 20-25 jaar oud is, de Nederlandse of Poolse nationaliteit heeft, een middelbare schooldiploma heeft en verantwoordelijk en ervaren is.](../../../assets/images/kompano-2.png)
 _De kenmerken van de hoofdgebruiker van de Kompano control app._
 
 De vier belangrijkste use cases van de app zijn:
@@ -66,6 +71,6 @@ Tijdens de gebruikerstests was mijn belangrijkste taak het documenteren van audi
 
 Mijn belangrijkste taak was echter het maken van een prototype om te gebruiken in de gebruikerstestsessies. De ontwerpen werden eerst gemaakt in Figma, waar alle teamleden konden samenwerken. Daarna besloten we om het prototype te importeren in Framer om een meer realistische versie van het prototype te krijgen, omdat je met Framer normale React-code kunt toevoegen aan prototypes, maar de visuele interface gelijk houdt aan die van Figma. Dit maakte het bijvoorbeeld mogelijk om de status van een Kompano bij te werken, die dan overal bijgewerkt zou worden. Ook kon het verbonden worden met een laptop aan de zijkant waar ik bepaalde waarden kon instellen voor de gebruikerstests waar de deelnemers mee konden werken, zoals een bepaalde foutmelding of een lage batterijstatus. De deelnemer kon ook in realtime met de laptop chatten en berichten van het team ontvangen.
 
-[Bekijk het prototype](https://framer.com/embed/Kompano-Final-Redesign--8yThemIu0F84D6qE7DBa/EtmYk_avt?highlights=0)
+Bekijk het prototype: [https://framer.com/embed/Kompano-Final-Redesign--8yThemIu0F84D6qE7DBa/EtmYk_avt](https://framer.com/embed/Kompano-Final-Redesign--8yThemIu0F84D6qE7DBa/EtmYk_avt?highlights=0)
 
 <iframe is="ui-prototype" src="https://framer.com/embed/Kompano-Final-Redesign--8yThemIu0F84D6qE7DBa/EtmYk_avt?highlights=0" data-provider="Framer"/>

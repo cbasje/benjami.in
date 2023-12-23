@@ -3,9 +3,10 @@ import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
-import { defaultLocale, locales, type Locale } from "../../i18n/ui";
+import { defaultLocale, type Locale } from "../../i18n/ui";
 import { useTranslatedPath, useTranslations } from "../../i18n/utils";
 import MainLayout from "../../layouts/main.astro";
+import pf from "../../assets/images/pf.webp";
 
 const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
@@ -25,13 +26,7 @@ const { Content } = await page.render();
                 <div class="text-wrapper">
                     <Content />
                 </div>
-                <Image
-                    src={page.data.image.url}
-                    alt={page.data.image.alt}
-                    width={4000}
-                    height={6000}
-                    widths={[720]}
-                />
+                <Image src={pf} alt={page.data.image.alt} widths={[720]} />
             </div>
         </header>
 
