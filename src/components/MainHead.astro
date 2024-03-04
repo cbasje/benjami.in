@@ -1,12 +1,12 @@
 ---
 import { SEO as SeoHead } from "astro-seo";
-import { ViewTransitions } from "astro:transitions";
+import { getImage } from "astro:assets";
 import { getDataEntryById, type CollectionEntry } from "astro:content";
-import type { Image, Seo } from "../content/config";
+import { ViewTransitions } from "astro:transitions";
+import type { Seo } from "../content/config";
 import { defaultLocale, locales, type Locale } from "../i18n/ui";
 import { useTranslatedPath, useTranslations } from "../i18n/utils";
 import "../styles/global.postcss";
-import { getImage } from "astro:assets";
 
 const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
@@ -110,6 +110,7 @@ if (fullSeo.shareImage) {
                 },
                 { name: "theme-color", content: "#F9FAFB" },
                 { name: "generator", content: Astro.generator },
+                { name: "pinterest", content: "nopin"}
             ],
         }}
     />
