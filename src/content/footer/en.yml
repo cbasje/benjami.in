@@ -5,7 +5,7 @@ links:
       icon: "ph:envelope-simple-fill"
     - title: "My Mastodon account"
       url: "https://mas.to/@sebastiaan"
-      icon: "mdi:mastodon"
+      icon: "mastodon-logo-fill"
     - title: "My Github account"
       url: "https://github.com/cbasje"
       icon: "ph:github-logo-fill"

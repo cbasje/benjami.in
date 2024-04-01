@@ -17,6 +17,7 @@
     ],
     "dependencies": {
         "@astrojs/netlify": "^5.2.0",
+        "@iconify-json/ph": "^1.1.11",
         "astro": "^4.5.12",
         "astro-icon": "^1.1.0",
         "astro-seo": "^0.8.3",
