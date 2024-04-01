@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 const client_id = import.meta.env.SPOTIFY_CLIENT_ID;
 const client_secret = import.meta.env.SPOTIFY_CLIENT_SECRET;
 const refresh_token = import.meta.env.SPOTIFY_REFRESH_TOKEN;
