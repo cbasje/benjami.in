@@ -1,11 +1,13 @@
-import netlify from "@astrojs/netlify";
-import { defineConfig } from "astro/config";
+import node from "@astrojs/node";
 import icon from "astro-icon";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-    output: "server",
-    adapter: netlify(),
+    output: "static",
+    adapter: node({
+        mode: "standalone",
+    }),
 
     integrations: [
         icon({
