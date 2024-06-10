@@ -17,22 +17,22 @@
     ],
     "dependencies": {
         "@astrojs/node": "^8.2.6",
-        "@iconify-json/ph": "^1.1.11",
-        "astro": "^4.5.12",
+        "@iconify-json/ph": "^1.1.13",
+        "astro": "^4.10.1",
         "astro-icon": "^1.1.0",
-        "astro-seo": "^0.8.3",
-        "sharp": "^0.33.3"
+        "astro-seo": "^0.8.4",
+        "sharp": "^0.33.4"
     },
     "devDependencies": {
         "@csstools/postcss-global-data": "^2.1.1",
         "autoprefixer": "^10.4.19",
-        "cssnano": "^6.1.2",
-        "eslint": "^8.57.0",
-        "open-props": "^1.6.21",
+        "cssnano": "^7.0.2",
+        "eslint": "^9.4.0",
+        "open-props": "^1.7.4",
         "postcss": "^8.4.38",
-        "postcss-custom-media": "^10.0.4",
+        "postcss-custom-media": "^10.0.6",
         "postcss-nested": "^6.0.1",
-        "prettier": "^3.2.5",
-        "typescript": "^5.4.3"
+        "prettier": "^3.3.1",
+        "typescript": "^5.4.5"
     }
 }
