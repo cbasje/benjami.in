@@ -10,5 +10,11 @@ const localeSet = new Set(
 );
 console.log("🗣️ ~ headers:", localeSet);
 
+export async function getStaticPaths() {
+    return locales.map((locale) => ({
+        params: { locale },
+    }));
+}
+
 return Astro.redirect([...localeSet][0] ?? defaultLocale);
 ---

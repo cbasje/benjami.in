@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
+import pf from "../../assets/images/pf.webp";
 import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
-import { defaultLocale, type Locale } from "../../i18n/ui";
+import { defaultLocale, locales, type Locale } from "../../i18n/ui";
 import { useTranslatedPath, useTranslations } from "../../i18n/utils";
 import MainLayout from "../../layouts/main.astro";
-import pf from "../../assets/images/pf.webp";
 
 const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
@@ -15,6 +15,12 @@ const l = useTranslatedPath(locale);
 
 const page = await getEntry("about", locale);
 const { Content } = await page.render();
+
+export async function getStaticPaths() {
+    return locales.map((locale) => ({
+        params: { locale },
+    }));
+}
 ---
 
 <MainLayout seo={page.data.seo}>

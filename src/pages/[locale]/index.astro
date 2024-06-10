@@ -29,6 +29,12 @@ const links = page.data.links.map((link) => {
         return "#";
     }
 });
+
+export async function getStaticPaths() {
+    return locales.map((locale) => ({
+        params: { locale },
+    }));
+}
 ---
 
 <MainLayout seo={page.data.seo}>

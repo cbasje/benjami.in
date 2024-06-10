@@ -9,6 +9,12 @@ const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
 const page = await getEntry("not-found", locale);
 const { Content } = await page.render();
+
+export async function getStaticPaths() {
+    return locales.map((locale) => ({
+        params: { locale },
+    }));
+}
 ---
 
 <MainLayout seo={page.data.seo}>
