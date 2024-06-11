@@ -1,21 +1,20 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 import { fade } from "astro:transitions";
 import type { Seo } from "../content/config";
 import { defaultLocale, type Locale } from "../i18n/ui";
-import { useTranslatedPath, useTranslations } from "../i18n/utils";
+import { useTranslations } from "../i18n/utils";
 import MainLayout from "./main.astro";
 
 const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 const t = useTranslations(locale);
-const l = useTranslatedPath(locale);
 
 export interface Props {
     slug: string;
     hue?: number;
     seo?: Seo;
 }
-const { slug, hue, seo } = Astro.props;
+const { hue, seo } = Astro.props;
 
 const EASE_IN_OUT_QUART = "cubic-bezier(0.76, 0, 0.24, 1)";
 const slideAnim = {

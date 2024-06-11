@@ -12,7 +12,7 @@ if (!page) {
     return Astro.redirect("/404");
 }
 
-const { Content, headings } = await page.render();
+const { Content } = await page.render();
 
 const seo: Seo = {
     metaTitle: page.data.title,
@@ -91,7 +91,7 @@ export async function getStaticPaths() {
                 </div>
             </div>
 
-            <p role="doc-preface">{page.data.excerpt}</p>
+            <p>{page.data.excerpt}</p>
         </div>
     </header>
 

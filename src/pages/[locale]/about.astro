@@ -5,13 +5,9 @@ import pf from "../../assets/images/pf.webp";
 import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
 import { defaultLocale, locales, type Locale } from "../../i18n/ui";
-import { useTranslatedPath, useTranslations } from "../../i18n/utils";
 import MainLayout from "../../layouts/main.astro";
 
 const locale = (Astro.params.locale as Locale) ?? defaultLocale;
-
-const t = useTranslations(locale);
-const l = useTranslatedPath(locale);
 
 const page = await getEntry("about", locale);
 const { Content } = await page.render();
