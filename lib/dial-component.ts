@@ -5,7 +5,7 @@ class RotaryDial extends HTMLElement {
         super();
 
         const elementSlugs: string[] | undefined = JSON.parse(
-            this.dataset.slugs ?? "[]"
+            this.dataset.slugs ?? "[]",
         );
         let rect: DOMRect;
 
@@ -23,7 +23,7 @@ class RotaryDial extends HTMLElement {
 
         // Remove 'active' class from all list items, except the one at the correct index
         let destinationList: HTMLUListElement | null = this.querySelector(
-            "ul.destination-list"
+            "ul.destination-list",
         );
 
         // Rotation is the angle traveled

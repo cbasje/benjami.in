@@ -7,15 +7,17 @@
     "private": true,
     "scripts": {
         "dev": "astro dev",
-        "start": "astro dev",
+        "start": "bun run dist/server/entry.mjs",
         "build": "astro check && astro build",
         "preview": "astro preview",
         "astro": "astro"
     },
-    "trustedDependecies": [
+    "trustedDependencies": [
         "sharp"
     ],
     "dependencies": {
+        "@11ty/eleventy-fetch": "^4.0.1",
+        "@astrojs/check": "^0.7.0",
         "@iconify-json/ph": "^1.1.13",
         "astro": "^4.10.1",
         "astro-icon": "^1.1.0",
@@ -24,6 +26,7 @@
     },
     "devDependencies": {
         "@csstools/postcss-global-data": "^2.1.1",
+        "@types/bun": "^1.1.6",
         "autoprefixer": "^10.4.19",
         "cssnano": "^7.0.2",
         "eslint": "^9.4.0",
