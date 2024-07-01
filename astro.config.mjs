@@ -6,7 +6,10 @@ import bun from "./adapter/index";
 // https://astro.build/config
 export default defineConfig({
     output: "hybrid",
-    adapter: bun(),
+    adapter: bun({
+        port: 3000,
+        hostname: "127.0.0.1",
+    }),
 
     integrations: [
         icon({
