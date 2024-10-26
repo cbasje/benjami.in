@@ -4,7 +4,7 @@ links:
       url: "mailto:Sebastiaan Benjamins <sebas@benjami.in>"
       icon: "ph:envelope-simple-fill"
     - title: "Mijn Mastodon account"
-      url: "https://mas.to/@sebastiaan"
+      url: "https://mastodon.social/@cbasje"
       icon: "mastodon-logo-fill"
     - title: "Mijn Github account"
       url: "https://github.com/cbasje"
