@@ -13,7 +13,7 @@ const links = page.data.links.map((link) => {
     if (link.projectRef) {
         return getRelativeLocaleUrl(
             locale,
-            `/${link.projectRef.collection}/${link.projectRef.slug.split("/")[1]}`
+            `/${link.projectRef.collection}/${link.projectRef.slug.split("/")[1]}`,
         );
     }
     if (link.slug) {
