@@ -1,15 +1,15 @@
 ---
-import { getCollection, getDataEntryById, getEntryBySlug } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import type { Seo } from "../../../content/config";
-import { defaultLocale, type Locale } from "../../../i18n/ui";
 import ProjectsLayout from "../../../layouts/project.astro";
 
-const locale = (Astro.params.locale as Locale) ?? defaultLocale;
+const locale = Astro.currentLocale as "en" | "nl";
 const { slug } = Astro.params;
 
-const page = await getEntryBySlug("project", `${locale}/${slug}`);
+const page = await getEntry("project", `${locale}/${slug}`);
 if (!page) {
-    return Astro.redirect("/404");
+    return Astro.redirect(getRelativeLocaleUrl(locale, "/404"));
 }
 
 const { Content } = await page.render();
@@ -44,7 +44,7 @@ export async function getStaticPaths() {
                 <div role="none">
                     <time datetime={page.data.publishedAt.toISOString()}>
                         {
-                            new Intl.DateTimeFormat(locale, {
+                            new Intl.DateTimeFormat(Astro.currentLocale, {
                                 month: "long",
                                 year: "numeric",
                             }).format(new Date(page.data.publishedAt))
@@ -72,7 +72,7 @@ export async function getStaticPaths() {
                                 <span>-</span>
                                 <ul class="categories">
                                     {page.data.categories.map(async (c) => {
-                                        const cat = await getDataEntryById(
+                                        const cat = await getEntry(
                                             "category",
                                             c.id
                                         );

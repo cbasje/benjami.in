@@ -1,4 +1,4 @@
-import { defineCollection, z, reference } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 
 export const fileType = z.string().startsWith("/files/");
 export type File = z.infer<typeof fileType>;
@@ -63,6 +63,10 @@ export const footerCollection = defineCollection({
         links: z.array(z.union([resumeType, socialLinkType])),
     }),
 });
+export const uiCollection = defineCollection({
+    type: "data",
+    schema: z.record(z.string()),
+});
 export const globalCollection = defineCollection({
     type: "data",
     schema: z.object({
@@ -76,12 +80,6 @@ export const homeCollection = defineCollection({
     schema: z.object({
         title: z.string(),
         links: z.array(dialLinkType).max(10),
-        seo: seoType.optional(),
-    }),
-});
-export const notFoundCollection = defineCollection({
-    type: "content",
-    schema: z.object({
         seo: seoType.optional(),
     }),
 });
@@ -104,8 +102,8 @@ export const collections = {
     about: aboutCollection,
     category: categoryCollection,
     footer: footerCollection,
+    ui: uiCollection,
     global: globalCollection,
     home: homeCollection,
-    "not-found": notFoundCollection,
     project: projectCollection,
 };

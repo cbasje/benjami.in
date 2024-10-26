@@ -1,0 +1,209 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import type { Seo } from "../../../content/config";
+import ProjectsLayout from "../../../layouts/project.astro";
+
+const { slug } = Astro.params;
+
+const page = await getEntry("project", `${Astro.currentLocale}/${slug}`);
+if (!page) {
+    return Astro.redirect(getRelativeLocaleUrl("/404"));
+}
+
+const { Content } = await page.render();
+
+const seo: Seo = {
+    metaTitle: page.data.title,
+    metaDescription: page.data.description,
+    shareImage: page.data.headerImage,
+    isArticle: true,
+};
+
+export async function getStaticPaths() {
+    const projects = await getCollection("project");
+    return projects.map((p) => {
+        const [locale, slug] = p.slug.split("/");
+        return {
+            params: { locale, slug },
+        };
+    });
+}
+---
+
+<ProjectsLayout slug={page.slug} hue={page.data.hue} seo={seo}>
+    <header>
+        <h1>{page.data.title}</h1>
+        <div class="intro" role="presentation">
+            <div role="complementary">
+                <h2 class="description">
+                    {page.data.description}
+                </h2>
+
+                <div role="none">
+                    <time datetime={page.data.publishedAt.toISOString()}>
+                        {
+                            new Intl.DateTimeFormat(Astro.currentLocale, {
+                                month: "long",
+                                year: "numeric",
+                            }).format(new Date(page.data.publishedAt))
+                        }
+                    </time>
+
+                    {
+                        page.data.company && (
+                            <>
+                                <span>-</span>
+                                {page.data.company.url ? (
+                                    <a href={page.data.company.url}>
+                                        {page.data.company.title}
+                                    </a>
+                                ) : (
+                                    <span>{page.data.company.title}</span>
+                                )}
+                            </>
+                        )
+                    }
+
+                    {
+                        page.data.categories && (
+                            <>
+                                <span>-</span>
+                                <ul class="categories">
+                                    {page.data.categories.map(async (c) => {
+                                        const cat = await getEntry(
+                                            "category",
+                                            c.id
+                                        );
+                                        return (
+                                            <li>
+                                                <a class="button">
+                                                    {cat.data.title}
+                                                </a>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </>
+                        )
+                    }
+                </div>
+            </div>
+
+            <p>{page.data.excerpt}</p>
+        </div>
+    </header>
+
+    <!-- <div role="banner">
+        <figure>
+            <Image
+                src={page.data.headerImage.url}
+                alt={page.data.headerImage.alt}
+                width={1380}
+                height={920}
+                widths={[1024]}
+            />
+
+            <figcaption>
+                {page.data.headerImage.caption ?? page.data.headerImage.alt}
+            </figcaption>
+        </figure>
+    </div> -->
+
+    <!-- <section> -->
+    <!-- <hr /> -->
+    <Content />
+
+    <script src="../../../../lib/content-components"></script>
+    <!-- </section> -->
+</ProjectsLayout>
+
+<style
+    lang="postcss"
+    define:vars={{
+        "color-hue": page.data.hue ? page.data.hue:'inherit' 
+    }}
+>
+    header {
+        width: 100%;
+        max-inline-size: var(--size-lg);
+        height: auto;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--size-2);
+
+        h1 {
+            font-size: var(--font-size-6);
+            line-height: var(--font-lineheight-1);
+        }
+
+        div.intro {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--size-4);
+
+            > div {
+                display: flex;
+                flex-direction: column;
+                gap: var(--size-2);
+
+                h2.description {
+                    margin: 0;
+                    font-size: var(--font-size-4);
+                    font-weight: var(--font-weight-4);
+                    line-height: var(--font-lineheight-0);
+                }
+
+                > div {
+                    display: flex;
+                    flex-direction: row;
+                    gap: var(--size-2);
+
+                    > ul.categories {
+                        display: flex;
+                        flex-direction: row;
+                        gap: var(--size-1);
+
+                        padding: 0;
+                        list-style: none;
+
+                        li {
+                            margin: 0;
+                            padding: 0;
+                        }
+                        a {
+                            margin: 0;
+                            padding-block: 0;
+                            padding-inline: var(--size-2);
+
+                            &:not(:hover) {
+                                border-color: var(--surface-3);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    :global(figcaption),
+    :global(img + em) {
+        color: var(--text-3);
+        font-size: var(--font-size-1);
+        font-style: normal;
+        display: block;
+        margin-inline: auto;
+        inline-size: var(--size-content-2);
+    }
+
+    @media (--md-n-above) {
+        header {
+            div.intro {
+                gap: var(--size-5);
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+</style>

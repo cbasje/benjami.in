@@ -1,9 +1,6 @@
 ---
 import MainHead from "../components/MainHead.astro";
 import type { Seo } from "../content/config";
-import { defaultLocale, type Locale } from "../i18n/ui";
-
-const locale = (Astro.params.locale as Locale) ?? defaultLocale;
 
 export interface Props {
     seo?: Seo;
@@ -11,8 +8,8 @@ export interface Props {
 const { seo } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang={locale}>
+<!doctype html>
+<html lang={Astro.currentLocale}>
     <MainHead seo={seo} />
 
     <body>

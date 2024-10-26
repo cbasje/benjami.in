@@ -5,7 +5,7 @@ import bun from "./adapter/index";
 
 // https://astro.build/config
 export default defineConfig({
-    output: "hybrid",
+    output: "server",
     adapter: bun({
         port: 3000,
     }),
@@ -29,4 +29,12 @@ export default defineConfig({
     ],
 
     site: "https://benjami.in",
+
+    i18n: {
+        defaultLocale: "en",
+        locales: ["nl", "en"],
+        routing: {
+            prefixDefaultLocale: true,
+        },
+    },
 });

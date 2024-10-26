@@ -22,7 +22,7 @@ class RotaryDial extends HTMLElement {
         let isResetting = false;
 
         // Remove 'active' class from all list items, except the one at the correct index
-        let destinationList: HTMLUListElement | null = this.querySelector(
+        const destinationList: HTMLUListElement | null = this.querySelector(
             "ul.destination-list",
         );
 
@@ -96,7 +96,7 @@ class RotaryDial extends HTMLElement {
             } else if (x >= 0 && y < 0) {
                 deg += 360;
             }
-            let finalDeg = clamp(deg, 0, 360);
+            const finalDeg = clamp(deg, 0, 360);
             return finalDeg;
         };
 

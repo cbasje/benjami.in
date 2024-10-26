@@ -1,14 +1,13 @@
 # syntax = docker/dockerfile:1
 
-# Adjust BUN_VERSION as desired
-ARG BUN_VERSION=1.1.11
-FROM oven/bun:${BUN_VERSION} as base
+FROM docker.io/oven/bun:1.1.32-alpine as base
 
 # Bun app lives here
 WORKDIR /app
 
 # Set production environment
 ENV NODE_ENV="production"
+ENV PROD=true
 
 
 # Throw-away build stage to reduce size of final image

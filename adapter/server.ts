@@ -1,8 +1,9 @@
-import type { SSRManifest } from "astro";
+import type { AstroIntegrationLogger, SSRManifest } from "astro";
 import { App } from "astro/app";
 import type { Server } from "bun";
 import type { Options } from "./types";
 
+let logger: AstroIntegrationLogger;
 let _server: Server | undefined = undefined;
 
 /**
@@ -30,16 +31,17 @@ async function renderAstroPath(app: App, req: Request) {
  * @returns Promise<BunFile>
  */
 async function getStaticFile(app: App, req: Request) {
-    const clientRoot = new URL("../client/", import.meta.url);
+    const clientRoot = new URL("../../client/", import.meta.url);
     const url = new URL(req.url);
 
     // Find the path to the static file
-    const localPath = new URL("./" + app.removeBase(url.pathname), clientRoot);
+    const localPath = new URL(`./${app.removeBase(url.pathname)}`, clientRoot);
     return Bun.file(localPath);
 }
 
 export function start(manifest: SSRManifest, options: Options) {
     const app = new App(manifest);
+    logger = app.getAdapterLogger();
 
     _server = Bun.serve({
         port: options.port ?? 3000,
@@ -55,7 +57,7 @@ export function start(manifest: SSRManifest, options: Options) {
             // try to fetch a static file instead
             const file = await getStaticFile(app, req);
             if (await file.exists()) {
-                let fileRes = new Response(file);
+                const fileRes = new Response(file);
                 return fileRes;
             }
 
@@ -63,7 +65,7 @@ export function start(manifest: SSRManifest, options: Options) {
             return await renderAstroPath(app, req);
         },
 
-        error(error) {
+        error: (error) => {
             return new Response(`<pre>${error}\n${error.stack}</pre>`, {
                 headers: {
                     "Content-Type": "text/html",
@@ -72,7 +74,7 @@ export function start(manifest: SSRManifest, options: Options) {
         },
     });
 
-    console.info(`Bun server listening on ${_server.hostname}:${_server.port}`);
+    logger.debug(`Bun server listening on ${_server.hostname}:${_server.port}`);
 }
 
 // Astro Adapter exports

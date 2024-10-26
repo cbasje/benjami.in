@@ -1,40 +1,30 @@
 ---
 import { Image } from "astro:assets";
-import { getDataEntryById } from "astro:content";
+import { getEntry } from "astro:content";
 import Footer from "../../components/Footer.astro";
 import RotaryDial from "../../components/RotaryDial.astro";
-import { defaultLocale, locales, type Locale } from "../../i18n/ui";
-import { useTranslatedPath, useTranslations } from "../../i18n/utils";
 import MainLayout from "../../layouts/main.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
-const locale = (Astro.params.locale as Locale) ?? defaultLocale;
-
-const t = useTranslations(locale);
-const l = useTranslatedPath(locale);
-
-const page = await getDataEntryById("home", locale);
+const locale = Astro.currentLocale as "en" | "nl";
+const page = await getEntry("home", locale);
 
 const links = page.data.links.map((link) => {
     if (link.projectRef) {
-        return l(
-            `/${link.projectRef.collection}/${
-                link.projectRef.slug.split("/")[1]
-            }`
+        return getRelativeLocaleUrl(
+            locale,
+            `/${link.projectRef.collection}/${link.projectRef.slug.split("/")[1]}`
         );
-    } else if (link.slug) {
-        return l(link.slug);
-    } else if (link.url) {
-        return link.url;
-    } else {
-        return "#";
     }
-});
+    if (link.slug) {
+        return getRelativeLocaleUrl(locale, link.slug);
+    }
+    if (link.url) {
+        return link.url;
+    }
 
-export async function getStaticPaths() {
-    return locales.map((locale) => ({
-        params: { locale },
-    }));
-}
+    return "#";
+});
 ---
 
 <MainLayout seo={page.data.seo}>

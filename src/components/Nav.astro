@@ -1,21 +1,18 @@
 ---
+import { getEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
-import { defaultLocale, type Locale } from "../i18n/ui";
-import { useTranslations } from "../i18n/utils";
 
-const locale = (Astro.params.locale as Locale) ?? defaultLocale;
-
-const t = useTranslations(locale);
+const { data } = await getEntry("ui", Astro.currentLocale as "en" | "nl");
 ---
 
 <nav transition:name="nav">
     <button
         is="back-button"
         class="button button-blur"
-        title={t("ui.back-title")}
+        title={data["back-title"]}
     >
         <Icon name="ph:caret-left-bold" aria-hidden />
-        <span>{t("ui.back")}</span>
+        <span>{data["back"]}</span>
     </button>
 
     <script src="../../lib/button-component.ts"></script>
