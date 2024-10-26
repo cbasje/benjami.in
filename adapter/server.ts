@@ -1,9 +1,8 @@
-import type { AstroIntegrationLogger, SSRManifest } from "astro";
+import type { SSRManifest } from "astro";
 import { App } from "astro/app";
 import type { Server } from "bun";
 import type { Options } from "./types";
 
-let logger: AstroIntegrationLogger;
 let _server: Server | undefined = undefined;
 
 /**
@@ -41,7 +40,7 @@ async function getStaticFile(app: App, req: Request) {
 
 export function start(manifest: SSRManifest, options: Options) {
     const app = new App(manifest);
-    logger = app.getAdapterLogger();
+    const logger = app.getAdapterLogger();
 
     _server = Bun.serve({
         port: options.port ?? 3000,
@@ -66,6 +65,7 @@ export function start(manifest: SSRManifest, options: Options) {
         },
 
         error: (error) => {
+            logger.error(`Something wrong: ${error.message}`);
             return new Response(`<pre>${error}\n${error.stack}</pre>`, {
                 headers: {
                     "Content-Type": "text/html",

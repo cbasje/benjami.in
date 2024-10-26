@@ -27,7 +27,7 @@ export const GET: APIRoute = async () => {
     const response = await fetch(url, {
         method: "POST",
         headers: {
-            Authorization: "Bearer " + import.meta.env.ROBOTS_API_TOKEN,
+            Authorization: `Bearer ${import.meta.env.ROBOTS_API_TOKEN}`,
             "Content-Type": "application/json",
         },
         body,

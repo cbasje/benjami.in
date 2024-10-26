@@ -21,16 +21,9 @@
         "astro-seo": "^0.8.4"
     },
     "devDependencies": {
-        "@csstools/postcss-global-data": "^2.1.1",
         "@types/bun": "^1.1.6",
-        "autoprefixer": "^10.4.19",
-        "cssnano": "^7.0.2",
-        "eslint": "^9.4.0",
+        "lightningcss": "^1.27.0",
         "open-props": "^1.7.4",
-        "postcss": "^8.4.38",
-        "postcss-custom-media": "^10.0.6",
-        "postcss-nested": "^6.0.1",
-        "prettier": "^3.3.1",
         "typescript": "^5.4.5"
     }
 }

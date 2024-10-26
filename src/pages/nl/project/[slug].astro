@@ -1,6 +1,5 @@
 ---
-import { getCollection, getEntry } from "astro:content";
-import { getRelativeLocaleUrl } from "astro:i18n";
+import { getEntry } from "astro:content";
 import type { Seo } from "../../../content/config";
 import ProjectsLayout from "../../../layouts/project.astro";
 
@@ -20,16 +19,6 @@ const seo: Seo = {
     shareImage: page.data.headerImage,
     isArticle: true,
 };
-
-export async function getStaticPaths() {
-    const projects = await getCollection("project");
-    return projects.map((p) => {
-        const [locale, slug] = p.slug.split("/");
-        return {
-            params: { locale, slug },
-        };
-    });
-}
 ---
 
 <ProjectsLayout slug={page.slug} hue={page.data.hue} seo={seo}>
@@ -120,11 +109,12 @@ export async function getStaticPaths() {
 </ProjectsLayout>
 
 <style
-    lang="postcss"
     define:vars={{
-        "color-hue": page.data.hue ? page.data.hue:'inherit' 
+        "color-hue": page.data.hue ? page.data.hue : "inherit",
     }}
 >
+    @import "../../../styles/media.css";
+
     header {
         width: 100%;
         max-inline-size: var(--size-lg);

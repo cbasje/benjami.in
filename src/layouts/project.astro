@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import { getEntry } from "astro:content";
 import { fade } from "astro:transitions";
 import type { Seo } from "../content/config";
+import "../styles/global.css";
 import MainLayout from "./main.astro";
 
 export interface Props {
@@ -81,7 +82,9 @@ const slideAnim = {
     </div>
 </MainLayout>
 
-<style lang="postcss" define:vars={{ "color-hue": hue ? hue:'inherit' }}>
+<style define:vars={{ "color-hue": hue ? hue : "inherit" }}>
+    @import "../styles/media.css";
+
     .overlay {
         position: fixed;
         inset: 0;

@@ -2,10 +2,9 @@
 import { SEO as SeoHead } from "astro-seo";
 import { getImage } from "astro:assets";
 import { getEntry } from "astro:content";
-import { getAbsoluteLocaleUrl, getRelativeLocaleUrl } from "astro:i18n";
+import { getAbsoluteLocaleUrl } from "astro:i18n";
 import { ViewTransitions } from "astro:transitions";
 import type { Seo } from "../content/config";
-import "../styles/global.postcss";
 
 export interface Props {
     seo?: Seo;

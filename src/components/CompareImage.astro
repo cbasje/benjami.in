@@ -1,65 +1,65 @@
-    <compare-image >
-      <section class="before">
+<compare-image>
+    <section class="before">
         <img src="https://assets.codepen.io/2585/Runner.svg" alt="" />
-      </section>
-      <section class="after">
+    </section>
+    <section class="after">
         <img src="https://assets.codepen.io/2585/Roboto.svg" alt="" />
-      </section>
-      <input type="range" id="range">
-    </compare-image>
+    </section>
+    <input type="range" id="range" />
+</compare-image>
 
-    <script src="../../lib/compare-image-component.ts"></script>
+<script src="../../lib/compare-image-component.ts"></script>
 
-<style lang="postcss">
+<style>
     @layer demo {
-  compare-image {
-    display: grid;
-    height: 20rem;
-    
-    > * {
-      grid-area: 1 / 1;
-    }
-    
-    > section {
-      display: grid;
-      place-content: center;
-    }
-  }
-  
-  .before {
-    mask: linear-gradient(to right, #000 0, var(--pos, 50%), #0000 0);
-  }
-  
-  .after {
-    mask: linear-gradient(to right, #0000 0, var(--pos, 50%), #000 0);
-  }
-  
-  input[type="range"] {
-    z-index: 1;
-    appearance: none;
-    background: transparent;
-    cursor: pointer;
-    
-    &::-webkit-slider-thumb {
-      appearance: none;
-      width: 4px;
-    height: 20rem;
-      background-color: CanvasText;
-    } 
-    
-    &::-moz-range-thumb {
-      appearance: none;
-      width: 4px;
-      height: 20rem;
-      background-color: CanvasText;
-    }
-  }
-}
+        compare-image {
+            display: grid;
+            height: 20rem;
 
-@layer demo.support {
-  img {
-    max-block-size: 80dvh;
-    max-inline-size: 100%;
-  }
-}
+            > * {
+                grid-area: 1 / 1;
+            }
+
+            > section {
+                display: grid;
+                place-content: center;
+            }
+        }
+
+        .before {
+            mask: linear-gradient(to right, #000 0, var(--pos, 50%), #0000 0);
+        }
+
+        .after {
+            mask: linear-gradient(to right, #0000 0, var(--pos, 50%), #000 0);
+        }
+
+        input[type="range"] {
+            z-index: 1;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+
+            &::-webkit-slider-thumb {
+                appearance: none;
+                width: 4px;
+                height: 20rem;
+                background-color: CanvasText;
+            }
+
+            &::-moz-range-thumb {
+                appearance: none;
+                width: 4px;
+                height: 20rem;
+                background-color: CanvasText;
+            }
+        }
+    }
+
+    @layer demo.support {
+        img {
+            max-block-size: 80dvh;
+            max-inline-size: 100%;
+        }
+    }
 </style>

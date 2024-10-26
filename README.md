@@ -9,7 +9,7 @@ My personal portfolio showing my UX and design projects/skills. The development 
 -   Site generator: [Astro](https://astro.build/)
 -   Interactive framework: [Web Components](https://docs.astro.build/en/guides/client-side-scripts/#web-components-with-custom-elements)
 -   Deployment: [Hetzner](https://www.hetzner.com/webhosting/) + [Coolify](https://coolify.io/)
--   Styling: [PostCSS](https://postcss.org/)
+-   Styling: [open-props](https://open-props.style/)
 -   Icons: [Phosphor Icons](https://phosphoricons.com/)
 
 ## Development

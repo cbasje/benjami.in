@@ -18,7 +18,9 @@ const page = await getEntry("footer", Astro.currentLocale as "en" | "nl");
     </aside>
 </footer>
 
-<style lang="postcss">
+<style>
+    @import "../styles/media.css";
+
     footer {
         padding-block: var(--size-3);
         display: flex;

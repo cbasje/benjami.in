@@ -1,6 +1,7 @@
 ---
 import MainHead from "../components/MainHead.astro";
 import type { Seo } from "../content/config";
+import "../styles/global.css";
 
 export interface Props {
     seo?: Seo;
@@ -16,11 +17,12 @@ const { seo } = Astro.props;
         <div class="container">
             <slot />
         </div>
-        <style lang="postcss">
-            .container {
-                width: 100%;
-                height: 100%;
-            }
-        </style>
     </body>
 </html>
+
+<style>
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+</style>
