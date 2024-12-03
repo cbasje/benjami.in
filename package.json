@@ -6,24 +6,25 @@
     "author": "Sebastiaan Benjamins <sebastiaan@benjami.in> (https://benjami.in/)",
     "private": true,
     "scripts": {
-        "dev": "astro dev --port 3000",
-        "start": "bun run ./dist/server/entry.mjs",
-        "preview": "bun run build && bun run start",
+        "dev": "astro dev",
+        "start": "deno run ./dist/server/entry.mjs",
         "build": "astro check && astro build",
+        "preview": "astro preview",
         "astro": "astro"
     },
     "dependencies": {
-        "@11ty/eleventy-fetch": "^4.0.1",
+        "@11ty/eleventy-fetch": "^5.0.1",
         "@astrojs/check": "0.9.4",
-        "@iconify-json/ph": "^1.1.13",
+        "@deno/astro-adapter": "^0.1.5",
+        "@iconify-json/ph": "^1.2.1",
         "astro": "5.0.1",
-        "astro-icon": "^1.1.0",
+        "astro-icon": "^1.1.4",
         "astro-seo": "^0.8.4"
     },
     "devDependencies": {
-        "@types/bun": "^1.1.6",
-        "lightningcss": "^1.27.0",
-        "open-props": "^1.7.4",
-        "typescript": "^5.4.5"
+        "browserslist": "^4.24.2",
+        "lightningcss": "^1.28.2",
+        "open-props": "^1.7.7",
+        "typescript": "^5.7.2"
     }
 }

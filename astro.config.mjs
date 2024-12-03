@@ -1,14 +1,15 @@
 import { defineConfig } from "astro/config";
 
+import deno from "@deno/astro-adapter";
 import icon from "astro-icon";
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
-import bun from "./adapter/index";
 
 // https://astro.build/config
 export default defineConfig({
     output: "server",
-    adapter: bun({
+    adapter: deno({
+        hostname: "0.0.0.0",
         port: 3000,
     }),
 

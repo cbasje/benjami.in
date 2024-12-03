@@ -1,45 +1,12 @@
-# syntax = docker/dockerfile:1
-
-# Adjust BUN_VERSION as desired
-ARG BUN_VERSION=1.1.32
-FROM oven/bun:${BUN_VERSION} as base
-
-# Bun app lives here
+FROM denoland/deno:2.0.6
 WORKDIR /app
 
-# Set production environment
-ENV NODE_ENV="production"
-ENV PROD=true
+COPY . .
+RUN deno install
+RUN deno task astro build
+RUN deno cache dist/server/entry.mjs
 
-
-# Throw-away build stage to reduce size of final image
-FROM base as build
-
-# Install packages needed to build node modules
-RUN apt-get update -qq && \
-    apt-get install -y build-essential pkg-config python-is-python3
-
-# Install node modules
-COPY --link bun.lockb package.json ./
-RUN bun install
-
-# Copy application code
-COPY --link . .
-
-# Build application
-RUN bun --bun run astro build
-
-# Remove development dependencies
-RUN rm -rf node_modules && \
-    bun install --ci
-
-
-# Final stage for app image
-FROM base
-
-# Copy built application
-COPY --from=build /app /app
-
-# Start the server by default, this can be overwritten at runtime
+USER deno
 EXPOSE 3000
-CMD bun --bun run start
+
+CMD ["run", "--allow-net", "--allow-read", "--allow-env", "dist/server/entry.mjs"]
