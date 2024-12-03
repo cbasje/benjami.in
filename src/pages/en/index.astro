@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import Footer from "../../components/Footer.astro";
 import RotaryDial from "../../components/RotaryDial.astro";
 import MainLayout from "../../layouts/main.astro";
-import { getRelativeLocaleUrl } from "astro:i18n";
 
 const locale = Astro.currentLocale as "en" | "nl";
 const page = await getEntry("home", locale);
@@ -13,7 +13,7 @@ const links = page.data.links.map((link) => {
     if (link.projectRef) {
         return getRelativeLocaleUrl(
             locale,
-            `/${link.projectRef.collection}/${link.projectRef.slug.split("/")[1]}`,
+            `/${link.projectRef.collection}/${link.projectRef.id.split("/")[1]}`,
         );
     }
     if (link.slug) {
