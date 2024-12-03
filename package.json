@@ -16,7 +16,7 @@
         "@11ty/eleventy-fetch": "^4.0.1",
         "@astrojs/check": "0.9.4",
         "@iconify-json/ph": "^1.1.13",
-        "astro": "4.16.7",
+        "astro": "5.0.1",
         "astro-icon": "^1.1.0",
         "astro-seo": "^0.8.4"
     },

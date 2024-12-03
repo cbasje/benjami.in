@@ -1,9 +1,9 @@
 ---
-import { SEO as SeoHead } from "astro-seo";
 import { getImage } from "astro:assets";
 import { getEntry } from "astro:content";
 import { getAbsoluteLocaleUrl } from "astro:i18n";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
+import { SEO as SeoHead } from "astro-seo";
 import type { Seo } from "../content/config";
 
 export interface Props {
@@ -116,5 +116,5 @@ if (fullSeo.shareImage) {
         ))
     }
 
-    <ViewTransitions />
+    <ClientRouter />
 </head>
