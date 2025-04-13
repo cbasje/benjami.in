@@ -55,4 +55,17 @@ export default defineConfig({
             prefixDefaultLocale: true,
         },
     },
+
+  env: {
+    schema: {
+      UMAMI_ID: envField.string({
+        context: "client",
+        access: "public",
+      }),
+      UMAMI_ENDPOINT: envField.string({
+        context: "client",
+        access: "public",
+      }),
+    },
+  },
 });
