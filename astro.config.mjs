@@ -13,6 +13,7 @@ export default defineConfig({
   adapter: deno({
     hostname: "0.0.0.0",
     port: 3000,
+    start: true,
   }),
 
   integrations: [
