@@ -26,3 +26,5 @@ _The artwork created together with statistics on how much rubbish is moved from 
 
 View the post on Instagram:
 [instagram.com/p/CM2RxgpBKBv](instagram.com/p/CM2RxgpBKBv)
+
+Or on Tearfunds website: [wearetearfund.org](https://wearetearfund.org/article/climate-injustice-reversed/)

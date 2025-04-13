@@ -25,3 +25,5 @@ Ik heb ook een social media post bij het kunstwerk ontworpen om een aantal inter
 
 Bekijk het bericht op Instagram:
 [instagram.com/p/CM2RxgpBKBv](instagram.com/p/CM2RxgpBKBv)
+
+Of op Tearfund's website: [wearetearfund.org](https://wearetearfund.org/article/climate-injustice-reversed/)
