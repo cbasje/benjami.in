@@ -15,6 +15,7 @@
     "dependencies": {
         "@11ty/eleventy-fetch": "^5.0.2",
         "@astrojs/check": "0.9.4",
+        "@astrojs/partytown": "^2.1.4",
         "@deno/astro-adapter": "^0.3.0",
         "@iconify-json/ph": "^1.2.2",
         "@umami/node": "^0.4.0",
