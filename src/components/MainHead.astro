@@ -3,8 +3,8 @@ import { getImage } from "astro:assets";
 import { getEntry } from "astro:content";
 import { getAbsoluteLocaleUrl } from "astro:i18n";
 import { ClientRouter } from "astro:transitions";
-import { SEO as SeoHead } from "astro-seo";
 import type { Seo } from "../content/config";
+import type { GetImageResult } from "astro";
 
 export interface Props {
     seo?: Seo;
@@ -30,81 +30,70 @@ const fullSeo = {
     siteKeywords: data.siteKeywords ?? "",
 };
 
-let ogImage = "";
-let twitterImage = "";
+let ogImage: GetImageResult | undefined = undefined;
 if (fullSeo.shareImage) {
-    ogImage = (
-        await getImage({
-            src: fullSeo.shareImage.url,
-            width: 1200,
-            height: 630,
-            format: "png",
-        })
-    ).src;
-    twitterImage = (
-        await getImage({
-            src: fullSeo.shareImage.url,
-            width: 1280,
-            height: 640,
-            format: "png",
-        })
-    ).src;
+    ogImage = await getImage({
+        src: fullSeo.shareImage.url,
+        width: 1200,
+        height: 600,
+        format: "png",
+    });
 }
+
+const canonicalURL = new URL(
+    Astro.url.pathname,
+    Astro.site ?? Astro.url.origin,
+);
 ---
 
 <head>
-    <meta charset="UTF-8" />
-    <SeoHead
-        title={fullSeo.metaTitle}
-        description={fullSeo.metaDescription}
-        openGraph={{
-            basic: {
-                type: fullSeo.isArticle ? "article" : "website",
-                title: seoWithDefaults.metaTitle,
-                image: ogImage,
-                url: currentUrl.href,
-            },
-            optional: {
-                description: fullSeo.metaDescription,
-                siteName: import.meta.env.SITE,
-            },
-            image: fullSeo.shareImage
-                ? {
-                      secureUrl: ogImage,
-                      width: 1280,
-                      height: 640,
-                      alt: fullSeo.shareImage.alt,
-                  }
-                : undefined,
-        }}
-        twitter={{
-            title: fullSeo.metaTitle,
-            description: fullSeo.metaDescription,
-            card: "summary_large_image",
-            site: "@cbasje",
-            creator: "@cbasje",
-            image: twitterImage,
-            imageAlt: fullSeo.shareImage?.alt,
-        }}
-        extend={{
-            link: [{ rel: "shortcut icon", href: "/favicon.ico" }],
-            meta: [
-                { name: "author", content: "Sebastiaan Benjamins" },
-                { name: "keywords", content: fullSeo.siteKeywords },
-                {
-                    name: "viewport",
-                    content: "width=device-width, initial-scale=1.0",
-                },
-                { name: "theme-color", content: "#F9FAFB" },
-                { name: "generator", content: Astro.generator },
-                { name: "pinterest", content: "nopin" },
-                {
-                    property: "fediverse:creator",
-                    content: "@cbasje@mastodon.social",
-                },
-            ],
-        }}
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>{fullSeo.metaTitle}</title>
+    <meta name="title" content={fullSeo.metaTitle} />
+	<meta name="description" content={fullSeo.metaDescription} />
+
+    <meta
+        name="keywords"
+        content=
+        {fullSeo.siteKeywords }
     />
+    <meta
+        name="theme-color"
+        content="#F9FAFB"
+    />
+
+    <meta name="generator" content={Astro.generator} />
+    <meta name="pinterest" content="nopin" />
+
+    <meta name="author" content="Sebastiaan Benjamins" />
+    <meta name="fediverse:creator" content="@cbasje@mastodon.social" />
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <meta property="og:type" content="website" />
+	<meta property="og:url" content={canonicalURL} />
+	<meta property="og:title" content={seoWithDefaults.metaTitle} />
+	<meta property="og:description" content={seoWithDefaults.metaDescription} />
+	<meta property="og:type" content={fullSeo.isArticle ? "article" : "website"} />
+	<!-- <meta property="og:locale" content={language ?? 'en'} /> -->
+	{
+		ogImage && (
+			<>
+				<meta
+					property="og:image"
+					content={ogImage.src}
+				/>
+				<meta
+					property="og:image:alt"
+					content={ogImage.attributes.alt}
+				/>
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="600" />
+			</>
+		)
+	}
 
     {
         Astro.preferredLocaleList?.map((l) => (
@@ -117,4 +106,11 @@ if (fullSeo.shareImage) {
     }
 
     <ClientRouter />
+
+    <script
+        is:inline
+        type="text/partytown"
+        async
+        src="https://umami.benjami.in/script.js"
+        data-website-id="21996027-1b6c-422b-8c80-e253ae4cb05a"></script>
 </head>
