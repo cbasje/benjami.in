@@ -13,18 +13,17 @@
         "astro": "astro"
     },
     "dependencies": {
-        "@11ty/eleventy-fetch": "^5.0.1",
+        "@11ty/eleventy-fetch": "^5.0.2",
         "@astrojs/check": "0.9.4",
-        "@deno/astro-adapter": "^0.1.5",
-        "@iconify-json/ph": "^1.2.1",
-        "astro": "5.0.1",
-        "astro-icon": "^1.1.4",
-        "astro-seo": "^0.8.4"
+        "@deno/astro-adapter": "^0.3.0",
+        "@iconify-json/ph": "^1.2.2",
+        "astro": "5.6.1",
+        "astro-icon": "^1.1.5"
     },
     "devDependencies": {
-        "browserslist": "^4.24.2",
-        "lightningcss": "^1.28.2",
-        "open-props": "^1.7.7",
-        "typescript": "^5.7.2"
+        "browserslist": "^4.24.4",
+        "lightningcss": "^1.29.3",
+        "open-props": "^1.7.15",
+        "typescript": "^5.8.3"
     }
 }
