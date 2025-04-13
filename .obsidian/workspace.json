@@ -11,8 +11,14 @@
             "id": "690a5e5014e8588b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "src/content/project/en/kompano.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "kompano"
             }
           }
         ]
@@ -34,8 +40,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -50,7 +59,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -58,7 +69,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -81,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "src/content/project/en/kompano.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,7 +102,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for kompano"
             }
           },
           {
@@ -97,9 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "src/content/project/en/kompano.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from kompano"
             }
           },
           {
@@ -109,8 +128,12 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
-              }
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -118,7 +141,14 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "src/content/project/en/kompano.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of kompano"
             }
           }
         ]
@@ -139,5 +169,34 @@
     }
   },
   "active": "690a5e5014e8588b",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "src/content/project/en/wifi-password-art.md",
+    "src/content/project/en/my-surrender.md",
+    "src/content/project/en/kompano.md",
+    "src/content/project/en/heat-city-map.md",
+    "src/content/project/en/fordy.md",
+    "src/content/project/en/benjaminsgard.md",
+    "src/content/project/en/100-7.md",
+    "src/content/project/nl/wifi-password-art.md",
+    "src/content/project/nl/my-surrender.md",
+    "src/content/project/nl/kompano.md",
+    "src/content/project/nl/heat-city-map.md",
+    "src/content/project/nl/fordy.md",
+    "src/content/project/nl/climate-injustice-reversed.md",
+    "src/content/project/nl/benjaminsgard.md",
+    "src/content/project/nl/100-7.md",
+    "src/content/project/en/climate-injustice-reversed.md",
+    "src/content/category/nl/prototyping.yml",
+    "src/content/category/nl/ux.yml",
+    "src/content/category/nl/graphic-design.yml",
+    "src/content/category/nl/code.yml",
+    "src/content/category/en/prototyping.yml",
+    "src/content/category/en/ux.yml",
+    "src/content/category/en/graphic-design.yml",
+    "src/content/category/en/code.yml",
+    "src/content/ui/nl.yml",
+    "src/content/ui/en.yml",
+    "src/content/about/nl.md",
+    "src/content/about/en.md"
+  ]
 }

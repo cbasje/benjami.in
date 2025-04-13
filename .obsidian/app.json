@@ -1,1 +1,10 @@
-{}
+{
+  "newFileLocation": "folder",
+  "newFileFolderPath": "src/content",
+  "attachmentFolderPath": "./",
+  "userIgnoreFilters": [
+    "dist/",
+    "node_modules/"
+  ],
+  "newLinkFormat": "relative"
+}
