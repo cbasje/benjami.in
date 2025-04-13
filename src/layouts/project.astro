@@ -13,7 +13,7 @@ export interface Props {
 }
 const { hue, seo } = Astro.props;
 
-const { data } = await getEntry("ui", Astro.currentLocale as "en" | "nl");
+const page = await getEntry("ui", Astro.currentLocale as "en" | "nl");
 
 const EASE_IN_OUT_QUART = "cubic-bezier(0.76, 0, 0.24, 1)";
 const slideAnim = {
@@ -66,10 +66,10 @@ const slideAnim = {
         <button
             is="back-button"
             class="button icon-button"
-            aria-label={data["back-title"]}
+            aria-label={page?.data["back-title"]}
         >
             <Icon name="ph:x-bold" aria-hidden />
-            <span class="sr-only">{data["back"]}</span>
+            <span class="sr-only">{page?.data["back"]}</span>
         </button>
 
         <script src="../../lib/button-component.ts"></script>

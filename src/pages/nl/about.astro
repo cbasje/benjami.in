@@ -7,6 +7,10 @@ import Nav from "../../components/Nav.astro";
 import MainLayout from "../../layouts/main.astro";
 
 const page = await getEntry("about", Astro.currentLocale as "en" | "nl");
+if (!page) {
+    return Astro.redirect(getRelativeLocaleUrl("/404"));
+}
+
 const { Content } = await page.render();
 ---
 

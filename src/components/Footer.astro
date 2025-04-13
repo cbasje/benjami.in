@@ -9,10 +9,10 @@ const page = await getEntry("footer", Astro.currentLocale as "en" | "nl");
 
 <footer transition:name="footer">
     <aside>
-        <Social links={page.data.links} />
+        <Social links={page?.data.links ?? []} />
         <ul>
             <li>
-                &copy; {page.data.title}, {currentYear}
+                &copy; {page?.data.title}, {currentYear}
             </li>
         </ul>
     </aside>

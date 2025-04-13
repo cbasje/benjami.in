@@ -14,20 +14,19 @@ const { seo } = Astro.props;
 const currentUrl = Astro.url;
 
 const locale = Astro.currentLocale as "en" | "nl";
-const { data } = await getEntry("global", locale);
+const page = await getEntry("global", locale);
 
-const seoWithDefaults: Seo = {
-    ...data.defaultSeo,
-    ...seo,
-};
+let seoWithDefaults: Seo = {};
+if (seo) Object.assign(seoWithDefaults, seo)
+if (page?.data.defaultSeo) Object.assign(seoWithDefaults, page?.data.defaultSeo)
 
 const fullSeo = {
     ...seoWithDefaults,
     metaTitle:
-        seoWithDefaults.metaTitle === data.siteName
-            ? data.siteName
-            : `${seoWithDefaults.metaTitle} | ${data.siteName}`,
-    siteKeywords: data.siteKeywords ?? "",
+        seoWithDefaults.metaTitle === page?.data.siteName
+        ? page?.data.siteName
+        : `${seoWithDefaults.metaTitle} | ${page?.data.siteName}`,
+        siteKeywords: page?.data.siteKeywords ?? "",
 };
 
 let ogImage: GetImageResult | undefined = undefined;
@@ -112,5 +111,6 @@ const canonicalURL = new URL(
         type="text/partytown"
         async
         src="https://umami.benjami.in/script.js"
-        data-website-id="21996027-1b6c-422b-8c80-e253ae4cb05a"></script>
+        data-website-id="21996027-1b6c-422b-8c80-e253ae4cb05a"
+    ></script>
 </head>

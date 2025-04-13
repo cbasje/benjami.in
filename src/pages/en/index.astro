@@ -8,6 +8,9 @@ import MainLayout from "../../layouts/main.astro";
 
 const locale = Astro.currentLocale as "en" | "nl";
 const page = await getEntry("home", locale);
+if (!page) {
+    return Astro.redirect(getRelativeLocaleUrl("/404"));
+}
 
 const links = page.data.links.map((link) => {
     if (link.projectRef) {

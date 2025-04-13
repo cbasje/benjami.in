@@ -2,17 +2,17 @@
 import { getEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
 
-const { data } = await getEntry("ui", Astro.currentLocale as "en" | "nl");
+const page = await getEntry("ui", Astro.currentLocale as "en" | "nl");
 ---
 
 <nav transition:name="nav">
     <button
         is="back-button"
         class="button button-blur"
-        title={data["back-title"]}
+        title={page?.data["back-title"]}
     >
         <Icon name="ph:caret-left-bold" aria-hidden />
-        <span>{data["back"]}</span>
+        <span>{page?.data["back"]}</span>
     </button>
 
     <script src="../../lib/button-component.ts"></script>
