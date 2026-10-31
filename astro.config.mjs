@@ -1,7 +1,7 @@
 import { defineConfig, envField } from "astro/config";
 
 import partytown from "@astrojs/partytown";
-import deno from "@deno/astro-adapter";
+import node from '@astrojs/node';
 import icon from "astro-icon";
 
 import browserslist from "browserslist";
@@ -10,7 +10,8 @@ import { browserslistToTargets } from "lightningcss";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  adapter: deno({
+  adapter: node({
+    mode: "standalone",
     hostname: "0.0.0.0",
     port: 3000,
     start: true,
