@@ -1,31 +1,32 @@
 {
-    "name": "benjami.in",
-    "type": "module",
-    "version": "3.0.0",
-    "description": "My personal website",
-    "author": "Sebastiaan Benjamins <sebastiaan@benjami.in> (https://benjami.in/)",
-    "private": true,
-    "scripts": {
-        "dev": "astro dev",
-        "start": "node ./dist/server/entry.mjs",
-        "check": "astro check",
-        "build": "astro check && astro build",
-        "preview": "astro preview",
-        "astro": "astro"
-    },
-    "dependencies": {
-        "@11ty/eleventy-fetch": "^6.0.1",
-        "@astrojs/check": "0.9.12",
-        "@astrojs/node": "^11.1.9",
-        "@astrojs/partytown": "^2.1.9",
-        "@iconify-json/ph": "^1.2.2",
-        "astro": "7.4.4",
-        "astro-icon": "^1.2.0"
-    },
-    "devDependencies": {
-        "browserslist": "^4.29.5",
-        "lightningcss": "^1.33.0",
-        "open-props": "^1.7.23",
-        "typescript": "^6.0.3"
-    }
+  "name": "benjami.in",
+  "type": "module",
+  "version": "3.0.0",
+  "description": "My personal website",
+  "author": "Sebastiaan Benjamins <sebastiaan@benjami.in> (https://benjami.in/)",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "node ./dist/server/entry.mjs",
+    "check": "astro check",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@11ty/eleventy-fetch": "^6.0.1",
+    "@astrojs/check": "0.9.12",
+    "@astrojs/node": "^11.1.9",
+    "@astrojs/partytown": "^2.1.9",
+    "@foleyjs/core": "^2.9.0",
+    "@iconify-json/ph": "^1.2.2",
+    "astro": "7.4.4",
+    "astro-icon": "^1.2.0"
+  },
+  "devDependencies": {
+    "browserslist": "^4.29.5",
+    "lightningcss": "^1.33.0",
+    "open-props": "^1.7.23",
+    "typescript": "^6.0.3"
+  }
 }

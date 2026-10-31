@@ -16,12 +16,11 @@ RUN pnpm build
 FROM builder AS prod-deps
 RUN pnpm prune --prod
 
-
 # Production image
 FROM node:24-alpine
 WORKDIR /app
 
-COPY --from=prod-deps --chown=node:node /app/build build/
+COPY --from=prod-deps --chown=node:node /app/dist dist/
 COPY --from=prod-deps --chown=node:node /app/node_modules node_modules/
 COPY --chown=node:node package.json ./
 
