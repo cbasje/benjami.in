@@ -9,7 +9,7 @@ const page = await getEntry("ui", Astro.currentLocale as "en" | "nl");
     <button
         is="back-button"
         class="button button-blur"
-        title={page?.data["back-title"]}
+        title={page?.data["back-title"] as string}
     >
         <Icon name="ph:caret-left-bold" aria-hidden />
         <span>{page?.data["back"]}</span>

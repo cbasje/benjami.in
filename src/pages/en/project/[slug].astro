@@ -1,16 +1,17 @@
 ---
-import { getEntry } from "astro:content";
-import type { Seo } from "../../../content/config";
+import { getEntry, render } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { Seo } from "../../../content.config";
 import ProjectsLayout from "../../../layouts/project.astro";
 
 const { slug } = Astro.params;
 
 const page = await getEntry("project", `${Astro.currentLocale}/${slug}`);
-if (!page) {
+if (!slug || !page) {
     return Astro.redirect(getRelativeLocaleUrl("/404"));
 }
 
-const { Content } = await page.render();
+const { Content } = await render(page);
 
 const seo: Seo = {
     metaTitle: page.data.title,
@@ -20,7 +21,7 @@ const seo: Seo = {
 };
 ---
 
-<ProjectsLayout slug={page.slug} hue={page.data.hue} seo={seo}>
+<ProjectsLayout slug={slug} hue={page.data.hue} seo={seo}>
     <header>
         <h1>{page.data.title}</h1>
         <div class="intro" role="presentation">

@@ -1,4 +1,5 @@
-import { defineCollection, reference, z } from "astro:content";
+import { defineCollection, reference } from 'astro:content';
+import { z } from 'astro/zod';
 
 export const fileType = z.string().startsWith("/files/");
 export type File = z.infer<typeof fileType>;
@@ -22,13 +23,13 @@ export const resumeType = z.object({
 export type Resume = z.infer<typeof resumeType>;
 export const socialLinkType = z.object({
   title: z.string(),
-  url: z.string().url().optional(),
+  url: z.url().optional(),
   icon: z.string(),
 });
 export type SocialLink = z.infer<typeof socialLinkType>;
 export const dialLinkType = z.object({
   title: z.string(),
-  url: z.string().url().optional(),
+  url: z.url().optional(),
   slug: z.string().startsWith("/").optional(),
   image: imageType,
   hue: z.number().optional(),
@@ -37,7 +38,7 @@ export const dialLinkType = z.object({
 export type DialLink = z.infer<typeof dialLinkType>;
 export const companyType = z.object({
   title: z.string(),
-  url: z.string().url().optional(),
+  url: z.url().optional(),
   logo: imageType.optional(),
 });
 export type Company = z.infer<typeof companyType>;
@@ -65,7 +66,7 @@ export const footerCollection = defineCollection({
 });
 export const uiCollection = defineCollection({
   type: "data",
-  schema: z.record(z.string()),
+  schema: z.record(z.string(), z.string()),
 });
 export const globalCollection = defineCollection({
   type: "data",

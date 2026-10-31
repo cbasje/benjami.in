@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import pf from "../../assets/images/pf.webp";
 import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
@@ -11,7 +12,7 @@ if (!page) {
     return Astro.redirect(getRelativeLocaleUrl("/404"));
 }
 
-const { Content } = await page.render();
+const { Content } = await render(page);
 ---
 
 <MainLayout seo={page.data.seo}>
