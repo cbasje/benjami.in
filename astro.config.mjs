@@ -10,6 +10,7 @@ import { browserslistToTargets } from "lightningcss";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
+  outDir: "./build",
   adapter: node({
     mode: "standalone",
     hostname: "0.0.0.0",
